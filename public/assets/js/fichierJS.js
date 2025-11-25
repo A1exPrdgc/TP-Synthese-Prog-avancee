@@ -1,0 +1,1 @@
+function clickMe() {alert('Bonjour !!!!');}
