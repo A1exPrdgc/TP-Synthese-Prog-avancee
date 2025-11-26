@@ -48,7 +48,7 @@ class Rattrapage extends BaseController
         $studentModel = new StudentsModel();
         $data['students'] = $studentModel->getPaginatedStudents($perPage, $keyword);
 
-        $data['types'] = ["Machine", "Papier"];
+        $data['types'] = ['MACHINE', 'ORAL', 'PAPIER'];
 
         return view('ds/ajout', $data);
     }
