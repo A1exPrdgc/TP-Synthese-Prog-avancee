@@ -3,38 +3,48 @@ namespace App\Models;
 use CodeIgniter\Model;
 class StudentsModel extends Model
 {
-    protected $table = 'students';
-    protected $primaryKey = 'id';
-    protected $allowedFields = ['name', 'class', 'email'];
+    protected $table = 'etudiant';
+    protected $primaryKey = 'code';
+    protected $allowedFields = ['nom', 'prenom', 'email', 'classe'];
 
-    public function getPaginatedStudents( int $perPage, string $keyword = null ) {
-        // if ($keyword) {
-        //     $this->like('name', $keyword);
-        // }
-        // return $this->orderBy("name", "asc")->paginate( $perPage, 'default');
+public function getPaginatedStudents(int $idDs, int $perPage, string $keyword = null) 
+    {
+        $this->select('
+            etudiant.code as id, 
+            etudiant.nom, 
+            etudiant.prenom, 
+            etudiant.classe,
+            (CASE WHEN a.code IS NOT NULL THEN 1 ELSE 0 END) as absent,
+            COALESCE(a.absenceJustifie, 0) as justifie
+        ');
 
-        return [
-            ['id' => 1, 'nom' => 'Doe', 'prenom' => 'John', 'classe' => 'R5.01', 'absent' => false, 'justifie' => false],
-            ['id' => 3, 'nom' => 'Brown', 'prenom' => 'Charlie', 'classe' => 'R5.03', 'absent' => false, 'justifie' => false],
-            ['id' => 2, 'nom' => 'Smith', 'prenom' => 'Jane', 'classe' => 'R5.02', 'absent' => false, 'justifie' => false],
-            ['id' => 1, 'nom' => 'Doe', 'prenom' => 'John', 'classe' => 'R5.01', 'absent' => false, 'justifie' => false],
-            ['id' => 3, 'nom' => 'Brown', 'prenom' => 'Charlie', 'classe' => 'R5.03', 'absent' => false, 'justifie' => false],
-            ['id' => 2, 'nom' => 'Smith', 'prenom' => 'Jane', 'classe' => 'R5.02', 'absent' => false, 'justifie' => false],
-            ['id' => 1, 'nom' => 'Doe', 'prenom' => 'John', 'classe' => 'R5.01', 'absent' => false, 'justifie' => false],
-            ['id' => 3, 'nom' => 'Brown', 'prenom' => 'Charlie', 'classe' => 'R5.03', 'absent' => false, 'justifie' => false],
-            ['id' => 2, 'nom' => 'Smith', 'prenom' => 'Jane', 'classe' => 'R5.02', 'absent' => false, 'justifie' => false],
-            ['id' => 1, 'nom' => 'Doe', 'prenom' => 'John', 'classe' => 'R5.01', 'absent' => false, 'justifie' => false],
-            ['id' => 3, 'nom' => 'Brown', 'prenom' => 'Charlie', 'classe' => 'R5.03', 'absent' => false, 'justifie' => false],
-            ['id' => 2, 'nom' => 'Smith', 'prenom' => 'Jane', 'classe' => 'R5.02', 'absent' => false, 'justifie' => false],
-            ['id' => 1, 'nom' => 'Doe', 'prenom' => 'John', 'classe' => 'R5.01', 'absent' => false, 'justifie' => false],
-            ['id' => 3, 'nom' => 'Brown', 'prenom' => 'Charlie', 'classe' => 'R5.03', 'absent' => false, 'justifie' => false],
-            ['id' => 2, 'nom' => 'Smith', 'prenom' => 'Jane', 'classe' => 'R5.02', 'absent' => false, 'justifie' => false],
-            ['id' => 1, 'nom' => 'Doe', 'prenom' => 'John', 'classe' => 'R5.01', 'absent' => false, 'justifie' => false],
-            ['id' => 3, 'nom' => 'Brown', 'prenom' => 'Charlie', 'classe' => 'R5.03', 'absent' => false, 'justifie' => false],
-            ['id' => 2, 'nom' => 'Smith', 'prenom' => 'Jane', 'classe' => 'R5.02', 'absent' => false, 'justifie' => false],
-            ['id' => 1, 'nom' => 'Doe', 'prenom' => 'John', 'classe' => 'R5.01', 'absent' => false, 'justifie' => false],
-            ['id' => 3, 'nom' => 'Brown', 'prenom' => 'Charlie', 'classe' => 'R5.03', 'absent' => false, 'justifie' => false],
-            ['id' => 2, 'nom' => 'Smith', 'prenom' => 'Jane', 'classe' => 'R5.02', 'absent' => false, 'justifie' => false],
-        ];
+        $conditionJoin = "etudiant.code = a.code AND a.id_ds = " . $this->db->escape($idDs);
+        $this->join('absence a', $conditionJoin, 'left');
+
+        if ($keyword) {
+            $this->groupStart()
+                 ->like('etudiant.nom', $keyword)
+                 ->orLike('etudiant.prenom', $keyword)
+                 ->orLike('etudiant.classe', $keyword)
+                 ->groupEnd();
+        }
+
+        $this->orderBy("etudiant.nom", "asc");
+        $this->orderBy("etudiant.prenom", "asc");
+
+        $results = $this->paginate($perPage, 'default');
+
+        foreach ($results as &$row) {
+            if (is_array($row)) {
+                $row['absent']   = (bool) $row['absent'];
+                $row['justifie'] = (bool) $row['justifie'];
+            } 
+            else {
+                $row->absent   = (bool) $row->absent;
+                $row->justifie = (bool) $row->justifie;
+            }
+        }
+
+        return $results;
     }
 }

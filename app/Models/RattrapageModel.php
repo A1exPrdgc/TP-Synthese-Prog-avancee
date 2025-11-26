@@ -13,18 +13,15 @@ class RattrapageModel extends Model
     protected $useSoftDeletes = false;
 
     protected $allowedFields = [
-        'id_etudiant',
         'id_ds',
-        'id_matiere',
-        'id_semestre',
-        'id_enseignant',
+        'code',
         'date_rattrapage',
         'duree_minutes',
-        'absent',
-        'absent_justifie',
-        'id_etat',
+        'heure_debut',
+        'etat',
         'mail_envoye',
         'date_creation',
+        
     ];
 
     protected $useTimestamps = false;
@@ -34,26 +31,22 @@ class RattrapageModel extends Model
      */
     public function getAllWithDetails()
     {
-        return $this->select(
-                'rattrapage.*,
-                 etu.numero_etudiant,
-                 pe_etud.nom  AS nom_etud,
-                 pe_etud.prenom AS prenom_etud,
-                 mat.nom AS matiere,
-                 sem.code AS semestre,
-                 pe_ens.nom  AS nom_ens,
-                 pe_ens.prenom AS prenom_ens,
-                 etat.code AS code_etat,
-                 etat.libelle AS libelle_etat'
-            )
-            ->join('etudiant etu', 'etu.id_etudiant = rattrapage.id_etudiant')
-            ->join('personne pe_etud', 'pe_etud.id_personne = etu.id_personne')
-            ->join('enseignant ens', 'ens.id_enseignant = rattrapage.id_enseignant')
-            ->join('personne pe_ens', 'pe_ens.id_personne = ens.id_personne')
-            ->join('semestre sem', 'sem.id_semestre = rattrapage.id_semestre')
-            ->join('etat_rattrapage etat', 'etat.id_etat = rattrapage.id_etat')
-            ->join('matiere mat', 'mat.id_matiere = rattrapage.id_matiere', 'left')
-            ->orderBy('date_rattrapage', 'ASC')
-            ->findAll();
+        return $this->select('
+                rattrapage.*, 
+                etudiant.nom AS nom_etudiant, 
+                etudiant.prenom AS prenom_etudiant,
+                enseignant.nom AS nom_enseignant,
+                enseignant.prenom AS prenom_enseignant,
+                matiere.nom_matiere,
+                semestre.nom_semestre
+            ')
+            ->join('etudiant', 'rattrapage.code = etudiant.code')
+            ->join('ds', 'rattrapage.id_ds = ds.id_ds')
+            ->join('matiere', 'ds.id_matiere = matiere.id_matiere')
+            ->join('semestre', 'matiere.id_semestre = semestre.id_semestre')
+            ->join('enseignant', 'ds.code_enseignant = enseignant.code')
+            ->orderBy('rattrapage.date_rattrapage', 'DESC')
+            ->orderBy('etudiant.nom', 'ASC')
+            ->findAll();          
     }
 }
