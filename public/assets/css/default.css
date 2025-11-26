@@ -17,6 +17,15 @@ main.container {
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   min-height: 60px;
 }
+
+/* Ombre nette en haut à gauche, couleur #009371 (pas de transparence) */
+.my-navbar .btn-custom,
+.my-navbar .btn-square,
+.my-navbar .btn-custom-profile {
+  box-shadow: -6px -6px 0 0 #009371;
+}
+
+/* Styles des boutons */
 .my-navbar .btn-custom {
   background-color: #5ABD89;
   color: #EFEFEF;
@@ -27,8 +36,10 @@ main.container {
   transition: background 0.2s;
 }
 .my-navbar .btn-custom:hover {
-  background-color: #009371; 
+  background-color: #009371;
 }
+
+/* Bouton carré arrondi */
 .my-navbar .btn-square {
   background-color: #5ABD89;
   color: #EFEFEF;
@@ -46,6 +57,7 @@ main.container {
 .my-navbar .btn-square:hover {
   background-color: #009371;
 }
+
 .my-navbar .arrow-left {
   font-weight: bold;
 }
@@ -56,6 +68,8 @@ main.container {
   color: #222;
   letter-spacing: 1px;
 }
+
+/* Bouton profil carré arrondi */
 .my-navbar .btn-custom-profile {
   background-color: #5ABD89;
   border-radius: 16px;
@@ -66,22 +80,21 @@ main.container {
   justify-content: center;
   border: none;
   position: relative;
-  box-shadow: 0 1px 3px rgba(60,60,60,0.08);
-  overflow: visible; /* Très important ! */
+  overflow: visible;
 }
 
+/* Image de profil bien centrée */
 .my-navbar .navbar-profile-img {
   width: 32px;
   height: 32px;
-  object-fit: cover;     /* Pour couvrir sans être rogné */
+  object-fit: cover;
   border-radius: 50%;
   border: 2px solid #EFEFEF;
-  box-shadow: 0 0 0 2px #5ABD89; /* léger contour pour ressortir */
+  box-shadow: 0 0 0 2px #5ABD89;
   background: #EFEFEF;
   position: relative;
   z-index: 2;
 }
-
 
 .footer-iae {
   background-color: #FFC227;
