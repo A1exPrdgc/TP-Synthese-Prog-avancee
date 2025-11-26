@@ -6,8 +6,13 @@ class StudentsModel extends Model
     protected $table = 'etudiant';
     protected $primaryKey = 'code';
     protected $allowedFields = ['nom', 'prenom', 'email', 'classe'];
+    
+    protected $returnType     = 'array';
+    protected $useSoftDeletes = false;
 
-public function getPaginatedStudents(int $idDs, int $perPage, string $keyword = null) 
+    protected $useTimestamps = false;
+
+    public function getPaginatedStudents(int $perPage, string $keyword = null) 
     {
         $this->select('
             etudiant.code as id, 
@@ -18,7 +23,7 @@ public function getPaginatedStudents(int $idDs, int $perPage, string $keyword = 
             COALESCE(a.absenceJustifie, 0) as justifie
         ');
 
-        $conditionJoin = "etudiant.code = a.code AND a.id_ds = " . $this->db->escape($idDs);
+        $conditionJoin = "etudiant.code = a.code";
         $this->join('absence a', $conditionJoin, 'left');
 
         if ($keyword) {
