@@ -27,3 +27,6 @@ $routes->post('reset-password/(:segment)', 'Auth::doResetPassword/$1');
 
 $routes->get('testMail', 'Debug::testMailConfig');
 $routes->post('testMail', 'Debug::testMailConfig');
+
+// Test controller
+$routes->get('test', 'TestController::index');

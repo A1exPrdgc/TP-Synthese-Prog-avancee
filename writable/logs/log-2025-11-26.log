@@ -6,3 +6,19 @@ DEBUG - 2025-11-26 07:32:06 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-11-26 07:32:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-11-26 07:32:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-11-26 07:32:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 08:33:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 08:33:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 08:34:59 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layouts/default.php"
+[Method: GET, Route: test]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/View/View.php(242): CodeIgniter\View\View->render()
+ 3 SYSTEMPATH/Common.php(1167): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/TestController.php(7): view()
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\TestController->index()
+ 6 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/vr232906/TP/s5/r5.05_prog_avancee/TP-Synth/TP-Synthese-Prog-avancee/public/index.php')

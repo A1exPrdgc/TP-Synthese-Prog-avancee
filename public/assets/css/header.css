@@ -1,0 +1,63 @@
+.my-navbar {
+    background-color: #ffb600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    min-height: 60px;
+  }
+  .my-navbar .btn-custom {
+    background-color: #41b883;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 12px;
+    margin-right: 8px;
+    border: none;
+    transition: background 0.2s;
+  }
+  .my-navbar .btn-custom:hover {
+    background-color: #368965;
+  }
+  .my-navbar .btn-square {
+    background-color: #41b883;
+    color: #fff;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    border: none;
+    margin-right: 8px;
+    transition: background 0.2s;
+  }
+  .my-navbar .btn-square:hover {
+    background-color: #368965;
+  }
+  .my-navbar .arrow-left {
+    font-weight: bold;
+  }
+  .my-navbar .navbar-title {
+    font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #222;
+    letter-spacing: 1px;
+  }
+  .my-navbar .btn-custom-profile {
+    background-color: #41b883;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+  }
+  .my-navbar .navbar-profile-img {
+    width: 32px;
+    height: 32px;
+    background: #fff url('https://cdn-icons-png.flaticon.com/512/1946/1946429.png') center center/cover no-repeat;
+    border-radius: 50%;
+    border: 2px solid #41b883;
+    display: inline-block;
+  }
+  
