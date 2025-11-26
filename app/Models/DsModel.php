@@ -5,7 +5,7 @@ class RessourceModel extends Model
 {
     protected $table = 'resource';
     protected $primaryKey = 'id_ds';
-    protected $allowedFields = ['id_semestre', 'date_ds', 'duree_minutes', 'type_exam', 'coderessource'];
+    protected $allowedFields = ['id_semestre', 'date_ds', 'duree_minutes', 'type_exam', 'coderessource', 'codeenseignant'];
 
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
