@@ -5,7 +5,22 @@
 !system/cache/*
 !*/cache/index.html
 !*/cache/.htaccess
-*/writable/*
+writable/
+!writable/index.html
+!writable/.htaccess
+
+writable/logs/
+writable/debugbar/
+writable/cache/
+writable/session/
+writable/tests/
+!writable/logs/index.html
+!writable/logs/.htaccess
+!writable/cache/index.html
+!writable/cache/.htaccess
+
+writable/*.log
+writable/*.tmp
 
 user_guide_src/build/*
 user_guide_src/cilexer/build/*
