@@ -31,3 +31,5 @@ $routes->post('testMail', 'Debug::testMailConfig');
 // DS Ajout
 $routes->get('DS/Ajout', 'DS\Ajout::index');
 $routes->post('DS/Ajout/save', 'DS\Ajout::save');
+// Test controller
+$routes->get('test', 'TestController::index');
