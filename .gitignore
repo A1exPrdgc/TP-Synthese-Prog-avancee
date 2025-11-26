@@ -71,3 +71,4 @@ writable/session/*
 writable/debugbar/*
 !writable/debugbar/index.html
 !writable/debugbar/.htaccess
+writable/logs/*.logs
