@@ -20,7 +20,7 @@
                 <a class="btn btn-custom me-2" href="#">DS</a>
             </div>
             <div class="mx-auto navbar-title">
-                MySGRDS | <?= $this->renderSection('title') ?>
+                <?= $this->renderSection('navbarTitle') ?>
             </div>
             <div class="d-flex align-items-center">
                 <a class="btn btn-custom me-2" href="#">+ Ajouter</a>

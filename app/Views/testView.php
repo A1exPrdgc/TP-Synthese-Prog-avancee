@@ -4,6 +4,11 @@
 Liste des DS
 <?= $this->endSection() ?>
 
+
+<?= $this->section('navbarTitle') ?>
+MySGRDS | Liste des DS
+<?= $this->endSection() ?>
+
 <?= $this->section('styles') ?>
 <!-- Style spécifique si besoin -->
 <?= $this->endSection() ?>
