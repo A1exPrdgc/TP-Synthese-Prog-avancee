@@ -166,3 +166,336 @@ in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
 10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
 11 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/vr232906/TP/s5/r5.05_prog_avancee/TP-Synth/TP-Synthese-Prog-avancee/public/index.php')
 >>>>>>> main
+DEBUG - 2025-11-26 10:06:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:06:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:12:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:14:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:15:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:15:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:15:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:18:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 10:18:00 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "ds/success.php"
+[Method: POST, Route: DS/Ajout/save]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1167): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/DS/Ajout.php(35): view()
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->save()
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+10 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+DEBUG - 2025-11-26 10:18:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:18:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:25:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:26:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:26:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:30:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:31:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:33:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:34:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:37:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:38:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:39:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:40:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:40:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:41:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:45:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:45:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:50:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 10:59:04 --> ErrorException: Undefined variable $StudentModel
+[Method: GET, Route: DS/Ajout]
+in APPPATH/Controllers/DS/Ajout.php on line 16.
+ 1 APPPATH/Controllers/DS/Ajout.php(16): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+DEBUG - 2025-11-26 10:59:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 10:59:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 11:01:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 13:04:17 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;students&quot; does not exist
+LINE 2: FROM &quot;students&quot;
+             ^ in /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/Postgre/Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/Postgre/Connection.php(206): pg_query()
+#2 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query()
+#5 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults()
+#6 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/BaseModel.php(1277): CodeIgniter\Model->countAllResults()
+#7 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/app/Models/StudentsModel.php(17): CodeIgniter\BaseModel->paginate()
+#8 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/app/Controllers/DS/Ajout.php(24): App\Models\StudentsModel->getPaginatedStudents()
+#9 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+#10 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#15 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 13:04:17 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;students&quot; does not exist
+LINE 2: FROM &quot;students&quot;
+             ^
+[Method: GET, Route: DS/Ajout]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH/Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 3 SYSTEMPATH/BaseModel.php(1277): CodeIgniter\Model->countAllResults()
+ 4 APPPATH/Models/StudentsModel.php(17): CodeIgniter\BaseModel->paginate()
+ 5 APPPATH/Controllers/DS/Ajout.php(24): App\Models\StudentsModel->getPaginatedStudents()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+CRITICAL - 2025-11-26 13:04:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;students&quot; does not exist
+LINE 2: FROM &quot;students&quot;
+             ^
+in SYSTEMPATH/Database/Postgre/Connection.php on line 211.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 5 SYSTEMPATH/BaseModel.php(1277): CodeIgniter\Model->countAllResults()
+ 6 APPPATH/Models/StudentsModel.php(17): CodeIgniter\BaseModel->paginate()
+ 7 APPPATH/Controllers/DS/Ajout.php(24): App\Models\StudentsModel->getPaginatedStudents()
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 9 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+CRITICAL - 2025-11-26 13:04:17 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;students&quot; does not exist
+LINE 2: FROM &quot;students&quot;
+             ^
+in SYSTEMPATH/Database/Postgre/Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/Database/Postgre/Connection.php(206): pg_query()
+ 3 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH/Database/BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH/Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 7 SYSTEMPATH/BaseModel.php(1277): CodeIgniter\Model->countAllResults()
+ 8 APPPATH/Models/StudentsModel.php(17): CodeIgniter\BaseModel->paginate()
+ 9 APPPATH/Controllers/DS/Ajout.php(24): App\Models\StudentsModel->getPaginatedStudents()
+10 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+11 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+ERROR - 2025-11-26 13:04:32 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;students&quot; does not exist
+LINE 2: FROM &quot;students&quot;
+             ^ in /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/Postgre/Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/Postgre/Connection.php(206): pg_query()
+#2 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query()
+#5 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults()
+#6 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/BaseModel.php(1277): CodeIgniter\Model->countAllResults()
+#7 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/app/Models/StudentsModel.php(17): CodeIgniter\BaseModel->paginate()
+#8 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/app/Controllers/DS/Ajout.php(24): App\Models\StudentsModel->getPaginatedStudents()
+#9 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+#10 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#15 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 13:04:32 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;students&quot; does not exist
+LINE 2: FROM &quot;students&quot;
+             ^
+[Method: GET, Route: DS/Ajout]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH/Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 3 SYSTEMPATH/BaseModel.php(1277): CodeIgniter\Model->countAllResults()
+ 4 APPPATH/Models/StudentsModel.php(17): CodeIgniter\BaseModel->paginate()
+ 5 APPPATH/Controllers/DS/Ajout.php(24): App\Models\StudentsModel->getPaginatedStudents()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+CRITICAL - 2025-11-26 13:04:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;students&quot; does not exist
+LINE 2: FROM &quot;students&quot;
+             ^
+in SYSTEMPATH/Database/Postgre/Connection.php on line 211.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 5 SYSTEMPATH/BaseModel.php(1277): CodeIgniter\Model->countAllResults()
+ 6 APPPATH/Models/StudentsModel.php(17): CodeIgniter\BaseModel->paginate()
+ 7 APPPATH/Controllers/DS/Ajout.php(24): App\Models\StudentsModel->getPaginatedStudents()
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 9 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+CRITICAL - 2025-11-26 13:04:32 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;students&quot; does not exist
+LINE 2: FROM &quot;students&quot;
+             ^
+in SYSTEMPATH/Database/Postgre/Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/Database/Postgre/Connection.php(206): pg_query()
+ 3 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH/Database/BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH/Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 7 SYSTEMPATH/BaseModel.php(1277): CodeIgniter\Model->countAllResults()
+ 8 APPPATH/Models/StudentsModel.php(17): CodeIgniter\BaseModel->paginate()
+ 9 APPPATH/Controllers/DS/Ajout.php(24): App\Models\StudentsModel->getPaginatedStudents()
+10 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+11 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+ERROR - 2025-11-26 13:06:41 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;students&quot; does not exist
+LINE 2: FROM &quot;students&quot;
+             ^ in /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/Postgre/Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/Postgre/Connection.php(206): pg_query()
+#2 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Database/BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query()
+#5 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults()
+#6 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/BaseModel.php(1277): CodeIgniter\Model->countAllResults()
+#7 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/app/Models/StudentsModel.php(17): CodeIgniter\BaseModel->paginate()
+#8 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/app/Controllers/DS/Ajout.php(24): App\Models\StudentsModel->getPaginatedStudents()
+#9 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+#10 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#15 /home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/system/rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 13:06:41 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;students&quot; does not exist
+LINE 2: FROM &quot;students&quot;
+             ^
+[Method: GET, Route: DS/Ajout]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH/Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 3 SYSTEMPATH/BaseModel.php(1277): CodeIgniter\Model->countAllResults()
+ 4 APPPATH/Models/StudentsModel.php(17): CodeIgniter\BaseModel->paginate()
+ 5 APPPATH/Controllers/DS/Ajout.php(24): App\Models\StudentsModel->getPaginatedStudents()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+CRITICAL - 2025-11-26 13:06:41 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;students&quot; does not exist
+LINE 2: FROM &quot;students&quot;
+             ^
+in SYSTEMPATH/Database/Postgre/Connection.php on line 211.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 5 SYSTEMPATH/BaseModel.php(1277): CodeIgniter\Model->countAllResults()
+ 6 APPPATH/Models/StudentsModel.php(17): CodeIgniter\BaseModel->paginate()
+ 7 APPPATH/Controllers/DS/Ajout.php(24): App\Models\StudentsModel->getPaginatedStudents()
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 9 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+CRITICAL - 2025-11-26 13:06:41 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;students&quot; does not exist
+LINE 2: FROM &quot;students&quot;
+             ^
+in SYSTEMPATH/Database/Postgre/Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/Database/Postgre/Connection.php(206): pg_query()
+ 3 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH/Database/BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH/Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 7 SYSTEMPATH/BaseModel.php(1277): CodeIgniter\Model->countAllResults()
+ 8 APPPATH/Models/StudentsModel.php(17): CodeIgniter\BaseModel->paginate()
+ 9 APPPATH/Controllers/DS/Ajout.php(24): App\Models\StudentsModel->getPaginatedStudents()
+10 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+11 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+CRITICAL - 2025-11-26 13:19:39 --> ErrorException: Undefined array key 0
+[Method: GET, Route: DS/Ajout]
+in APPPATH/Controllers/DS/Ajout.php on line 30.
+ 1 APPPATH/Controllers/DS/Ajout.php(30): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+CRITICAL - 2025-11-26 13:22:15 --> TypeError: Cannot access offset of type string on string
+[Method: GET, Route: DS/Ajout]
+in APPPATH/Controllers/DS/Ajout.php on line 33.
+ 1 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 2 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 7 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+DEBUG - 2025-11-26 13:22:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 13:22:41 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, null given
+[Method: GET, Route: DS/Ajout]
+in APPPATH/Views/ds/ajout.php on line 71.
+ 1 SYSTEMPATH/View/View.php(226): include()
+ 2 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():223}()
+ 3 SYSTEMPATH/Common.php(1167): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/DS/Ajout.php(42): view()
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 6 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+CRITICAL - 2025-11-26 13:22:41 --> [Caused by] ErrorException: Undefined variable $student
+in APPPATH/Views/ds/ajout.php on line 71.
+ 1 APPPATH/Views/ds/ajout.php(71): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(226): include('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/app/Views/ds/ajout.php')
+ 3 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():223}()
+ 4 SYSTEMPATH/Common.php(1167): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/DS/Ajout.php(42): view()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+DEBUG - 2025-11-26 13:24:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

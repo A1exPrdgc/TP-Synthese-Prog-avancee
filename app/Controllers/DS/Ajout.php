@@ -1,6 +1,11 @@
 <?php
 namespace App\Controllers\DS;
 use CodeIgniter\Controller;
+use App\Models\ArticleRechercheModel;
+use App\Models\StudentsModel;
+use App\Models\SemestersModel;
+use App\Models\RessourceModel;
+use App\Models\TeachersModel;
 class Ajout extends Controller
 {
 
@@ -11,7 +16,31 @@ class Ajout extends Controller
 
     public function index()
     {
-        return view('ds/ajout');
+        $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
+
+        $keyword = $this->request->getGet('keyword') ?? '';
+
+        $data['keyword'] = $keyword;
+
+        $studentModel = new StudentsModel();
+        $data['students'] = $studentModel->getPaginatedStudents( $perPage, $keyword);
+
+        $semesterModel = new SemestersModel();
+        $data['semesters'] = $semesterModel->getAllSemesters();
+
+        $selectedSemester = $data['semesters'][0];
+
+        $resourceModel = new RessourceModel();
+        $data['resources'] = $resourceModel->getAllResourcesBySemesters($selectedSemester);
+
+        $selectedRessource = $data['resources'][0];
+
+        $teacherModel = new TeachersModel();
+        $data['teachers'] = $teacherModel->getAllTeachersByResources($selectedRessource);
+
+        $data['types'] = ["Machine", "Papier"];
+
+        return view('ds/ajout', $data);
     }
 
     public function save()
@@ -22,7 +51,9 @@ class Ajout extends Controller
             'teacher' => 'required|in_list[Legrix,Thorel]',
             'date' => 'required|valid_date',
             'type' => 'required|in_list[Machine,Papier]',
-            'duration' => 'required|regex_match[/^(?:[01]\d|2[0-3]):[0-5]\d$/]'     
+            'duration' => 'required|regex_match[/^(?:[01]\d|2[0-3]):[0-5]\d$/]',
+            'absent' => 'required|boolean',
+            'justify' => 'required|boolean'
         ]);
         if (!$isValid) {
             return view('ds/ajout', [
