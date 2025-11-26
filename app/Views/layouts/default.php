@@ -29,9 +29,9 @@
         </div>
     </nav>
     <!-- Contenu principal -->
-    <main class="container">
+    <main class="container my-4 flex-grow-1">
         <?= $this->renderSection('content') ?>
-    </main>
+    </main>>
     <!-- Footer -->
     <footer class="footer-iae">
         <div class="container">
