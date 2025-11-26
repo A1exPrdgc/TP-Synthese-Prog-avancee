@@ -8,6 +8,8 @@
     <link rel="icon" href="<?= base_url('Logo.ico') ?>" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="<?= base_url('assets/css/default.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('assets/css/header.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('assets/css/footer.css') ?>" rel="stylesheet" />
     <?= $this->renderSection('styles') ?>
 </head>
 <body class="d-flex flex-column min-vh-100">
