@@ -31,7 +31,7 @@
 </form>
 
 <p>
-    <a href="<?= site_url('login') ?>">Retour au login</a>
+    <a href="<?= site_url('login'); ?>">Retour au login</a>
 </p>
 
 </body>
