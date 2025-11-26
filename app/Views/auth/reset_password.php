@@ -9,23 +9,25 @@
 <h1>Nouveau mot de passe</h1>
 
 <?php if (!empty($error)) : ?>
-    <p style="color:red;"><?= $error ?></p>
+    <p style="color:red;"><?= esc($error) ?></p>
 <?php endif; ?>
 
-<form action="<?= site_url('reset-password/' . $token) ?>" method="post">
-    <p>
-        <label for="password">Nouveau mot de passe :</label><br>
-        <input type="password" name="password" id="password" required>
-    </p>
-
-    <p>
-        <label for="password_confirm">Confirmer le mot de passe :</label><br>
-        <input type="password" name="password_confirm" id="password_confirm" required>
-    </p>
-
-    <p>
-        <button type="submit">Valider</button>
-    </p>
+<form method="post" action="<?= site_url('reset-password/' . $token) ?>">
+    <table>
+        <tr>
+            <th><label for="password">Nouveau mot de passe :</label></th>
+            <td><input type="password" name="password" id="password" required></td>
+        </tr>
+        <tr>
+            <th><label for="password_confirm">Confirmation :</label></th>
+            <td><input type="password" name="password_confirm" id="password_confirm" required></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Valider</button>
+            </td>
+        </tr>
+    </table>
 </form>
 
 <p>

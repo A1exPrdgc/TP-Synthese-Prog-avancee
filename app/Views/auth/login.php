@@ -5,43 +5,46 @@
     <title>Connexion</title>
 </head>
 <body>
-    <h1>Login</h1>
 
-    <?php if (!empty($error)) : ?>
-        <p style="color:red;"><?= esc($error) ?></p>
-    <?php endif; ?>
+<h1>Connexion</h1>
 
-    <form action="<?= site_url('login') ?>" method="post">
-        <p>
-            <label for="username">Identifiant :</label><br>
-            <input type="text" name="username" id="username" required>
-        </p>
+<?php if (!empty($error)) : ?>
+    <p style="color:red;"><?= esc($error) ?></p>
+<?php endif; ?>
 
-        <p>
-            <label for="password">Mot de passe :</label><br>
-            <input type="password" name="password" id="password" required>
-        </p>
+<?php if (!empty($message)) : ?>
+    <p style="color:green;"><?= esc($message) ?></p>
+<?php endif; ?>
 
-        <p>
-            <label>
-                <input type="checkbox" name="remember" value="1">
-                Se souvenir de moi
-            </label>
-        </p>
+<form method="post" action="<?= site_url('login') ?>">
+    <table>
+        <tr>
+            <th><label for="username">Identifiant :</label></th>
+            <td><input type="text" name="username" id="username" required></td>
+        </tr>
+        <tr>
+            <th><label for="password">Mot de passe :</label></th>
+            <td><input type="password" name="password" id="password" required></td>
+        </tr>
+        <tr>
+            <th>Se souvenir de moi :</th>
+            <td>
+                <input type="checkbox" name="remember" value="1" id="remember">
+                <label for="remember">Créer un cookie</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Se connecter</button>
+            </td>
+        </tr>
+    </table>
+</form>
 
-        <p>
-            <a href="<?= site_url('forgot-password') ?>">Mot de passe oublié ?</a>
-        </p>
+<p>
+    <a href="<?= site_url('forgot-password') ?>">Mot de passe oublié ?</a><br>
+    <a href="<?= site_url('signin') ?>">Créer un compte</a>
+</p>
 
-
-        <p>
-            <button type="submit">Connexion</button>
-        </p>
-    </form>
-
-    <p>
-        <a href="<?= site_url('signin') ?>">Créer un compte</a>
-        <!-- lien "mot de passe oublié" à implémenter plus tard -->
-    </p>
 </body>
 </html>
