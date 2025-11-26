@@ -3,12 +3,13 @@ namespace App\Models;
 use CodeIgniter\Model;
 class SemestersModel extends Model
 {
-    protected $table = 'semesters';
-    protected $primaryKey = 'id';
-    protected $allowedFields = ['name', 'class', 'email'];
+    protected $table = 'semestre';
+    protected $primaryKey = 'id_semestre';
+    protected $allowedFields = ['code', 'annee'];
 
     public function getAllSemesters()
     {
-        return ["S1", "S2"];
+        //return ["S1", "S2"];
+        return $this->findAll();
     }
 }
