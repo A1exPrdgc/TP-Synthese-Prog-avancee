@@ -87,7 +87,7 @@ CREATE TABLE ds (
         REFERENCES semestre(id_semestre)
         ON DELETE CASCADE,
 
-    FOREIGN KEY (code)
+    FOREIGN KEY (codeEnseignant)
         REFERENCES enseignant(code)
         ON DELETE CASCADE
 );
