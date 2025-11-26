@@ -17,7 +17,6 @@
 <?php endif; ?>
 
 <?php helper('form'); ?>
-
 <?= form_open('login'); ?>
 
     <table>

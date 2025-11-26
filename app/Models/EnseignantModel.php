@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class EnseignantModel extends Model
 {
-    protected $table      = 'enseignant';
-    protected $primaryKey = 'code';          // identifiant universitaire
+    protected $table            = 'enseignant';
+    protected $primaryKey       = 'code';   // PK = code (varchar)
+    protected $useAutoIncrement = false;   // très important, sinon CI croit que c'est un int auto
 
-    protected $returnType     = 'array';
-    protected $useTimestamps  = false;
+    protected $returnType    = 'array';
+    protected $useTimestamps = false;
 
-    // colonnes dispo grâce à l’héritage + colonnes propres
     protected $allowedFields = [
         'code',
         'nom',
@@ -23,21 +23,4 @@ class UserModel extends Model
         'reset_token',
         'reset_expires',
     ];
-
-    public function findByUsernameWithPersonne(string $username)
-    {
-        return $this->select('users.*, personne.nom, personne.prenom, personne.email')
-                    ->join('personne', 'personne.id_personne = users.id_personne')
-                    ->where('users.username', $username)
-                    ->first();
-    }
-
-    public function findByResetToken(string $token)
-    {
-        return $this->select('users.*, personne.nom, personne.prenom, personne.email')
-                    ->join('personne', 'personne.id_personne = users.id_personne')
-                    ->where('users.reset_token', $token)
-                    ->where('users.reset_expires >=', date('Y-m-d H:i:s'))
-                    ->first();
-    }
 }

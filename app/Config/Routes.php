@@ -20,7 +20,7 @@ $routes->get('rattrapages', 'Rattrapage::index');
 
 // Mot de passe oublié
 $routes->get('forgot-password', 'Auth::forgotPassword');
-$routes->post('forgot-password', 'Auth::sendResetLink');
+$routes->post('forgot-password', 'Auth::doForgotPassword');
 
 $routes->get('reset-password/(:segment)', 'Auth::resetPassword/$1');
 $routes->post('reset-password/(:segment)', 'Auth::doResetPassword/$1');
