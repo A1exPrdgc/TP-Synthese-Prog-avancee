@@ -13,28 +13,41 @@ main.container {
 }
 
 .my-navbar {
-  background-color: #ffb600;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  min-height: 60px;
+  background-color: #FFC227;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  min-height: 100px;
 }
+
+/* Ombre nette, taille adaptée pour gros éléments */
+.my-navbar .btn-custom,
+.my-navbar .btn-square,
+.my-navbar .btn-custom-profile {
+  box-shadow: -6px -6px 0 0 #009371;
+}
+
+/* Boutons larges */
 .my-navbar .btn-custom {
-  background-color: #41b883;
-  color: #fff;
+  background-color: #5ABD89;
+  color: #EFEFEF;
   font-weight: 600;
-  border-radius: 12px;
-  margin-right: 8px;
+  border-radius: 24px;
+  margin-right: 16px;
+  font-size: 1.6rem; 
+  padding: 15px 30px;
   border: none;
   transition: background 0.2s;
 }
 .my-navbar .btn-custom:hover {
-  background-color: #368965;
+  background-color: #009371;
 }
+
+/* Bouton carré arrondi */
 .my-navbar .btn-square {
-  background-color: #41b883;
-  color: #fff;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  background-color: #5ABD89;
+  color: #EFEFEF;
+  width: 80px; 
+  height: 80x;
+  border-radius: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,44 +57,55 @@ main.container {
   transition: background 0.2s;
 }
 .my-navbar .btn-square:hover {
-  background-color: #368965;
+  background-color: #009371;
 }
+
 .my-navbar .arrow-left {
   font-weight: bold;
+  font-size: 2.6rem;
 }
 .my-navbar .navbar-title {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   color: #222;
   letter-spacing: 1px;
+  padding: 6px 0;
 }
+
+/* Bouton profil carré arrondi */
 .my-navbar .btn-custom-profile {
-  background-color: #41b883;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  background-color: #5ABD89;
+  border-radius: 32px; 
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
+  position: relative;
+  overflow: visible;
+  padding: 0;
 }
+
+/* Image profil centrée, plus grande */
 .my-navbar .navbar-profile-img {
-  width: 32px;
-  height: 32px;
-  background: #fff url('https://cdn-icons-png.flaticon.com/512/1946/1946429.png') center center/cover no-repeat;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
   border-radius: 50%;
-  border: 2px solid #41b883;
-  display: inline-block;
+  background: #EFEFEF;
+  position: relative;
+  z-index: 2;
 }
 
 .footer-iae {
-  background-color: #ffb600;
+  background-color: #FFC227;
   color: #2a2a2a;
   text-align: center;
   font-weight: 600;
-  padding: 16px 0;
-  border-top: 2px solid #41b883;
+  padding: 10px 0;
   letter-spacing: 1px;
   margin-top: auto;
+  font-size: 1rem;
 }

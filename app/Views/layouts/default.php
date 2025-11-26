@@ -16,15 +16,17 @@
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <a class="btn btn-square me-2" href="#"><span class="arrow-left">&#8592;</span></a>
-                <a class="btn btn-custom me-2" href="#">🏛 Rattrapage</a>
-                <a class="btn btn-custom me-2" href="#">📝 DS</a>
+                <a class="btn btn-custom me-2" href="#">Rattrapage</a>
+                <a class="btn btn-custom me-2" href="#">DS</a>
             </div>
             <div class="mx-auto navbar-title">
-                MySGRDS | <?= $this->renderSection('title') ?>
+                <?= $this->renderSection('navbarTitle') ?>
             </div>
             <div class="d-flex align-items-center">
                 <a class="btn btn-custom me-2" href="#">+ Ajouter</a>
-                <a class="btn btn-custom-profile" href="#"><span class="navbar-profile-img"></span></a>
+                <a class="btn btn-custom-profile" href="#">
+                <img class="navbar-profile-img" src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="Profil"/>
+                </a>
             </div>
         </div>
     </nav>
