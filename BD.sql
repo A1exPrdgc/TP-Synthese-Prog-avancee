@@ -17,116 +17,106 @@
    Puis se connecter sur tp_synthese et exécuter ce script.
 */
 
+DROP TABLE IF EXISTS ressource  CASCADE;
+DROP TABLE IF EXISTS semestre   CASCADE;
 DROP TABLE IF EXISTS rattrapage CASCADE;
-DROP TABLE IF EXISTS etat_rattrapage CASCADE;
-DROP TABLE IF EXISTS ds CASCADE;
-DROP TABLE IF EXISTS matiere CASCADE;
-DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS etudiant CASCADE;
-DROP TABLE IF EXISTS semestre CASCADE;
+DROP TABLE IF EXISTS ds         CASCADE;
+DROP TABLE IF EXISTS etudiant   CASCADE;
+DROP TABLE IF EXISTS absence    CASCADE;
 DROP TABLE IF EXISTS enseignant CASCADE;
-DROP TABLE IF EXISTS personne CASCADE;
+DROP TABLE IF EXISTS personne   CASCADE;
 
--- TABLES DE BASE
+DROP TYPE IF EXISTS fonction  CASCADE;
+DROP TYPE IF EXISTS type_exam CASCADE;
+DROP TYPE IF EXISTS etat      CASCADE;
+
+CREATE TYPE fonction  as ENUM ('ENS', 'DE');
+CREATE TYPE type_exam as ENUM ('MACHINE', 'ORAL', 'PAPIER');
+CREATE TYPE etat      as ENUM ('PREVU', 'REFUSE', 'TERMINE', 'EN ATTENTE');
+
+-- TABLE PERSONNE ET FILLES
 
 CREATE TABLE personne (
-    id_personne  SERIAL PRIMARY KEY,
+    code         VARCHAR(10) PRIMARY KEY,
     nom          VARCHAR(50) NOT NULL,
     prenom       VARCHAR(50) NOT NULL,
     email        VARCHAR(100) UNIQUE
 );
 
 CREATE TABLE enseignant (
-    id_enseignant SERIAL PRIMARY KEY,
-    id_personne   INT NOT NULL UNIQUE,
-    FOREIGN KEY (id_personne) 
-        REFERENCES personne(id_personne)
-        ON DELETE CASCADE
-);
+    code         VARCHAR(10)  PRIMARY KEY,
+    password     VARCHAR(100) NOT NULL,
+    fonction     fonction NOT NULL DEFAULT 'ENS',
+    reset_token  VARCHAR(100),
+    reset_expires TIMESTAMP
+)INHERITS (personne);
 
--- Semestre (BUT1-S1, BUT1-S2, etc.)
+CREATE TABLE etudiant(
+    code   VARCHAR(10) PRIMARY KEY,
+    classe VARCHAR(5), 
+
+    FOREIGN KEY (code) 
+        REFERENCES personne(code)
+        ON DELETE CASCADE
+)INHERITS (personne);
+
+-- Semestre
 CREATE TABLE semestre (
     id_semestre SERIAL PRIMARY KEY,
     code        VARCHAR(2) NOT NULL UNIQUE,  -- ex : S1, S2...
-    libelle     VARCHAR(50) NOT NULL,         -- ex : "BUT1 - S1"
     annee       INT NOT NULL
 );
 
-CREATE TABLE etudiant (
-    numero_etudiant  VARCHAR(20) PRIMARY KEY,
-    id_personne      INT NOT NULL UNIQUE,
-    id_semestre      INT NOT NULL,
-    date_creation    DATE DEFAULT CURRENT_DATE,
+-- Ressources et DS
 
-    FOREIGN KEY (id_personne) 
-        REFERENCES personne(id_personne)
-        ON DELETE CASCADE,
-
-    FOREIGN KEY (id_semestre)
-        REFERENCES semestre(id_semestre)
-        ON DELETE CASCADE
-);
-
-CREATE TABLE users (
-    username    VARCHAR(50) PRIMARY KEY,
-    id_personne INT NOT NULL,
-    password    VARCHAR(100) NOT NULL,
-    -- rôle de l'utilisateur (DE, ENS, ADMIN)
-    role        VARCHAR(20) NOT NULL DEFAULT 'ENS',
-    reset_token VARCHAR(100),
-    reset_expires TIMESTAMP,
-
-    FOREIGN KEY (id_personne) 
-        REFERENCES personne(id_personne)
-        ON DELETE CASCADE
-);
-
--- Matières et DS
-
-CREATE TABLE matiere (
-    id_matiere SERIAL PRIMARY KEY,
-    nom        VARCHAR(100) NOT NULL
+CREATE TABLE ressource (
+    codeRessource VARCHAR(10) PRIMARY KEY,
+    nomRessource  VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE ds (
-    id_ds      SERIAL PRIMARY KEY,
-    date_ds    DATE NOT NULL,
-    id_matiere INT NOT NULL,
+    id_ds          SERIAL PRIMARY KEY,
+    id_semestre    INT,
+    date_ds        DATE NOT NULL,
+    duree          TIMESTAMP,
+    type_exam      type_exam NOT NULL,
+    codeRessource  VARCHAR(10) NOT NULL,
 
-    FOREIGN KEY (id_matiere) 
-        REFERENCES matiere(id_matiere)
+    FOREIGN KEY (codeRessource) 
+        REFERENCES ressource(codeRessource)
         ON DELETE CASCADE
 );
 
--- États de rattrapage (PREVU, FAIT, ANNULE...)
+-- Table ABSENCE
 
-CREATE TABLE etat_rattrapage (
-    id_etat SERIAL PRIMARY KEY,
-    code    VARCHAR(20) NOT NULL UNIQUE,  -- ex: "PREVU", "FAIT", "ANNULE"
-    libelle VARCHAR(50) NOT NULL
+CREATE TABLE absence (
+    id_ds INT,
+    code  VARCHAR(10),
+    absenceJustifie SMALLINT NOT NULL DEFAULT 0,
+
+    FOREIGN KEY (id_ds) 
+        REFERENCES ds(id_ds)
+        ON DELETE CASCADE,
+    
+    FOREIGN KEY (code)
+        REFERENCES etudiant(code)
+        ON DELETE CASCADE,
+    
+    PRIMARY KEY(id_ds,code)
 );
-
--- Table RATTRAPAGE
 
 CREATE TABLE rattrapage (
     id_rattrapage   SERIAL PRIMARY KEY,
-    numero_etudiant INT NOT NULL,
-    id_ds           INT,            -- rattrapage lié à un DS particulier (optionnel)
-    id_matiere      INT,            -- ou directement la matière
-    id_semestre     INT NOT NULL,
-    id_enseignant   INT NOT NULL,
+    id_ds           INT NOT NULL,
+    code            VARCHAR(10) NOT NULL,
     date_rattrapage DATE NOT NULL,
     duree_minutes   INT NOT NULL,
-    absent          BOOLEAN DEFAULT FALSE,
-    absent_justifie BOOLEAN DEFAULT FALSE,
-    id_etat         INT NOT NULL,    -- PREVU/FAIT/ANNULE...
-    mail_envoye     BOOLEAN DEFAULT FALSE,
+    heure_debut     TIMESTAMP,
+    etat            etat NOT NULL DEFAULT 'EN ATTENTE',
+    mail_envoye     SMALLINT DEFAULT 0,
     date_creation   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    salle           VARCHAR(10),
 
-    FOREIGN KEY (numero_etudiant) REFERENCES etudiant(numero_etudiant) ON DELETE CASCADE,
-    FOREIGN KEY (id_ds)           REFERENCES ds(id_ds)                 ON DELETE SET NULL,
-    FOREIGN KEY (id_matiere)      REFERENCES matiere(id_matiere)       ON DELETE SET NULL,
-    FOREIGN KEY (id_semestre)     REFERENCES semestre(id_semestre),
-    FOREIGN KEY (id_enseignant)   REFERENCES enseignant(id_enseignant),
-    FOREIGN KEY (id_etat)         REFERENCES etat_rattrapage(id_etat)
+    FOREIGN KEY (id_ds) REFERENCES ds(id_ds),
+    FOREIGN KEY (code)  REFERENCES enseignant(code)
 );
