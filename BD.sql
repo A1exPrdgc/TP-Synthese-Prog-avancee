@@ -53,10 +53,9 @@ CREATE TABLE semestre (
 );
 
 CREATE TABLE etudiant (
-    id_etudiant      SERIAL PRIMARY KEY,
+    numero_etudiant  VARCHAR(20) PRIMARY KEY,
     id_personne      INT NOT NULL UNIQUE,
     id_semestre      INT NOT NULL,
-    numero_etudiant  VARCHAR(20) UNIQUE NOT NULL,
     date_creation    DATE DEFAULT CURRENT_DATE,
 
     FOREIGN KEY (id_personne) 
@@ -111,7 +110,7 @@ CREATE TABLE etat_rattrapage (
 
 CREATE TABLE rattrapage (
     id_rattrapage   SERIAL PRIMARY KEY,
-    id_etudiant     INT NOT NULL,
+    numero_etudiant INT NOT NULL,
     id_ds           INT,            -- rattrapage lié à un DS particulier (optionnel)
     id_matiere      INT,            -- ou directement la matière
     id_semestre     INT NOT NULL,
@@ -124,10 +123,10 @@ CREATE TABLE rattrapage (
     mail_envoye     BOOLEAN DEFAULT FALSE,
     date_creation   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
-    FOREIGN KEY (id_etudiant)   REFERENCES etudiant(id_etudiant)   ON DELETE CASCADE,
-    FOREIGN KEY (id_ds)         REFERENCES ds(id_ds)               ON DELETE SET NULL,
-    FOREIGN KEY (id_matiere)    REFERENCES matiere(id_matiere)     ON DELETE SET NULL,
-    FOREIGN KEY (id_semestre)   REFERENCES semestre(id_semestre),
-    FOREIGN KEY (id_enseignant) REFERENCES enseignant(id_enseignant),
-    FOREIGN KEY (id_etat)       REFERENCES etat_rattrapage(id_etat)
+    FOREIGN KEY (numero_etudiant) REFERENCES etudiant(numero_etudiant) ON DELETE CASCADE,
+    FOREIGN KEY (id_ds)           REFERENCES ds(id_ds)                 ON DELETE SET NULL,
+    FOREIGN KEY (id_matiere)      REFERENCES matiere(id_matiere)       ON DELETE SET NULL,
+    FOREIGN KEY (id_semestre)     REFERENCES semestre(id_semestre),
+    FOREIGN KEY (id_enseignant)   REFERENCES enseignant(id_enseignant),
+    FOREIGN KEY (id_etat)         REFERENCES etat_rattrapage(id_etat)
 );

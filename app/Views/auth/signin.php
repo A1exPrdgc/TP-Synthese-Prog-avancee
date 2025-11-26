@@ -2,53 +2,95 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Inscription</title>
+    <title>Création de compte</title>
 </head>
 <body>
-    <h1>Inscription</h1>
 
-    <?php if (!empty($error)) : ?>
-        <p style="color:red;"><?= esc($error) ?></p>
-    <?php endif; ?>
+<h1>Créer un compte</h1>
 
-    <form action="<?= site_url('signin') ?>" method="post">
-        <p>
-            <label for="nom">Nom :</label><br>
-            <input type="text" name="nom" id="nom" required>
-        </p>
+<?php if (!empty($error)) : ?>
+    <p style="color:red;"><?= esc($error) ?></p>
+<?php endif; ?>
 
-        <p>
-            <label for="prenom">Prénom :</label><br>
-            <input type="text" name="prenom" id="prenom" required>
-        </p>
+<?php if (!empty($message)) : ?>
+    <p style="color:green;"><?= esc($message) ?></p>
+<?php endif; ?>
 
-        <p>
-            <label for="email">Email :</label><br>
-            <input type="email" name="email" id="email" required>
-        </p>
+<?php helper('form'); ?>
 
-        <p>
-            <label for="username">Identifiant :</label><br>
-            <input type="text" name="username" id="username" required>
-        </p>
+<?= form_open('signin'); ?>
 
-        <p>
-            <label for="password">Mot de passe :</label><br>
-            <input type="password" name="password" id="password" required>
-        </p>
+    <table>
+        <tr>
+            <th>
+                <?= form_label('Nom', 'nom'); ?>
+            </th>
+            <td>
+                <?= form_input('nom', set_value('nom'), 'id="nom" required'); ?>
+            </td>
+        </tr>
 
-        <p>
-            <label for="password_confirm">Confirmation du mot de passe :</label><br>
-            <input type="password" name="password_confirm" id="password_confirm" required>
-        </p>
+        <tr>
+            <th>
+                <?= form_label('Prénom', 'prenom'); ?>
+            </th>
+            <td>
+                <?= form_input('prenom', set_value('prenom'), 'id="prenom" required'); ?>
+            </td>
+        </tr>
 
-        <p>
-            <button type="submit">Créer le compte</button>
-        </p>
-    </form>
+        <tr>
+            <th>
+                <?= form_label('Email', 'email'); ?>
+            </th>
+            <td>
+                <?= form_input(
+                    'email',
+                    set_value('email'),
+                    'id="email" type="email" required'
+                ); ?>
+            </td>
+        </tr>
 
-    <p>
-        <a href="<?= site_url('login') ?>">Déjà inscrit ? Se connecter</a>
-    </p>
+        <tr>
+            <th>
+                <?= form_label('Identifiant universitaire', 'username'); ?>
+            </th>
+            <td>
+                <?= form_input('username', set_value('username'), 'id="username" required'); ?>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <?= form_label('Mot de passe', 'password'); ?>
+            </th>
+            <td>
+                <?= form_password('password', '', 'id="password" required'); ?>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <?= form_label('Confirmation du mot de passe', 'password_confirm'); ?>
+            </th>
+            <td>
+                <?= form_password('password_confirm', '', 'id="password_confirm" required'); ?>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <?= form_submit('creer', 'Valider'); ?>
+            </td>
+        </tr>
+    </table>
+
+<?= form_close(); ?>
+
+<p>
+    <a href="<?= site_url('login'); ?>">Retour au login</a>
+</p>
+
 </body>
 </html>

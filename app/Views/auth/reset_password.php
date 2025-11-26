@@ -9,27 +9,43 @@
 <h1>Nouveau mot de passe</h1>
 
 <?php if (!empty($error)) : ?>
-    <p style="color:red;"><?= $error ?></p>
+    <p style="color:red;"><?= esc($error) ?></p>
 <?php endif; ?>
 
-<form action="<?= site_url('reset-password/' . $token) ?>" method="post">
-    <p>
-        <label for="password">Nouveau mot de passe :</label><br>
-        <input type="password" name="password" id="password" required>
-    </p>
+<?php helper('form'); ?>
 
-    <p>
-        <label for="password_confirm">Confirmer le mot de passe :</label><br>
-        <input type="password" name="password_confirm" id="password_confirm" required>
-    </p>
+<?= form_open('reset-password/' . $token); ?>
 
-    <p>
-        <button type="submit">Valider</button>
-    </p>
-</form>
+    <table>
+        <tr>
+            <th>
+                <?= form_label('Nouveau mot de passe', 'password'); ?>
+            </th>
+            <td>
+                <?= form_password('password', '', 'id="password" required'); ?>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <?= form_label('Confirmation du mot de passe', 'password_confirm'); ?>
+            </th>
+            <td>
+                <?= form_password('password_confirm', '', 'id="password_confirm" required'); ?>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <?= form_submit('valider', 'Valider'); ?>
+            </td>
+        </tr>
+    </table>
+
+<?= form_close(); ?>
 
 <p>
-    <a href="<?= site_url('login') ?>">Retour au login</a>
+    <a href="<?= site_url('login'); ?>">Retour au login</a>
 </p>
 
 </body>

@@ -5,43 +5,67 @@
     <title>Connexion</title>
 </head>
 <body>
-    <h1>Login</h1>
 
-    <?php if (!empty($error)) : ?>
-        <p style="color:red;"><?= esc($error) ?></p>
-    <?php endif; ?>
+<h1>Connexion</h1>
 
-    <form action="<?= site_url('login') ?>" method="post">
-        <p>
-            <label for="username">Identifiant :</label><br>
-            <input type="text" name="username" id="username" required>
-        </p>
+<?php if (!empty($error)) : ?>
+    <p style="color:red;"><?= esc($error) ?></p>
+<?php endif; ?>
 
-        <p>
-            <label for="password">Mot de passe :</label><br>
-            <input type="password" name="password" id="password" required>
-        </p>
+<?php if (!empty($message)) : ?>
+    <p style="color:green;"><?= esc($message) ?></p>
+<?php endif; ?>
 
-        <p>
-            <label>
-                <input type="checkbox" name="remember" value="1">
-                Se souvenir de moi
-            </label>
-        </p>
+<?php helper('form'); ?>
 
-        <p>
-            <a href="<?= site_url('forgot-password') ?>">Mot de passe oublié ?</a>
-        </p>
+<?= form_open('login'); ?>
 
+    <table>
+        <tr>
+            <th>
+                <?= form_label('Identifiant', 'username'); ?>
+            </th>
+            <td>
+                <?= form_input('username', set_value('username'), 'id="username" required'); ?>
+            </td>
+        </tr>
 
-        <p>
-            <button type="submit">Connexion</button>
-        </p>
-    </form>
+        <tr>
+            <th>
+                <?= form_label('Mot de passe', 'password'); ?>
+            </th>
+            <td>
+                <?= form_password('password', '', 'id="password" required'); ?>
+            </td>
+        </tr>
 
-    <p>
-        <a href="<?= site_url('signin') ?>">Créer un compte</a>
-        <!-- lien "mot de passe oublié" à implémenter plus tard -->
-    </p>
+        <tr>
+            <th>
+                <?= form_label('Se souvenir de moi', 'remember'); ?>
+            </th>
+            <td>
+                <?= form_checkbox(
+                    'remember',
+                    '1',
+                    set_checkbox('remember', '1', false),
+                    'id="remember"'
+                ); ?>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <?= form_submit('connexion', 'Se connecter'); ?>
+            </td>
+        </tr>
+    </table>
+
+<?= form_close(); ?>
+
+<p>
+    <a href="<?= site_url('forgot-password'); ?>">Mot de passe oublié ?</a><br>
+    <a href="<?= site_url('signin'); ?>">Créer un compte</a>
+</p>
+
 </body>
 </html>
