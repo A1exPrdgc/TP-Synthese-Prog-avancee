@@ -6,7 +6,7 @@ Ajouter DS
 <?= $this->endSection() ?>
 
 <?= $this->section('navbarTitle') ?>
-MySGRDS | Ajouter DS
+MySGRDS | Afficher DS
 <?= $this->endSection() ?>
 
 <?= $this->section('styles') ?>
@@ -23,14 +23,9 @@ MySGRDS | Ajouter DS
             
             <div class="form-group">
                 <label>Semestre</label>
-                <select class="form-select">
+                <!-- afffiche un seul semestre, selection désactivée -->
+                <select class="form-select" disabled>
                     <option>S5</option>
-                    <option>S1</option>
-                    <option>S2</option>
-                    <option>S3</option>
-                    <option>S4</option>
-                    <option>S6</option>
-                </select>
             </div>
 
             <div class="form-group">
@@ -42,27 +37,32 @@ MySGRDS | Ajouter DS
 
             <div class="form-group">
                 <label>Professeur</label>
-                <select class="form-select">
+                <select class="form-select" disabled>
                     <option>Isuvi Myra Ondiso</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>Date</label>
-                <input type="text" class="form-input" placeholder="01/01/25">
+                <!-- Date de l'évaluation en dure non modifiable sans nouvelle div -->
+                <label>Date de l'évaluation</label>
+                <div class="date-input-group">
+                    <input type="date" class="form-input" value="2024-10-15" disabled>
+                    <span class="calendar-icon">&#128197;</span>
+                </div>
             </div>
 
             <div class="form-group">
                 <label>Type</label>
-                <select class="form-select">
+                <!-- affiche le type de DS, selection désactivée -->
+                <select class="form-select" disabled>
                     <option>Machine</option>
-                    <option>Papier</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>Durée de l'évaluation</label>
-                <input type="text" class="form-input" placeholder="01:30">
+                <!-- affiche la durée du DS en dure non modifiable -->
+                <input type="time" class="form-input" value="01:30" disabled>
             </div>
         </div>
 
@@ -148,7 +148,7 @@ MySGRDS | Ajouter DS
 
     <!-- Bouton Ajouter le DS -->
     <div class="submit-container">
-        <button type="submit" class="btn-submit">+ Ajouter le DS</button>
+        <button type="submit" class="btn-submit">Modifier le DS</button>
     </div>
 </div>
 
