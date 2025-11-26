@@ -77,6 +77,7 @@ CREATE TABLE ds (
     duree_minutes INT NOT NULL,
     type_exam     type_exam NOT NULL,
     codeRessource VARCHAR(10) NOT NULL,
+    codeEnseignant VARCHAR(10) NOT NULL,
 
     FOREIGN KEY (codeRessource)
         REFERENCES ressource(codeRessource)
@@ -84,6 +85,10 @@ CREATE TABLE ds (
 
     FOREIGN KEY (id_semestre)
         REFERENCES semestre(id_semestre)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (code)
+        REFERENCES enseignant(code)
         ON DELETE CASCADE
 );
 
