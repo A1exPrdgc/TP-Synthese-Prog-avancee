@@ -16,8 +16,8 @@
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <a class="btn btn-square me-2" href="#"><span class="arrow-left">&#8592;</span></a>
-                <a class="btn btn-custom me-2" href="#">🏛 Rattrapage</a>
-                <a class="btn btn-custom me-2" href="#">📝 DS</a>
+                <a class="btn btn-custom me-2" href="#">Rattrapage</a>
+                <a class="btn btn-custom me-2" href="#">DS</a>
             </div>
             <div class="mx-auto navbar-title">
                 MySGRDS | <?= $this->renderSection('title') ?>

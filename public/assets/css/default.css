@@ -13,13 +13,13 @@ main.container {
 }
 
 .my-navbar {
-  background-color: #ffb600;
+  background-color: #FFC227;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   min-height: 60px;
 }
 .my-navbar .btn-custom {
-  background-color: #41b883;
-  color: #fff;
+  background-color: #5ABD89;
+  color: #EFEFEF;
   font-weight: 600;
   border-radius: 12px;
   margin-right: 8px;
@@ -27,11 +27,11 @@ main.container {
   transition: background 0.2s;
 }
 .my-navbar .btn-custom:hover {
-  background-color: #368965;
+  background-color: #009371; 
 }
 .my-navbar .btn-square {
-  background-color: #41b883;
-  color: #fff;
+  background-color: #5ABD89;
+  color: #EFEFEF;
   width: 48px;
   height: 48px;
   border-radius: 12px;
@@ -44,7 +44,7 @@ main.container {
   transition: background 0.2s;
 }
 .my-navbar .btn-square:hover {
-  background-color: #368965;
+  background-color: #009371;
 }
 .my-navbar .arrow-left {
   font-weight: bold;
@@ -57,7 +57,7 @@ main.container {
   letter-spacing: 1px;
 }
 .my-navbar .btn-custom-profile {
-  background-color: #41b883;
+  background-color: #5ABD89;
   border-radius: 50%;
   width: 48px;
   height: 48px;
@@ -69,19 +69,19 @@ main.container {
 .my-navbar .navbar-profile-img {
   width: 32px;
   height: 32px;
-  background: #fff url('https://cdn-icons-png.flaticon.com/512/1946/1946429.png') center center/cover no-repeat;
+  background: #EFEFEF url('https://cdn-icons-png.flaticon.com/512/1946/1946429.png') center center/cover no-repeat;
   border-radius: 50%;
-  border: 2px solid #41b883;
+  border: 2px solid #5ABD89;
   display: inline-block;
 }
 
 .footer-iae {
-  background-color: #ffb600;
+  background-color: #FFC227;
   color: #2a2a2a;
   text-align: center;
   font-weight: 600;
   padding: 16px 0;
-  border-top: 2px solid #41b883;
+  border-top: 2px solid #5ABD89;
   letter-spacing: 1px;
   margin-top: auto;
 }
