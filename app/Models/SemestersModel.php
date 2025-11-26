@@ -15,6 +15,6 @@ class SemestersModel extends Model
     public function getAllSemesters()
     {
         //return ["S1", "S2"];
-        return $this->findAll();
+        return $this->select('code')->findAll();
     }
 }

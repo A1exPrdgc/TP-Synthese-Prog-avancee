@@ -2428,3 +2428,125 @@ in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
 14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
 16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 15:08:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:08:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:08:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 15:08:51 --> ErrorException: Array to string conversion
+[Method: GET, Route: DS/Ajout]
+in APPPATH/Controllers/DS/Ajout.php on line 34.
+ 1 APPPATH/Controllers/DS/Ajout.php(34): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+DEBUG - 2025-11-26 15:09:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 15:09:05 --> ErrorException: Undefined array key 0
+[Method: GET, Route: DS/Ajout]
+in APPPATH/Controllers/DS/Ajout.php on line 34.
+ 1 APPPATH/Controllers/DS/Ajout.php(34): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+DEBUG - 2025-11-26 15:10:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 15:10:10 --> ErrorException: Undefined array key 0
+[Method: GET, Route: DS/Ajout]
+in APPPATH/Controllers/DS/Ajout.php on line 34.
+ 1 APPPATH/Controllers/DS/Ajout.php(34): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+DEBUG - 2025-11-26 15:10:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 15:10:14 --> ErrorException: Undefined array key 0
+[Method: GET, Route: DS/Ajout]
+in APPPATH/Controllers/DS/Ajout.php on line 34.
+ 1 APPPATH/Controllers/DS/Ajout.php(34): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+DEBUG - 2025-11-26 15:10:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 15:10:15 --> ErrorException: Undefined array key 0
+[Method: GET, Route: DS/Ajout]
+in APPPATH/Controllers/DS/Ajout.php on line 34.
+ 1 APPPATH/Controllers/DS/Ajout.php(34): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+DEBUG - 2025-11-26 15:10:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 15:10:19 --> ErrorException: Array to string conversion
+[Method: GET, Route: DS/Ajout]
+in APPPATH/Controllers/DS/Ajout.php on line 34.
+ 1 APPPATH/Controllers/DS/Ajout.php(34): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+DEBUG - 2025-11-26 15:10:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 15:10:53 --> ErrorException: Array to string conversion
+[Method: GET, Route: DS/Ajout]
+in APPPATH/Controllers/DS/Ajout.php on line 34.
+ 1 APPPATH/Controllers/DS/Ajout.php(34): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+DEBUG - 2025-11-26 15:10:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 15:10:54 --> ErrorException: Array to string conversion
+[Method: GET, Route: DS/Ajout]
+in APPPATH/Controllers/DS/Ajout.php on line 34.
+ 1 APPPATH/Controllers/DS/Ajout.php(34): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+DEBUG - 2025-11-26 15:10:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 15:10:59 --> ErrorException: Undefined array key 0
+[Method: GET, Route: DS/Ajout]
+in APPPATH/Controllers/DS/Ajout.php on line 37.
+ 1 APPPATH/Controllers/DS/Ajout.php(37): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
+DEBUG - 2025-11-26 15:11:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 15:11:00 --> ErrorException: Undefined array key 0
+[Method: GET, Route: DS/Ajout]
+in APPPATH/Controllers/DS/Ajout.php on line 37.
+ 1 APPPATH/Controllers/DS/Ajout.php(37): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
