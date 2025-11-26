@@ -436,3 +436,1995 @@ DEBUG - 2025-11-26 11:02:30 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-11-26 11:43:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-11-26 11:59:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 >>>>>>> main
+WARNING - 2025-11-26 13:57:06 --> [DEPRECATED] App\Models\StudentsModel::getPaginatedStudents(): Implicitly marking parameter $keyword as nullable is deprecated, the explicit nullable type must be used instead in APPPATH\Models\StudentsModel.php on line 10.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(315): include_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\app\\Models\\StudentsModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\StudentsModel')
+ 4 APPPATH\Controllers\DS\Ajout.php(25): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\StudentsModel')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DS\Ajout->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DS\Ajout))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 13:57:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 13:58:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 13:58:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 13:58:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 13:58:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 13:59:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 13:59:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 13:59:29 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 13:59:29 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 13:59:29 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 13:59:29 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:00:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:00:10 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:00:10 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:00:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:00:10 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:00:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:00:36 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:00:36 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:00:36 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:00:36 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:00:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 14:00:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:00:45 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:00:45 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:00:45 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:00:45 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:01:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 14:01:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:01:16 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:01:16 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:01:16 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:01:16 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:01:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:01:17 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:01:17 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:01:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:01:17 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:01:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:01:18 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:01:18 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:01:18 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:01:18 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:02:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:02:32 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:02:32 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:02:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:02:32 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:02:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:02:38 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:02:38 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:02:38 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:02:38 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:02:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:02:52 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:02:52 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:02:52 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:02:52 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:03:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:03:06 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:03:06 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:06 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:03:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:03:10 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:03:10 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:10 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:03:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:03:14 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:03:14 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:14 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:14 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:03:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:03:15 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:03:15 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:15 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:03:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:03:20 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:03:20 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:20 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:03:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:03:50 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:03:50 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:50 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:03:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:03:53 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:03:53 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:53 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:53 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:03:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:03:54 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:03:54 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:54 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:03:54 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:04:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:04:53 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:04:53 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:04:53 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:04:53 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:05:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:05:40 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:05:40 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:05:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:05:40 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:06:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:06:02 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:06:02 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:06:02 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:06:02 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:07:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 14:07:04 --> ErrorException: Undefined variable $rattrapages
+[Method: GET, Route: /]
+in APPPATH\Controllers\Rattrapage.php on line 24.
+ 1 APPPATH\Controllers\Rattrapage.php(24): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:07:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 14:07:09 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\RattrapageModel::getAll
+[Method: GET, Route: /]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\Rattrapage.php(22): CodeIgniter\Model->__call()
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:07:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 14:07:16 --> ErrorException: Undefined variable $rattrapages
+[Method: GET, Route: /]
+in APPPATH\Controllers\Rattrapage.php on line 25.
+ 1 APPPATH\Controllers\Rattrapage.php(25): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:07:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 14:07:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:07:28 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:07:28 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:07:28 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 6 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:07:28 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;rattrapage&quot; does not exist
+LINE 2: FROM &quot;rattrapage&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll()
+ 8 APPPATH\Models\RattrapageModel.php(57): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\Rattrapage.php(21): App\Models\RattrapageModel->getAllWithDetails()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Rattrapage->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:07:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 14:07:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 14:07:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 14:07:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 14:07:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 14:07:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 14:07:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 14:07:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 14:07:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 14:07:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 14:08:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:08:14 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;users&quot; does not exist
+LINE 2: FROM &quot;users&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\UserModel.php(32): CodeIgniter\BaseModel->first()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Auth.php(60): App\Models\UserModel->findByUsernameWithPersonne()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Auth->doLogin()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:08:14 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;users&quot; does not exist
+LINE 2: FROM &quot;users&quot;
+             ^
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Models\UserModel.php(32): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Auth.php(60): App\Models\UserModel->findByUsernameWithPersonne()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->doLogin()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:08:14 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;users&quot; does not exist
+LINE 2: FROM &quot;users&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Models\UserModel.php(32): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Auth.php(60): App\Models\UserModel->findByUsernameWithPersonne()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->doLogin()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:08:14 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;users&quot; does not exist
+LINE 2: FROM &quot;users&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 8 APPPATH\Models\UserModel.php(32): CodeIgniter\BaseModel->first()
+ 9 APPPATH\Controllers\Auth.php(60): App\Models\UserModel->findByUsernameWithPersonne()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->doLogin()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:09:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:09:39 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;users&quot; does not exist
+LINE 2: FROM &quot;users&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\UserModel.php(32): CodeIgniter\BaseModel->first()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Auth.php(60): App\Models\UserModel->findByUsernameWithPersonne()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Auth->doLogin()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:09:39 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;users&quot; does not exist
+LINE 2: FROM &quot;users&quot;
+             ^
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Models\UserModel.php(32): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Auth.php(60): App\Models\UserModel->findByUsernameWithPersonne()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->doLogin()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:09:39 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;users&quot; does not exist
+LINE 2: FROM &quot;users&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Models\UserModel.php(32): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Auth.php(60): App\Models\UserModel->findByUsernameWithPersonne()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->doLogin()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:09:39 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;users&quot; does not exist
+LINE 2: FROM &quot;users&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 8 APPPATH\Models\UserModel.php(32): CodeIgniter\BaseModel->first()
+ 9 APPPATH\Controllers\Auth.php(60): App\Models\UserModel->findByUsernameWithPersonne()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->doLogin()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+DEBUG - 2025-11-26 14:09:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 14:09:47 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;users&quot; does not exist
+LINE 2: FROM &quot;users&quot;
+             ^ in C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\Postgre\Connection.php(206): pg_query()
+#2 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+#3 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#4 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#7 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Models\UserModel.php(32): CodeIgniter\BaseModel->first()
+#8 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\app\Controllers\Auth.php(60): App\Models\UserModel->findByUsernameWithPersonne()
+#9 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(933): App\Controllers\Auth->doLogin()
+#10 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\public\index.php(59): CodeIgniter\Boot::bootWeb()
+#15 C:\Users\mcsaj\Documents\GitHub\TP-Synthese-Prog-avancee\system\rewrite.php(44): require_once('...')
+#16 {main}
+CRITICAL - 2025-11-26 14:09:47 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;users&quot; does not exist
+LINE 2: FROM &quot;users&quot;
+             ^
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Models\UserModel.php(32): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Auth.php(60): App\Models\UserModel->findByUsernameWithPersonne()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->doLogin()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:09:47 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;users&quot; does not exist
+LINE 2: FROM &quot;users&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Models\UserModel.php(32): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Auth.php(60): App\Models\UserModel->findByUsernameWithPersonne()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->doLogin()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
+CRITICAL - 2025-11-26 14:09:47 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;users&quot; does not exist
+LINE 2: FROM &quot;users&quot;
+             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query()
+ 3 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\Postgre\Connection->execute()
+ 4 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 7 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 8 APPPATH\Models\UserModel.php(32): CodeIgniter\BaseModel->first()
+ 9 APPPATH\Controllers\Auth.php(60): App\Models\UserModel->findByUsernameWithPersonne()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->doLogin()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\mcsaj\\Documents\\GitHub\\TP-Synthese-Prog-avancee\\public\\index.php')
