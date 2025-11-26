@@ -26,9 +26,9 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-        'hostname'     => 'localhost',
-        'username'     => 'ci_user',
-        'password'     => 'ci_mdp',
+        'hostname'     => '163.5.141.42',
+        'username'     => 'page_10',
+        'password'     => 'page_10',
         'database'     => 'tp_synthese',
         'DBDriver'     => 'Postgre',
         'DBPrefix'     => '',

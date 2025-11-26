@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+:root {
+    --primary-color: #FFC107;
+    --secondary-color: #FF9800;
+    --button-color: #5ABD89;
+    --button-hover: #45a049;
+    --text-color: #000000;
+    --input-bg: #FFFFFF;
+    --link-color: #00BCD4;
+}
+
+body {
+    font-family: "Itim";
+    font-weight: 400;
+    font-style: normal;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.auth-container {
+    background-color: var(--primary-color);
+    border: 5px solid var(--secondary-color);
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+form {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+th,
+td {
+    text-align: left;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+th {
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-family: 'Itim', sans-serif;
+    box-sizing: border-box;
+    outline: none;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+    accent-color: white;
+}
+
+button[type="submit"] {
+    background-color: var(--button-color);
+    box-shadow: -6px -5px 0 0 var(--button-hover);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 100%;
+    /* margin-top: 20px; */
+    font-family: 'Itim', sans-serif;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--button-hover);
+}
+
+a {
+    color: #008CBA;
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.links {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.links a {
+    display: block;
+    margin: 5px 0;
+}
+
+
+.alert-error {
+    color: #D32F2F;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.alert-success {
+    color: #388E3C;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.logo-text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.welcome-text {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+
+tr.remember-row {
+    display: flex;
+    align-items: center;
+    width: auto;
+}
+
+tr.remember-row th,
+tr.remember-row td {
+    width: auto;
+}
+
+tr.inline-fields-row {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+tr.inline-fields-row td {
+    width: 50%;
+    display: block;
+}
+
+tr.inline-fields-row td label {
+    display: block;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-bottom: 5px;
+    text-align: left;
+}
