@@ -11,7 +11,10 @@ class Ajout extends Controller
 
     public function __construct()
     {
+        $teacherModel = new TeachersModel();
+
         helper(['form']);
+        session()->set('role', $teacherModel->getRole());
     }
 
     public function index()

@@ -1,4 +1,5 @@
 <?= $this->extend('layouts/default') ?>
+<?= $this->section('pageType'); ?>ds<?= $this->endSection(); ?>
 
 <?= $this->section('title') ?>
 Ajout d'un DS

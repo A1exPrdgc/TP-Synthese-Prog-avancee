@@ -11,4 +11,9 @@ class TeachersModel extends Model
     {
         return ["Legrix", "Thorel"];
     }
+
+    public function getRole()
+    {
+        return "ENS";
+    }
 }
