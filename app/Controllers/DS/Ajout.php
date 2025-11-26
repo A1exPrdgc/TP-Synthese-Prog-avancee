@@ -1,7 +1,6 @@
 <?php
 namespace App\Controllers\DS;
 use CodeIgniter\Controller;
-use App\Models\ArticleRechercheModel;
 use App\Models\StudentsModel;
 use App\Models\SemestersModel;
 use App\Models\RessourceModel;
@@ -49,6 +48,7 @@ class Ajout extends Controller
     public function save()
     {
         $isValid = $this->validate([
+            //TODO Faire la vérif en fonction des données en base avec une boucle / aussi dans rattrtapage
             'semester' => 'required|in_list[S1,S2]',
             'resource' => 'required|in_list[R1.05 blabla,R1.02 blibli]',
             'teacher' => 'required|in_list[Legrix,Thorel]',
