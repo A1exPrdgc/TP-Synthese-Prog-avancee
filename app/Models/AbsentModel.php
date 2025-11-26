@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class PersonneModel extends Model
 {
-    protected $table      = 'personne';
-    protected $primaryKey = 'code';
+    protected $table      = 'absence';
+    protected $primaryKey = 'id_ds';
 
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['nom', 'prenom', 'email'];
+    protected $allowedFields = ['code', 'absencejustifie'];
 
     protected $useTimestamps = false;
 }
