@@ -7,8 +7,8 @@ use CodeIgniter\Model;
 class EnseignantModel extends Model
 {
     protected $table            = 'enseignant';
-    protected $primaryKey       = 'code';   // PK = code (varchar)
-    protected $useAutoIncrement = false;   // très important, sinon CI croit que c'est un int auto
+    protected $primaryKey       = 'code';
+    protected $useAutoIncrement = false;
 
     protected $returnType    = 'array';
     protected $useTimestamps = false;

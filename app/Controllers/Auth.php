@@ -66,10 +66,6 @@ class Auth extends BaseController
     {
         helper(['form', 'cookie']);
 
-        if ($this->request->getMethod() !== 'post') {
-            return redirect()->to(site_url('login'));
-        }
-
         $rules = [
             'username' => 'required',
             'password' => 'required',
@@ -81,7 +77,7 @@ class Auth extends BaseController
             ]);
         }
 
-        $username = $this->request->getPost('username'); // code ou email
+        $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
         $remember = $this->request->getPost('remember');
 
@@ -134,10 +130,6 @@ class Auth extends BaseController
     {
         helper('form');
 
-        if ($this->request->getMethod() !== 'post') {
-            return redirect()->to(site_url('signin'));
-        }
-
         $rules = [
             'nom'              => 'required',
             'prenom'           => 'required',
@@ -159,7 +151,7 @@ class Auth extends BaseController
         $email    = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 
-        $model = new EnseignantModel();
+        $model = new \App\Models\EnseignantModel();
 
         // Vérifier unicité code / email
         $exists = $model
@@ -184,8 +176,8 @@ class Auth extends BaseController
             'fonction' => 'ENS',
         ];
 
-        // Une seule insert, avec gestion d'erreurs
         if (! $model->insert($data)) {
+            // Si ça pète encore, on veut VRAIMENT voir l’erreur SQL
             dd(
                 $model->errors(),
                 $model->db->getLastQuery()->getQuery()
@@ -195,7 +187,6 @@ class Auth extends BaseController
         session()->setFlashdata('message', 'Compte créé, vous pouvez vous connecter.');
         return redirect()->to(site_url('login'));
     }
-
 
     /**
      * Page "mot de passe oublié"
@@ -217,9 +208,6 @@ class Auth extends BaseController
     {
         helper('form');
 
-        if ($this->request->getMethod() !== 'post') {
-            return redirect()->to(site_url('forgot-password'));
-        }
 
         $login = trim($this->request->getPost('login'));
 
@@ -318,10 +306,6 @@ class Auth extends BaseController
     public function doResetPassword(string $token)
     {
         helper('form');
-
-        if ($this->request->getMethod() !== 'post') {
-            return redirect()->to(site_url('reset-password/' . $token));
-        }
 
         $rules = [
             'password'         => 'required|min_length[6]',
