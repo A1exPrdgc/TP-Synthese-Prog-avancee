@@ -15,8 +15,8 @@ $routes->post('signin', 'Auth::doSignin');
 $routes->get('logout', 'Auth::logout');
 
 // Accueil → liste des rattrapages
-$routes->get('/', 'Rattrapage::index');
-$routes->get('rattrapages', 'Rattrapage::index');
+$routes->get('/', 'Login::index');
+$routes->get('login', 'Login::index');
 
 // Mot de passe oublié
 $routes->get('forgot-password', 'Auth::forgotPassword');
@@ -35,3 +35,7 @@ $routes->post('DS/Ajout/save', 'DS\Ajout::save');
 $routes->get('DS/Detail', 'DS\Detail::view');
 // Test controller
 $routes->get('test', 'TestController::index');
+
+// Rattrapage Ajout
+$routes->get('Rattrapage/Ajout', 'Rattrapage::ajout');
+$routes->post('Rattrapage/Ajout/save', 'Rattrapage::save');
