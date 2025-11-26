@@ -39,7 +39,7 @@ MySGRDS | Ajout d'un DS
                 <?= validation_show_error('date') ?>
                 <br>
                 <?php echo form_label('Type', 'type'); ?>
-                <?php echo form_dropdown('type', ["Machine" => "Machine", "Papier" => "Papier"], "Machine"); ?>
+                <?php echo form_dropdown('type', ["Machine" => "MACHINE", "Papier" => "PAPIER", "Oral" => "ORAL"], "Machine"); ?>
                 <?= validation_show_error('type') ?>
                 <br>
                 <?php echo form_label('Durée', 'duration'); ?>

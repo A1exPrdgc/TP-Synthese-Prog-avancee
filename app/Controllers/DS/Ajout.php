@@ -38,7 +38,7 @@ class Ajout extends Controller
         $teacherModel = new TeachersModel();
         $data['teachers'] = $teacherModel->getAllTeachersByResources($selectedRessource);
 
-        $data['types'] = ["Machine", "Papier"];
+        $data['types'] = ['MACHINE', 'ORAL', 'PAPIER'];
 
         return view('ds/ajout', $data);
     }
@@ -50,7 +50,7 @@ class Ajout extends Controller
             'resource' => 'required|in_list[R1.05 blabla,R1.02 blibli]',
             'teacher' => 'required|in_list[Legrix,Thorel]',
             'date' => 'required|valid_date',
-            'type' => 'required|in_list[Machine,Papier]',
+            'type' => 'required|in_list[MACHINE, ORAL, PAPIER]',
             'duration' => 'required|regex_match[/^(?:[01]\d|2[0-3]):[0-5]\d$/]',
             'absent' => 'required|boolean',
             'justify' => 'required|boolean'
