@@ -59,8 +59,8 @@ CREATE TABLE etudiant (
 -- Semestre
 CREATE TABLE semestre (
     id_semestre SERIAL PRIMARY KEY,
-    code        VARCHAR(2) NOT NULL UNIQUE,  -- ex : S1, S2...
-    annee       INT NOT NULL
+    code        VARCHAR(2) NOT NULL UNIQUE,
+    annee       VARCHAR(15) NOT NULL
 );
 
 -- Ressources et DS
