@@ -2,11 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Models\RattrapageModel;
+use App\Controllers\BaseController;
 use App\Models\TeachersModel;
 use App\Models\StudentsModel;
-use App\Models\SemestersModel;
-use App\Models\RessourceModel;
 
 
 class Rattrapage extends BaseController
@@ -35,7 +33,7 @@ class Rattrapage extends BaseController
 
         $session = session();
 
-        if (!$session->get('user_id')) {
+        if (!$session->get('connected')) {
             return redirect()->to('/login');
         }
 
@@ -50,7 +48,7 @@ class Rattrapage extends BaseController
 
         $data['types'] = ['MACHINE', 'ORAL', 'PAPIER'];
 
-        return view('ds/ajout', $data);
+        return view('rattrapage/ajout', $data);
     }
 
     public function save()
@@ -68,14 +66,14 @@ class Rattrapage extends BaseController
             'justify' => 'required|boolean'
         ]);
         if (!$isValid) {
-            return view('ds/ajout', [
+            return view('rattrapage/ajout', [
                 'validation' => \Config\Services::validation()
             ]);
         } else {
             $request = \Config\Services::request();
             $informations = $request->getPost();
             session()->setFlashdata('informations', $informations);
-            return view('ds/success', ['informations' => $informations]);
+            return view('rattrapage/success', ['informations' => $informations]);
         }
     }
 }

@@ -2,7 +2,7 @@
 <?= $this->section('pageType'); ?>ds<?= $this->endSection(); ?>
 
 <?= $this->section('title') ?>
-Ajout d'un DS
+Ajout d'un Rattrapage
 <?= $this->endSection() ?>
 
 <?= $this->section('styles') ?>
@@ -10,7 +10,7 @@ Ajout d'un DS
 <?= $this->endSection() ?>
 
 <?= $this->section('navbarTitle') ?>
-MySGRDS | Ajout d'un DS
+MySGRDS | Ajout d'un Rattrapage
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -18,7 +18,7 @@ MySGRDS | Ajout d'un DS
 <body>
 
     <body>
-        <?php echo form_open('DS/Ajout/save'); ?>
+        <?php echo form_open('Rattrapage/save'); ?>
 
         <h1>Evaluation</h1>
 
