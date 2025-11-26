@@ -29,7 +29,7 @@ class Rattrapage extends BaseController
             ['id' => 'E005', 'last_name' => 'Leroy', 'first_name' => 'Paul', 'class' => 'S1B'],
         ];
 
-        $data = ['semester' => 'S1', 'resource' => 'R1.05 blabla', 'teacher' => 'Legrix', 'date' => '2024-06-15', 'type' => 'Machine', 'duration' => '02:00', 'justify' => false, 'students' => $students];
+        $data['DSInformation'] = ['semester' => 'S1', 'resource' => 'R1.05 blabla', 'teacher' => 'Legrix', 'date' => '2024-06-15', 'type' => 'Machine', 'duration' => '02:00', 'justify' => false, 'students' => $students];
 
         $session = session();
 

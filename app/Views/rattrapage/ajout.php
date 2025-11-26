@@ -24,15 +24,15 @@ MySGRDS | Ajout d'un Rattrapage
 
         <div class="form">
             <?php echo form_label('Semestre', 'semester'); ?>
-            <?php echo form_input('semester', set_value('semester', $data['semester'][0]), 'required readonly'); ?>
+            <?php echo form_input('semester', set_value('semester', $DSInformation['semester']), 'required readonly'); ?>
             <?= validation_show_error('semester') ?>
             <br>
             <?php echo form_label('Ressource', 'resource'); ?>
-            <?php echo form_input('resource', set_value('resource', $data['resource'][0]), 'required readonly'); ?>
+            <?php echo form_input('resource', set_value('resource', $DSInformation['resource']), 'required readonly'); ?>
             <?= validation_show_error('resource') ?>
             <br>
             <?php echo form_label('Professeur', 'teacher'); ?>
-            <?php echo form_input('teacher', set_value('teacher', $data['teacher'][0]), 'required readonly'); ?>
+            <?php echo form_input('teacher', set_value('teacher', $DSInformation['teacher']), 'required readonly'); ?>
             <?= validation_show_error('teacher') ?>
             <br>
             <?php echo form_label('Date', 'date'); ?>
@@ -44,7 +44,7 @@ MySGRDS | Ajout d'un Rattrapage
             <?= validation_show_error('hour') ?>
             <br>
             <?php echo form_label('Type', 'type'); ?>
-            <?php echo form_dropdown('type', $data['types'], $data['type'][0]); ?>
+            <?php echo form_dropdown('type', $types, $DSInformation['type']); ?>
             <?= validation_show_error('type') ?>
             <br>
             <?php echo form_label('Salle', 'room'); ?>
