@@ -58,22 +58,30 @@ main.container {
 }
 .my-navbar .btn-custom-profile {
   background-color: #5ABD89;
-  border-radius: 50%;
+  border-radius: 16px;
   width: 48px;
   height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(60,60,60,0.08);
+  overflow: visible; /* Très important ! */
 }
+
 .my-navbar .navbar-profile-img {
   width: 32px;
   height: 32px;
-  background: #EFEFEF url('https://cdn-icons-png.flaticon.com/512/1946/1946429.png') center center/cover no-repeat;
+  object-fit: cover;     /* Pour couvrir sans être rogné */
   border-radius: 50%;
-  border: 2px solid #5ABD89;
-  display: inline-block;
+  border: 2px solid #EFEFEF;
+  box-shadow: 0 0 0 2px #5ABD89; /* léger contour pour ressortir */
+  background: #EFEFEF;
+  position: relative;
+  z-index: 2;
 }
+
 
 .footer-iae {
   background-color: #FFC227;

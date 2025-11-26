@@ -24,7 +24,9 @@
             </div>
             <div class="d-flex align-items-center">
                 <a class="btn btn-custom me-2" href="#">+ Ajouter</a>
-                <a class="btn btn-custom-profile" href="#"><span class="navbar-profile-img"></span></a>
+                <a class="btn btn-custom-profile" href="#">
+                <img class="navbar-profile-img" src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="Profil"/>
+                </a>
             </div>
         </div>
     </nav>
