@@ -37,28 +37,24 @@ CREATE TYPE etat      as ENUM ('PREVU', 'REFUSE', 'TERMINE', 'EN ATTENTE');
 -- TABLE PERSONNE ET FILLES
 
 CREATE TABLE personne (
-    code         VARCHAR(10) PRIMARY KEY,
-    nom          VARCHAR(50) NOT NULL,
-    prenom       VARCHAR(50) NOT NULL,
-    email        VARCHAR(100) UNIQUE
+    code   VARCHAR(10) PRIMARY KEY,
+    nom    VARCHAR(50) NOT NULL,
+    prenom VARCHAR(50) NOT NULL,
+    email  VARCHAR(100) UNIQUE
 );
 
 CREATE TABLE enseignant (
-    code         VARCHAR(10)  PRIMARY KEY,
-    password     VARCHAR(100) NOT NULL,
-    fonction     fonction NOT NULL DEFAULT 'ENS',
-    reset_token  VARCHAR(100),
-    reset_expires TIMESTAMP
-)INHERITS (personne);
+    password      VARCHAR(100) NOT NULL,
+    fonction      fonction NOT NULL DEFAULT 'ENS',
+    reset_token   VARCHAR(100),
+    reset_expires TIMESTAMP,
+    PRIMARY KEY (code)
+) INHERITS (personne);
 
-CREATE TABLE etudiant(
-    code   VARCHAR(10) PRIMARY KEY,
-    classe VARCHAR(5), 
-
-    FOREIGN KEY (code) 
-        REFERENCES personne(code)
-        ON DELETE CASCADE
-)INHERITS (personne);
+CREATE TABLE etudiant (
+    classe VARCHAR(5),
+    PRIMARY KEY (code)
+) INHERITS (personne);
 
 -- Semestre
 CREATE TABLE semestre (
@@ -75,35 +71,40 @@ CREATE TABLE ressource (
 );
 
 CREATE TABLE ds (
-    id_ds          SERIAL PRIMARY KEY,
-    id_semestre    INT,
-    date_ds        DATE NOT NULL,
-    duree          TIMESTAMP,
-    type_exam      type_exam NOT NULL,
-    codeRessource  VARCHAR(10) NOT NULL,
+    id_ds         SERIAL PRIMARY KEY,
+    id_semestre   INT NOT NULL,
+    date_ds       DATE NOT NULL,
+    duree_minutes INT NOT NULL,
+    type_exam     type_exam NOT NULL,
+    codeRessource VARCHAR(10) NOT NULL,
 
-    FOREIGN KEY (codeRessource) 
+    FOREIGN KEY (codeRessource)
         REFERENCES ressource(codeRessource)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (id_semestre)
+        REFERENCES semestre(id_semestre)
         ON DELETE CASCADE
 );
 
 -- Table ABSENCE
 
 CREATE TABLE absence (
-    id_ds INT,
-    code  VARCHAR(10),
+    id_ds          INT,
+    code           VARCHAR(10),
     absenceJustifie SMALLINT NOT NULL DEFAULT 0,
 
-    FOREIGN KEY (id_ds) 
+    FOREIGN KEY (id_ds)
         REFERENCES ds(id_ds)
         ON DELETE CASCADE,
-    
+
     FOREIGN KEY (code)
         REFERENCES etudiant(code)
         ON DELETE CASCADE,
-    
-    PRIMARY KEY(id_ds,code)
+
+    PRIMARY KEY(id_ds, code)
 );
+
 
 CREATE TABLE rattrapage (
     id_rattrapage   SERIAL PRIMARY KEY,
@@ -111,12 +112,12 @@ CREATE TABLE rattrapage (
     code            VARCHAR(10) NOT NULL,
     date_rattrapage DATE NOT NULL,
     duree_minutes   INT NOT NULL,
-    heure_debut     TIMESTAMP,
+    heure_debut     TIME,
     etat            etat NOT NULL DEFAULT 'EN ATTENTE',
     mail_envoye     SMALLINT DEFAULT 0,
     date_creation   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     salle           VARCHAR(10),
 
-    FOREIGN KEY (id_ds) REFERENCES ds(id_ds),
-    FOREIGN KEY (code)  REFERENCES enseignant(code)
+    FOREIGN KEY (id_ds) REFERENCES ds(id_ds) ON DELETE CASCADE,
+    FOREIGN KEY (code)  REFERENCES enseignant(code) ON DELETE CASCADE
 );

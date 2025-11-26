@@ -6,23 +6,23 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table      = 'users';
-    protected $primaryKey = 'username';
-    protected $useAutoIncrement = false;
+    protected $table      = 'enseignant';
+    protected $primaryKey = 'code';          // identifiant universitaire
 
     protected $returnType     = 'array';
-    protected $useSoftDeletes = false;
+    protected $useTimestamps  = false;
 
+    // colonnes dispo grâce à l’héritage + colonnes propres
     protected $allowedFields = [
-        'username',
-        'id_personne',
+        'code',
+        'nom',
+        'prenom',
+        'email',
         'password',
-        'role',
+        'fonction',
         'reset_token',
         'reset_expires',
     ];
-
-    protected $useTimestamps = false;
 
     public function findByUsernameWithPersonne(string $username)
     {
