@@ -499,3 +499,5 @@ in APPPATH/Views/ds/ajout.php on line 71.
 11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
 12 SYSTEMPATH/rewrite.php(44): require_once('/home/etudiant/gc230811/TP/s5/r5.05_prog_avancee/TP_Synthese/TP-Synthese-Prog-avancee/public/index.php')
 DEBUG - 2025-11-26 13:24:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 13:55:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 13:55:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

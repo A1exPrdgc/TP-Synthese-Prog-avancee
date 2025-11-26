@@ -8,6 +8,10 @@ Ajout d'un DS
 <!-- Style spécifique si besoin -->
 <?= $this->endSection() ?>
 
+<?= $this->section('navbarTitle') ?>
+MySGRDS | Ajout d'un DS
+<?= $this->endSection() ?>
+
 <?= $this->section('content') ?>
 
     <body>
@@ -45,13 +49,6 @@ Ajout d'un DS
             </div>
 
             <h1>Etudiant</h1>
-
-            <div class="mb-4">
-                <form class="form">
-                    <input type="text" class="form-control" placeholder="Rechercher" name="keyword" id="keyword" value="<?= esc($keyword) ?>">
-                    <button type="submit" class="btn btn-custom">Rechercher</button>
-                </form>
-            </div>
 
             <div class="table-responsive">
             <table class="table table-bordered">
@@ -96,6 +93,13 @@ Ajout d'un DS
             <div class="send-button">
                 <?php echo form_submit('submit', 'Envoyer'); ?>
                 <?php echo form_close(); ?>
+            </div>
+
+            <div class="mb-4">
+                <form class="form">
+                    <input type="text" class="form-control" placeholder="Rechercher" name="keyword" id="keyword" value="<?= esc($keyword) ?>">
+                    <button type="submit" class="btn btn-custom">Rechercher</button>
+                </form>
             </div>
 
         </body>
