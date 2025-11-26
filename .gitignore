@@ -5,7 +5,6 @@
 !system/cache/*
 !*/cache/index.html
 !*/cache/.htaccess
-writable/
 
 user_guide_src/build/*
 user_guide_src/cilexer/build/*
@@ -19,3 +18,56 @@ application/logs/*
 /vendor/
 app/Config/Email.php
 app/Config/Database.php
+
+# CodeIgniter 4 recommandations
+/vendor/
+/writable/*
+!/writable/index.html
+!/writable/.htaccess
+
+/public/build/
+/public/assets/
+/public/uploads/
+
+.env
+app/Config/Email.php
+app/Config/Database.php
+
+# Composer
+composer.lock
+
+# IDE et systèmes
+*.swp
+*.swo
+*.bak
+*.tmp
+*.DS_Store
+.idea/
+.vscode/
+node_modules/
+*.log
+
+# User Guide
+user_guide_src/build/
+user_guide_src/cilexer/build/
+user_guide_src/cilexer/dist/
+user_guide_src/cilexer/pycilexer.egg-info/
+
+# CodeIgniter 3 (au cas où migration)
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+
+# Autres fichiers générés/temporaires
+writable/logs/*
+!writable/logs/index.html
+!writable/logs/.htaccess
+writable/cache/*
+!writable/cache/index.html
+!writable/cache/.htaccess
+writable/session/*
+!writable/session/index.html
+!writable/session/.htaccess
+writable/debugbar/*
+!writable/debugbar/index.html
+!writable/debugbar/.htaccess
