@@ -1,7 +1,6 @@
 <?php
 namespace App\Controllers\DS;
 use CodeIgniter\Controller;
-use App\Models\ArticleRechercheModel;
 use App\Models\StudentsModel;
 use App\Models\SemestersModel;
 use App\Models\RessourceModel;
@@ -41,7 +40,7 @@ class Ajout extends Controller
         $teacherModel = new TeachersModel();
         $data['teachers'] = $teacherModel->getAllTeachersByResources($selectedRessource);
 
-        $data['types'] = ["Machine", "Papier"];
+        $data['types'] = ['MACHINE', 'ORAL', 'PAPIER'];
 
         return view('ds/ajout', $data);
     }
@@ -49,11 +48,12 @@ class Ajout extends Controller
     public function save()
     {
         $isValid = $this->validate([
+            //TODO Faire la vérif en fonction des données en base avec une boucle / aussi dans rattrtapage
             'semester' => 'required|in_list[S1,S2]',
             'resource' => 'required|in_list[R1.05 blabla,R1.02 blibli]',
             'teacher' => 'required|in_list[Legrix,Thorel]',
             'date' => 'required|valid_date',
-            'type' => 'required|in_list[Machine,Papier]',
+            'type' => 'required|in_list[MACHINE, ORAL, PAPIER]',
             'duration' => 'required|regex_match[/^(?:[01]\d|2[0-3]):[0-5]\d$/]',
             'absent' => 'required|boolean',
             'justify' => 'required|boolean'
