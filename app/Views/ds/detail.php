@@ -121,15 +121,26 @@ MySGRDS | Visionner DS
         </div>
     </div>
 
+    <?php $role = session()->get('fonction');?>
     <!-- Boutons d'action -->
-    <div class="action-buttons">
-        <a href="<?= base_url('DS/refuserRattrapage/' . $ds['id_ds']) ?>" class="btn-action btn-refuse">
-            <span class="btn-icon">✕</span> Refuser le rattrapage
-        </a>
-        <a href="<?= base_url('DS/validerRattrapage/' . $ds['id_ds']) ?>" class="btn-action btn-validate">
-            <span class="btn-icon">✓</span> Valider le rattrapage
-        </a>
-    </div>
+    <?php if ($role === 'ENS'): ?>
+        <div class="action-buttons">
+            <a href="<?= base_url('DS') ?>" class="btn-action btn-refuse">
+                <span class="btn-icon">✕</span> Refuser le rattrapage
+            </a>
+            <a href="<?= base_url('Rattrapage/Ajout/' . $ds['id_ds']) ?>" class="btn-action btn-validate">
+                <span class="btn-icon">✓</span> Valider le rattrapage
+            </a>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($role === 'DE'): ?>
+        <div class="action-buttons">
+            <a href="<?= base_url('DS/Modifier/' . $ds['id_ds']) ?>" class="btn-action btn-validate">
+                <span class="btn-icon">✓</span> Modifier le DS
+            </a>
+        </div>
+    <?php endif; ?>
 </div>
 
 <?= $this->endSection() ?>
