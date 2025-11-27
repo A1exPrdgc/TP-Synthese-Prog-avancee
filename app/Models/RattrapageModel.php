@@ -21,7 +21,8 @@ class RattrapageModel extends Model
         'etat',
         'mail_envoye',
         'date_creation',
-        
+        'salle',
+        'type_exam'
     ];
 
     protected $useTimestamps = false;
@@ -48,5 +49,10 @@ class RattrapageModel extends Model
             ->orderBy('rattrapage.date_rattrapage', 'DESC')
             ->orderBy('etudiant.nom', 'ASC')
             ->findAll();          
+    }
+
+    public function insertRattrapage(array $data)
+    {
+        return $this->insert($data);
     }
 }

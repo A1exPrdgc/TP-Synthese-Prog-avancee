@@ -3,8 +3,10 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\DsModel;
 use App\Models\TeachersModel;
 use App\Models\StudentsModel;
+use App\Models\RattrapageModel;
 
 
 class Rattrapage extends BaseController
@@ -13,23 +15,27 @@ class Rattrapage extends BaseController
     public function __construct()
     {
         $teacherModel = new TeachersModel();
+        
 
         helper(['form']);
         session()->set('role', $teacherModel->getRole());
     }
 
-    public function ajout()
+    public function ajout($idDs)
     {
-        //TODO VALEUR EN DUR A LIER AVEC LES DONNEES DANS VISIONNER DS 
-        $students = [
-            ['id' => 'E001', 'last_name' => 'Dupont', 'first_name' => 'Jean', 'class' => 'S1A'],
-            ['id' => 'E002', 'last_name' => 'Martin', 'first_name' => 'Claire', 'class' => 'S1B'],
-            ['id' => 'E003', 'last_name' => 'Bernard', 'first_name' => 'Luc', 'class' => 'S1A'],
-            ['id' => 'E004', 'last_name' => 'Durand', 'first_name' => 'Sophie', 'class' => 'S1C'],
-            ['id' => 'E005', 'last_name' => 'Leroy', 'first_name' => 'Paul', 'class' => 'S1B'],
+        $dsModel = new DsModel();
+        $dataArray = $dsModel->getDsWithDetails($idDs);
+        $data['DSInformation'] = [
+            'idDs' => $dataArray["id_ds"],
+            'codeEnseignant' => $dataArray["enseignant_code"], 
+            'semester' => $dataArray["semestre_code"], 
+            'resource' => $dataArray["nomressource"], 
+            'teacher' => $dataArray["enseignant_nom"], 
+            'date' => $dataArray["date_ds"], 
+            'type' => $dataArray["type_exam"], 
+            'duration' => $dataArray["duree_minutes"], 
+            'justify' => false
         ];
-
-        $data['DSInformation'] = ['idDs' => '1', 'semester' => 'S1', 'resource' => 'R1.05 blabla', 'teacher' => 'Legrix', 'date' => '2024-06-15', 'type' => 'Machine', 'duration' => '02:00', 'justify' => false, 'students' => $students];
 
         $session = session();
 
@@ -44,36 +50,102 @@ class Rattrapage extends BaseController
         $data['keyword'] = $keyword;
 
         $studentModel = new StudentsModel();
-        // TODO faire getPaginatedAbsentStudent ($perPage, $keyword, $data['DSInformation']['idDs'])
-        $data['students'] = $studentModel->getPaginatedStudents($perPage, $keyword);
 
-        $data['types'] = ['MACHINE', 'ORAL', 'PAPIER'];
+        $data['students'] = $studentModel->getPaginatedStudentsByDSiD($idDs, $perPage, $keyword);
+
+        $data['types'] = ['MACHINE' => 'MACHINE', 'ORAL' => 'ORAL', 'PAPIER' => 'PAPIER'];
 
         return view('rattrapage/ajout', $data);
     }
 
-    public function save()
+    public function save($idDs)
     {
-        $isValid = $this->validate([
-            'semester' => 'required|in_list[S1,S2]',
+        $request = \Config\Services::request();
+        $post = $request->getPost();
+
+        $studentModel = new StudentsModel();
+        $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
+        $keyword = $this->request->getGet('keyword') ?? '';
+        $students = $studentModel->getPaginatedStudentsByDSiD($idDs, $perPage, $keyword);
+
+        $justifies = $post['justify'] ?? [];
+        foreach ($students as $s) {
+            $sid = $s['id'];
+            if (!isset($justifies[$sid])) {
+                $justifies[$sid] = 'off';
+            }
+        }
+        $post['justify'] = $justifies;
+
+        $rules = [
+            'semester' => 'required|in_list[S1]',
             'resource' => 'required|in_list[R1.05 blabla,R1.02 blibli]',
             'teacher' => 'required|in_list[Legrix,Thorel]',
-            'date' => 'required|valid_date',
+            'date' => 'required|regex_match[/^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[012])\/\d{2}$/]',
             'hour' => 'required|regex_match[/^(?:[01]\d|2[0-3]):[0-5]\d$/]',
-            'type' => 'required|in_list[Machine,Papier]',
+            'type' => 'required|in_list[MACHINE,PAPIER,ORAL]',
             'duration' => 'required|regex_match[/^(?:[01]\d|2[0-3]):[0-5]\d$/]',
-            'room' => 'required|alpha_numeric_space|max_length[3]|min_length[3]',
-            'justify' => 'required|boolean'
-        ]);
-        if (!$isValid) {
-            return view('rattrapage/ajout', [
-                'validation' => \Config\Services::validation()
-            ]);
-        } else {
-            $request = \Config\Services::request();
-            $informations = $request->getPost();
-            session()->setFlashdata('informations', $informations);
-            return view('rattrapage/success', ['informations' => $informations]);
+            'room' => 'required|alpha_numeric_space|max_length[3]|min_length[3]'
+        ];
+
+    $validation = \Config\Services::validation();
+    $validation->setRules($rules);
+    $isValid = $validation->run($post);
+
+        foreach ($post['justify'] as $val) {
+            if (!in_array($val, ['on', 'off'], true)) {
+                $validation->setError('justify', 'Valeur invalide pour justify');
+                $isValid = false;
+                break;
+            }
         }
+
+        if (!$isValid) {
+            $data = [
+                'validation' => $validation,
+                'DSInformation' => array_merge($post, ['idDs' => $idDs]),
+                'types' => ['MACHINE' => 'MACHINE', 'ORAL' => 'ORAL', 'PAPIER' => 'PAPIER'],
+                'students' => $students,
+                'keyword' => $keyword,
+                'old_justify' => $post['justify'] ?? []
+            ];
+
+            return view('rattrapage/ajout', $data);
+        }
+
+        $informations = $post;
+
+        var_dump($idDs);
+
+        var_dump($informations['codeEnseignant']);
+
+        var_dump($informations['duration']);
+
+        var_dump($informations['hour']);
+
+        var_dump($informations['type']);
+
+        var_dump($informations['room']);
+
+
+        $duration = substr($informations['duration'], 0, 2) * 60 + substr($informations['duration'], 3, 2);
+
+        var_dump($duration);
+
+        $data = [
+            'id_ds' => (int) $idDs,
+            'code' => $informations['codeEnseignant'],
+            'date_rattrapage' => $informations['date'],
+            'duree_minutes' => $duration,
+            'heure_debut' => $informations['hour'],
+            'etat' => 'EN ATTENTE',
+            'mail_envoye' => 0,
+            'type_exam' => $informations['type'],
+            'salle' => $informations['room']
+        ];
+
+        $rattrapageModel = new RattrapageModel();
+        $rattrapageModel->insertRattrapage($data);
+        return view('rattrapage');
     }
 }
