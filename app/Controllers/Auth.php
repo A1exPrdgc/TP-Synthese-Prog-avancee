@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\EnseignantModel;
+use App\Models\TeachersModel;
 use CodeIgniter\I18n\Time;
 use Config\Services;
 
@@ -43,7 +43,7 @@ class Auth extends BaseController
         // Auto-login via cookie "remember_code"
         $rememberCode = get_cookie('remember_code');
         if ($rememberCode) {
-            $model = new EnseignantModel();
+            $model = new TeachersModel();
             $user  = $model->where('code', $rememberCode)->first();
 
             if ($user) {
@@ -81,7 +81,7 @@ class Auth extends BaseController
         $password = $this->request->getPost('password');
         $remember = $this->request->getPost('remember');
 
-        $model = new EnseignantModel();
+        $model = new TeachersModel();
 
         // Login par code OU par email
         $user = $model
@@ -163,7 +163,7 @@ class Auth extends BaseController
         $email    = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 
-        $model = new \App\Models\EnseignantModel();
+        $model = new \App\Models\TeachersModel();
 
         // Vérifier unicité code / email
         $exists = $model
@@ -228,7 +228,7 @@ class Auth extends BaseController
             ]);
         }
 
-        $model = new \App\Models\EnseignantModel();
+        $model = new \App\Models\TeachersModel();
 
         $user = $model
             ->groupStart()
@@ -288,7 +288,7 @@ class Auth extends BaseController
             return redirect()->to(site_url('login'));
         }
 
-        $model = new \App\Models\EnseignantModel();
+        $model = new \App\Models\TeachersModel();
         $user  = $model->where('reset_token', $token)->first();
 
         if (! $user) {
@@ -324,7 +324,7 @@ class Auth extends BaseController
             return redirect()->to(site_url('reset-password/' . $token));
         }
 
-        $model = new \App\Models\EnseignantModel();
+        $model = new \App\Models\TeachersModel();
         $user  = $model->where('reset_token', $token)->first();
 
         if (! $user) {

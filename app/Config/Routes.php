@@ -24,9 +24,6 @@ $routes->post('forgot-password', 'Auth::doForgotPassword');
 $routes->get('reset-password/(:segment)', 'Auth::resetPassword/$1');
 $routes->post('reset-password/(:segment)', 'Auth::doResetPassword/$1');
 
-$routes->get('testMail', 'Debug::testMailConfig');
-$routes->post('testMail', 'Debug::testMailConfig');
-
 // DS
 $routes->get('DS', 'DS::index');
 $routes->get('DS/ajout', 'DS::ajout');
