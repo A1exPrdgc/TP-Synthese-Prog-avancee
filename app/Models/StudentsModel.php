@@ -61,10 +61,7 @@ class StudentsModel extends Model
             etudiant.classe,
             (CASE WHEN a.code IS NOT NULL THEN 1 ELSE 0 END) as absent,
             COALESCE(a.absenceJustifie, 0) as justifie
-        ');
-
-        $conditionJoin = "etudiant.code = a.code AND a.id_ds = " . intval($ds_id);
-        $this->join('absence a', $conditionJoin, 'left');
+        ').join('absence a', "etudiant.code = a.code")->where('a.ds_id', $ds_id)->paginate($perPage, 'default');
 
         if ($keyword) {
             $this->groupStart()
@@ -75,20 +72,6 @@ class StudentsModel extends Model
         }
 
         $this->orderBy("etudiant.nom", "asc");
-        $this->orderBy("etudiant.prenom", "asc");
-
-        $results = $this->paginate($perPage, 'default');
-
-        foreach ($results as &$row) {
-            if (is_array($row)) {
-                $row['absent']   = (bool) $row['absent'];
-                $row['justifie'] = (bool) $row['justifie'];
-            } 
-            else {
-                $row->absent   = (bool) $row->absent;
-                $row->justifie = (bool) $row->justifie;
-            }
-        }
 
         return $results;
     }
