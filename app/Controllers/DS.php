@@ -38,6 +38,7 @@ class DS extends BaseController
      */
     public function index()
     {
+        $this->dsModel->updateEtatByRattrapageDate();
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
         
         $filters = [
