@@ -35,7 +35,7 @@
                 <?php if ($pageType === 'ds' && $role == 'DE'): ?>
                     <a class="btn btn-custom me-2" href="<?= base_url('DS/ajout') ?>">+ Ajouter</a>
                 <?php endif; ?>
-                <a class="btn btn-custom-profile" href="#">
+                <a class="btn btn-custom-profile" href="<?= base_url('profil') ?>">
                 <img class="navbar-profile-img" src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="Profil"/>
                 </a>
             </div>

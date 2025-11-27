@@ -40,7 +40,8 @@ CREATE TABLE personne (
     code   VARCHAR(10) PRIMARY KEY,
     nom    VARCHAR(50) NOT NULL,
     prenom VARCHAR(50) NOT NULL,
-    email  VARCHAR(100) UNIQUE
+    email  VARCHAR(100) UNIQUE,
+    photo  VARCHAR(100), 
 );
 
 CREATE TABLE enseignant (
@@ -53,7 +54,12 @@ CREATE TABLE enseignant (
 
 CREATE TABLE etudiant (
     classe VARCHAR(5),
-    PRIMARY KEY (code)
+    PRIMARY KEY (code),
+    id_semestre INT,
+
+    FOREIGN KEY (id_semestre)
+        REFERENCES semestre(id_semestre)
+        ON DELETE CASCADE
 ) INHERITS (personne);
 
 -- Semestre
