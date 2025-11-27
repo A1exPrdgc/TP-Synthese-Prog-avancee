@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\TeachersModel;
 use App\Models\StudentsModel;
+use App\Models\RattrapageModel;
 
 
 class Rattrapage extends BaseController
@@ -13,23 +14,15 @@ class Rattrapage extends BaseController
     public function __construct()
     {
         $teacherModel = new TeachersModel();
+        
 
         helper(['form']);
         session()->set('role', $teacherModel->getRole());
     }
 
-    public function ajout()
+    public function ajout($idDs)
     {
-        //TODO VALEUR EN DUR A LIER AVEC LES DONNEES DANS VISIONNER DS 
-        $students = [
-            ['id' => 'E001', 'last_name' => 'Dupont', 'first_name' => 'Jean', 'class' => 'S1A'],
-            ['id' => 'E002', 'last_name' => 'Martin', 'first_name' => 'Claire', 'class' => 'S1B'],
-            ['id' => 'E003', 'last_name' => 'Bernard', 'first_name' => 'Luc', 'class' => 'S1A'],
-            ['id' => 'E004', 'last_name' => 'Durand', 'first_name' => 'Sophie', 'class' => 'S1C'],
-            ['id' => 'E005', 'last_name' => 'Leroy', 'first_name' => 'Paul', 'class' => 'S1B'],
-        ];
-
-        $data['DSInformation'] = ['idDs' => '1', 'semester' => 'S1', 'resource' => 'R1.05 blabla', 'teacher' => 'Legrix', 'date' => '2024-06-15', 'type' => 'Machine', 'duration' => '02:00', 'justify' => false, 'students' => $students];
+        $data['DSInformation'] = ['codeEnseignant' => 'lb000005','idDs' => $idDs, 'semester' => 'S1', 'resource' => 'R1.05 blabla', 'teacher' => 'Legrix', 'date' => '2024-06-15', 'type' => 'MACHINE', 'duration' => 120, 'justify' => false];
 
         $session = session();
 
@@ -44,34 +37,59 @@ class Rattrapage extends BaseController
         $data['keyword'] = $keyword;
 
         $studentModel = new StudentsModel();
-        // TODO faire getPaginatedAbsentStudent ($perPage, $keyword, $data['DSInformation']['idDs'])
-        $data['students'] = $studentModel->getPaginatedStudents($perPage, $keyword);
 
-        $data['types'] = ['MACHINE', 'ORAL', 'PAPIER'];
+        $data['students'] = $studentModel->getPaginatedStudentsByDSiD($idDs, $perPage, $keyword);
+
+        $data['types'] = ['MACHINE' => 'MACHINE', 'ORAL' => 'ORAL', 'PAPIER' => 'PAPIER'];
 
         return view('rattrapage/ajout', $data);
     }
 
-    public function save()
+    public function save($idDs)
     {
         $isValid = $this->validate([
-            'semester' => 'required|in_list[S1,S2]',
+            'semester' => 'required|in_list[S1]',
             'resource' => 'required|in_list[R1.05 blabla,R1.02 blibli]',
             'teacher' => 'required|in_list[Legrix,Thorel]',
-            'date' => 'required|valid_date',
+            'date' => 'required|regex_match[/^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[012])\/\d{2}$/]',
             'hour' => 'required|regex_match[/^(?:[01]\d|2[0-3]):[0-5]\d$/]',
-            'type' => 'required|in_list[Machine,Papier]',
+            'type' => 'required|in_list[MACHINE,PAPIER,ORAL]',
             'duration' => 'required|regex_match[/^(?:[01]\d|2[0-3]):[0-5]\d$/]',
             'room' => 'required|alpha_numeric_space|max_length[3]|min_length[3]',
-            'justify' => 'required|boolean'
+            'justify' => 'if_exist|in_list[on,off]'
         ]);
         if (!$isValid) {
-            return view('rattrapage/ajout', [
-                'validation' => \Config\Services::validation()
-            ]);
+            $request = \Config\Services::request();
+            $informations = $request->getPost();
+            $studentModel = new StudentsModel();
+            $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
+            $keyword = $this->request->getGet('keyword') ?? '';
+            $data = [
+                'validation' => \Config\Services::validation(),
+                'DSInformation' => array_merge($informations, ['idDs' => $idDs]),
+                'types' => ['MACHINE' => 'MACHINE', 'ORAL' => 'ORAL', 'PAPIER' => 'PAPIER'],
+                'students' => $studentModel->getPaginatedStudentsByDSiD($idDs, $perPage, $keyword),
+                'keyword' => $keyword
+            ];
+            return view('rattrapage/ajout', $data);
         } else {
             $request = \Config\Services::request();
             $informations = $request->getPost();
+            //TODO faire l'envoie de mail à l'étudiant
+            $data = [
+                'id_ds' => $informations['idDs'],
+                'code' => $informations['codeEnseignant'],
+                'date_rattrapage' => $informations['date'],
+                'duree_minutes' => $informations['duration'],
+                'heure_debut' => $informations['hour'],
+                'etat' => 'EN ATTENTE',
+                'mail_envoye' => false,
+                'type_exam' => $informations['type'],
+                'salle' => $informations['room']
+            ];
+            var_dump($data);
+            $rattrapageModel = new RattrapageModel();
+            $rattrapageModel->insertRattrapage($data);
             session()->setFlashdata('informations', $informations);
             return view('rattrapage/success', ['informations' => $informations]);
         }

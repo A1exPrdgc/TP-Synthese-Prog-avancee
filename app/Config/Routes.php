@@ -36,5 +36,5 @@ $routes->get('DS/Detail', 'DS\Detail::view');
 $routes->get('test', 'TestController::index');
 
 // Rattrapage Ajout
-$routes->get('Rattrapage/Ajout', 'Rattrapage::ajout');
-$routes->post('Rattrapage/Ajout/save', 'Rattrapage::save');
+$routes->get('Rattrapage/Ajout/(:num)', 'Rattrapage::ajout/$1');
+$routes->post('Rattrapage/Ajout/(:num)/save', 'Rattrapage::save/$1');

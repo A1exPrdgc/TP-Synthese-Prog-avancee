@@ -18,7 +18,7 @@ MySGRDS | Ajout d'un Rattrapage
 <body>
 
     <body>
-        <?php echo form_open('Rattrapage/save'); ?>
+        <?php echo form_open('Rattrapage/Ajout/' . $DSInformation['idDs'] . '/save'); ?>
 
         <h1>Evaluation</h1>
 

@@ -61,7 +61,7 @@ class StudentsModel extends Model
             etudiant.classe,
             (CASE WHEN a.code IS NOT NULL THEN 1 ELSE 0 END) as absent,
             COALESCE(a.absenceJustifie, 0) as justifie
-        ').join('absence a', "etudiant.code = a.code")->where('a.ds_id', $ds_id)->paginate($perPage, 'default');
+        ')->join('absence a', "etudiant.code = a.code")->where('a.id_ds', $ds_id);
 
         if ($keyword) {
             $this->groupStart()
@@ -72,6 +72,8 @@ class StudentsModel extends Model
         }
 
         $this->orderBy("etudiant.nom", "asc");
+
+        $results = $this->paginate($perPage, 'default');
 
         return $results;
     }
