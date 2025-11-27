@@ -11,53 +11,114 @@
     <h1 class="logo-text">Créer votre compte</h1>
     <p class="subtitle">Entrez les informations demandés</p>
 
-    <?php if (!empty($error)) : ?>
-        <p class="alert-error"><?= esc($error) ?></p>
-    <?php endif; ?>
-
-    <?php if (!empty($message)) : ?>
+    <?php
+    helper('form');
+    // Message "générique" éventuel
+    if (!empty($message)) : ?>
         <p class="alert-success"><?= esc($message) ?></p>
     <?php endif; ?>
 
-    <form method="post" action="<?= site_url('signin') ?>">
+    <?php
+    // Erreurs de validation détaillées
+    if (isset($validation)) : ?>
+        <div class="alert-error">
+            <?= $validation->listErrors(); ?>
+        </div>
+    <?php elseif (!empty($error)) : ?>
+        <p class="alert-error"><?= esc($error) ?></p>
+    <?php endif; ?>
+
+    <?= form_open('signin'); ?>
         <table>
+            <!-- Nom / Prénom sur la même ligne -->
             <tr class="inline-fields-row">
                 <td>
-                    <label for="nom">Nom</label>
-                    <input type="text" name="nom" id="nom" required>
+                    <?= form_label('Nom', 'nom'); ?>
+                    <?= form_input(
+                        'nom',
+                        set_value('nom'),
+                        'id="nom" required'
+                    ); ?>
                 </td>
+
                 <td>
-                    <label for="prenom">Prenom</label>
-                    <input type="text" name="prenom" id="prenom" required>
+                    <?= form_label('Prénom', 'prenom'); ?>
+                    <?= form_input(
+                        'prenom',
+                        set_value('prenom'),
+                        'id="prenom" required'
+                    ); ?>
                 </td>
             </tr>
+
+            <!-- Email -->
             <tr>
-                <th><label for="email">Email</label></th>
-                <td><input type="email" name="email" id="email" required></td>
+                <th>
+                    <?= form_label('Email', 'email'); ?>
+                </th>
+                <td>
+                    <?= form_input(
+                        'email',
+                        set_value('email'),
+                        'id="email" type="email" required'
+                    ); ?>
+                </td>
             </tr>
+
+            <!-- Identifiant -->
             <tr>
-                <th><label for="username">Identifiant</label></th>
-                <td><input type="text" name="username" id="username" required></td>
+                <th>
+                    <?= form_label('Identifiant', 'username'); ?>
+                </th>
+                <td>
+                    <?= form_input(
+                        'username',
+                        set_value('username'),
+                        'id="username" required'
+                    ); ?>
+                </td>
             </tr>
+
+            <!-- Mot de passe -->
             <tr>
-                <th><label for="password">Mot de passe</label></th>
-                <td><input type="password" name="password" id="password" required></td>
+                <th>
+                    <?= form_label('Mot de passe (6 caractères minimum)', 'password'); ?>
+                </th>
+                <td>
+                    <?= form_password(
+                        'password',
+                        '',
+                        'id="password" required'
+                    ); ?>
+                </td>
             </tr>
+
+            <!-- Confirmation mot de passe -->
             <tr>
-                <th><label for="password_confirm">Confirmation de mot de passe</label></th>
-                <td><input type="password" name="password_confirm" id="password_confirm" required></td>
+                <th>
+                    <?= form_label('Confirmation de mot de passe', 'password_confirm'); ?>
+                </th>
+                <td>
+                    <?= form_password(
+                        'password_confirm',
+                        '',
+                        'id="password_confirm" required'
+                    ); ?>
+                </td>
             </tr>
+
+            <!-- Bouton -->
             <tr>
                 <td colspan="2">
-                    <button type="submit">Créer</button>
+                    <?= form_submit('creer', 'Créer'); ?>
                 </td>
             </tr>
         </table>
-    </form>
+    <?= form_close(); ?>
 
     <div class="links">
         <p>Déjà un compte ?</p>
-        <a href="<?= site_url('login') ?>">Connectez-vous</a>
+        <a href="<?= site_url('login'); ?>">Connectez-vous</a>
     </div>
 </div>
 

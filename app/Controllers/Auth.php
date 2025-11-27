@@ -141,7 +141,7 @@ class Auth extends BaseController
 
         if (! $this->validate($rules)) {
             return view('auth/signin', [
-                'error' => 'Formulaire invalide : vérifiez les champs.',
+                'validation' => $this->validator,
             ]);
         }
 
