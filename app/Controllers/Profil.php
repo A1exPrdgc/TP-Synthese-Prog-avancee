@@ -17,7 +17,7 @@ class Profil extends BaseController
         }
 
         $code  = $session->get('code');
-        $model = new EnseignantModel();
+        $model = new TeachersModel();
 
         $user = $model->find($code);
 
@@ -40,7 +40,7 @@ class Profil extends BaseController
         }
 
         $code  = $session->get('code');
-        $model = new EnseignantModel();
+        $model = new TeachersModel();
         $user  = $model->find($code);
 
         // Règles de validation pour l’image
