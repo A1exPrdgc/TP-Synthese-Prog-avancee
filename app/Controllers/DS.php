@@ -93,10 +93,11 @@ class DS extends BaseController
     {
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
         $keyword = $this->request->getGet('keyword') ?? '';
+        $semester = $this->request->getGet('semester') ?? 'S1';
 
         $data['keyword'] = $keyword;
 
-        $data['students'] = $this->studentModel->getPaginatedStudents($perPage, $keyword);
+        $data['students'] = $this->studentModel->getPaginatedStudentsBySemester($semester, $perPage, $keyword);
         $data['pager'] = $this->studentModel->pager;
 
         $data['semesters'] = $this->semesterModel->getAllSemestersForDropdown();
@@ -219,5 +220,16 @@ class DS extends BaseController
         $resource = $this->request->getGet('resource');
         $teachers = $this->teacherModel->getTeachersByResourceForAjax($resource);
         return $this->response->setJSON($teachers);
+    }
+
+    /**
+     * API: Récupérer les étudiants par semestre
+     */
+    public function getStudentsBySemester()
+    {
+        $semester = $this->request->getGet('semester');
+        $keyword = $this->request->getGet('keyword') ?? '';
+        $students = $this->studentModel->getStudentsBySemesterForAjax($semester, $keyword);
+        return $this->response->setJSON($students);
     }
 }

@@ -51,6 +51,17 @@
     margin-bottom: 15px;
 }
 
+.info-group-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.info-group.half {
+    flex: 1;
+    margin-bottom: 0;
+}
+
 .info-group label {
     display: block;
     font-weight: 700;
@@ -257,6 +268,30 @@
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
+}
+
+/* Badge État */
+.etat-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.etat-rattraper {
+    background-color: #5ABD89;
+    color: white;
+}
+
+.etat-termine {
+    background-color: #6c757d;
+    color: white;
+}
+
+.etat-refuse {
+    background-color: #dc3545;
+    color: white;
 }
 
 /* Responsive */
