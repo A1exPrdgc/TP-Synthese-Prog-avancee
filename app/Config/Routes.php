@@ -14,7 +14,6 @@ $routes->post('signin', 'Auth::doSignin');
 
 $routes->get('logout', 'Auth::logout');
 
-// Accueil → liste des rattrapages
 $routes->get('/', 'Login::index');
 $routes->get('login', 'Login::index');
 
