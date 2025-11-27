@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\TeacherModel;
+use App\Models\TeachersModel;
 
 class Profil extends BaseController
 {
