@@ -331,7 +331,7 @@ class DsModel extends Model
     /**
      * Récupère les étudiants avec leur statut d'absence pour un DS spécifique
      */
-    public function getStudentsWithAbsenceForDs(int $idDs, int $perPage, string $keyword = null): array
+    public function getStudentsWithAbsenceForDs(int $idDs, int $perPage, ?string $keyword = null): array
     {
         $db = \Config\Database::connect();
         $builder = $db->table('etudiant');

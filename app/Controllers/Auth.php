@@ -280,7 +280,7 @@ class Auth extends BaseController
     // -------------------------------------------------------------------
     //  FORMULAIRE DE NOUVEAU MOT DE PASSE
     // -------------------------------------------------------------------
-    public function resetPassword(string $token = null)
+    public function resetPassword(?string $token = null)
     {
         helper('form');
 
