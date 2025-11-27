@@ -64,6 +64,7 @@ class Ajout extends Controller
         $data['semester'] = [$selectedSemester];
         $data['resource'] = [$selectedRessource];
         $data['teacher'] = [array_key_first($data['teachers']) ?? ''];
+        $data['type'] = [array_key_first($data['types']) ?? ''];
 
         return view('ds/ajout', $data);
     }
