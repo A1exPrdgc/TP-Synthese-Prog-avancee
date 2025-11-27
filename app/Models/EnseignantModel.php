@@ -22,5 +22,6 @@ class EnseignantModel extends Model
         'fonction',
         'reset_token',
         'reset_expires',
+        'photo',
     ];
 }

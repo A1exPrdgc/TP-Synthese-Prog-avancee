@@ -17,6 +17,10 @@ $routes->get('logout', 'Auth::logout');
 $routes->get('/', 'Login::index');
 $routes->get('login', 'Login::index');
 
+// Profile
+$routes->get('profil', 'Profil::index');
+$routes->post('profil', 'Profil::update');
+
 // Mot de passe oublié
 $routes->get('forgot-password', 'Auth::forgotPassword');
 $routes->post('forgot-password', 'Auth::doForgotPassword');
@@ -32,8 +36,6 @@ $routes->get('DS/Ajout', 'DS\Ajout::index');
 $routes->post('DS/Ajout/save', 'DS\Ajout::save');
 
 $routes->get('DS/Detail', 'DS\Detail::view');
-// Test controller
-$routes->get('test', 'TestController::index');
 
 // Rattrapage Ajout
 $routes->get('Rattrapage/Ajout', 'Rattrapage::ajout');
