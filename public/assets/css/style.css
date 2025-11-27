@@ -111,6 +111,26 @@ button[type="submit"]:hover {
     background-color: var(--button-hover);
 }
 
+input[type="submit"] {
+    background-color: var(--button-color);
+    box-shadow: -6px -5px 0 0 var(--button-hover);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 100%;
+    /* margin-top: 20px; */
+    font-family: 'Itim', sans-serif;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--button-hover);
+}
+
 a {
     color: #008CBA;
     text-decoration: underline;
