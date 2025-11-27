@@ -29,6 +29,7 @@ class DsModel extends Model
             ds.duree_minutes,
             ds.type_exam,
             semestre.code as semestre_code,
+            ds.etat,  -- Ajouté ici
             (SELECT COUNT(*) FROM absence WHERE absence.id_ds = ds.id_ds) as nb_absences
         ');
         
@@ -70,7 +71,6 @@ class DsModel extends Model
 
         foreach ($results as &$row) {
             $row['duree_formatee'] = $this->formatDuree($row['duree_minutes']);
-            $row['etat'] = (isset($row['nb_absences']) && $row['nb_absences'] > 0) ? 'Rattraper' : 'Terminé';
         }
 
         return $results;
@@ -125,5 +125,10 @@ class DsModel extends Model
         $heures = floor($minutes / 60);
         $mins = $minutes % 60;
         return sprintf('%02d:%02d', $heures, $mins);
+    }
+
+    public function setEtat(int $idDs, string $etat)
+    {
+        return $this->update($idDs, ['etat' => $etat]);
     }
 }
