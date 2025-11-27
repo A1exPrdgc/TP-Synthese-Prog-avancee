@@ -17,23 +17,23 @@
     <nav class="navbar navbar-expand-lg my-navbar">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-                <a class="btn btn-square me-2" href="#"><span class="arrow-left">&#8592;</span></a>
-                <a class="btn btn-custom me-2" href="#">Rattrapages</a>
-                <a class="btn btn-custom me-2" href="#">DS</a>
+                <a class="btn btn-square me-2" href=""><span class="arrow-left">&#8592;</span></a>
+                <a class="btn btn-custom me-2" href="<?= base_url('Rattrapage') ?>">Rattrapage</a>
+                <a class="btn btn-custom me-2" href="<?= base_url('DS') ?>">DS</a>
             </div>
             <div class="navbar-title">
                 <?= $this->renderSection('navbarTitle') ?>
             </div>
             <?php
-                $role = session()->get('role');
+                $role = session()->get('fonction');
                 $pageType = $this->renderSection('pageType');
             ?>
             <div class="d-flex align-items-center">
                 <?php if ($pageType === 'rattrapage' && $role === 'ENS'):   ?>
-                    <a class="btn btn-custom me-2" href="#">+ Ajouter</a>
+                    <a class="btn btn-custom me-2" href="<?= base_url('Rattrapage/Ajout') ?>">+ Ajouter</a>
                 <?php endif; ?>
-                <?php if ($pageType === 'ds' && $role === 'DE'): ?>
-                    <a class="btn btn-custom me-2" href="#">+ Ajouter un DS</a>
+                <?php if ($pageType === 'ds' && $role == 'DE'): ?>
+                    <a class="btn btn-custom me-2" href="<?= base_url('DS/ajout') ?>">+ Ajouter</a>
                 <?php endif; ?>
                 <a class="btn btn-custom-profile" href="#">
                 <img class="navbar-profile-img" src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="Profil"/>

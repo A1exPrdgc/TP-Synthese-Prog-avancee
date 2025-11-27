@@ -27,11 +27,16 @@ $routes->post('reset-password/(:segment)', 'Auth::doResetPassword/$1');
 $routes->get('testMail', 'Debug::testMailConfig');
 $routes->post('testMail', 'Debug::testMailConfig');
 
-// DS Ajout
-$routes->get('DS/Ajout', 'DS\Ajout::index');
-$routes->post('DS/Ajout/save', 'DS\Ajout::save');
+// DS
+$routes->get('DS', 'DS::index');
+$routes->get('DS/ajout', 'DS::ajout');
+$routes->post('DS/save', 'DS::save');
+$routes->get('DS/detail/(:num)', 'DS::detail/$1');
+$routes->get('DS/validerRattrapage/(:num)', 'DS::validerRattrapage/$1');
+$routes->get('DS/refuserRattrapage/(:num)', 'DS::refuserRattrapage/$1');
+$routes->get('DS/getResourcesBySemester', 'DS::getResourcesBySemester');
+$routes->get('DS/getTeachersByResource', 'DS::getTeachersByResource');
 
-$routes->get('DS/Detail', 'DS\Detail::view');
 // Test controller
 $routes->get('test', 'TestController::index');
 

@@ -1,6 +1,9 @@
 <?php
+
 namespace App\Models;
+
 use CodeIgniter\Model;
+
 class TeachersModel extends Model
 {
     protected $table = 'enseignant';
@@ -9,14 +12,19 @@ class TeachersModel extends Model
 
     public function getAllTeachersByResources($resourceId)
     {
-        //return ["Legrix", "Thorel"];
-        return $this->select('enseignant.code, enseignant.nom')->
-        join('ds d', 'd.codeenseignant = enseignant.code')->
-        where('d.coderessource', $resourceId)->findAll();
+        return $this->select('enseignant.code, enseignant.nom')
+                    ->join('ds d', 'd.codeenseignant = enseignant.code')
+                    ->where('d.coderessource', $resourceId)
+                    ->findAll();
     }
 
     public function getRole()
     {
-        return "ENS";
+        $fonction  = session()->get('code');
+
+        return $this->select('fonction')
+                    ->where('code', $fonction)
+                    ->findAll();
+
     }
 }

@@ -22,7 +22,7 @@ class Auth extends BaseController
             'nom'       => $user['nom'],
             'prenom'    => $user['prenom'],
             'email'     => $user['email'],
-            'fonction'  => $user['fonction'], // ENS / DE
+            'fonction'  => $user['fonction'],
         ]);
     }
 
