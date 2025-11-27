@@ -162,13 +162,6 @@ class Rattrapage extends BaseController
             'salle' => $post['room']
         ];
 
-        $rattrapageModel = new RattrapageModel();
-        $rattrapageModel->insertRattrapage($data);
-
-        $dsModel = new DsModel();
-        $dsModel->setEtat($idDs, 'PREVU');
-    
-        return view('rattrapage');
         $rattrapageId = $this->rattrapageModel->insertRattrapage($rattrapageData);
 
         if (!$rattrapageId) {
