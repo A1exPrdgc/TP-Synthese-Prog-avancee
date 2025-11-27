@@ -9,7 +9,7 @@ class Login extends BaseController
         $session = session();
 
         // Sécurité : si pas connecté → login
-        if (!$session->get('user_id')) {
+        if (!$session->get('connected')) {
             return redirect()->to('/login');
         }
 

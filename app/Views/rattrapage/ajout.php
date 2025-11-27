@@ -2,7 +2,7 @@
 <?= $this->section('pageType'); ?>ds<?= $this->endSection(); ?>
 
 <?= $this->section('title') ?>
-Ajout d'un DS
+Ajout d'un Rattrapage
 <?= $this->endSection() ?>
 
 <?= $this->section('styles') ?>
@@ -10,7 +10,7 @@ Ajout d'un DS
 <?= $this->endSection() ?>
 
 <?= $this->section('navbarTitle') ?>
-MySGRDS | Ajout d'un DS
+MySGRDS | Ajout d'un Rattrapage
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -18,21 +18,21 @@ MySGRDS | Ajout d'un DS
 <body>
 
     <body>
-        <?php echo form_open('DS/Ajout/save'); ?>
+        <?php echo form_open('Rattrapage/save'); ?>
 
         <h1>Evaluation</h1>
 
         <div class="form">
             <?php echo form_label('Semestre', 'semester'); ?>
-            <?php echo form_input('semester', set_value('semester', $data['semester'][0]), 'required readonly'); ?>
+            <?php echo form_input('semester', set_value('semester', $DSInformation['semester']), 'required readonly'); ?>
             <?= validation_show_error('semester') ?>
             <br>
             <?php echo form_label('Ressource', 'resource'); ?>
-            <?php echo form_input('resource', set_value('resource', $data['resource'][0]), 'required readonly'); ?>
+            <?php echo form_input('resource', set_value('resource', $DSInformation['resource']), 'required readonly'); ?>
             <?= validation_show_error('resource') ?>
             <br>
             <?php echo form_label('Professeur', 'teacher'); ?>
-            <?php echo form_input('teacher', set_value('teacher', $data['teacher'][0]), 'required readonly'); ?>
+            <?php echo form_input('teacher', set_value('teacher', $DSInformation['teacher']), 'required readonly'); ?>
             <?= validation_show_error('teacher') ?>
             <br>
             <?php echo form_label('Date', 'date'); ?>
@@ -44,7 +44,7 @@ MySGRDS | Ajout d'un DS
             <?= validation_show_error('hour') ?>
             <br>
             <?php echo form_label('Type', 'type'); ?>
-            <?php echo form_dropdown('type', $data['types'], $data['type'][0]); ?>
+            <?php echo form_dropdown('type', $types, $DSInformation['type']); ?>
             <?= validation_show_error('type') ?>
             <br>
             <?php echo form_label('Salle', 'room'); ?>
@@ -67,8 +67,8 @@ MySGRDS | Ajout d'un DS
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Classe</th>
-                        <th>Absent</th>
-                        <th>Justifié</th>
+                        <th>Absence</th>
+                        <th>Rattrapage</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,8 +80,8 @@ MySGRDS | Ajout d'un DS
                         echo "<td>" . esc($students[$i]['nom']) . "</td>";
                         echo "<td>" . esc($students[$i]['prenom']) . "</td>";
                         echo "<td>" . esc($students[$i]['classe']) . "</td>";
-                        echo "<td>" . form_checkbox('absent', 'absent', $students[$i]['absent']) . "</td>";
-                        echo "<td>" . form_checkbox('justifie', 'justifie', $students[$i]['justifie']) . "</td>";
+                        echo "<td>" . ($students[$i]['absent'] ? 'Justifié' : 'Non Justifié') . "</td>";
+                        echo "<td>" . form_checkbox('justify', 'justify', false) . "</td>";
                         echo "</tr>";
                     }
                     ?>
