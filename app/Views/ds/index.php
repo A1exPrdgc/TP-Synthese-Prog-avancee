@@ -19,19 +19,16 @@ MySGRDS | DS
     <!-- Section Filtres -->
     <div class="filters-section">
         <?php echo form_open('DS', ['method' => 'get', 'class' => 'filters-form']); ?>
-        
         <div class="filters-row">
             <div class="search-box">
                 <span class="search-icon">🔍</span>
                 <input type="text" name="keyword" placeholder="Rechercher" value="<?= esc($filters['keyword'] ?? '') ?>">
             </div>
-            
             <div class="date-filters">
                 <label>Debut :</label>
                 <input type="date" name="date_debut" value="<?= esc($filters['date_debut'] ?? '') ?>">
             </div>
         </div>
-        
         <div class="filters-row">
             <div class="dropdown-filters">
                 <select name="resource" class="filter-select">
@@ -40,14 +37,12 @@ MySGRDS | DS
                         <option value="<?= esc($code) ?>" <?= ($filters['resource'] ?? '') === $code ? 'selected' : '' ?>><?= esc($nom) ?></option>
                     <?php endforeach; ?>
                 </select>
-                
                 <select name="semester" class="filter-select">
                     <option value="">▼Semestre</option>
                     <?php foreach ($semesters as $code => $label): ?>
                         <option value="<?= esc($code) ?>" <?= ($filters['semester'] ?? '') === $code ? 'selected' : '' ?>><?= esc($label) ?></option>
                     <?php endforeach; ?>
                 </select>
-                
                 <select name="teacher" class="filter-select">
                     <option value="">▼Enseignant</option>
                     <?php foreach ($teachers as $nom => $fullname): ?>
@@ -55,18 +50,15 @@ MySGRDS | DS
                     <?php endforeach; ?>
                 </select>
             </div>
-            
             <div class="date-filters">
                 <label>Fin :</label>
                 <input type="date" name="date_fin" value="<?= esc($filters['date_fin'] ?? '') ?>">
             </div>
-            
             <div class="filter-buttons">
                 <a href="<?= base_url('DS') ?>" class="btn-filter btn-reset">Retirer les filtres</a>
                 <button type="submit" class="btn-filter btn-search">Rechercher</button>
             </div>
         </div>
-        
         <?php echo form_close(); ?>
     </div>
 
@@ -81,7 +73,7 @@ MySGRDS | DS
                     <th>Durée</th>
                     <th>Type</th>
                     <th>Nombre absences</th>
-                    <th>Etat</th>
+                    <th>État</th>
                 </tr>
             </thead>
             <tbody>
@@ -95,8 +87,30 @@ MySGRDS | DS
                             <td><?= esc(ucfirst(strtolower($ds['type_exam']))) ?></td>
                             <td><?= esc($ds['nb_absences']) ?></td>
                             <td>
-                                <span class="etat-badge <?= $ds['etat'] === 'Rattraper' ? 'etat-rattraper' : 'etat-termine' ?>">
-                                    <?= esc($ds['etat']) ?>
+                                <?php
+                                // Traduire l'état pour afficher un texte compréhensible et associer une classe CSS
+                                switch ($ds['etat']) {
+                                    case 'PREVU':
+                                        $etatTexte = 'Rattrapage organisé';
+                                        $etatClass = 'etat-prevu';
+                                        break;
+                                    case 'REFUSE':
+                                        $etatTexte = 'Non-rattrapé';
+                                        $etatClass = 'etat-refuse';
+                                        break;
+                                    case 'TERMINE':
+                                        $etatTexte = 'Rattrapé';
+                                        $etatClass = 'etat-termine';
+                                        break;
+                                    case 'EN ATTENTE':
+                                    default:
+                                        $etatTexte = 'En attente';
+                                        $etatClass = 'etat-en-attente';
+                                        break;
+                                }
+                                ?>
+                                <span class="etat-badge <?= $etatClass ?>">
+                                    <?= esc($etatTexte) ?>
                                 </span>
                             </td>
                         </tr>
@@ -106,7 +120,7 @@ MySGRDS | DS
                         <td colspan="7" class="no-data">Aucun DS trouvé</td>
                     </tr>
                 <?php endif; ?>
-                
+
                 <!-- Lignes vides pour maintenir la structure -->
                 <?php for ($i = count($dsList ?? []); $i < 8; $i++): ?>
                     <tr class="empty-row">
@@ -144,4 +158,3 @@ document.querySelectorAll('.ds-table tbody tr:not(.empty-row)').forEach(row => {
 });
 </script>
 <?= $this->endSection() ?>
-
