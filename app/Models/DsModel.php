@@ -5,7 +5,7 @@ class DsModel extends Model
 {
     protected $table = 'ds';
     protected $primaryKey = 'id_ds';
-    protected $allowedFields = ['id_semestre', 'date_ds', 'duree_minutes', 'type_exam', 'coderessource'];
+    protected $allowedFields = ['id_semestre', 'date_ds', 'duree_minutes', 'type_exam', 'coderessource', 'codeenseignant'];
 
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
