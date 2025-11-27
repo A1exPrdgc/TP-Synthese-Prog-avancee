@@ -2,33 +2,47 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Réinitialisation du mot de passe</title>
+    <title>Réinitialiser le mot de passe</title>
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 </head>
 <body>
 
-<h1>Nouveau mot de passe</h1>
+<h1>Réinitialiser le mot de passe</h1>
 
 <?php if (!empty($error)) : ?>
     <p style="color:red;"><?= esc($error) ?></p>
 <?php endif; ?>
 
-<form method="post" action="<?= site_url('reset-password/' . $token) ?>">
+<?php helper('form'); ?>
+<?= form_open('reset-password/' . esc($token)); ?>
+
     <table>
         <tr>
-            <th><label for="password">Nouveau mot de passe :</label></th>
-            <td><input type="password" name="password" id="password" required></td>
+            <th>
+                <?= form_label('Nouveau mot de passe', 'password'); ?>
+            </th>
+            <td>
+                <?= form_password('password', '', 'id="password" required'); ?>
+            </td>
         </tr>
+
         <tr>
-            <th><label for="password_confirm">Confirmation :</label></th>
-            <td><input type="password" name="password_confirm" id="password_confirm" required></td>
+            <th>
+                <?= form_label('Confirmation du mot de passe', 'password_confirm'); ?>
+            </th>
+            <td>
+                <?= form_password('password_confirm', '', 'id="password_confirm" required'); ?>
+            </td>
         </tr>
+
         <tr>
             <td colspan="2">
-                <button type="submit">Valider</button>
+                <?= form_submit('valider', 'Valider'); ?>
             </td>
         </tr>
     </table>
-</form>
+
+<?= form_close(); ?>
 
 <p>
     <a href="<?= site_url('login'); ?>">Retour au login</a>

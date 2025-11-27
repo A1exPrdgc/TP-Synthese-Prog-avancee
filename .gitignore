@@ -16,7 +16,7 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 /vendor/
-app/Config/Email.php
+app\Config\Email.php
 app/Config/Database.php
 
 # CodeIgniter 4 recommandations
