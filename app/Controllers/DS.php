@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\StudentsModel;
+use App\Models\SemestersModel;
+use App\Models\RessourceModel;
 use App\Models\TeachersModel;
 use App\Models\DsModel;
 use App\Models\AbsentModel;
@@ -11,6 +13,9 @@ use App\Models\AbsentModel;
 class DS extends BaseController
 {
     protected $dsModel;
+    protected $semesterModel;
+    protected $resourceModel;
+    protected $teacherModel;
     protected $studentModel;
     protected $absentModel;
 
@@ -19,11 +24,13 @@ class DS extends BaseController
         helper(['form']);
         
         $this->dsModel = new DsModel();
+        $this->semesterModel = new SemestersModel();
+        $this->resourceModel = new RessourceModel();
+        $this->teacherModel = new TeachersModel();
         $this->studentModel = new StudentsModel();
         $this->absentModel = new AbsentModel();
         
-        $teacherModel = new TeachersModel();
-        session()->set('role', $teacherModel->getRole());
+        session()->set('role', $this->teacherModel->getRole());
     }
 
     /**
@@ -46,9 +53,9 @@ class DS extends BaseController
         $data['pager'] = $this->dsModel->pager;
         $data['filters'] = $filters;
 
-        $data['semesters'] = $this->dsModel->getAllSemestersForDropdown();
-        $data['resources'] = $this->dsModel->getAllResourcesForDropdown();
-        $data['teachers'] = $this->dsModel->getAllTeachersForDropdown();
+        $data['semesters'] = $this->semesterModel->getAllSemestersForDropdown();
+        $data['resources'] = $this->resourceModel->getAllResourcesForDropdown();
+        $data['teachers'] = $this->teacherModel->getAllTeachersForDropdown();
 
         return view('ds/index', $data);
     }
@@ -71,8 +78,8 @@ class DS extends BaseController
             return redirect()->to('DS')->with('error', 'DS non trouvé');
         }
 
-        $data['students'] = $this->dsModel->getStudentsWithAbsenceForDs($id, $perPage, $keyword);
-        $data['pager'] = $this->dsModel->pager;
+        $data['students'] = $this->studentModel->getStudentsWithAbsenceForDs($id, $perPage, $keyword);
+        $data['pager'] = $this->studentModel->pager;
         $data['keyword'] = $keyword;
         $data['ds'] = $ds;
 
@@ -92,13 +99,13 @@ class DS extends BaseController
         $data['students'] = $this->studentModel->getPaginatedStudents($perPage, $keyword);
         $data['pager'] = $this->studentModel->pager;
 
-        $data['semesters'] = $this->dsModel->getAllSemestersForDropdown();
+        $data['semesters'] = $this->semesterModel->getAllSemestersForDropdown();
         $selectedSemester = array_key_first($data['semesters']) ?? '';
 
-        $data['resources'] = $this->dsModel->getResourcesBySemesterForDropdown($selectedSemester);
+        $data['resources'] = $this->resourceModel->getResourcesBySemesterForDropdown($selectedSemester);
         $selectedResource = array_key_first($data['resources']) ?? '';
 
-        $data['teachers'] = $this->dsModel->getTeachersByResourceForDropdown($selectedResource);
+        $data['teachers'] = $this->teacherModel->getTeachersByResourceForDropdown($selectedResource);
 
         $data['types'] = ['MACHINE' => 'Machine', 'PAPIER' => 'Papier', 'ORAL' => 'Oral'];
 
@@ -117,9 +124,9 @@ class DS extends BaseController
      */
     public function save()
     {
-        $validSemesters = $this->dsModel->getAllSemesterCodes();
-        $validResources = $this->dsModel->getAllResourceCodes();
-        $validTeachers = $this->dsModel->getAllTeacherNames();
+        $validSemesters = $this->semesterModel->getAllSemesterCodes();
+        $validResources = $this->resourceModel->getAllResourceCodes();
+        $validTeachers = $this->teacherModel->getAllTeacherNames();
         $validTypes = ['MACHINE', 'PAPIER', 'ORAL'];
 
         $rules = [
@@ -145,8 +152,8 @@ class DS extends BaseController
         list($heures, $minutes) = explode(':', $duration);
         $dureeMinutes = ($heures * 60) + $minutes;
 
-        $semesterId = $this->dsModel->getSemesterIdByCode($semesterCode);
-        $teacherCode = $this->dsModel->getTeacherCodeByName($teacherName);
+        $semesterId = $this->semesterModel->getIdByCode($semesterCode);
+        $teacherCode = $this->teacherModel->getCodeByName($teacherName);
 
         if (!$semesterId || !$teacherCode) {
             return redirect()->back()->withInput()->with('error', 'Données invalides');
@@ -200,7 +207,7 @@ class DS extends BaseController
     public function getResourcesBySemester()
     {
         $semester = $this->request->getGet('semester');
-        $resources = $this->dsModel->getResourcesBySemesterForAjax($semester);
+        $resources = $this->resourceModel->getResourcesBySemesterForAjax($semester);
         return $this->response->setJSON($resources);
     }
 
@@ -210,7 +217,7 @@ class DS extends BaseController
     public function getTeachersByResource()
     {
         $resource = $this->request->getGet('resource');
-        $teachers = $this->dsModel->getTeachersByResourceForAjax($resource);
+        $teachers = $this->teacherModel->getTeachersByResourceForAjax($resource);
         return $this->response->setJSON($teachers);
     }
 }
