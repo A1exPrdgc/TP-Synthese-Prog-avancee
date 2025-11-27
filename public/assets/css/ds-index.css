@@ -191,16 +191,25 @@
     border-radius: 5px;
     font-weight: 600;
     font-size: 0.9rem;
+    color: white;
 }
 
-.etat-rattraper {
-    background-color: #5ABD89;
-    color: white;
+/* Couleurs spécifiques par état */
+.etat-prevu {
+    background-color: #007bff; /* Bleu vif */
+}
+
+.etat-refuse {
+    background-color: #dc3545; /* Rouge vif */
 }
 
 .etat-termine {
-    background-color: #6c757d;
-    color: white;
+    background-color: #28a745; /* Vert */
+}
+
+.etat-en-attente {
+    background-color: #ffc107; /* Jaune / orange */
+    color: #333; /* texte plus sombre pour lisibilité */
 }
 
 /* Pagination */
@@ -285,4 +294,3 @@
         padding: 8px 5px;
     }
 }
-

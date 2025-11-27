@@ -8,7 +8,7 @@ class DsModel extends Model
 {
     protected $table = 'ds';
     protected $primaryKey = 'id_ds';
-    protected $allowedFields = ['id_semestre', 'date_ds', 'duree_minutes', 'type_exam', 'coderessource', 'codeenseignant'];
+    protected $allowedFields = ['id_semestre', 'date_ds', 'duree_minutes', 'type_exam', 'coderessource', 'codeenseignant', 'etat'];
 
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
@@ -29,6 +29,7 @@ class DsModel extends Model
             ds.duree_minutes,
             ds.type_exam,
             semestre.code as semestre_code,
+            ds.etat,  -- Ajouté ici
             (SELECT COUNT(*) FROM absence WHERE absence.id_ds = ds.id_ds) as nb_absences
         ');
         
@@ -70,7 +71,6 @@ class DsModel extends Model
 
         foreach ($results as &$row) {
             $row['duree_formatee'] = $this->formatDuree($row['duree_minutes']);
-            $row['etat'] = (isset($row['nb_absences']) && $row['nb_absences'] > 0) ? 'Rattraper' : 'Terminé';
         }
 
         return $results;
@@ -126,4 +126,36 @@ class DsModel extends Model
         $mins = $minutes % 60;
         return sprintf('%02d:%02d', $heures, $mins);
     }
+
+    public function setEtat(int $idDs, string $etat)
+    {
+        if (empty($etat) || !is_string($etat)) {
+            throw new \InvalidArgumentException('L\'état ne peut pas être vide et doit être une chaîne.');
+        }
+
+        if (!$idDs) {
+            return false;
+        }
+
+        return $this->update($idDs, ['etat' => $etat]);
+    }
+
+    public function updateEtatByRattrapageDate()
+    {
+        $now = date('Y-m-d');
+
+        $sql = "SELECT ds.id_ds 
+                FROM ds
+                JOIN rattrapage ON ds.id_ds = rattrapage.id_ds
+                WHERE rattrapage.date_rattrapage < ? AND ds.etat != 'TERMINE'";
+
+        $query = $this->db->query($sql, [$now]);
+        $dsList = $query->getResultArray();
+
+        foreach ($dsList as $dsRow) {
+            $this->setEtat($dsRow['id_ds'], 'TERMINE');
+        }
+    }
+
+
 }
