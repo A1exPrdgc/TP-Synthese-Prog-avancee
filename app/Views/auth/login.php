@@ -20,34 +20,60 @@
         <p class="alert-success"><?= esc($message) ?></p>
     <?php endif; ?>
 
-    <form method="post" action="<?= site_url('login') ?>">
+    <?php helper('form'); ?>
+    <?= form_open('login'); ?>
         <table>
             <tr>
-                <th><label for="username">Identifiant /Mail</label></th>
-                <td><input type="text" name="username" id="username" required></td>
+                <th>
+                    <?= form_label('Identifiant /Mail', 'username'); ?>
+                </th>
+                <td>
+                    <?= form_input(
+                        'username',
+                        set_value('username'),
+                        'id="username" required'
+                    ); ?>
+                </td>
             </tr>
+
             <tr>
-                <th><label for="password">Mot de passe</label></th>
-                <td><input type="password" name="password" id="password" required></td>
+                <th>
+                    <?= form_label('Mot de passe', 'password'); ?>
+                </th>
+                <td>
+                    <?= form_password(
+                        'password',
+                        '',
+                        'id="password" required'
+                    ); ?>
+                </td>
             </tr>
+
             <tr>
                 <td colspan="2" style="text-align: left;">
                     <a href="<?= site_url('forgot-password') ?>">Mot de passe oublié</a>
                 </td>
             </tr>
+
             <tr class="remember-row">
                 <th>Se souvenir de moi :</th>
                 <td>
-                    <input type="checkbox" name="remember" value="1" id="remember">
+                    <?= form_checkbox(
+                        'remember',
+                        '1',
+                        set_checkbox('remember', '1', false),
+                        'id="remember"'
+                    ); ?>
                 </td>
             </tr>
+
             <tr>
                 <td colspan="2">
-                    <button type="submit">Connexion</button>
+                    <?= form_submit('connexion', 'Connexion'); ?>
                 </td>
             </tr>
         </table>
-    </form>
+    <?= form_close(); ?>
 
     <div class="links">
         <p>Pas encore de compte ?</p>

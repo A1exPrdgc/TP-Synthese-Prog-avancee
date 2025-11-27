@@ -2,76 +2,72 @@
 <?= $this->section('pageType'); ?>ds<?= $this->endSection(); ?>
 
 <?= $this->section('title') ?>
-Ajouter DS
+Visionner DS
 <?= $this->endSection() ?>
 
 <?= $this->section('navbarTitle') ?>
-MySGRDS | Afficher DS
+MySGRDS | Visionner DS
 <?= $this->endSection() ?>
 
 <?= $this->section('styles') ?>
-<link href="<?= base_url('assets/css/ds-ajout.css') ?>" rel="stylesheet" />
+<link href="<?= base_url('assets/css/ds-detail.css') ?>" rel="stylesheet" />
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 
-<div class="ds-ajout-container">
-    <div class="ds-ajout-layout">
+<?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+<?php endif; ?>
+
+<?php if (session()->getFlashdata('error')): ?>
+    <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+<?php endif; ?>
+
+<div class="ds-detail-container">
+    <div class="ds-detail-layout">
         <!-- Colonne gauche: Évaluation -->
         <div class="evaluation-section">
             <h2 class="section-title">Évaluation</h2>
             
-            <div class="form-group">
+            <div class="info-group">
                 <label>Semestre</label>
-                <!-- afffiche un seul semestre, selection désactivée -->
-                <select class="form-select" disabled>
-                    <option>S5</option>
+                <div class="info-value"><?= esc($ds['semestre_code']) ?></div>
             </div>
 
-            <div class="form-group">
+            <div class="info-group">
                 <label>Ressource</label>
-                <select class="form-select">
-                    <option>R5.01 Initiation au management d'une équipe de projet informatique</option>
-                </select>
+                <div class="info-value info-value-long"><?= esc($ds['coderessource']) ?> <?= esc($ds['nomressource']) ?></div>
             </div>
 
-            <div class="form-group">
+            <div class="info-group">
                 <label>Professeur</label>
-                <select class="form-select" disabled>
-                    <option>Isuvi Myra Ondiso</option>
-                </select>
+                <div class="info-value"><?= esc($ds['enseignant_complet']) ?></div>
             </div>
 
-            <div class="form-group">
-                <!-- Date de l'évaluation en dure non modifiable sans nouvelle div -->
-                <label>Date de l'évaluation</label>
-                <div class="date-input-group">
-                    <input type="date" class="form-input" value="2024-10-15" disabled>
-                    <span class="calendar-icon">&#128197;</span>
-                </div>
+            <div class="info-group">
+                <label>Date</label>
+                <div class="info-value"><?= esc(date('d/m/y', strtotime($ds['date_ds']))) ?></div>
             </div>
 
-            <div class="form-group">
+            <div class="info-group">
                 <label>Type</label>
-                <!-- affiche le type de DS, selection désactivée -->
-                <select class="form-select" disabled>
-                    <option>Machine</option>
-                </select>
+                <div class="info-value"><?= esc(ucfirst(strtolower($ds['type_exam']))) ?></div>
             </div>
 
-            <div class="form-group">
+            <div class="info-group">
                 <label>Durée de l'évaluation</label>
-                <!-- affiche la durée du DS en dure non modifiable -->
-                <input type="time" class="form-input" value="01:30" disabled>
+                <div class="info-value"><?= esc($ds['duree_formatee']) ?></div>
             </div>
         </div>
 
         <!-- Colonne droite: Étudiants -->
         <div class="students-section">
-            <h2 class="section-title">Étudiants</h2>
+            <h2 class="section-title">Etudiants</h2>
             
             <div class="search-input-group">
-                <input type="text" placeholder="Rechercher">
+                <?php echo form_open('DS/detail/' . $ds['id_ds'], ['method' => 'get']); ?>
+                <input type="text" name="keyword" placeholder="Rechercher" value="<?= esc($keyword) ?>" onchange="this.form.submit()">
+                <?php echo form_close(); ?>
             </div>
 
             <div class="students-table-container">
@@ -87,73 +83,76 @@ MySGRDS | Afficher DS
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>gc230811</td>
-                            <td>GUELLE</td>
-                            <td>Clément</td>
-                            <td>L2</td>
-                            <td><input type="checkbox"></td>
-                            <td><input type="checkbox"></td>
-                        </tr>
-                        <tr>
-                            <td>vr232906</td>
-                            <td>VIEZ</td>
-                            <td>Rémi</td>
-                            <td>L2</td>
-                            <td><input type="checkbox"></td>
-                            <td><input type="checkbox"></td>
-                        </tr>
-                        <tr>
-                            <td>pa230262</td>
-                            <td>PRADIGNAC</td>
-                            <td>Alexandre</td>
-                            <td>L2</td>
-                            <td><input type="checkbox"></td>
-                            <td><input type="checkbox"></td>
-                        </tr>
-                        <!-- Lignes vides pour l'exemple -->
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        <?php if (!empty($students)): ?>
+                            <?php foreach ($students as $student): ?>
+                                <tr>
+                                    <td><?= esc($student['id']) ?></td>
+                                    <td><?= esc(strtoupper($student['nom'])) ?></td>
+                                    <td><?= esc(ucfirst($student['prenom'])) ?></td>
+                                    <td><?= esc($student['classe']) ?></td>
+                                    <td>
+                                        <input type="checkbox" <?= $student['absent'] ? 'checked' : '' ?> disabled>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" <?= $student['justifie'] ? 'checked' : '' ?> disabled>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        
+                        <!-- Lignes vides pour maintenir la structure -->
+                        <?php for ($i = count($students ?? []); $i < 6; $i++): ?>
+                            <tr class="empty-row">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        <?php endfor; ?>
                     </tbody>
                 </table>
 
                 <div class="pagination-container">
-                    <a href="#" class="pagination-btn"><<</a>
-                    <a href="#" class="pagination-btn"><</a>
-                    <span style="font-weight:bold; font-size:1.2rem; margin:0 5px;">1</span>
-                    <span style="font-weight:bold; font-size:1.2rem; margin:0 5px;">2</span>
-                    <span style="font-weight:bold; font-size:1.2rem; margin:0 5px;">3</span>
-                    <span style="font-weight:bold; font-size:1.2rem; margin:0 5px;">4</span>
-                    <span style="font-weight:bold; font-size:1.2rem; margin:0 5px;">5</span>
-                    <a href="#" class="pagination-btn">></a>
-                    <a href="#" class="pagination-btn">>></a>
+                    <?= $pager->links('default', 'default_full') ?>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bouton Ajouter le DS -->
-    <div class="submit-container">
-        <button type="submit" class="btn-submit">Modifier le DS</button>
+    <!-- Boutons d'action -->
+    <div class="action-buttons">
+        <a href="<?= base_url('DS/refuserRattrapage/' . $ds['id_ds']) ?>" class="btn-action btn-refuse">
+            <span class="btn-icon">✕</span> Refuser le rattrapage
+        </a>
+        <a href="<?= base_url('DS/validerRattrapage/' . $ds['id_ds']) ?>" class="btn-action btn-validate">
+            <span class="btn-icon">✓</span> Valider le rattrapage
+        </a>
     </div>
 </div>
 
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<!-- Scripts JS éventuels -->
+<script>
+function filterStudents() {
+    const searchInput = document.getElementById('student-search').value.toLowerCase();
+    const tbody = document.querySelector('.students-table tbody');
+    const rows = tbody.getElementsByTagName('tr');
+    
+    for (let i = 0; i < rows.length; i++) {
+        const row = rows[i];
+        if (row.classList.contains('empty-row')) continue;
+        
+        const text = row.textContent.toLowerCase();
+        
+        if (text.includes(searchInput)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    }
+}
+</script>
 <?= $this->endSection() ?>

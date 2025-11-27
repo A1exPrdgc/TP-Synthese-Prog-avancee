@@ -22,7 +22,7 @@ class Auth extends BaseController
             'nom'       => $user['nom'],
             'prenom'    => $user['prenom'],
             'email'     => $user['email'],
-            'fonction'  => $user['fonction'], // ENS / DE
+            'fonction'  => $user['fonction'],
         ]);
     }
 
@@ -102,9 +102,21 @@ class Auth extends BaseController
 
         // "Se souvenir de moi"
         if ($remember) {
-            set_cookie('remember_code', $user['code'], 60 * 60 * 24 * 30); // 30 jours
+            setcookie(
+                'remember_code',
+                $user['code'],
+                [
+                    'expires'  => time() + (60 * 60 * 24 * 30),
+                    'path'     => '/',
+                    'domain'   => '',
+                    'secure'   => false,
+                    'httponly' => true,
+                    'samesite' => 'Lax',
+                ]
+            );
         } else {
-            delete_cookie('remember_code');
+            // Supprimer le cookie
+            setcookie('remember_code', '', time() - 3600, '/');
         }
 
         return redirect()->to(site_url('rattrapage'));
@@ -141,7 +153,7 @@ class Auth extends BaseController
 
         if (! $this->validate($rules)) {
             return view('auth/signin', [
-                'error' => 'Formulaire invalide : vérifiez les champs.',
+                'validation' => $this->validator,
             ]);
         }
 
@@ -188,9 +200,9 @@ class Auth extends BaseController
         return redirect()->to(site_url('login'));
     }
 
-    /**
-     * Page "mot de passe oublié"
-     */
+    // -------------------------------------------------------------------
+    //  PAGE "Mot de passe oublié"
+    // -------------------------------------------------------------------
     public function forgotPassword()
     {
         helper('form');
@@ -201,23 +213,22 @@ class Auth extends BaseController
         ]);
     }
 
-    /**
-     * Traitement de la demande de réinitialisation : envoi d’email
-     */
+    // -------------------------------------------------------------------
+    //  TRAITEMENT DU FORMULAIRE "Mot de passe oublié"
+    // -------------------------------------------------------------------
     public function doForgotPassword()
     {
         helper('form');
 
-
-        $login = trim($this->request->getPost('login'));
+        $login = trim($this->request->getPost('login') ?? '');
 
         if ($login === '') {
             return view('auth/forgot_password', [
-                'error' => 'Veuillez saisir votre identifiant ou votre email.',
+                'error' => 'Veuillez saisir votre identifiant universitaire ou votre email.',
             ]);
         }
 
-        $model = new EnseignantModel();
+        $model = new \App\Models\EnseignantModel();
 
         $user = $model
             ->groupStart()
@@ -227,13 +238,11 @@ class Auth extends BaseController
             ->first();
 
         if (! $user) {
-            // On ne dit pas si l’utilisateur existe pour éviter de “leaker”
             return view('auth/forgot_password', [
-                'message' => 'Si un compte existe pour cet identifiant, un email a été envoyé.',
+                'message' => 'Si un compte existe pour cet identifiant, un email de réinitialisation a été envoyé.',
             ]);
         }
 
-        // Générer un token de reset valable 1h
         $token   = bin2hex(random_bytes(16));
         $expires = Time::now()->addHours(1);
 
@@ -242,7 +251,6 @@ class Auth extends BaseController
             'reset_expires' => $expires->toDateTimeString(),
         ]);
 
-        // Envoi de l’email
         $emailService = Services::email();
 
         $resetLink = site_url('reset-password/' . $token);
@@ -254,23 +262,24 @@ class Auth extends BaseController
             'Vous avez demandé la réinitialisation de votre mot de passe.<br>' .
             'Cliquez sur le lien ci-dessous (valable 1 heure) :<br><br>' .
             '<a href="' . $resetLink . '">Réinitialiser mon mot de passe</a><br><br>' .
-            "Si vous n'êtes pas à l'origine de cette demande, ignorez ce message."
+            "Si vous n\'êtes pas à l\'origine de cette demande, ignorez ce message."
         );
 
         if (! $emailService->send()) {
+
             return view('auth/forgot_password', [
-                'error' => 'Erreur lors de l\'envoi de l\'email de réinitialisation.',
+                'error' => 'Erreur lors de l’envoi de l’email de réinitialisation.',
             ]);
         }
 
         return view('auth/forgot_password', [
-            'message' => 'Un email de réinitialisation a été envoyé (s’il existe un compte pour cet identifiant).',
+            'message' => 'Un email de réinitialisation a été envoyé (si un compte existe pour cet identifiant).',
         ]);
     }
 
-    /**
-     * Formulaire de nouveau mot de passe
-     */
+    // -------------------------------------------------------------------
+    //  FORMULAIRE DE NOUVEAU MOT DE PASSE
+    // -------------------------------------------------------------------
     public function resetPassword(string $token = null)
     {
         helper('form');
@@ -279,30 +288,28 @@ class Auth extends BaseController
             return redirect()->to(site_url('login'));
         }
 
-        $model = new EnseignantModel();
-
-        $user = $model->where('reset_token', $token)->first();
+        $model = new \App\Models\EnseignantModel();
+        $user  = $model->where('reset_token', $token)->first();
 
         if (! $user) {
             session()->setFlashdata('error', 'Lien de réinitialisation invalide.');
             return redirect()->to(site_url('login'));
         }
 
-        // Vérifier expiration
         if (! empty($user['reset_expires']) && Time::now()->isAfter($user['reset_expires'])) {
             session()->setFlashdata('error', 'Lien de réinitialisation expiré.');
             return redirect()->to(site_url('login'));
         }
 
         return view('auth/reset_password', [
-            'token' => $token,
-            'error' => session()->getFlashdata('error'),
+            'token'  => $token,
+            'error'  => session()->getFlashdata('error'),
         ]);
     }
 
-    /**
-     * Traitement du nouveau mot de passe
-     */
+    // -------------------------------------------------------------------
+    //  TRAITEMENT DU NOUVEAU MOT DE PASSE
+    // -------------------------------------------------------------------
     public function doResetPassword(string $token)
     {
         helper('form');
@@ -317,7 +324,7 @@ class Auth extends BaseController
             return redirect()->to(site_url('reset-password/' . $token));
         }
 
-        $model = new EnseignantModel();
+        $model = new \App\Models\EnseignantModel();
         $user  = $model->where('reset_token', $token)->first();
 
         if (! $user) {
@@ -348,11 +355,10 @@ class Auth extends BaseController
      */
     public function logout()
     {
-        helper('cookie');
-
+        setcookie('remember_code', '', time() - 3600, '/');
         session()->destroy();
-        delete_cookie('remember_code');
 
-        return redirect()->to(site_url('login'));
+        return redirect()->to('/login');
     }
+
 }

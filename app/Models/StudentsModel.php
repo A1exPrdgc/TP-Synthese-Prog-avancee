@@ -1,15 +1,17 @@
 <?php
+
 namespace App\Models;
+
 use CodeIgniter\Model;
+
 class StudentsModel extends Model
 {
     protected $table = 'etudiant';
     protected $primaryKey = 'code';
     protected $allowedFields = ['nom', 'prenom', 'email', 'classe'];
-    
-    protected $returnType     = 'array';
-    protected $useSoftDeletes = false;
 
+    protected $returnType = 'array';
+    protected $useSoftDeletes = false;
     protected $useTimestamps = false;
 
     public function getPaginatedStudents(int $perPage, ?string $keyword = null) 
@@ -20,7 +22,7 @@ class StudentsModel extends Model
             etudiant.prenom, 
             etudiant.classe,
             (CASE WHEN a.code IS NOT NULL THEN 1 ELSE 0 END) as absent,
-            COALESCE(a.absenceJustifie, 0) as justifie
+            COALESCE(a.absencejustifie, 0) as justifie
         ');
 
         $conditionJoin = "etudiant.code = a.code";
@@ -41,11 +43,10 @@ class StudentsModel extends Model
 
         foreach ($results as &$row) {
             if (is_array($row)) {
-                $row['absent']   = (bool) $row['absent'];
+                $row['absent'] = (bool) $row['absent'];
                 $row['justifie'] = (bool) $row['justifie'];
-            } 
-            else {
-                $row->absent   = (bool) $row->absent;
+            } else {
+                $row->absent = (bool) $row->absent;
                 $row->justifie = (bool) $row->justifie;
             }
         }
