@@ -10,8 +10,7 @@ class TeachersModel extends Model
     public function getAllTeachersByResources($resourceId)
     {
         //return ["Legrix", "Thorel"];
-        return $this->select('nom')->
-        from('enseignant')->
+        return $this->select('enseignant.code, enseignant.nom')->
         join('ds d', 'd.codeenseignant = enseignant.code')->
         where('d.coderessource', $resourceId)->findAll();
     }

@@ -2,11 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Models\RattrapageModel;
+use App\Controllers\BaseController;
 use App\Models\TeachersModel;
 use App\Models\StudentsModel;
-use App\Models\SemestersModel;
-use App\Models\RessourceModel;
 
 
 class Rattrapage extends BaseController
@@ -31,11 +29,11 @@ class Rattrapage extends BaseController
             ['id' => 'E005', 'last_name' => 'Leroy', 'first_name' => 'Paul', 'class' => 'S1B'],
         ];
 
-        $data = ['semester' => 'S1', 'resource' => 'R1.05 blabla', 'teacher' => 'Legrix', 'date' => '2024-06-15', 'type' => 'Machine', 'duration' => '02:00', 'justify' => false, 'students' => $students];
+        $data['DSInformation'] = ['idDs' => '1', 'semester' => 'S1', 'resource' => 'R1.05 blabla', 'teacher' => 'Legrix', 'date' => '2024-06-15', 'type' => 'Machine', 'duration' => '02:00', 'justify' => false, 'students' => $students];
 
         $session = session();
 
-        if (!$session->get('user_id')) {
+        if (!$session->get('connected')) {
             return redirect()->to('/login');
         }
 
@@ -46,11 +44,12 @@ class Rattrapage extends BaseController
         $data['keyword'] = $keyword;
 
         $studentModel = new StudentsModel();
+        // TODO faire getPaginatedAbsentStudent ($perPage, $keyword, $data['DSInformation']['idDs'])
         $data['students'] = $studentModel->getPaginatedStudents($perPage, $keyword);
 
         $data['types'] = ['MACHINE', 'ORAL', 'PAPIER'];
 
-        return view('ds/ajout', $data);
+        return view('rattrapage/ajout', $data);
     }
 
     public function save()
@@ -64,18 +63,17 @@ class Rattrapage extends BaseController
             'type' => 'required|in_list[Machine,Papier]',
             'duration' => 'required|regex_match[/^(?:[01]\d|2[0-3]):[0-5]\d$/]',
             'room' => 'required|alpha_numeric_space|max_length[3]|min_length[3]',
-            'absent' => 'required|boolean',
             'justify' => 'required|boolean'
         ]);
         if (!$isValid) {
-            return view('ds/ajout', [
+            return view('rattrapage/ajout', [
                 'validation' => \Config\Services::validation()
             ]);
         } else {
             $request = \Config\Services::request();
             $informations = $request->getPost();
             session()->setFlashdata('informations', $informations);
-            return view('ds/success', ['informations' => $informations]);
+            return view('rattrapage/success', ['informations' => $informations]);
         }
     }
 }
