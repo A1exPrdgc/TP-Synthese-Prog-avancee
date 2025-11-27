@@ -7,46 +7,49 @@
 </head>
 <body>
 
-<h1>Réinitialiser le mot de passe</h1>
+<div class="auth-container">
 
-<?php if (!empty($error)) : ?>
-    <p style="color:red;"><?= esc($error) ?></p>
-<?php endif; ?>
+    <h1>Réinitialiser le mot de passe</h1>
 
-<?php helper('form'); ?>
-<?= form_open('reset-password/' . esc($token)); ?>
+    <?php if (!empty($error)) : ?>
+        <p style="color:red;"><?= esc($error) ?></p>
+    <?php endif; ?>
 
-    <table>
-        <tr>
-            <th>
-                <?= form_label('Nouveau mot de passe', 'password'); ?>
-            </th>
-            <td>
-                <?= form_password('password', '', 'id="password" required'); ?>
-            </td>
-        </tr>
+    <?php helper('form'); ?>
+    <?= form_open('reset-password/' . esc($token)); ?>
 
-        <tr>
-            <th>
-                <?= form_label('Confirmation du mot de passe', 'password_confirm'); ?>
-            </th>
-            <td>
-                <?= form_password('password_confirm', '', 'id="password_confirm" required'); ?>
-            </td>
-        </tr>
+        <table>
+            <tr>
+                <th>
+                    <?= form_label('Nouveau mot de passe', 'password'); ?>
+                </th>
+                <td>
+                    <?= form_password('password', '', 'id="password" required'); ?>
+                </td>
+            </tr>
 
-        <tr>
-            <td colspan="2">
-                <?= form_submit('valider', 'Valider'); ?>
-            </td>
-        </tr>
-    </table>
+            <tr>
+                <th>
+                    <?= form_label('Confirmation du mot de passe', 'password_confirm'); ?>
+                </th>
+                <td>
+                    <?= form_password('password_confirm', '', 'id="password_confirm" required'); ?>
+                </td>
+            </tr>
 
-<?= form_close(); ?>
+            <tr>
+                <td colspan="2">
+                    <?= form_submit('valider', 'Valider'); ?>
+                </td>
+            </tr>
+        </table>
 
-<p>
-    <a href="<?= site_url('login'); ?>">Retour au login</a>
-</p>
+    <?= form_close(); ?>
+
+    <p>
+        <a href="<?= site_url('login'); ?>">Retour au login</a>
+    </p>
+</div>
 
 </body>
 </html>
