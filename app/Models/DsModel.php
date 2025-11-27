@@ -8,7 +8,7 @@ class DsModel extends Model
 {
     protected $table = 'ds';
     protected $primaryKey = 'id_ds';
-    protected $allowedFields = ['id_semestre', 'date_ds', 'duree_minutes', 'type_exam', 'coderessource', 'codeenseignant'];
+    protected $allowedFields = ['id_semestre', 'date_ds', 'duree_minutes', 'type_exam', 'coderessource', 'codeenseignant', 'etat'];
 
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
@@ -129,6 +129,33 @@ class DsModel extends Model
 
     public function setEtat(int $idDs, string $etat)
     {
+        if (empty($etat) || !is_string($etat)) {
+            throw new \InvalidArgumentException('L\'état ne peut pas être vide et doit être une chaîne.');
+        }
+
+        if (!$idDs) {
+            return false;
+        }
+
         return $this->update($idDs, ['etat' => $etat]);
     }
+
+    public function updateEtatByRattrapageDate()
+    {
+        $now = date('Y-m-d');
+
+        $sql = "SELECT ds.id_ds 
+                FROM ds
+                JOIN rattrapage ON ds.id_ds = rattrapage.id_ds
+                WHERE rattrapage.date_rattrapage < ? AND ds.etat != 'TERMINE'";
+
+        $query = $this->db->query($sql, [$now]);
+        $dsList = $query->getResultArray();
+
+        foreach ($dsList as $dsRow) {
+            $this->setEtat($dsRow['id_ds'], 'TERMINE');
+        }
+    }
+
+
 }
