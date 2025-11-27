@@ -29,7 +29,7 @@ class Rattrapage extends BaseController
             ['id' => 'E005', 'last_name' => 'Leroy', 'first_name' => 'Paul', 'class' => 'S1B'],
         ];
 
-        $data['DSInformation'] = ['semester' => 'S1', 'resource' => 'R1.05 blabla', 'teacher' => 'Legrix', 'date' => '2024-06-15', 'type' => 'Machine', 'duration' => '02:00', 'justify' => false, 'students' => $students];
+        $data['DSInformation'] = ['idDs' => '1', 'semester' => 'S1', 'resource' => 'R1.05 blabla', 'teacher' => 'Legrix', 'date' => '2024-06-15', 'type' => 'Machine', 'duration' => '02:00', 'justify' => false, 'students' => $students];
 
         $session = session();
 
@@ -44,6 +44,7 @@ class Rattrapage extends BaseController
         $data['keyword'] = $keyword;
 
         $studentModel = new StudentsModel();
+        // TODO faire getPaginatedAbsentStudent ($perPage, $keyword, $data['DSInformation']['idDs'])
         $data['students'] = $studentModel->getPaginatedStudents($perPage, $keyword);
 
         $data['types'] = ['MACHINE', 'ORAL', 'PAPIER'];
@@ -62,7 +63,6 @@ class Rattrapage extends BaseController
             'type' => 'required|in_list[Machine,Papier]',
             'duration' => 'required|regex_match[/^(?:[01]\d|2[0-3]):[0-5]\d$/]',
             'room' => 'required|alpha_numeric_space|max_length[3]|min_length[3]',
-            'absent' => 'required|boolean',
             'justify' => 'required|boolean'
         ]);
         if (!$isValid) {

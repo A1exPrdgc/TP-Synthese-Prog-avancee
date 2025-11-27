@@ -67,8 +67,8 @@ MySGRDS | Ajout d'un Rattrapage
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Classe</th>
-                        <th>Absent</th>
-                        <th>Justifié</th>
+                        <th>Absence</th>
+                        <th>Rattrapage</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,8 +80,8 @@ MySGRDS | Ajout d'un Rattrapage
                         echo "<td>" . esc($students[$i]['nom']) . "</td>";
                         echo "<td>" . esc($students[$i]['prenom']) . "</td>";
                         echo "<td>" . esc($students[$i]['classe']) . "</td>";
-                        echo "<td>" . form_checkbox('absent', 'absent', $students[$i]['absent']) . "</td>";
-                        echo "<td>" . form_checkbox('justifie', 'justifie', $students[$i]['justifie']) . "</td>";
+                        echo "<td>" . ($students[$i]['absent'] ? 'Justifié' : 'Non Justifié') . "</td>";
+                        echo "<td>" . form_checkbox('justify', 'justify', false) . "</td>";
                         echo "</tr>";
                     }
                     ?>
