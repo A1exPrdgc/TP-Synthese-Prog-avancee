@@ -12,7 +12,7 @@ class StudentsModel extends Model
 
     protected $useTimestamps = false;
 
-    public function getPaginatedStudents(int $perPage, string $keyword = null) 
+    public function getPaginatedStudents(int $perPage, ?string $keyword = null) 
     {
         $this->select('
             etudiant.code as id, 
@@ -52,7 +52,7 @@ class StudentsModel extends Model
         return $results;
     }
     
-    public function getPaginatedStudentsByDSiD(int $ds_id, int $perPage, string $keyword = null) 
+    public function getPaginatedStudentsByDSiD(int $ds_id, int $perPage, ?string $keyword = null) 
     {
         $this->select('
             etudiant.code as id, 

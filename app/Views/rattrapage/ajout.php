@@ -22,6 +22,8 @@ MySGRDS | Ajout d'un Rattrapage
 
         <h1>Evaluation</h1>
 
+        <?php echo form_hidden('codeEnseignant', $DSInformation['codeEnseignant']); ?>
+
         <div class="form">
             <?php echo form_label('Semestre', 'semester'); ?>
             <?php echo form_input('semester', set_value('semester', $DSInformation['semester']), 'required readonly'); ?>
@@ -74,14 +76,18 @@ MySGRDS | Ajout d'un Rattrapage
                 <tbody>
 
                     <?php
+                    $oldJustify = $old_justify ?? [];
                     for ($i = 0; $i < count($students); $i++) {
+                        $sid = esc($students[$i]['id']);
                         echo "<tr>";
                         echo "<td>" . esc($students[$i]['id']) . "</td>";
                         echo "<td>" . esc($students[$i]['nom']) . "</td>";
                         echo "<td>" . esc($students[$i]['prenom']) . "</td>";
                         echo "<td>" . esc($students[$i]['classe']) . "</td>";
                         echo "<td>" . ($students[$i]['absent'] ? 'Justifié' : 'Non Justifié') . "</td>";
-                        echo "<td>" . form_checkbox('justify', 'justify', false) . "</td>";
+                        // hidden field to send 'off' when checkbox is not checked, and checkbox with 'on' when checked
+                        $checked = (isset($oldJustify[$sid]) && $oldJustify[$sid] === 'on');
+                        echo "<td>" . form_hidden("justify[{$sid}]", 'off') . form_checkbox("justify[{$sid}]", 'on', $checked) . "</td>";
                         echo "</tr>";
                     }
                     ?>
