@@ -146,6 +146,10 @@ class Rattrapage extends BaseController
 
         $rattrapageModel = new RattrapageModel();
         $rattrapageModel->insertRattrapage($data);
+
+        $dsModel = new DsModel();
+        $dsModel->setEtat($idDs, 'PREVU');
+    
         return view('rattrapage');
     }
 }
