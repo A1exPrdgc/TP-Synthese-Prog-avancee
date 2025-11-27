@@ -27,21 +27,45 @@ class Ajout extends Controller
 
         $studentModel = new StudentsModel();
         $data['students'] = $studentModel->getPaginatedStudents( $perPage, $keyword);
+        $data['pager'] = $studentModel->pager;
 
         $semesterModel = new SemestersModel();
-        $data['semesters'] = $semesterModel->getAllSemesters();
+        $semestersData = $semesterModel->getAllSemesters();
+        $data['semesters'] = [];
+        foreach ($semestersData as $semester) {
+            $data['semesters'][$semester['code']] = $semester['code'];
+        }
 
-        $selectedSemester = $data['semesters'][0];
+        $selectedSemester = array_key_first($data['semesters']);
+        if (!$selectedSemester) {
+             $selectedSemester = ''; 
+        }
 
         $resourceModel = new RessourceModel();
-        $data['resources'] = $resourceModel->getAllResourcesBySemesters($selectedSemester);
+        $resourcesData = $resourceModel->getAllResourcesBySemesters($selectedSemester);
+        $data['resources'] = [];
+        foreach ($resourcesData as $res) {
+            $data['resources'][$res['coderessource']] = $res['nomressource'];
+        }
 
-        $selectedRessource = $data['resources'][0];
+        $selectedRessource = array_key_first($data['resources']);
+        if (!$selectedRessource) {
+            $selectedRessource = '';
+        }
 
         $teacherModel = new TeachersModel();
-        $data['teachers'] = $teacherModel->getAllTeachersByResources($selectedRessource);
+        $teachersData = $teacherModel->getAllTeachersByResources($selectedRessource);
+        $data['teachers'] = [];
+        foreach ($teachersData as $teacher) {
+            $data['teachers'][$teacher['nom']] = $teacher['nom'];
+        }
 
-        $data['types'] = ["Machine", "Papier"];
+        $data['types'] = ["Machine" => "Machine", "Papier" => "Papier"];
+
+        $data['semester'] = [$selectedSemester];
+        $data['resource'] = [$selectedRessource];
+        $data['teacher'] = [array_key_first($data['teachers']) ?? ''];
+        $data['type'] = ['Machine'];
 
         return view('ds/ajout', $data);
     }
