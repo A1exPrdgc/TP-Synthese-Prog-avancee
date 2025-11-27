@@ -89,11 +89,11 @@ class DS extends BaseController
 
         $data['keyword'] = $keyword;
 
-        $data['students'] = $this->studentModel->getPaginatedStudents($perPage, $keyword);
-        $data['pager'] = $this->studentModel->pager;
-
         $data['semesters'] = $this->dsModel->getAllSemestersForDropdown();
         $selectedSemester = array_key_first($data['semesters']) ?? '';
+
+        $data['students'] = $this->studentModel->getPaginatedStudentsBySemester($selectedSemester, $perPage, $keyword);
+        $data['pager'] = $this->studentModel->pager;
 
         $data['resources'] = $this->dsModel->getResourcesBySemesterForDropdown($selectedSemester);
         $selectedResource = array_key_first($data['resources']) ?? '';
