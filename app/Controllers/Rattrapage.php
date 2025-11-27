@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\DsModel;
 use App\Models\TeachersModel;
 use App\Models\StudentsModel;
 use App\Models\RattrapageModel;
@@ -22,7 +23,19 @@ class Rattrapage extends BaseController
 
     public function ajout($idDs)
     {
-        $data['DSInformation'] = ['codeEnseignant' => 'lb000005','idDs' => $idDs, 'semester' => 'S1', 'resource' => 'R1.05 blabla', 'teacher' => 'Legrix', 'date' => '2024-06-15', 'type' => 'MACHINE', 'duration' => 120, 'justify' => false];
+        $dsModel = new DsModel();
+        $dataArray = $dsModel->getDsWithDetails($idDs);
+        $data['DSInformation'] = [
+            'idDs' => $dataArray["id_ds"],
+            'codeEnseignant' => $dataArray["enseignant_code"], 
+            'semester' => $dataArray["semestre_code"], 
+            'resource' => $dataArray["nomressource"], 
+            'teacher' => $dataArray["enseignant_nom"], 
+            'date' => $dataArray["date_ds"], 
+            'type' => $dataArray["type_exam"], 
+            'duration' => $dataArray["duree_minutes"], 
+            'justify' => false
+        ];
 
         $session = session();
 
