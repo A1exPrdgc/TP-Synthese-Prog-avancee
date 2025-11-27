@@ -102,9 +102,21 @@ class Auth extends BaseController
 
         // "Se souvenir de moi"
         if ($remember) {
-            set_cookie('remember_code', $user['code'], 60 * 60 * 24 * 30); // 30 jours
+            setcookie(
+                'remember_code',
+                $user['code'],
+                [
+                    'expires'  => time() + (60 * 60 * 24 * 30),
+                    'path'     => '/',
+                    'domain'   => '',
+                    'secure'   => false,
+                    'httponly' => true,
+                    'samesite' => 'Lax',
+                ]
+            );
         } else {
-            delete_cookie('remember_code');
+            // Supprimer le cookie
+            setcookie('remember_code', '', time() - 3600, '/');
         }
 
         return redirect()->to(site_url('rattrapage'));
@@ -348,11 +360,9 @@ class Auth extends BaseController
      */
     public function logout()
     {
-        helper('cookie');
-
+        setcookie('remember_code', '', time() - 3600, '/');
         session()->destroy();
-        delete_cookie('remember_code');
 
-        return redirect()->to(site_url('login'));
+        return redirect()->to('/login');
     }
 }
