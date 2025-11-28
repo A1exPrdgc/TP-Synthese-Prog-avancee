@@ -218,3 +218,21 @@ main.container {
 .pagination-btn:hover:not(.active) {
     background-color: #009371;
 }
+
+.navbar-profile-img {
+    width: 40px;       
+    height: 40px;      
+    border-radius: 50%; 
+    object-fit: cover;  
+    border: 2px solid white;
+    background-color: white;
+}
+
+.btn-custom-profile {
+    padding: 0;
+    margin-left: 10px;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+}

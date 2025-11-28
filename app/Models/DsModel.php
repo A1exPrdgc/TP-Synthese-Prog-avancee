@@ -152,19 +152,54 @@ class DsModel extends Model
     public function updateEtatByRattrapageDate()
     {
         $now = date('Y-m-d');
-
-        $sql = "SELECT ds.id_ds 
-                FROM ds
-                JOIN rattrapage ON ds.id_ds = rattrapage.id_ds
-                WHERE rattrapage.date_rattrapage < ? AND ds.etat != 'TERMINE'";
-
-        $query = $this->db->query($sql, [$now]);
-        $dsList = $query->getResultArray();
-
-        foreach ($dsList as $dsRow) {
-            $this->setEtat($dsRow['id_ds'], 'TERMINE');
+    
+        // 1) DS dont le rattrapage est passé → état TERMINE
+        $sqlTermine = "SELECT ds.id_ds
+                       FROM ds
+                       JOIN rattrapage ON ds.id_ds = rattrapage.id_ds
+                       WHERE rattrapage.date_rattrapage < ?";
+    
+        $queryTermine = $this->db->query($sqlTermine, [$now]);
+        $dsTermines = $queryTermine->getResultArray();
+    
+        foreach ($dsTermines as $row) {
+            $this->setEtat($row['id_ds'], 'TERMINE');
+        }
+    
+        // 2) DS avec rattrapage futur → état PREVU
+        $sqlPrevu = "SELECT ds.id_ds
+                     FROM ds
+                     JOIN rattrapage ON ds.id_ds = rattrapage.id_ds
+                     WHERE rattrapage.date_rattrapage >= ?";
+    
+        $queryPrevu = $this->db->query($sqlPrevu, [$now]);
+        $dsPrevus = $queryPrevu->getResultArray();
+    
+        foreach ($dsPrevus as $row) {
+            $this->setEtat($row['id_ds'], 'PREVU');
         }
     }
 
 
+    /**
+     * Vérifie et corrige les DS sans absences qui ne sont pas en état REFUSE
+     */
+    public function updateEtatByAbsences()
+    {
+        $sql = "SELECT ds.id_ds
+                FROM ds 
+                LEFT JOIN absence ON absence.id_ds = ds.id_ds
+                WHERE ds.etat != 'REFUSE' 
+                AND ds.etat IS NOT NULL
+                GROUP BY ds.id_ds 
+                HAVING COUNT(absence.id_ds) = 0";
+    
+        $query = $this->db->query($sql);
+        $dsSansAbsences = $query->getResultArray();
+    
+        foreach ($dsSansAbsences as $row) {
+            $this->setEtat($row['id_ds'], 'REFUSE');
+        }
+    }
+    
 }

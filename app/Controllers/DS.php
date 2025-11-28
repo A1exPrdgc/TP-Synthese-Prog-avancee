@@ -38,6 +38,7 @@ class DS extends BaseController
      */
     public function index()
     {
+        $this->dsModel->updateEtatByAbsences();
         $this->dsModel->updateEtatByRattrapageDate();
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
         
@@ -182,6 +183,10 @@ class DS extends BaseController
             $isJustified = isset($justifies[$studentCode]) ? 1 : 0;
             $this->absentModel->markAbsent($dsId, $studentCode, $isJustified);
         }
+
+        // Définir l'état selon le nombre d'absents
+        $etatInitial = (count($absents) === 0) ? 'REFUSE' : 'EN ATTENTE';
+        $this->dsModel->setEtat($dsId, $etatInitial);
 
         return redirect()->to('DS/detail/' . $dsId)->with('success', 'DS ajouté avec succès');
     }

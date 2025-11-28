@@ -49,10 +49,6 @@
                 </div>
             </div>
 
-            <div class="compte-left-labels">
-                <p class="compte-label">Email</p>
-                <p class="compte-label">Identifiant</p>
-            </div>
         </div>
 
         <div class="compte-separator"></div>

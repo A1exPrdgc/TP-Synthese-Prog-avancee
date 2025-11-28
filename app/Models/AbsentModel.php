@@ -8,7 +8,7 @@ class AbsentModel extends Model
 {
     protected $table = 'absence';
     protected $primaryKey = ['id_ds', 'code'];
-    protected $allowedFields = ['id_ds', 'code', 'absencejustifie'];
+    protected $allowedFields = ['id_ds', 'code', 'absencejustifie', 'rattrape'];
 
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
@@ -88,5 +88,13 @@ class AbsentModel extends Model
         return $this->where('id_ds', $idDs)
                     ->where('absencejustifie', 1)
                     ->countAllResults();
+    }
+
+    public function markForMakeup(int $idDs, string $codeEtudiant, int $rattrape = 1): bool
+    {
+        return $this->where('id_ds', $idDs)
+                    ->where('code', $codeEtudiant)
+                    ->set('rattrape', $rattrape)
+                    ->update();
     }
 }
