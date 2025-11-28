@@ -39,11 +39,19 @@
                 
                 <a class="btn btn-custom-profile" href="<?= base_url('profil') ?>">
                     <?php 
-                        // On récupère la photo en session, sinon on met l'image par défaut
-                        $sessionPhoto = session()->get('photo');
-                        $photoUrl = !empty($sessionPhoto) ? base_url($sessionPhoto) : 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png';
+                        $photoUrl = session()->get('photo');
+                        if (empty($photoUrl) && session()->get('connected')) {
+                            $model = new \App\Models\TeachersModel();
+                            $user = $model->find(session()->get('code'));
+                            
+                            if (!empty($user['photo'])) {
+                                $photoUrl = $user['photo'];
+                                session()->set('photo', $photoUrl);
+                            }
+                        }
+                        $finalUrl = !empty($photoUrl) ? base_url($photoUrl) : 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png';
                     ?>
-                    <img class="navbar-profile-img" src="<?= $photoUrl ?>" alt="Profil"/>
+                    <img class="navbar-profile-img" src="<?= $finalUrl ?>" alt="Profil"/>
                 </a>
             </div>
                 
