@@ -199,9 +199,26 @@ class DS extends BaseController
      */
     public function refuserRattrapage($id)
     {
-        // TODO: Implémenter le refus de rattrapage
-        return redirect()->to('DS/detail/' . $id)->with('error', 'Rattrapage refusé');
+        if (!$id) {
+            return redirect()->to('DS')->with('error', 'ID du DS non spécifié');
+        }
+    
+        // Vérifier que le DS existe
+        $ds = $this->dsModel->find($id);
+        if (!$ds) {
+            return redirect()->to('DS')->with('error', 'DS non trouvé');
+        }
+    
+        // Mettre à jour l'état à REFUSE
+        $result = $this->dsModel->setEtat($id, 'REFUSE');
+    
+        if ($result) {
+            return redirect()->to('DS')->with('success', 'Rattrapage refusé avec succès. État du DS mis à jour.');
+        } else {
+            return redirect()->to('DS')->with('error', 'Erreur lors du refus du rattrapage.');
+        }
     }
+
 
     /**
      * API: Récupérer les ressources par semestre

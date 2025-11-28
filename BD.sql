@@ -42,8 +42,7 @@ CREATE TABLE personne (
     code   VARCHAR(10) PRIMARY KEY,
     nom    VARCHAR(50) NOT NULL,
     prenom VARCHAR(50) NOT NULL,
-    email  VARCHAR(100) UNIQUE,
-    photo  TEXT
+    email  VARCHAR(100) UNIQUE
 );
 
 CREATE TABLE enseignant (
@@ -61,8 +60,6 @@ CREATE TABLE etudiant (
     FOREIGN KEY (id_semestre)
     REFERENCES semestre(id_semestre)
     ON DELETE CASCADE,
-
-    PRIMARY KEY (code)
 ) INHERITS (personne);
 
 -- Semestre

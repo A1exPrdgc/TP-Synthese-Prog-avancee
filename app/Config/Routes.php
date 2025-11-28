@@ -21,6 +21,9 @@ $routes->get('login', 'Login::index');
 $routes->get('profil', 'Profil::index');
 $routes->post('profil', 'Profil::update');
 
+$routes->get('profil/edit', 'Profil::edit');
+$routes->post('profil/update', 'Profil::update');
+
 // Mot de passe oublié
 $routes->get('forgot-password', 'Auth::forgotPassword');
 $routes->post('forgot-password', 'Auth::doForgotPassword');

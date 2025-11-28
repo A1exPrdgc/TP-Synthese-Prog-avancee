@@ -121,7 +121,7 @@ MySGRDS | Visionner DS
     <!-- Boutons d'action -->
     <?php if ($role === 'ENS'): ?>
         <div class="action-buttons">
-            <a href="<?= base_url('DS') ?>" class="btn-action btn-refuse">
+            <a href="<?= base_url('DS/refuserRattrapage/' . $ds['id_ds']) ?>" class="btn-action btn-refuse">
                 <span class="btn-icon">✕</span> Refuser le rattrapage
             </a>
             <a href="<?= base_url('Rattrapage/Ajout/' . $ds['id_ds']) ?>" class="btn-action btn-validate">
@@ -142,24 +142,5 @@ MySGRDS | Visionner DS
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<script>
-function filterStudents() {
-    const searchInput = document.getElementById('student-search').value.toLowerCase();
-    const tbody = document.querySelector('.students-table tbody');
-    const rows = tbody.getElementsByTagName('tr');
-    
-    for (let i = 0; i < rows.length; i++) {
-        const row = rows[i];
-        if (row.classList.contains('empty-row')) continue;
-        
-        const text = row.textContent.toLowerCase();
-        
-        if (text.includes(searchInput)) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    }
-}
-</script>
+<script src="<?= base_url('js/ds-detail.js') ?>"></script>
 <?= $this->endSection() ?>
