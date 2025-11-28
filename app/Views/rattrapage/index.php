@@ -103,7 +103,7 @@ MySGRDS | Rattrapage
                                         $etatClass = 'etat-prevu';
                                         break;
                                     case 'REFUSE':
-                                        $etatTexte = 'Refusé';
+                                        $etatTexte = 'Annulé';
                                         $etatClass = 'etat-refuse';
                                         break;
                                     case 'TERMINE':
