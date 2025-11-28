@@ -117,16 +117,19 @@ MySGRDS | Visionner Rattrapage
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
-                        <?php endif; ?>
-                        
-                        <?php for ($i = count($students ?? []); $i < 10; $i++): ?>
-                            <tr class="empty-row">
-                                <?php for ($j = 0; $j < count($students[0]); $j++): ?>
-                                    <td></td>
-                                <?php endfor; ?>
+                            <?php for ($i = count($students ?? []); $i < 10; $i++): ?>
+                                <tr class="empty-row">
+                                    <?php for ($j = 0; $j < 6; $j++): ?>
+                                        <td></td>
+                                    <?php endfor; ?>
+                                </tr>
+                            <?php endfor; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="7" class="no-data">Aucun élève trouvé</td>
                             </tr>
-                        <?php endfor; ?>
-                                    
+                        <?php endif; ?>
+                            
                     </tbody>
                 </table>
 
