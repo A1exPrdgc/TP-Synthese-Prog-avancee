@@ -248,6 +248,13 @@ class Rattrapage extends BaseController
             return redirect()->to('Rattrapage')->with('error', 'Rattrapage non trouvé');
         }
 
+        $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
+        $keyword = $this->request->getGet('keyword') ?? '';
+
+        // Récupérer les étudiants absents du DS associé
+        $data['students'] = $this->studentModel->getPaginatedStudentsByDSiD($rattrapage['id_ds'], $perPage, $keyword);
+        $data['pager'] = $this->studentModel->pager;
+        $data['keyword'] = $keyword;
         $data['rattrapage'] = $rattrapage;
         $data['types'] = ['MACHINE' => 'Machine', 'ORAL' => 'Oral', 'PAPIER' => 'Papier'];
         $data['validation'] = \Config\Services::validation();

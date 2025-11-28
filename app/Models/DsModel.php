@@ -118,6 +118,15 @@ class DsModel extends Model
     }
 
     /**
+     * Met à jour un DS
+     */
+    public function updateDs(int $id, array $data)
+    {
+        $result = $this->update($id, $data);
+        return $result !== false;
+    }
+
+    /**
      * Formate la durée en HH:MM
      */
     private function formatDuree(int $minutes): string

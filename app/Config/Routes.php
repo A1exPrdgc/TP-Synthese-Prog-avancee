@@ -36,6 +36,8 @@ $routes->get('DS', 'DS::index');
 $routes->get('DS/ajout', 'DS::ajout');
 $routes->post('DS/save', 'DS::save');
 $routes->get('DS/detail/(:num)', 'DS::detail/$1');
+$routes->get('DS/modifier/(:num)', 'DS::modifier/$1');
+$routes->post('DS/update/(:num)', 'DS::update/$1');
 $routes->get('DS/validerRattrapage/(:num)', 'DS::validerRattrapage/$1');
 $routes->get('DS/refuserRattrapage/(:num)', 'DS::refuserRattrapage/$1');
 $routes->get('DS/getResourcesBySemester', 'DS::getResourcesBySemester');
