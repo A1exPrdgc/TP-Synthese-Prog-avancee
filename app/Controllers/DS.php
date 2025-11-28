@@ -255,7 +255,7 @@ class DS extends BaseController
             return redirect()->to('ds/detail/' . $id)->with('error', 'Accès non autorisé');
         }
 
-        $ds = $this->dsModel->find($id);
+        $ds = $this->dsModel->getDsWithDetails($id);
 
         if (!$ds) {
             return redirect()->to('DS')->with('error', 'DS non trouvé');
@@ -316,6 +316,22 @@ class DS extends BaseController
         // Mettre à jour l'état du DS
         $etatInitial = (count($absents) === 0) ? 'REFUSE' : 'EN ATTENTE';
         $this->dsModel->setEtat($id, $etatInitial);
+
+        $message ="<p>Bonjour " . $ds['enseignant_nom'] . ",</p>"
+            . "<p>Le DS prévu le " . $ds['date_ds'] . " a été modifié.</p>"
+            . "<p><b>Nouveaux détails de l'examen :</b><br>"
+            . "Date : " . $post['date'] . "<br>"
+            . "Type : " . $post['type'] . "<br>"
+            . "Durée : " . $dureeMinutes . " minutes</p>"
+            . "<p>Les participants aux rattrapages sont :</p><br>";
+        foreach ($absents as $studentCode => $value) {
+            $message .= "<p> - " . $this->studentModel->getNameByCode($studentCode) . "</p><br>";
+        }
+        $message .= "<p>Cordialement,<br>L'équipe MYSGRDS.</p>";
+
+        $this->emailController->sendMail(
+            $this->teacherModel->getEmailByCode($ds['enseignant_code']),
+            'DS Modifié',$message);
 
         return redirect()->to('ds/detail/' . $id)->with('success', 'DS modifié avec succès');
     }

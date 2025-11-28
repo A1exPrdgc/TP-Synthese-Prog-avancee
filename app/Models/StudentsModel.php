@@ -268,4 +268,10 @@ public function getAbsentStudentsForDs(int $idDs, int $perPage, ?string $keyword
 
         return $results;
     }
+
+    public function getNameByCode(string $code): ?string
+    {
+        $student = $this->where('code', $code)->first();
+        return $student ? $student['nom'] . ' ' . $student['prenom'] : null;
+    }
 }
