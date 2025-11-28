@@ -7,6 +7,7 @@ Modifier Rattrapage
 
 <?= $this->section('styles') ?>
 <link href="<?= base_url('assets/css/ds-ajout.css') ?>" rel="stylesheet" />
+<link href="<?= base_url('assets/css/ds-detail.css') ?>" rel="stylesheet" />
 <style>
 .form-group-row {
     display: flex;

@@ -22,7 +22,6 @@ MySGRDS | Rattrapage
         
         <div class="filters-row">
             <div class="search-box">
-                <span class="search-icon">🔍</span>
                 <input type="text" name="keyword" placeholder="Rechercher" value="<?= esc($filters['keyword'] ?? '') ?>">
             </div>
             
@@ -35,21 +34,21 @@ MySGRDS | Rattrapage
         <div class="filters-row">
             <div class="dropdown-filters">
                 <select name="resource" class="filter-select">
-                    <option value="">▼Ressource</option>
+                    <option value="">Ressource</option>
                     <?php foreach ($resources as $code => $nom): ?>
                         <option value="<?= esc($code) ?>" <?= ($filters['resource'] ?? '') === $code ? 'selected' : '' ?>><?= esc($nom) ?></option>
                     <?php endforeach; ?>
                 </select>
                 
                 <select name="semester" class="filter-select">
-                    <option value="">▼Semestre</option>
+                    <option value="">Semestre</option>
                     <?php foreach ($semesters as $code => $label): ?>
                         <option value="<?= esc($code) ?>" <?= ($filters['semester'] ?? '') === $code ? 'selected' : '' ?>><?= esc($label) ?></option>
                     <?php endforeach; ?>
                 </select>
                 
                 <select name="teacher" class="filter-select">
-                    <option value="">▼Enseignant</option>
+                    <option value="">Enseignant</option>
                     <?php foreach ($teachers as $nom => $fullname): ?>
                         <option value="<?= esc($nom) ?>" <?= ($filters['teacher'] ?? '') === $nom ? 'selected' : '' ?>><?= esc($fullname) ?></option>
                     <?php endforeach; ?>
@@ -135,15 +134,6 @@ MySGRDS | Rattrapage
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<script>
-document.querySelectorAll('.ds-table tbody tr:not(.empty-row)').forEach(row => {
-    row.addEventListener('mouseenter', function() {
-        this.style.backgroundColor = '#e8f5e9';
-    });
-    row.addEventListener('mouseleave', function() {
-        this.style.backgroundColor = '';
-    });
-});
-</script>
+<script src="<?= base_url('js/rattrapage-index.js') ?>"></script>
 <?= $this->endSection() ?>
 
