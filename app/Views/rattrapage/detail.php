@@ -126,7 +126,6 @@ MySGRDS | Visionner Rattrapage
                                 <?php endfor; ?>
                             </tr>
                         <?php endfor; ?>
-                                    
                     </tbody>
                 </table>
 

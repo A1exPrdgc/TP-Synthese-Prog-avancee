@@ -125,6 +125,47 @@ class StudentsModel extends Model
         return $results;
     }
 
+
+/**
+ * Récupère uniquement les étudiants absents pour un DS spécifique
+ */
+public function getAbsentStudentsForDs(int $idDs, int $perPage, ?string $keyword = null): array
+{
+    $this->select('
+        etudiant.code as id, 
+        etudiant.nom, 
+        etudiant.prenom, 
+        etudiant.classe,
+        1 as absent,
+        COALESCE(a.absencejustifie, 0) as justifie
+    ');
+
+    // Jointure obligatoire, car on ne veut que les absents
+    $this->join('absence a', 'etudiant.code = a.code AND a.id_ds = ' . $idDs, 'inner');
+
+    if ($keyword) {
+        $this->groupStart()
+            ->like('etudiant.nom', $keyword)
+            ->orLike('etudiant.prenom', $keyword)
+            ->orLike('etudiant.classe', $keyword)
+            ->groupEnd();
+    }
+
+    $this->orderBy('etudiant.nom', 'ASC');
+    $this->orderBy('etudiant.prenom', 'ASC');
+
+    $results = $this->paginate($perPage, 'default');
+
+    foreach ($results as &$row) {
+        $row['absent'] = true; // obligatoirement absent
+        $row['justifie'] = (bool) $row['justifie'];
+    }
+
+    return $results;
+}
+
+
+
     /**
      * Récupère les étudiants par semestre pour AJAX
      */
