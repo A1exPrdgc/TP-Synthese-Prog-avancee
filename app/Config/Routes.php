@@ -52,3 +52,5 @@ $routes->post('Rattrapage/save/(:num)', 'Rattrapage::save/$1');
 $routes->get('Rattrapage/detail/(:num)', 'Rattrapage::detail/$1');
 $routes->get('Rattrapage/modifier/(:num)', 'Rattrapage::modifier/$1');
 $routes->post('Rattrapage/update/(:num)', 'Rattrapage::update/$1');
+$routes->get('Rattrapage/refuser/(:num)', 'Rattrapage::refuser/$1');
+

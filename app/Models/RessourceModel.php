@@ -14,12 +14,12 @@ class RessourceModel extends Model
     protected $useSoftDeletes = false;
     protected $useTimestamps = false;
 
-    public function getAllResourcesBySemesters($semesterId)
+    public function getAllResourcesBySemesters($semesterCode)
     {
         return $this->select('ressource.coderessource, ressource.nomressource')
                     ->join('ds d', 'd.coderessource = ressource.coderessource')
                     ->join('semestre s', 's.id_semestre = d.id_semestre')
-                    ->where('s.code', $semesterId)
+                    ->where('s.code', $semesterCode)
                     ->findAll();
     }
 

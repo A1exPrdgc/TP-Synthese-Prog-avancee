@@ -96,8 +96,29 @@ MySGRDS | Rattrapage
                             <td><?= esc($rattrapage['salle']) ?></td>
                             <td><?= esc(ucfirst(strtolower($rattrapage['type_exam']))) ?></td>
                             <td>
-                                <span class="etat-badge <?= $rattrapage['etat'] === 'EN ATTENTE' ? 'etat-rattraper' : 'etat-termine' ?>">
-                                    <?= esc(strtolower($rattrapage['etat'])) ?>
+                                <?php
+                                switch ($rattrapage['etat']) {
+                                    case 'PREVU':
+                                        $etatTexte = 'Prévu';
+                                        $etatClass = 'etat-prevu';
+                                        break;
+                                    case 'REFUSE':
+                                        $etatTexte = 'Refusé';
+                                        $etatClass = 'etat-refuse';
+                                        break;
+                                    case 'TERMINE':
+                                        $etatTexte = 'Terminé';
+                                        $etatClass = 'etat-termine';
+                                        break;
+                                    case 'EN ATTENTE':
+                                    default:
+                                        $etatTexte = 'En attente';
+                                        $etatClass = 'etat-en-attente';
+                                        break;
+                                }
+                                ?>
+                                <span class="etat-badge <?= $etatClass ?>">
+                                    <?= esc($etatTexte) ?>
                                 </span>
                             </td>
                         </tr>

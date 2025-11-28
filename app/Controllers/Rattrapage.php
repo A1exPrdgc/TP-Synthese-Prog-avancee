@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AbsentModel;
 use App\Models\DsModel;
 use App\Models\TeachersModel;
 use App\Models\StudentsModel;
@@ -18,6 +19,7 @@ class Rattrapage extends BaseController
     protected $studentModel;
     protected $semesterModel;
     protected $resourceModel;
+    protected $absenceModel;
 
     public function __construct()
     {
@@ -29,6 +31,7 @@ class Rattrapage extends BaseController
         $this->studentModel = new StudentsModel();
         $this->semesterModel = new SemestersModel();
         $this->resourceModel = new RessourceModel();
+        $this->absenceModel = new AbsentModel();
         
         session()->set('role', $this->teacherModel->getRole());
     }
@@ -38,6 +41,9 @@ class Rattrapage extends BaseController
      */
     public function index()
     {
+
+        $this->rattrapageModel->updateEtatByDate();
+
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
         
         $filters = [
@@ -169,11 +175,17 @@ class Rattrapage extends BaseController
             'date_rattrapage' => $informations['date'],
             'duree_minutes' => $duration,
             'heure_debut' => $informations['hour'],
-            'etat' => 'EN ATTENTE',
+            'etat' => 'PREVU',
             'mail_envoye' => 0,
             'type_exam' => $informations['type'],
             'salle' => $informations['room']
         ];
+
+        foreach ($students as $student) {
+            $codeEtudiant = $student['id'];
+            $justified = ($post['justify'][$codeEtudiant] === 'on') ? 1 : 0;
+            $this->absenceModel->markForMakeup((int) $idDs, $codeEtudiant, $justified);
+        }
 
         $rattrapageModel = new RattrapageModel();
 
@@ -188,6 +200,23 @@ class Rattrapage extends BaseController
 
         return redirect()->to('Rattrapage')->with('success', 'Rattrapage ajouté avec succès');
     
+    }
+
+    //A appler quand on annule un rattrapage
+    public function refuser($id)
+    {
+        if (!$id) {
+            return redirect()->to('Rattrapage')->with('error', 'ID du rattrapage non spécifié');
+        }
+
+        $rattrapage = $this->rattrapageModel->find($id);
+        if (!$rattrapage) {
+            return redirect()->to('Rattrapage')->with('error', 'Rattrapage non trouvé');
+        }
+
+        $this->rattrapageModel->updateEtat($id, 'REFUSE');
+
+        return redirect()->to('Rattrapage')->with('success', 'Rattrapage annulé avec succès.');
     }
     /**
      * Détail d'un rattrapage
@@ -204,7 +233,7 @@ class Rattrapage extends BaseController
         $keyword = $this->request->getGet('keyword') ?? '';
 
         // Récupérer les étudiants absents du DS associé
-        $data['students'] = $this->studentModel->getPaginatedStudentsByDSiD($rattrapage['id_ds'], $perPage, $keyword);
+        $data['students'] = $this->studentModel->getPaginatedAbsentStudentsAndRattrapeByDSiD($rattrapage['id_ds'], $perPage, $keyword);
         $data['pager'] = $this->studentModel->pager;
         $data['keyword'] = $keyword;
         $data['rattrapage'] = $rattrapage;
@@ -231,6 +260,7 @@ class Rattrapage extends BaseController
         $data['rattrapage'] = $rattrapage;
         $data['types'] = ['MACHINE' => 'Machine', 'ORAL' => 'Oral', 'PAPIER' => 'Papier'];
         $data['validation'] = \Config\Services::validation();
+
 
         return view('rattrapage/modifier', $data);
     }
@@ -259,6 +289,8 @@ class Rattrapage extends BaseController
             'room' => 'required|alpha_numeric|max_length[3]|min_length[3]'
         ];
 
+        $this->rattrapageModel->updateEtat($id, 'PREVU');
+
         if (!$this->validate($rules)) {
             $rattrapageDetails = $this->rattrapageModel->getRattrapageWithDetails($id);
             $data['rattrapage'] = $rattrapageDetails;
@@ -280,7 +312,8 @@ class Rattrapage extends BaseController
             'date_rattrapage' => $post['date'],
             'duree_minutes' => $dureeMinutes,
             'heure_debut' => $post['hour'],
-            'salle' => $post['room']
+            'salle' => $post['room'],
+            'type_exam' => $post['type']
         ];
 
         $success = $this->rattrapageModel->updateRattrapage($id, $rattrapageData);

@@ -152,4 +152,38 @@ class StudentsModel extends Model
 
         return $this->findAll();
     }
+
+    public function getPaginatedAbsentStudentsAndRattrapeByDSiD(int $ds_id, int $perPage, ?string $keyword = null) 
+    {
+        $this->select('
+            etudiant.code as id, 
+            etudiant.nom, 
+            etudiant.prenom, 
+            etudiant.classe,
+            1 as absent,
+            COALESCE(a.absenceJustifie, 0) as justifie
+        ')
+        ->join('absence a', 'etudiant.code = a.code')
+        ->where('a.id_ds', $ds_id)
+        ->where('a.rattrape', 1);
+
+        if ($keyword) {
+            $this->groupStart()
+                 ->like('etudiant.nom', $keyword)
+                 ->orLike('etudiant.prenom', $keyword)
+                 ->orLike('etudiant.classe', $keyword)
+                 ->groupEnd();
+        }
+
+        $this->orderBy('etudiant.nom', 'asc');
+
+        $results = $this->paginate($perPage, 'default');
+
+        foreach ($results as &$row) {
+            $row['absent'] = (bool) $row['absent'];
+            $row['justifie'] = (bool) $row['justifie'];
+        }
+
+        return $results;
+    }
 }
