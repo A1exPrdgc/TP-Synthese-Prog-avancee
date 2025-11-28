@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AbsentModel;
 use App\Models\DsModel;
 use App\Models\TeachersModel;
 use App\Models\StudentsModel;
@@ -18,6 +19,7 @@ class Rattrapage extends BaseController
     protected $studentModel;
     protected $semesterModel;
     protected $resourceModel;
+    protected $absenceModel;
 
     public function __construct()
     {
@@ -29,6 +31,7 @@ class Rattrapage extends BaseController
         $this->studentModel = new StudentsModel();
         $this->semesterModel = new SemestersModel();
         $this->resourceModel = new RessourceModel();
+        $this->absenceModel = new AbsentModel();
         
         session()->set('role', $this->teacherModel->getRole());
     }
@@ -175,6 +178,12 @@ class Rattrapage extends BaseController
             'salle' => $informations['room']
         ];
 
+        foreach ($students as $student) {
+            $codeEtudiant = $student['id'];
+            $justified = ($post['justify'][$codeEtudiant] === 'on') ? 1 : 0;
+            $this->absenceModel->markForMakeup((int) $idDs, $codeEtudiant, $justified);
+        }
+
         $rattrapageModel = new RattrapageModel();
 
         $dsModel = new DsModel();
@@ -204,7 +213,7 @@ class Rattrapage extends BaseController
         $keyword = $this->request->getGet('keyword') ?? '';
 
         // Récupérer les étudiants absents du DS associé
-        $data['students'] = $this->studentModel->getPaginatedStudentsByDSiD($rattrapage['id_ds'], $perPage, $keyword);
+        $data['students'] = $this->studentModel->getPaginatedAbsentStudentsAndRattrapeByDSiD($rattrapage['id_ds'], $perPage, $keyword);
         $data['pager'] = $this->studentModel->pager;
         $data['keyword'] = $keyword;
         $data['rattrapage'] = $rattrapage;
