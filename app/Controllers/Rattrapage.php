@@ -300,7 +300,8 @@ class Rattrapage extends BaseController
             'date_rattrapage' => $post['date'],
             'duree_minutes' => $dureeMinutes,
             'heure_debut' => $post['hour'],
-            'salle' => $post['room']
+            'salle' => $post['room'],
+            'type_exam' => $post['type']
         ];
 
         $success = $this->rattrapageModel->updateRattrapage($id, $rattrapageData);
