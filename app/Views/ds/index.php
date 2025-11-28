@@ -141,5 +141,5 @@ MySGRDS | DS
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<script src="<?= base_url('js/ds-index.js') ?>"></script>
+<script src="<?= base_url('assets/js/ds-index.js') ?>"></script>
 <?= $this->endSection() ?>

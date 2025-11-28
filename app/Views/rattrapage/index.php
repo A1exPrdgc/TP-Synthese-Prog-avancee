@@ -153,6 +153,6 @@ MySGRDS | Rattrapage
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<script src="<?= base_url('js/rattrapage-index.js') ?>"></script>
+<script src="<?= base_url('assets/js/rattrapage-index.js') ?>"></script>
 <?= $this->endSection() ?>
 

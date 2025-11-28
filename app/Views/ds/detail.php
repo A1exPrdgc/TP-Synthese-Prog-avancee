@@ -149,5 +149,5 @@ MySGRDS | Visionner DS
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<script src="<?= base_url('js/ds-detail.js') ?>"></script>
+<script src="<?= base_url('assets/js/ds-detail.js') ?>"></script>
 <?= $this->endSection() ?>

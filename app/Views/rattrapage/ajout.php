@@ -201,5 +201,5 @@ MySGRDS | Ajouter Rattrapage
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<script src="<?= base_url('js/rattrapage-ajout.js') ?>"></script>
+<script src="<?= base_url('assets/js/rattrapage-ajout.js') ?>"></script>
 <?= $this->endSection() ?>
