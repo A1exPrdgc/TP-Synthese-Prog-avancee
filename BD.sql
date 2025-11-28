@@ -83,7 +83,7 @@ CREATE TABLE ds (
     type_exam     type_exam NOT NULL,
     codeRessource VARCHAR(10) NOT NULL,
     codeEnseignant VARCHAR(10) NOT NULL,
-    etat          etat NOT NULL DEFAULT 'PREVU',
+    etat          etat NOT NULL DEFAULT 'EN ATTENTE',
 
     FOREIGN KEY (codeRessource)
         REFERENCES ressource(codeRessource)
