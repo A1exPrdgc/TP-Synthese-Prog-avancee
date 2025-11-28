@@ -18,7 +18,7 @@ MySGRDS | Rattrapage
 <div class="ds-index-container">
     <!-- Section Filtres -->
     <div class="filters-section">
-        <?php echo form_open('Rattrapage', ['method' => 'get', 'class' => 'filters-form']); ?>
+        <?php echo form_open('rattrapage', ['method' => 'get', 'class' => 'filters-form']); ?>
         
         <div class="filters-row">
             <div class="search-box">
@@ -61,7 +61,7 @@ MySGRDS | Rattrapage
             </div>
             
             <div class="filter-buttons">
-                <a href="<?= base_url('Rattrapage') ?>" class="btn-filter btn-reset">Retirer les filtres</a>
+                <a href="<?= base_url('rattrapage') ?>" class="btn-filter btn-reset">Retirer les filtres</a>
                 <button type="submit" class="btn-filter btn-search">Rechercher</button>
             </div>
         </div>
@@ -87,7 +87,7 @@ MySGRDS | Rattrapage
             <tbody>
                 <?php if (!empty($rattrapagesList)): ?>
                     <?php foreach ($rattrapagesList as $rattrapage): ?>
-                        <tr onclick="window.location='<?= base_url('Rattrapage/detail/' . $rattrapage['id_rattrapage']) ?>'" style="cursor: pointer;">
+                        <tr onclick="window.location='<?= base_url('rattrapage/detail/' . $rattrapage['id_rattrapage']) ?>'" style="cursor: pointer;">
                             <td><?= esc($rattrapage['coderessource']) ?></td>
                             <td><?= esc(strtoupper($rattrapage['enseignant_nom']) . ' ' . ucfirst($rattrapage['enseignant_prenom'])) ?></td>
                             <td><?= esc(date('d/m/Y', strtotime($rattrapage['date_rattrapage']))) ?></td>

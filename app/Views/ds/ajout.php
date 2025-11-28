@@ -16,7 +16,7 @@ MySGRDS | Ajout d'un DS
 <?= $this->section('content') ?>
 
 <div class="ds-ajout-container">
-    <?php echo form_open('DS/save'); ?>
+    <?php echo form_open('ds/sauvegarder'); ?>
     
     <div class="ds-ajout-layout">
         <!-- Colonne gauche: Évaluation -->

@@ -18,8 +18,8 @@
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <a class="btn btn-square me-2" href=""><span class="arrow-left">&#8592;</span></a>
-                <a class="btn btn-custom me-2" href="<?= base_url('Rattrapage') ?>">Rattrapage</a>
-                <a class="btn btn-custom me-2" href="<?= base_url('DS') ?>">DS</a>
+                <a class="btn btn-custom me-2" href="<?= base_url('rattrapage') ?>">Rattrapage</a>
+                <a class="btn btn-custom me-2" href="<?= base_url('ds') ?>">DS</a>
             </div>
             <div class="navbar-title">
                 <?= $this->renderSection('navbarTitle') ?>
@@ -30,10 +30,10 @@
             ?>
             <div class="d-flex align-items-center">
                 <?php if ($pageType === 'rattrapage' && $role === 'ENS'):   ?>
-                    <a class="btn btn-custom me-2" href="<?= base_url('Rattrapage/Ajout') ?>">+ Ajouter</a>
+                    <a class="btn btn-custom me-2" href="<?= base_url('rattrapage/ajouter') ?>">+ Ajouter</a>
                 <?php endif; ?>
                 <?php if ($pageType === 'ds' && $role == 'DE'): ?>
-                    <a class="btn btn-custom me-2" href="<?= base_url('DS/ajout') ?>">+ Ajouter</a>
+                    <a class="btn btn-custom me-2" href="<?= base_url('ds/ajouter') ?>">+ Ajouter</a>
                 <?php endif; ?>
                 
                 <a class="btn btn-custom-profile" href="<?= base_url('profil') ?>">

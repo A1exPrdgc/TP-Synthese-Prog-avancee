@@ -26,7 +26,7 @@ MySGRDS | Modifier Rattrapage
 <?= $this->section('content') ?>
 
 <div class="ds-ajout-container">
-    <?php echo form_open('Rattrapage/update/' . $rattrapage['id_rattrapage']); ?>
+    <?php echo form_open('rattrapage/modifier/' . $rattrapage['id_rattrapage']); ?>
     
     <div class="ds-ajout-layout">
         <!-- Colonne gauche: Évaluation -->
@@ -173,10 +173,10 @@ MySGRDS | Modifier Rattrapage
     <!-- Boutons -->
     <div class="action-buttons" style="justify-content: space-between;">
         <div style="display: flex; gap: 10px;">
-            <a href="<?= base_url('Rattrapage/detail/' . $rattrapage['id_rattrapage']) ?>" class="btn-action btn-refuse" style="background-color: #6c757d; box-shadow: -4px -4px 0 #495057;">
+            <a href="<?= base_url('rattrapage/detail/' . $rattrapage['id_rattrapage']) ?>" class="btn-action btn-refuse" style="background-color: #6c757d; box-shadow: -4px -4px 0 #495057;">
                 <span class="btn-icon">←</span> Annuler
             </a>
-            <a href="<?= base_url('Rattrapage/refuser/' . $rattrapage['id_rattrapage']) ?>" 
+            <a href="<?= base_url('rattrapage/refuser/' . $rattrapage['id_rattrapage']) ?>" 
                class="btn-action btn-refuse" 
                style="background-color: #dc3545; box-shadow: -4px -4px 0 #c82333;"
                onclick="return confirm('Êtes-vous sûr de vouloir annuler ce rattrapage ?');">

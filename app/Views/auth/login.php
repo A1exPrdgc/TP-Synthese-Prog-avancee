@@ -21,7 +21,7 @@
     <?php endif; ?>
 
     <?php helper('form'); ?>
-    <?= form_open('login'); ?>
+    <?= form_open('connecter'); ?>
         <table>
             <tr>
                 <th>
@@ -51,7 +51,7 @@
 
             <tr>
                 <td colspan="2" style="text-align: left;">
-                    <a href="<?= site_url('forgot-password') ?>">Mot de passe oublié</a>
+                    <a href="<?= site_url('mot-de-passe-oublie') ?>">Mot de passe oublié</a>
                 </td>
             </tr>
 
@@ -77,7 +77,7 @@
 
     <div class="links">
         <p>Pas encore de compte ?</p>
-        <a href="<?= site_url('signin') ?>">Créer un compte</a>
+        <a href="<?= site_url('inscription') ?>">Créer un compte</a>
     </div>
 </div>
 

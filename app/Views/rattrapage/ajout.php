@@ -16,7 +16,7 @@ MySGRDS | Ajouter Rattrapage
 <?= $this->section('content') ?>
 
 <div class="ds-ajout-container">
-    <?php echo form_open('Rattrapage/save/' . $DSInformation['idDs']); ?>
+    <?php echo form_open('rattrapage/sauvegarder/' . $DSInformation['idDs']); ?>
     <?php echo form_hidden('codeEnseignant', $DSInformation['codeEnseignant']); ?>
     
     <div class="ds-ajout-layout">

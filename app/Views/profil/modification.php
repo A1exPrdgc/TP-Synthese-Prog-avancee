@@ -24,7 +24,7 @@
     
     <?= validation_list_errors() ?>
 
-    <?= form_open_multipart('profil/update', ['class' => 'form-modification']) ?>
+    <?= form_open_multipart('profil/mettre-a-jour', ['class' => 'form-modification']) ?>
 
     <div class="compte-layout">
         
