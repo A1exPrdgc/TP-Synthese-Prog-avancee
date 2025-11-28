@@ -121,18 +121,15 @@ MySGRDS | DS
                     </tr>
                 <?php endif; ?>
 
-                <!-- Lignes vides pour maintenir la structure -->
-                <?php for ($i = count($dsList ?? []); $i < 8; $i++): ?>
+                <?php for ($i = count($dsList ?? []); $i < 10; $i++): ?>
                     <tr class="empty-row">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <?php for ($j = 0; $j < 7; $j++): ?>
+                            <td></td>
+                        <?php endfor; ?>
                     </tr>
                 <?php endfor; ?>
+
+
             </tbody>
         </table>
     </div>
