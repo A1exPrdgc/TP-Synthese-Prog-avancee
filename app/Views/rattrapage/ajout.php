@@ -45,7 +45,7 @@ MySGRDS | Ajouter Rattrapage
             </div>
 
             <div class="form-group">
-                <label>Date DS</label>
+                <label>Date du DS initial</label>
                 <div class="info-value"><?= esc(date('d/m/Y', strtotime($DSInformation['date']))) ?></div>
             </div>
 
