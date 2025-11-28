@@ -100,15 +100,11 @@ MySGRDS | Visionner DS
                             <?php endforeach; ?>
                         <?php endif; ?>
                         
-                        <!-- Lignes vides pour maintenir la structure -->
-                        <?php for ($i = count($students ?? []); $i < 6; $i++): ?>
+                        <?php for ($i = count($students ?? []); $i < 10; $i++): ?>
                             <tr class="empty-row">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <?php for ($j = 0; $j < count($students[0]); $j++): ?>
+                                    <td></td>
+                                <?php endfor; ?>
                             </tr>
                         <?php endfor; ?>
                     </tbody>
@@ -146,24 +142,5 @@ MySGRDS | Visionner DS
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<script>
-function filterStudents() {
-    const searchInput = document.getElementById('student-search').value.toLowerCase();
-    const tbody = document.querySelector('.students-table tbody');
-    const rows = tbody.getElementsByTagName('tr');
-    
-    for (let i = 0; i < rows.length; i++) {
-        const row = rows[i];
-        if (row.classList.contains('empty-row')) continue;
-        
-        const text = row.textContent.toLowerCase();
-        
-        if (text.includes(searchInput)) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    }
-}
-</script>
+<script src="<?= base_url('js/ds-detail.js') ?>"></script>
 <?= $this->endSection() ?>

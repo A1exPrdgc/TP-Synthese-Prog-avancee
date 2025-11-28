@@ -21,7 +21,6 @@ MySGRDS | DS
         <?php echo form_open('DS', ['method' => 'get', 'class' => 'filters-form']); ?>
         <div class="filters-row">
             <div class="search-box">
-                <span class="search-icon">🔍</span>
                 <input type="text" name="keyword" placeholder="Rechercher" value="<?= esc($filters['keyword'] ?? '') ?>">
             </div>
             <div class="date-filters">
@@ -32,19 +31,19 @@ MySGRDS | DS
         <div class="filters-row">
             <div class="dropdown-filters">
                 <select name="resource" class="filter-select">
-                    <option value="">▼Ressource</option>
+                    <option value="">Ressource</option>
                     <?php foreach ($resources as $code => $nom): ?>
                         <option value="<?= esc($code) ?>" <?= ($filters['resource'] ?? '') === $code ? 'selected' : '' ?>><?= esc($nom) ?></option>
                     <?php endforeach; ?>
                 </select>
                 <select name="semester" class="filter-select">
-                    <option value="">▼Semestre</option>
+                    <option value="">Semestre</option>
                     <?php foreach ($semesters as $code => $label): ?>
                         <option value="<?= esc($code) ?>" <?= ($filters['semester'] ?? '') === $code ? 'selected' : '' ?>><?= esc($label) ?></option>
                     <?php endforeach; ?>
                 </select>
                 <select name="teacher" class="filter-select">
-                    <option value="">▼Enseignant</option>
+                    <option value="">Enseignant</option>
                     <?php foreach ($teachers as $nom => $fullname): ?>
                         <option value="<?= esc($nom) ?>" <?= ($filters['teacher'] ?? '') === $nom ? 'selected' : '' ?>><?= esc($fullname) ?></option>
                     <?php endforeach; ?>
@@ -121,18 +120,15 @@ MySGRDS | DS
                     </tr>
                 <?php endif; ?>
 
-                <!-- Lignes vides pour maintenir la structure -->
-                <?php for ($i = count($dsList ?? []); $i < 8; $i++): ?>
+                <?php for ($i = count($dsList ?? []); $i < 10; $i++): ?>
                     <tr class="empty-row">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <?php for ($j = 0; $j < 7; $j++): ?>
+                            <td></td>
+                        <?php endfor; ?>
                     </tr>
                 <?php endfor; ?>
+
+
             </tbody>
         </table>
     </div>
@@ -146,15 +142,5 @@ MySGRDS | DS
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<script>
-// Highlight row on hover
-document.querySelectorAll('.ds-table tbody tr:not(.empty-row)').forEach(row => {
-    row.addEventListener('mouseenter', function() {
-        this.style.backgroundColor = '#e8f5e9';
-    });
-    row.addEventListener('mouseleave', function() {
-        this.style.backgroundColor = '';
-    });
-});
-</script>
+<script src="<?= base_url('js/ds-index.js') ?>"></script>
 <?= $this->endSection() ?>
