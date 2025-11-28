@@ -5,6 +5,8 @@
 Ajouter Rattrapage
 <?= $this->endSection() ?>
 
+<?= $this->section('backUrl') ?><?= base_url('ds/detail/' . $DSInformation['idDs']) ?><?= $this->endSection() ?>
+
 <?= $this->section('styles') ?>
 <link href="<?= base_url('assets/css/ds-ajout.css') ?>" rel="stylesheet" />
 <?= $this->endSection() ?>
@@ -40,6 +42,11 @@ MySGRDS | Ajouter Rattrapage
                 <label>Professeur</label>
                 <div class="info-value"><?= esc($DSInformation['teacher']) ?></div>
                 <?php echo form_hidden('teacher', $DSInformation['teacher']); ?>
+            </div>
+
+            <div class="form-group">
+                <label>Date du DS initial</label>
+                <div class="info-value"><?= esc(date('d/m/Y', strtotime($DSInformation['date']))) ?></div>
             </div>
 
             <div class="form-group-row">

@@ -83,4 +83,10 @@ class RessourceModel extends Model
         }
         return $result;
     }
+
+    public function getNameByCode(string $code): ?string
+    {
+        $resource = $this->where('coderessource', $code)->first();
+        return $resource ? $resource['nomressource'] : null;
+    }
 }

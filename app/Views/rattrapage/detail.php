@@ -5,6 +5,8 @@
 Détail Rattrapage
 <?= $this->endSection() ?>
 
+<?= $this->section('backUrl') ?><?= base_url('rattrapage') ?><?= $this->endSection() ?>
+
 <?= $this->section('navbarTitle') ?>
 MySGRDS | Visionner Rattrapage
 <?= $this->endSection() ?>
@@ -42,6 +44,11 @@ MySGRDS | Visionner Rattrapage
             <div class="info-group">
                 <label>Professeur</label>
                 <div class="info-value"><?= esc($rattrapage['enseignant_complet']) ?></div>
+            </div>
+
+            <div class="info-group">
+                <label>Date du DS initial</label>
+                <div class="info-value"><?= esc(date('d/m/Y', strtotime($rattrapage['date_ds']))) ?></div>
             </div>
 
             <div class="info-group-row">

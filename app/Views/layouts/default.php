@@ -17,7 +17,10 @@
     <nav class="navbar navbar-expand-lg my-navbar">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-                <a class="btn btn-square me-2" href=""><span class="arrow-left">&#8592;</span></a>
+            <?php $backUrl = $this->renderSection('backUrl'); ?>
+            <?php if (!empty(trim($backUrl))): ?>
+                <a class="btn btn-square me-2" href="<?= esc($backUrl) ?>"><span class="arrow-left">←</span></a>
+            <?php endif; ?>
                 <a class="btn btn-custom me-2" href="<?= base_url('rattrapage') ?>">Rattrapage</a>
                 <a class="btn btn-custom me-2" href="<?= base_url('ds') ?>">DS</a>
             </div>
@@ -36,11 +39,19 @@
                 
                 <a class="btn btn-custom-profile" href="<?= base_url('profil') ?>">
                     <?php 
-                        // On récupère la photo en session, sinon on met l'image par défaut
-                        $sessionPhoto = session()->get('photo');
-                        $photoUrl = !empty($sessionPhoto) ? base_url($sessionPhoto) : 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png';
+                        $photoUrl = session()->get('photo');
+                        if (empty($photoUrl) && session()->get('connected')) {
+                            $model = new \App\Models\TeachersModel();
+                            $user = $model->find(session()->get('code'));
+                            
+                            if (!empty($user['photo'])) {
+                                $photoUrl = $user['photo'];
+                                session()->set('photo', $photoUrl);
+                            }
+                        }
+                        $finalUrl = !empty($photoUrl) ? base_url($photoUrl) : 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png';
                     ?>
-                    <img class="navbar-profile-img" src="<?= $photoUrl ?>" alt="Profil"/>
+                    <img class="navbar-profile-img" src="<?= $finalUrl ?>" alt="Profil"/>
                 </a>
             </div>
                 

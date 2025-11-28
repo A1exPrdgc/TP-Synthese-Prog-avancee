@@ -22,10 +22,13 @@ class Rattrapage extends BaseController
     protected $resourceModel;
     protected $absenceModel;
     protected $authController;
+    protected $emailControl;
 
     public function __construct()
     {
         helper(['form']);
+
+        
         
         $this->rattrapageModel = new RattrapageModel();
         $this->dsModel = new DsModel();
@@ -35,6 +38,7 @@ class Rattrapage extends BaseController
         $this->resourceModel = new RessourceModel();
         $this->absenceModel = new AbsentModel();
         $this->authController = new Auth();
+        $this->emailControl = new MailController();
         
         session()->set('role', $this->teacherModel->getRole());
     }
@@ -203,6 +207,19 @@ class Rattrapage extends BaseController
             $codeEtudiant = $student['id'];
             $justified = ($post['justify'][$codeEtudiant] === 'on') ? 1 : 0;
             $this->absenceModel->markForMakeup((int) $idDs, $codeEtudiant, $justified);
+            if ($justified === 1){
+                 $message = "<p>Bonjour " . $student['prenom'] . " " . $student['nom'] . ",</p>"
+                        . "<p>Un rattrapage a été programmé pour le DS initialement prévu le " . $dsInformation['date_ds'] . ".</p>"
+                        . "<p><b>Détails du rattrapage :</b><br>"
+                        . "Date : " . $informations['date'] . "<br>"
+                        . "Heure : " . $informations['hour'] . "<br>"
+                        . "Durée : " . $informations['duration'] . "<br>"
+                        . "Salle : " . $informations['room'] . "<br>"
+                        . "Type : " . $informations['type'] . "</p>"
+                        . "<p>Veuillez vous présenter à l'heure indiquée.</p>"
+                        . "<p>Cordialement,<br>L'équipe MySGRDS</p>";
+                $this->emailControl->sendMail($student['email'], 'Nouveau Rattrapage le ' . $informations['date'], $message );
+            }
         }
 
         $rattrapageModel = new RattrapageModel();
@@ -240,6 +257,18 @@ class Rattrapage extends BaseController
         }
 
         $this->rattrapageModel->updateEtat($id, 'REFUSE');
+        $rattrapage = $this->rattrapageModel->getRattrapageWithDetails($id);
+
+        $students = $this->studentModel->getPaginatedStudentsByDSiD($rattrapage['id_ds'], 1000, null);
+
+        foreach ($students as $student) {
+            $this->absenceModel->markForMakeup($rattrapage['id_ds'], $student['id'], 0);
+            $this->emailControl->sendMail($student['email'], 'Rattrapage ANNULÉ pour le DS du ' . $rattrapage['date_ds'], 
+                "<p>Bonjour " . $student['prenom'] . " " . $student['nom'] . ",</p>"
+                . "<p>Le rattrapage initialement prévu le " . $rattrapage['date_rattrapage'] . " pour le DS du " . $rattrapage['date_ds'] . " a été annulé.</p>"
+                . "<p>Cordialement,<br>L'équipe MySGRDS</p>"
+            );
+        }
 
         return redirect()->to('rattrapage')->with('success', 'Rattrapage annulé avec succès.');
     }
@@ -363,7 +392,7 @@ class Rattrapage extends BaseController
         }
 
         $rattrapes = $this->request->getPost('rattrape') ?? [];
-        $rattrapage = $this->rattrapageModel->find($id);
+        $rattrapage = $this->rattrapageModel->getRattrapageWithDetails($id);
         
         $students = $this->studentModel->getPaginatedStudentsByDSiD($rattrapage['id_ds'], 1000, null);
         
@@ -371,7 +400,22 @@ class Rattrapage extends BaseController
             $codeEtudiant = $student['id'];
             $rattrape = isset($rattrapes[$codeEtudiant]) ? 1 : 0;
             $this->absenceModel->markForMakeup($rattrapage['id_ds'], $codeEtudiant, $rattrape);
+            $this->emailControl->sendMail($student['email'], 'Modification Rattrapage le ' . $post['date'], 
+                "<p>Bonjour " . $student['prenom'] . " " . $student['nom'] . ",</p>"
+                . "<p>Le rattrapage initialement prévu a été modifié. Voici les nouveaux détails :</p>"
+                . "<p><b>Détails du rattrapage :</b><br>"
+                . "Ressource : " . $rattrapage['coderessource'] . ' ' . $rattrapage['nomressource'] . "<br>"
+                . "Date : " . $post['date'] . "<br>"
+                . "Heure : " . $post['hour'] . "<br>"
+                . "Durée : " . $post['duration'] . "<br>"
+                . "Salle : " . $post['room'] . "<br>"
+                . "Type : " . $post['type'] . "</p>"
+                . "<p>Veuillez vous présenter à l'heure indiquée.</p>"
+                . "<p>Cordialement,<br>L'équipe MySGRDS</p>"
+            );
         }
+
+        
 
         return redirect()->to('rattrapage/detail/' . $id)->with('success', 'Rattrapage modifié avec succès');
     }

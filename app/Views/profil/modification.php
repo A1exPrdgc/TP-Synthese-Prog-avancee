@@ -2,6 +2,8 @@
 
 <?= $this->section('pageType'); ?>profil<?= $this->endSection(); ?>
 
+<?= $this->section('backUrl') ?><?= base_url('profil') ?><?= $this->endSection() ?>
+
 <?= $this->section('styles') ?>
     <link rel="stylesheet" href="<?= base_url('assets/css/profil.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/profil_modification.css') ?>">

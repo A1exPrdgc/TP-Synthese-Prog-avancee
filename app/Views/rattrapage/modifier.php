@@ -5,6 +5,8 @@
 Modifier Rattrapage
 <?= $this->endSection() ?>
 
+<?= $this->section('backUrl') ?><?= base_url('rattrapage/detail/' . $rattrapage['id_rattrapage']) ?><?= $this->endSection() ?>
+
 <?= $this->section('styles') ?>
 <link href="<?= base_url('assets/css/ds-ajout.css') ?>" rel="stylesheet" />
 <link href="<?= base_url('assets/css/ds-detail.css') ?>" rel="stylesheet" />
@@ -46,6 +48,11 @@ MySGRDS | Modifier Rattrapage
             <div class="form-group">
                 <label>Professeur</label>
                 <div class="info-value"><?= esc($rattrapage['enseignant_complet']) ?></div>
+            </div>
+
+            <div class="form-group">
+                <label>Date du DS initial</label>
+                <div class="info-value"><?= esc(date('d/m/Y', strtotime($rattrapage['date_ds']))) ?></div>
             </div>
 
             <div class="form-group-row">

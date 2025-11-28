@@ -20,6 +20,7 @@ class DS extends BaseController
     protected $studentModel;
     protected $absentModel;
     protected $authController;
+    protected $emailController;
 
     public function __construct()
     {
@@ -32,6 +33,7 @@ class DS extends BaseController
         $this->studentModel = new StudentsModel();
         $this->absentModel = new AbsentModel();
         $this->authController = new Auth();
+        $this->emailController = new MailController(); 
         
         session()->set('role', $this->teacherModel->getRole());
     }
@@ -207,6 +209,16 @@ class DS extends BaseController
             $isJustified = isset($justifies[$studentCode]) ? 1 : 0;
             $this->absentModel->markAbsent($dsId, $studentCode, $isJustified);
         }
+        $message = "<p>Bonjour " . $teacherName . ",</p>"
+         . "<p>Un nouveau DS a été ajouté avec succès.</p>"
+         . "<p><b>Détails de l'examen :</b><br>"
+         . "Date : " . $date . "<br>"
+         . "Ressource : " . $resourceCode . "<br>"
+         . "Type : " . $type . "<br>"
+         . "Durée : " . $dureeMinutes . " minutes</p>"
+         . "<p>Cordialement,<br>L'équipe MYSGRDS.</p>";
+
+        $this->emailController->sendMail($this->teacherModel->getEmailByCode($teacherCode), 'Nouveau DS Ajouté', $message);
 
         // Définir l'état selon le nombre d'absents
         $etatInitial = (count($absents) === 0) ? 'REFUSE' : 'EN ATTENTE';
@@ -262,7 +274,8 @@ class DS extends BaseController
         if ($this->authController->isDE()) {
             return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
         }
-        $ds = $this->dsModel->find($id);
+
+        $ds = $this->dsModel->getDsWithDetails($id);
 
         if (!$ds) {
             return redirect()->to('DS')->with('error', 'DS non trouvé');
@@ -323,6 +336,22 @@ class DS extends BaseController
         // Mettre à jour l'état du DS
         $etatInitial = (count($absents) === 0) ? 'REFUSE' : 'EN ATTENTE';
         $this->dsModel->setEtat($id, $etatInitial);
+
+        $message ="<p>Bonjour " . $ds['enseignant_nom'] . ",</p>"
+            . "<p>Le DS prévu le " . $ds['date_ds'] . " a été modifié.</p>"
+            . "<p><b>Nouveaux détails de l'examen :</b><br>"
+            . "Date : " . $post['date'] . "<br>"
+            . "Type : " . $post['type'] . "<br>"
+            . "Durée : " . $dureeMinutes . " minutes</p>"
+            . "<p>Les participants aux rattrapages sont :</p><br>";
+        foreach ($absents as $studentCode => $value) {
+            $message .= "<p> - " . $this->studentModel->getNameByCode($studentCode) . "</p><br>";
+        }
+        $message .= "<p>Cordialement,<br>L'équipe MYSGRDS.</p>";
+
+        $this->emailController->sendMail(
+            $this->teacherModel->getEmailByCode($ds['enseignant_code']),
+            'DS Modifié',$message);
 
         return redirect()->to('ds/detail/' . $id)->with('success', 'DS modifié avec succès');
     }

@@ -74,11 +74,6 @@
             </tr>
         </table>
     <?= form_close(); ?>
-
-    <div class="links">
-        <p>Pas encore de compte ?</p>
-        <a href="<?= site_url('inscription') ?>">Créer un compte</a>
-    </div>
 </div>
 
 </body>

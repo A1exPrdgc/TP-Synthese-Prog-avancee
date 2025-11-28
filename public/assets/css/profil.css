@@ -1,18 +1,14 @@
 :root {
-    --primary-color: #FFC107;   /* Jaune principal */
-    --secondary-color: #FF9800; /* Orange secondaire (Bordures) */
-    --button-color: #5ABD89;    /* Vert bouton/Icônes */
+    --primary-color: #FFC107; 
+    --secondary-color: #FF9800;
+    --button-color: #5ABD89;    
     --button-hover: #45a049;
     --text-color: #000;
 }
 
-/* --- CARTE PRINCIPALE --- */
 .compte-card {
     background-color: var(--primary-color) !important;
-    
-    /* LA BORDURE ORANGE DEMANDÉE */
     border: 5px solid var(--secondary-color) !important;
-    
     border-radius: 20px;
     padding: 40px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -31,7 +27,6 @@
     width: 100%;
 }
 
-/* --- Colonne GAUCHE (Photo + Labels) --- */
 .compte-left {
     display: flex;
     flex-direction: column;
@@ -42,16 +37,14 @@
     padding-top: 5px; 
 }
 
-/* --- Colonne DROITE (Nom + Valeurs) --- */
 .compte-right {
     display: flex;
     flex-direction: column;
     align-items: flex-start; 
     text-align: left;
-    flex: 0 0 53%; /* Ajustement largeur */
+    flex: 0 0 53%;
 }
 
-/* --- LA BARRE VERTICALE ORANGE --- */
 .compte-separator {
     display: block;
     width: 6px;
@@ -62,7 +55,6 @@
     flex-shrink: 0;
 }
 
-/* --- Photo --- */
 .profile-photo-block {
     width: 180px;
     height: 180px;
@@ -77,12 +69,10 @@
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    /* Bordure vert foncé/noir comme sur la ref, ou orange si tu préfères */
     border: 4px solid #2F4F4F; 
     background-color: white;
 }
 
-/* --- Textes --- */
 .compte-name-block {
     min-height: 180px; 
     margin-bottom: 30px;
@@ -95,10 +85,7 @@
 
 .compte-nom {
     font-family: 'Itim', cursive;
-    
-    /* Utilisation de clamp() : la police s'adapte entre 1.8rem et 2.6rem selon la taille de l'écran */
     font-size: clamp(1.8rem, 4vw, 2.6rem); 
-    
     font-weight: 800;
     text-transform: uppercase;
     color: white; 
@@ -122,7 +109,6 @@
     word-break: break-word;
 }
 
-/* --- Labels et Infos --- */
 .compte-left-labels, .compte-info-lines {
     display: flex;
     flex-direction: column;
@@ -135,7 +121,7 @@
     font-size: 1.2rem;
     color: black;
     margin: 0;
-    height: 35px; /* Hauteur ligne */
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -146,13 +132,12 @@
     font-weight: 600;
     color: white;
     margin: 0;
-    height: 35px; /* Hauteur ligne */
+    height: 35px;
     display: flex;
     align-items: center;
-    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    white-space: nowrap;
 }
 
-/* --- Les petits carrés d'édition (Crayon) --- */
 .icon-edit {
     display: inline-flex;
     align-items: center;
@@ -160,13 +145,12 @@
     width: 20px;
     height: 20px;
     margin-left: 8px;
-    background-color: var(--button-color); /* Carré Vert */
+    background-color: var(--button-color);
     border-radius: 3px;
     cursor: pointer;
     border: 1px solid white;
 }
 
-/* On dessine un petit crayon en CSS/SVG inside le carré */
 .icon-edit::after {
     content: '';
     display: block;
@@ -177,8 +161,6 @@
     background-repeat: no-repeat;
 }
 
-
-/* --- Boutons --- */
 .compte-buttons-row {
     display: flex;
     justify-content: center;
@@ -213,7 +195,6 @@
     transform: translateY(-2px);
 }
 
-/* Bouton Vert PLEIN (comme sur la photo) */
 .profil-btn-secondary {
     background-color: var(--button-color);
     color: white;
@@ -232,9 +213,6 @@
 
 .upload-photo-row { display: none; }
 
-/* --- GESTION DES INPUTS EDITABLES --- */
-
-/* Wrapper pour positionner l'icone crayon par dessus l'input */
 .input-wrapper {
     position: relative;
     display: flex;
@@ -242,7 +220,6 @@
     width: 100%;
 }
 
-/* Style de base des inputs (invisible par défaut) */
 .compte-input {
     background: transparent;
     border: 1px solid transparent; /* Bordure invisible */
@@ -255,13 +232,11 @@
     cursor: text;
 }
 
-/* Quand on clique dans l'input : on met un fond blanc semi-transparent */
 .compte-input:focus {
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* Réutilisation des styles de police existants pour les inputs */
 input.compte-nom {
     font-size: 2.6rem;
     font-weight: 800;
@@ -285,23 +260,20 @@ input.compte-info {
     height: 35px;
 }
 
-/* Positionnement de l'icône crayon à l'intérieur de l'input */
 .overlay-icon {
     position: absolute;
-    right: -30px; /* On le décale un peu à droite */
-    pointer-events: none; /* Le clic passe à travers pour atteindre l'input */
+    right: -30px;
+    pointer-events: none;
 }
 
-/* Identifiant statique (non éditable) */
 .static-text {
     display: flex;
     align-items: center;
     height: 35px;
     margin: 0;
-    color: white; /* Assure que l'ID est bien blanc */
+    color: white;
 }
 
-/* Bouton pour upload photo */
 .edit-photo-btn {
     position: absolute;
     top: 0;
@@ -310,9 +282,8 @@ input.compte-info {
     z-index: 10;
 }
 
-/* Nouveau bouton Enregistrer */
 .profil-btn-primary {
-    background-color: #4CAF50; /* Vert un peu différent pour distinguer */
+    background-color: #4CAF50;
     color: white;
     border: none;
 }
@@ -326,10 +297,43 @@ input.compte-info {
     text-decoration: none;
     cursor: pointer;
     margin-left: 8px;
-    display: inline-flex; /* Assure un bon alignement */
+    display: inline-flex;
     vertical-align: middle;
 }
 
 .edit-link:hover {
     opacity: 0.7;
+}
+
+.btn-create-teacher {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4CAF50;
+    color: white;
+    font-family: 'Itim', cursive;
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 12px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 0 #388E3C;
+    transition: transform 0.1s;
+    border: none;
+    gap: 10px;
+}
+
+.btn-create-teacher:hover {
+    background-color: #43A047;
+    transform: translateY(-2px);
+    color: white;
+}
+
+.btn-create-teacher:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #388E3C;
+}
+
+.auth-container:empty {
+    display: none;
 }
