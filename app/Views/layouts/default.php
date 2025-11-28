@@ -35,8 +35,14 @@
                 <?php if ($pageType === 'ds' && $role == 'DE'): ?>
                     <a class="btn btn-custom me-2" href="<?= base_url('DS/ajout') ?>">+ Ajouter</a>
                 <?php endif; ?>
+                
                 <a class="btn btn-custom-profile" href="<?= base_url('profil') ?>">
-                <img class="navbar-profile-img" src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="Profil"/>
+                    <?php 
+                        // On récupère la photo en session, sinon on met l'image par défaut
+                        $sessionPhoto = session()->get('photo');
+                        $photoUrl = !empty($sessionPhoto) ? base_url($sessionPhoto) : 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png';
+                    ?>
+                    <img class="navbar-profile-img" src="<?= $photoUrl ?>" alt="Profil"/>
                 </a>
             </div>
                 
