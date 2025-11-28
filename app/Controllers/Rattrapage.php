@@ -252,6 +252,7 @@ class Rattrapage extends BaseController
         $data['types'] = ['MACHINE' => 'Machine', 'ORAL' => 'Oral', 'PAPIER' => 'Papier'];
         $data['validation'] = \Config\Services::validation();
 
+
         return view('rattrapage/modifier', $data);
     }
 
@@ -278,6 +279,8 @@ class Rattrapage extends BaseController
             'duration' => 'required|regex_match[/^(?:[01]\d|2[0-3]):[0-5]\d$/]',
             'room' => 'required|alpha_numeric|max_length[3]|min_length[3]'
         ];
+
+        $this->rattrapageModel->updateEtat($id, 'PREVU');
 
         if (!$this->validate($rules)) {
             $rattrapageDetails = $this->rattrapageModel->getRattrapageWithDetails($id);
