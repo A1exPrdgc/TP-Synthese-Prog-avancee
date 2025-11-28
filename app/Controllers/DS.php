@@ -76,6 +76,7 @@ class DS extends BaseController
     public function detail($id = null)
     {
         if ($this->authController->isConnected()) {
+            session()->setTempdata('redirect_after_login', 'ds/detail/' . $id, 300);
             return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
         }
 
