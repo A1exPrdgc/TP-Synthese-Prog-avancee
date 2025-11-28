@@ -38,6 +38,9 @@ class Rattrapage extends BaseController
      */
     public function index()
     {
+
+        $this->rattrapageModel->updateEtatByDate();
+
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
         
         $filters = [
@@ -169,7 +172,7 @@ class Rattrapage extends BaseController
             'date_rattrapage' => $informations['date'],
             'duree_minutes' => $duration,
             'heure_debut' => $informations['hour'],
-            'etat' => 'EN ATTENTE',
+            'etat' => 'PREVU',
             'mail_envoye' => 0,
             'type_exam' => $informations['type'],
             'salle' => $informations['room']
@@ -188,6 +191,23 @@ class Rattrapage extends BaseController
 
         return redirect()->to('Rattrapage')->with('success', 'Rattrapage ajouté avec succès');
     
+    }
+
+    //A appler quand on annule un rattrapage
+    public function refuser($id)
+    {
+        if (!$id) {
+            return redirect()->to('Rattrapage')->with('error', 'ID du rattrapage non spécifié');
+        }
+
+        $rattrapage = $this->rattrapageModel->find($id);
+        if (!$rattrapage) {
+            return redirect()->to('Rattrapage')->with('error', 'Rattrapage non trouvé');
+        }
+
+        $this->rattrapageModel->updateEtat($id, 'REFUSE');
+
+        return redirect()->to('Rattrapage')->with('success', 'Rattrapage annulé avec succès.');
     }
     /**
      * Détail d'un rattrapage

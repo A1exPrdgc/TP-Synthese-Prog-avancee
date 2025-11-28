@@ -157,4 +157,20 @@ class RattrapageModel extends Model
         $mins = $minutes % 60;
         return $heures . 'h' . sprintf('%02d', $mins);
     }
+
+    public function updateEtatByDate()
+    {
+        $now = date('Y-m-d');
+
+        $sql = "SELECT id_rattrapage 
+                FROM rattrapage 
+                WHERE date_rattrapage < ? AND etat != 'TERMINE'";
+
+        $query = $this->db->query($sql, [$now]);
+        $rattrapages = $query->getResultArray();
+
+        foreach ($rattrapages as $rattrapage) {
+            $this->updateEtat($rattrapage['id_rattrapage'], 'TERMINE');
+        }
+    }
 }
