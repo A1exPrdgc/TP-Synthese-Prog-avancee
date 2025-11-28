@@ -9,6 +9,7 @@ use App\Models\RessourceModel;
 use App\Models\TeachersModel;
 use App\Models\DsModel;
 use App\Models\AbsentModel;
+use App\Controllers\Auth;
 
 class DS extends BaseController
 {
@@ -18,6 +19,7 @@ class DS extends BaseController
     protected $teacherModel;
     protected $studentModel;
     protected $absentModel;
+    protected $authController;
     protected $emailController;
 
     public function __construct()
@@ -30,6 +32,7 @@ class DS extends BaseController
         $this->teacherModel = new TeachersModel();
         $this->studentModel = new StudentsModel();
         $this->absentModel = new AbsentModel();
+        $this->authController = new Auth();
         $this->emailController = new MailController(); 
         
         session()->set('role', $this->teacherModel->getRole());
@@ -40,6 +43,9 @@ class DS extends BaseController
      */
     public function index()
     {
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
+        }
         $this->dsModel->updateEtatByAbsences();
         $this->dsModel->updateEtatByRattrapageDate();
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
@@ -69,6 +75,10 @@ class DS extends BaseController
      */
     public function detail($id = null)
     {
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
+        }
+
         if (!$id) {
             return redirect()->to('ds')->with('error', 'ID du DS non spécifié');
         }
@@ -95,6 +105,14 @@ class DS extends BaseController
      */
     public function ajout()
     {
+
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
+        }
+        if ( $this->authController->isDE() ) {
+            return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
+        }
+
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
         $keyword = $this->request->getGet('keyword') ?? '';
         $semester = $this->request->getGet('semester') ?? 'S1';
@@ -129,6 +147,13 @@ class DS extends BaseController
      */
     public function save()
     {
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
+        }
+
+        if ($this->authController->isDE()) {
+            return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
+        }
         $validSemesters = $this->semesterModel->getAllSemesterCodes();
         $validResources = $this->resourceModel->getAllResourceCodes();
         $validTeachers = $this->teacherModel->getAllTeacherNames();
@@ -190,8 +215,14 @@ class DS extends BaseController
          . "Date : " . $date . "<br>"
          . "Ressource : " . $resourceCode . "<br>"
          . "Type : " . $type . "<br>"
-         . "Durée : " . $dureeMinutes . " minutes</p>"
-         . "<p>Cordialement,<br>L'équipe MYSGRDS.</p>";
+         . "Durée : " . $dureeMinutes . " minutes<br><br>"
+         . "Lien vers le DS : <a href=\"" . base_url('ds/detail/' . $dsId) . "\">Cliquez ici</a></p><br>"
+         . "<p>Les participants aux rattrapages sont :</p><br>";
+            foreach ($absents as $studentCode => $value) {
+                $message .= "<p> - " . $this->studentModel->getNameByCode($studentCode) . "</p><br>";
+            }
+            $message .= "<p>Cordialement,<br>L'équipe MYSGRDS.</p>";
+         $message .= "<p>Cordialement,<br>L'équipe MYSGRDS.</p>";
 
         $this->emailController->sendMail($this->teacherModel->getEmailByCode($teacherCode), 'Nouveau DS Ajouté', $message);
 
@@ -208,17 +239,14 @@ class DS extends BaseController
      */
     public function modifier($id)
     {
-        $session = session();
-        if (!$session->get('connected')) {
-            return redirect()->to('/login');
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
         }
 
         // Vérifier si l'utilisateur est directeur des études
-        $role = $session->get('fonction');
-        if ($role !== 'DE') {
-            return redirect()->to('ds/detail/' . $id)->with('error', 'Accès non autorisé');
+        if ($this->authController->isDE()) {
+            return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
         }
-
         $ds = $this->dsModel->getDsWithDetails($id);
 
         if (!$ds) {
@@ -244,15 +272,13 @@ class DS extends BaseController
      */
     public function update($id)
     {
-        $session = session();
-        if (!$session->get('connected')) {
-            return redirect()->to('/login');
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
         }
 
         // Vérifier si l'utilisateur est directeur des études
-        $role = $session->get('fonction');
-        if ($role !== 'DE') {
-            return redirect()->to('ds/detail/' . $id)->with('error', 'Accès non autorisé');
+        if ($this->authController->isDE()) {
+            return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
         }
 
         $ds = $this->dsModel->getDsWithDetails($id);
@@ -322,7 +348,8 @@ class DS extends BaseController
             . "<p><b>Nouveaux détails de l'examen :</b><br>"
             . "Date : " . $post['date'] . "<br>"
             . "Type : " . $post['type'] . "<br>"
-            . "Durée : " . $dureeMinutes . " minutes</p>"
+            . "Durée : " . $dureeMinutes . " minutes<br><br>"
+            . "Lien vers le DS : <a href=\"" . base_url('ds/detail/' . $id) . "\">Cliquez ici</a></p><br>"
             . "<p>Les participants aux rattrapages sont :</p><br>";
         foreach ($absents as $studentCode => $value) {
             $message .= "<p> - " . $this->studentModel->getNameByCode($studentCode) . "</p><br>";
@@ -341,6 +368,14 @@ class DS extends BaseController
      */
     public function validerRattrapage($id)
     {
+
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
+        }
+
+        if ($this->authController->isENS()) {
+            return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
+        }
         // TODO: Implémenter la validation de rattrapage
         return redirect()->to('ds/detail/' . $id)->with('success', 'Rattrapage validé');
     }
@@ -350,6 +385,13 @@ class DS extends BaseController
      */
     public function refuserRattrapage($id)
     {
+        if ($this->authController->isConnected()) {
+            return redirect()->to('login')->with('error', 'Vous n\'êtes pas connecté.');
+        }
+
+        if ($this->authController->isENS()) {
+            return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
+        }
         if (!$id) {
             return redirect()->to('ds')->with('error', 'ID du DS non spécifié');
         }

@@ -162,5 +162,5 @@ MySGRDS | Modifier DS
 <script>
     document.body.setAttribute('data-base-url', '<?= base_url() ?>');
 </script>
-<script src="<?= base_url('js/ds-ajout-common.js') ?>"></script>
+<script src="<?= base_url('assets/js/ds-ajout-common.js') ?>"></script>
 <?= $this->endSection() ?>
