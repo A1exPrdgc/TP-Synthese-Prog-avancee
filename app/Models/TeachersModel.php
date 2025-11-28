@@ -8,7 +8,8 @@ class TeachersModel extends Model
 {
     protected $table = 'enseignant';
     protected $primaryKey = 'code';
-    protected $allowedFields = ['nom', 'prenom', 'email', 'password', 'fonction', 'reset_token', 'reset_expires', 'photo'];
+    protected $allowedFields = ['code', 'nom', 'prenom', 'email', 'password', 'fonction', 'reset_token', 'reset_expires', 'photo'];
+    protected $useAutoIncrement = false;
 
     protected $returnType = 'array';
     protected $useSoftDeletes = false;

@@ -1,0 +1,334 @@
+:root {
+    --primary-color: #FFC107;   /* Jaune principal */
+    --secondary-color: #FF9800; /* Orange secondaire (Bordures) */
+    --button-color: #5ABD89;    /* Vert bouton/Icônes */
+    --button-hover: #45a049;
+    --text-color: #000;
+}
+
+/* --- CARTE PRINCIPALE --- */
+.compte-card {
+    background-color: var(--primary-color) !important;
+    
+    /* LA BORDURE ORANGE DEMANDÉE */
+    border: 5px solid var(--secondary-color) !important;
+    
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 650px;
+    width: 100%;
+    margin: 100px auto; 
+    box-sizing: border-box;
+}
+
+.compte-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch; 
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* --- Colonne GAUCHE (Photo + Labels) --- */
+.compte-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    justify-content: center;
+    text-align: right; 
+    flex: 0 0 42%;
+}
+
+/* --- Colonne DROITE (Nom + Valeurs) --- */
+.compte-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    text-align: left;
+    flex: 0 0 53%; /* Ajustement largeur */
+}
+
+/* --- LA BARRE VERTICALE ORANGE --- */
+.compte-separator {
+    display: block;
+    width: 6px;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    opacity: 1;
+    margin: 10px 0;
+    flex-shrink: 0;
+}
+
+/* --- Photo --- */
+.profile-photo-block {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 30px;
+    position: relative;
+    
+    margin-right: 10px; 
+}
+
+.profile-photo-round {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    /* Bordure vert foncé/noir comme sur la ref, ou orange si tu préfères */
+    border: 4px solid #2F4F4F; 
+    background-color: white;
+}
+
+/* --- Textes --- */
+.compte-name-block {
+    min-height: 130px; 
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%; 
+    overflow: hidden; 
+}
+
+.compte-nom {
+    font-family: 'Itim', cursive;
+    
+    /* Utilisation de clamp() : la police s'adapte entre 1.8rem et 2.6rem selon la taille de l'écran */
+    font-size: clamp(1.8rem, 4vw, 2.6rem); 
+    
+    font-weight: 800;
+    text-transform: uppercase;
+    color: white; 
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.1); 
+    margin: 0;
+    line-height: 1.1;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+.compte-prenom {
+    font-family: 'Itim', cursive;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 500;
+    color: white;
+    margin: 0;
+    line-height: 1.1;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+/* --- Labels et Infos --- */
+.compte-left-labels, .compte-info-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    width: 100%;
+}
+
+.compte-label {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: black;
+    margin: 0;
+    height: 35px; /* Hauteur ligne */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.compte-info {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    height: 35px; /* Hauteur ligne */
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+}
+
+/* --- Les petits carrés d'édition (Crayon) --- */
+.icon-edit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    background-color: var(--button-color); /* Carré Vert */
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+/* On dessine un petit crayon en CSS/SVG inside le carré */
+.icon-edit::after {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+/* --- Boutons --- */
+.compte-buttons-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.profil-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-family: 'Itim', cursive;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: transform 0.2s;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+}
+
+.profil-btn svg {
+    margin-right: 8px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
+.profil-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Bouton Vert PLEIN (comme sur la photo) */
+.profil-btn-secondary {
+    background-color: var(--button-color);
+    color: white;
+}
+
+/* Bouton Rouge */
+.profil-btn-danger {
+    background-color: #F44336; 
+    color: white;
+}
+
+.profil-btn-secondary::before,
+.profil-btn-danger::before {
+    content: none;
+}
+
+.upload-photo-row { display: none; }
+
+/* --- GESTION DES INPUTS EDITABLES --- */
+
+/* Wrapper pour positionner l'icone crayon par dessus l'input */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Style de base des inputs (invisible par défaut) */
+.compte-input {
+    background: transparent;
+    border: 1px solid transparent; /* Bordure invisible */
+    border-radius: 5px;
+    width: 100%;
+    padding: 0 5px;
+    font-family: 'Itim', cursive;
+    outline: none;
+    transition: all 0.3s;
+    cursor: text;
+}
+
+/* Quand on clique dans l'input : on met un fond blanc semi-transparent */
+.compte-input:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Réutilisation des styles de police existants pour les inputs */
+input.compte-nom {
+    font-size: 2.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+    height: auto;
+}
+
+input.compte-prenom {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: white;
+    height: auto;
+}
+
+input.compte-info {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    height: 35px;
+}
+
+/* Positionnement de l'icône crayon à l'intérieur de l'input */
+.overlay-icon {
+    position: absolute;
+    right: -30px; /* On le décale un peu à droite */
+    pointer-events: none; /* Le clic passe à travers pour atteindre l'input */
+}
+
+/* Identifiant statique (non éditable) */
+.static-text {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    margin: 0;
+    color: white; /* Assure que l'ID est bien blanc */
+}
+
+/* Bouton pour upload photo */
+.edit-photo-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Nouveau bouton Enregistrer */
+.profil-btn-primary {
+    background-color: #4CAF50; /* Vert un peu différent pour distinguer */
+    color: white;
+    border: none;
+}
+.profil-btn-primary:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+.edit-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 8px;
+    display: inline-flex; /* Assure un bon alignement */
+    vertical-align: middle;
+}
+
+.edit-link:hover {
+    opacity: 0.7;
+}

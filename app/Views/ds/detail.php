@@ -125,7 +125,7 @@ MySGRDS | Visionner DS
     <!-- Boutons d'action -->
     <?php if ($role === 'ENS'): ?>
         <div class="action-buttons">
-            <a href="<?= base_url('DS') ?>" class="btn-action btn-refuse">
+            <a href="<?= base_url('DS/refuserRattrapage/' . $ds['id_ds']) ?>" class="btn-action btn-refuse">
                 <span class="btn-icon">✕</span> Refuser le rattrapage
             </a>
             <a href="<?= base_url('Rattrapage/Ajout/' . $ds['id_ds']) ?>" class="btn-action btn-validate">

@@ -74,6 +74,7 @@ class StudentsModel extends Model
                  ->groupEnd();
         }
 
+        $this->orderBy('absent', 'DESC');
         $this->orderBy('etudiant.nom', 'ASC');
         $this->orderBy('etudiant.prenom', 'ASC');
 

@@ -1,0 +1,102 @@
+/* --- Styles spécifiques au formulaire de modification --- */
+
+/* Masquer l'input file natif (moche) */
+#photo {
+    display: none;
+}
+
+/* Style du bouton "Changer la photo" */
+.btn-photo {
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    display: inline-block;
+}
+
+.photo-input-group {
+    text-align: center;
+}
+
+.photo-help-text {
+    margin-top: 5px;
+    margin-bottom: 0;
+    color: white;
+    font-size: 0.8rem;
+}
+
+/* Style des champs input (Nom, Prénom, Email) */
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    border-radius: 10px; /* Arrondi pour matcher le style global */
+    border: 2px solid transparent;
+    font-family: 'Itim', cursive;
+    font-size: 1.1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-sizing: border-box; /* Important pour ne pas casser la largeur */
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    background-color: #fff;
+    border-color: var(--secondary-color, #FF9800); /* Utilise ta variable orange si dispo */
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-label-bold {
+    font-weight: 800;
+    color: white;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+}
+
+/* Utilitaires de marge */
+.mt-15 { margin-top: 15px; }
+.mt-20 { margin-top: 20px; }
+
+.compte-left {
+    justify-content: flex-start !important; 
+    padding-top: 10px; /* Petit ajustement pour s'aligner avec le champ Nom à droite */
+}
+
+.profile-photo-block {
+    margin-top: 0; 
+    margin-right: 40px;
+    margin-bottom: 40px; 
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 180px !important;
+}
+
+.profile-photo-round {
+    /* 1. On force les dimensions à être carrées */
+    width: 180px !important;
+    height: 180px !important;
+    
+    /* 2. Empêche la déformation si l'image source n'est pas carrée */
+    object-fit: cover; 
+    
+    /* 3. Assure que c'est bien rond */
+    border-radius: 50%;
+    
+    /* 4. Empêche l'image de s'écraser ou s'étirer à cause du Flexbox */
+    flex-shrink: 0; 
+    display: block;
+    
+    /* On garde votre bordure */
+    border: 4px solid #2F4F4F; 
+    background-color: white;
+}
