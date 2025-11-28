@@ -59,7 +59,7 @@ MySGRDS | Visionner Rattrapage
             <div class="info-group-row">
                 <div class="info-group half">
                     <label>Type</label>
-                    <div class="info-value"><?= esc(ucfirst(strtolower($rattrapage['ds_type_exam']))) ?></div>
+                    <div class="info-value"><?= esc(ucfirst(strtolower($rattrapage['type_exam']))) ?></div>
                 </div>
 
                 <div class="info-group half">
@@ -119,17 +119,14 @@ MySGRDS | Visionner Rattrapage
                             <?php endforeach; ?>
                         <?php endif; ?>
                         
-                        <!-- Lignes vides pour maintenir la structure -->
-                        <?php for ($i = count($students ?? []); $i < 6; $i++): ?>
+                        <?php for ($i = count($students ?? []); $i < 10; $i++): ?>
                             <tr class="empty-row">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <?php for ($j = 0; $j < count($students[0]); $j++): ?>
+                                    <td></td>
+                                <?php endfor; ?>
                             </tr>
                         <?php endfor; ?>
+                                    
                     </tbody>
                 </table>
 

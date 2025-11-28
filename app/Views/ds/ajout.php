@@ -131,8 +131,6 @@ MySGRDS | Ajout d'un DS
                         </tr>
                         <?php endforeach; ?>
 
-                        <?php var_dump($students)?> 
-
                         <?php for ($i = count($students ?? []); $i < 10; $i++): ?>
                             <tr class="empty-row">
                                 <?php for ($j = 0; $j < count($students[0]); $j++): ?>

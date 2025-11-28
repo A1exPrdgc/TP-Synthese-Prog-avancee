@@ -55,6 +55,14 @@ document.getElementById('semester').addEventListener('change', function () {
                     `;
                     tbody.appendChild(row);
                 });
+
+                for (let i = data.length; i < 10; i++) {
+
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<tr class="empty-row"> <td></td>`.repeat(6) + `</tr>`;
+                    tbody.appendChild(row);
+                }
+
             } else {
                 const row = document.createElement('tr');
                 row.innerHTML = '<td colspan="6" style="text-align:center;">Aucun étudiant trouvé</td>';

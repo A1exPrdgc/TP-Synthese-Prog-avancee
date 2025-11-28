@@ -79,7 +79,7 @@ MySGRDS | Modifier Rattrapage
             <div class="form-group-row">
                 <div class="form-group half">
                     <label for="type">Type</label>
-                    <?php echo form_dropdown('type', $types, set_value('type', $rattrapage['ds_type_exam']), 'class="form-select" id="type"'); ?>
+                    <?php echo form_dropdown('type', $types, set_value('type', $rattrapage['type_exam']), 'class="form-select" id="type"'); ?>
                     <?= validation_show_error('type') ?>
                 </div>
 
@@ -121,9 +121,17 @@ MySGRDS | Modifier Rattrapage
 
     <!-- Boutons -->
     <div class="action-buttons" style="justify-content: space-between;">
-        <a href="<?= base_url('Rattrapage/detail/' . $rattrapage['id_rattrapage']) ?>" class="btn-action btn-refuse" style="background-color: #6c757d; box-shadow: -4px -4px 0 #495057;">
-            <span class="btn-icon">←</span> Annuler
-        </a>
+        <div style="display: flex; gap: 10px;">
+            <a href="<?= base_url('Rattrapage/detail/' . $rattrapage['id_rattrapage']) ?>" class="btn-action btn-refuse" style="background-color: #6c757d; box-shadow: -4px -4px 0 #495057;">
+                <span class="btn-icon">←</span> Annuler
+            </a>
+            <a href="<?= base_url('Rattrapage/refuser/' . $rattrapage['id_rattrapage']) ?>" 
+               class="btn-action btn-refuse" 
+               style="background-color: #dc3545; box-shadow: -4px -4px 0 #c82333;"
+               onclick="return confirm('Êtes-vous sûr de vouloir annuler ce rattrapage ?');">
+                <span class="btn-icon">x</span> Annuler le rattrapage
+            </a>
+        </div>
         <?php echo form_submit('submit', '✓ Enregistrer les modifications', 'class="btn-action btn-validate"'); ?>
     </div>
     
