@@ -217,7 +217,7 @@ class DS extends BaseController
         $keyword = $this->request->getGet('keyword') ?? '';
 
         // Récupérer tous les étudiants du semestre avec leur statut d'absence pour ce DS
-        $data['students'] = $this->studentModel->getStudentsWithAbsenceForDs($id, $perPage, $keyword);
+        $data['students'] = $this->studentModel->getStudentsWithAbsenceForDsBySemester($ds['semestre_code'],$id, $perPage, $keyword);
         $data['pager'] = $this->studentModel->pager;
         $data['keyword'] = $keyword;
         $data['ds'] = $ds;
