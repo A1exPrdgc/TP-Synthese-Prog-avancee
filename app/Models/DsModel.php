@@ -126,6 +126,17 @@ class DsModel extends Model
         $mins = $minutes % 60;
         return sprintf('%02d:%02d', $heures, $mins);
     }
+    
+    /**
+     * Met à jour un DS
+     */
+    public function updateDs(int $id, array $data)
+    {
+        $result = $this->update($id, $data);
+        return $result !== false;
+    }
+
+
 
     public function setEtat(int $idDs, string $etat)
     {

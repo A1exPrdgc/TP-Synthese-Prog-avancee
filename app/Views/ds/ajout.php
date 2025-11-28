@@ -102,42 +102,49 @@ MySGRDS | Ajout d'un DS
                         </tr>
                     </thead>
                     <tbody id="students-tbody">
-                        <?php foreach ($students as $student): ?>
-                        <tr>
-                            <td><?= esc($student['id']) ?></td>
-                            <td><?= esc($student['nom']) ?></td>
-                            <td><?= esc($student['prenom']) ?></td>
-                            <td><?= esc($student['classe']) ?></td>
-                            <td>
-                                <?php echo form_checkbox(
-                                    'absent[' . esc($student['id']) . ']',
-                                    '1',
-                                    set_checkbox('absent[' . esc($student['id']) . ']', '1', isset($student['absent']) && $student['absent']),
-                                    'id="absent_' . esc($student['id']) . '" onchange="toggleJustified(this)"'
-                                ); ?>
-                            </td>
-                            <td>
-                                <?php 
-                                    $isAbsent = set_checkbox('absent[' . esc($student['id']) . ']', '1', isset($student['absent']) && $student['absent']);
-                                    $isDisabled = !$isAbsent ? 'disabled' : '';
-                                    echo form_checkbox(
-                                        'justifie[' . esc($student['id']) . ']',
+                        <?php if (!empty($students)): ?>
+                            <?php foreach ($students as $student): ?>
+                            <tr>
+                                <td><?= esc($student['id']) ?></td>
+                                <td><?= esc($student['nom']) ?></td>
+                                <td><?= esc($student['prenom']) ?></td>
+                                <td><?= esc($student['classe']) ?></td>
+                                <td>
+                                    <?php echo form_checkbox(
+                                        'absent[' . esc($student['id']) . ']',
                                         '1',
-                                        set_checkbox('justifie[' . esc($student['id']) . ']', '1', isset($student['justifie']) && $student['justifie']),
-                                        'id="justifie_' . esc($student['id']) . '" ' . $isDisabled
-                                    ); 
-                                ?>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
+                                        set_checkbox('absent[' . esc($student['id']) . ']', '1', isset($student['absent']) && $student['absent']),
+                                        'id="absent_' . esc($student['id']) . '" onchange="toggleJustified(this)"'
+                                    ); ?>
+                                </td>
+                                <td>
+                                    <?php 
+                                        $isAbsent = set_checkbox('absent[' . esc($student['id']) . ']', '1', isset($student['absent']) && $student['absent']);
+                                        $isDisabled = !$isAbsent ? 'disabled' : '';
+                                        echo form_checkbox(
+                                            'justifie[' . esc($student['id']) . ']',
+                                            '1',
+                                            set_checkbox('justifie[' . esc($student['id']) . ']', '1', isset($student['justifie']) && $student['justifie']),
+                                            'id="justifie_' . esc($student['id']) . '" ' . $isDisabled
+                                        ); 
+                                    ?>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
 
                         <?php for ($i = count($students ?? []); $i < 10; $i++): ?>
                             <tr class="empty-row">
-                                <?php for ($j = 0; $j < count($students[0]); $j++): ?>
+                                <?php for ($j = 0; $j < 6; $j++): ?>
                                     <td></td>
                                 <?php endfor; ?>
                             </tr>
                         <?php endfor; ?>
+
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="7" class="no-data">Aucun élève trouvé</td>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
 

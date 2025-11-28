@@ -136,32 +136,40 @@ MySGRDS | Ajouter Rattrapage
                         </tr>
                     </thead>
                     <tbody id="students-tbody">
-                        <?php 
-                        $oldJustify = $old_justify ?? [];
-                        foreach ($students as $student): 
-                            $sid = esc($student['id']);
-                            $checked = isset($oldJustify[$sid]) && $oldJustify[$sid] === 'on';
-                        ?>
-                        <tr>
-                            <td><?= esc($student['id']) ?></td>
-                            <td><?= esc(strtoupper($student['nom'])) ?></td>
-                            <td><?= esc(ucfirst($student['prenom'])) ?></td>
-                            <td><?= esc($student['classe']) ?></td>
-                            <td><?= $student['justifie'] ? 'Justifié' : 'Non justifié' ?></td>
-                            <td>
-                                <?php echo form_hidden("justify[{$sid}]", 'off'); ?>
-                                <?php echo form_checkbox("justify[{$sid}]", 'on', $checked); ?>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                            
-                        <?php for ($i = count($students ?? []); $i < 10; $i++): ?>
-                            <tr class="empty-row">
-                                <?php for ($j = 0; $j < count($students[0]); $j++): ?>
-                                    <td></td>
-                                <?php endfor; ?>
+                        <?php if (!empty($students)): ?>
+
+                            <?php 
+                            $oldJustify = $old_justify ?? [];
+                            foreach ($students as $student): 
+                                $sid = esc($student['id']);
+                                $checked = isset($oldJustify[$sid]) && $oldJustify[$sid] === 'on';
+                            ?>
+                            <tr>
+                                <td><?= esc($student['id']) ?></td>
+                                <td><?= esc(strtoupper($student['nom'])) ?></td>
+                                <td><?= esc(ucfirst($student['prenom'])) ?></td>
+                                <td><?= esc($student['classe']) ?></td>
+                                <td><?= $student['justifie'] ? 'Justifié' : 'Non justifié' ?></td>
+                                <td>
+                                    <?php echo form_hidden("justify[{$sid}]", 'off'); ?>
+                                    <?php echo form_checkbox("justify[{$sid}]", 'on', $checked); ?>
+                                </td>
                             </tr>
-                        <?php endfor; ?>
+                            <?php endforeach; ?>
+                                
+                            <?php for ($i = count($students ?? []); $i < 10; $i++): ?>
+                                <tr class="empty-row">
+                                    <?php for ($j = 0; $j < 6; $j++): ?>
+                                        <td></td>
+                                    <?php endfor; ?>
+                                </tr>
+                            <?php endfor; ?>
+
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="7" class="no-data">Aucun élève trouvé</td>
+                            </tr>
+                        <?php endif; ?>
 
 
                     </tbody>

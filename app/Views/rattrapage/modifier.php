@@ -28,8 +28,8 @@ MySGRDS | Modifier Rattrapage
 <div class="ds-ajout-container">
     <?php echo form_open('rattrapage/modifier/' . $rattrapage['id_rattrapage']); ?>
     
-    <div class="ds-ajout-layout" style="grid-template-columns: 1fr;">
-        <!-- Section Évaluation -->
+    <div class="ds-ajout-layout">
+        <!-- Colonne gauche: Évaluation -->
         <div class="evaluation-section">
             <h2 class="section-title">Modifier le rattrapage</h2>
             
@@ -117,6 +117,57 @@ MySGRDS | Modifier Rattrapage
                 <?= validation_show_error('duration') ?>
             </div>
         </div>
+
+        <!-- Colonne droite: Étudiants -->
+        <div class="students-section">
+            <h2 class="section-title">Étudiants absents</h2>
+            
+            <div class="search-input-group">
+                <input 
+                    type="text" 
+                    placeholder="Rechercher un étudiant..." 
+                    id="student-search"
+                    value="<?= esc($keyword) ?>"
+                    onkeyup="filterStudents()"
+                >
+            </div>
+
+            <div class="students-table-container">
+                <table class="students-table">
+                    <thead>
+                        <tr>
+                            <th>Identifiant</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Classe</th>
+                            <th>Justifié</th>
+                            <th>Rattrapage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="students-tbody">
+                        <?php if (!empty($students)): ?>
+                            <?php foreach ($students as $student): ?>
+                            <tr>
+                                <td><?= esc($student['id']) ?></td>
+                                <td><?= esc(strtoupper($student['nom'])) ?></td>
+                                <td><?= esc(ucfirst($student['prenom'])) ?></td>
+                                <td><?= esc($student['classe']) ?></td>
+                                <td><?= $student['justifie'] ? 'Oui' : 'Non' ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr class="empty-row">
+                                <td colspan="5" style="text-align: center;">Aucun étudiant absent</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+
+                <div class="pagination-container">
+                    <?= $pager->links('default', 'default_full') ?>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Boutons -->
@@ -141,5 +192,5 @@ MySGRDS | Modifier Rattrapage
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
+<script src="<?= base_url('js/ds-detail.js') ?>"></script>
 <?= $this->endSection() ?>
-
