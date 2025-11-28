@@ -18,7 +18,7 @@ MySGRDS | DS
 <div class="ds-index-container">
     <!-- Section Filtres -->
     <div class="filters-section">
-        <?php echo form_open('DS', ['method' => 'get', 'class' => 'filters-form']); ?>
+        <?php echo form_open('ds', ['method' => 'get', 'class' => 'filters-form']); ?>
         <div class="filters-row">
             <div class="search-box">
                 <input type="text" name="keyword" placeholder="Rechercher" value="<?= esc($filters['keyword'] ?? '') ?>">
@@ -54,7 +54,7 @@ MySGRDS | DS
                 <input type="date" name="date_fin" value="<?= esc($filters['date_fin'] ?? '') ?>">
             </div>
             <div class="filter-buttons">
-                <a href="<?= base_url('DS') ?>" class="btn-filter btn-reset">Retirer les filtres</a>
+                <a href="<?= base_url('ds') ?>" class="btn-filter btn-reset">Retirer les filtres</a>
                 <button type="submit" class="btn-filter btn-search">Rechercher</button>
             </div>
         </div>
@@ -78,7 +78,7 @@ MySGRDS | DS
             <tbody>
                 <?php if (!empty($dsList)): ?>
                     <?php foreach ($dsList as $ds): ?>
-                        <tr onclick="window.location='<?= base_url('DS/detail/' . $ds['id_ds']) ?>'" style="cursor: pointer;">
+                        <tr onclick="window.location='<?= base_url('ds/detail/' . $ds['id_ds']) ?>'" style="cursor: pointer;">
                             <td><?= esc($ds['coderessource']) ?></td>
                             <td><?= esc(strtoupper($ds['enseignant_nom']) . ' ' . ucfirst($ds['enseignant_prenom'])) ?></td>
                             <td><?= esc(date('d/m/Y', strtotime($ds['date_ds']))) ?></td>

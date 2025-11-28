@@ -65,7 +65,7 @@ MySGRDS | Visionner DS
             <h2 class="section-title">Etudiants</h2>
             
             <div class="search-input-group">
-                <?php echo form_open('DS/detail/' . $ds['id_ds'], ['method' => 'get']); ?>
+                <?php echo form_open('ds/detail/' . $ds['id_ds'], ['method' => 'get']); ?>
                 <input type="text" name="keyword" placeholder="Rechercher" value="<?= esc($keyword) ?>" onchange="this.form.submit()">
                 <?php echo form_close(); ?>
             </div>
@@ -121,10 +121,10 @@ MySGRDS | Visionner DS
     <!-- Boutons d'action -->
     <?php if ($role === 'ENS'): ?>
         <div class="action-buttons">
-            <a href="<?= base_url('DS/refuserRattrapage/' . $ds['id_ds']) ?>" class="btn-action btn-refuse">
+            <a href="<?= base_url('ds/refuser/' . $ds['id_ds']) ?>" class="btn-action btn-refuse">
                 <span class="btn-icon">✕</span> Refuser le rattrapage
             </a>
-            <a href="<?= base_url('Rattrapage/Ajout/' . $ds['id_ds']) ?>" class="btn-action btn-validate">
+            <a href="<?= base_url('rattrapage/ajouter/' . $ds['id_ds']) ?>" class="btn-action btn-validate">
                 <span class="btn-icon">✓</span> Valider le rattrapage
             </a>
         </div>
@@ -132,7 +132,7 @@ MySGRDS | Visionner DS
 
     <?php if ($role === 'DE'): ?>
         <div class="action-buttons">
-            <a href="<?= base_url('DS/Modifier/' . $ds['id_ds']) ?>" class="btn-action btn-validate">
+            <a href="<?= base_url('ds/modifier/' . $ds['id_ds']) ?>" class="btn-action btn-validate">
                 <span class="btn-icon">✓</span> Modifier le DS
             </a>
         </div>

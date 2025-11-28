@@ -39,7 +39,7 @@
     <?php endif; ?>
 
     <?php helper('form'); ?>
-    <?= form_open('profil/save_password', ['class' => 'form-mdp']); ?>
+    <?= form_open('profil/sauvegarder', ['class' => 'form-mdp']); ?>
 
         <div class="form-group">
             <?= form_label('Mot de passe actuel', 'current_password', ['class' => 'mdp-label']); ?>

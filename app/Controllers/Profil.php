@@ -17,7 +17,7 @@ class Profil extends BaseController
         $session = session();
 
         if (! $session->get('connected')) {
-            return redirect()->to(site_url('login'));
+            return redirect()->to(site_url('connecter'));
         }
 
         $code  = $session->get('code');
@@ -40,7 +40,7 @@ class Profil extends BaseController
         $session = session();
 
         if (! $session->get('connected')) {
-            return redirect()->to(site_url('login'));
+            return redirect()->to(site_url('connecter'));
         }
 
         $code  = $session->get('code');
@@ -63,7 +63,7 @@ class Profil extends BaseController
         $session = session();
 
         if (! $session->get('connected')) {
-            return redirect()->to(site_url('login'));
+            return redirect()->to(site_url('connecter'));
         }
 
         $code  = $session->get('code');
@@ -88,7 +88,7 @@ class Profil extends BaseController
 
         if (! $this->validate($rules)) {
             return redirect()
-                ->to(site_url('profil/edit'))
+                ->to(site_url('profil/modifier'))
                 ->with('validation', $this->validator)
                 ->withInput();
         }
@@ -132,7 +132,7 @@ class Profil extends BaseController
 
         // Sécurité de base
         if (! $session->get('connected')) {
-            return redirect()->to(site_url('login'));
+            return redirect()->to(site_url('connecter'));
         }
 
         return view('profil/modifier_mdp');
@@ -143,7 +143,7 @@ class Profil extends BaseController
         $session = session();
 
         if (! $session->get('connected')) {
-            return redirect()->to(site_url('login'));
+            return redirect()->to(site_url('connecter'));
         }
 
         $rules = [

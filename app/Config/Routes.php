@@ -6,6 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 // Auth
+$routes->get('/', 'Auth::login');
 $routes->get('connecter', 'Auth::login');
 $routes->post('connecter', 'Auth::doLogin');
 
