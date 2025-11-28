@@ -80,7 +80,7 @@ class DS extends BaseController
             return redirect()->to('ds')->with('error', 'DS non trouvé');
         }
 
-        $data['students'] = $this->studentModel->getPaginatedStudentsBySemester($ds['semestre_code'], $perPage, $keyword);
+        $data['students'] = $this->studentModel->getAbsentStudentsForDs($id, $perPage, $keyword);
         $data['pager'] = $this->studentModel->pager;
         $data['keyword'] = $keyword;
         $data['ds'] = $ds;
