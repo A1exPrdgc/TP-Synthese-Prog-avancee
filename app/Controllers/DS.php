@@ -80,7 +80,7 @@ class DS extends BaseController
             return redirect()->to('ds')->with('error', 'DS non trouvé');
         }
 
-        $data['students'] = $this->studentModel->getStudentsWithAbsenceForDs($id, $perPage, $keyword);
+        $data['students'] = $this->studentModel->getAbsentStudentsForDs($id, $perPage, $keyword);
         $data['pager'] = $this->studentModel->pager;
         $data['keyword'] = $keyword;
         $data['ds'] = $ds;
@@ -188,6 +188,124 @@ class DS extends BaseController
         $this->dsModel->setEtat($dsId, $etatInitial);
 
         return redirect()->to('ds/detail/' . $dsId)->with('success', 'DS ajouté avec succès');
+    }
+
+
+    /**
+     * Formulaire de modification d'un DS
+     */
+    public function modifier($id)
+    {
+        $session = session();
+        if (!$session->get('connected')) {
+            return redirect()->to('/login');
+        }
+
+        // Vérifier si l'utilisateur est directeur des études
+        $role = $session->get('fonction');
+        if ($role !== 'DE') {
+            return redirect()->to('DS/detail/' . $id)->with('error', 'Accès non autorisé');
+        }
+
+        $ds = $this->dsModel->getDsWithDetails($id);
+
+        if (!$ds) {
+            return redirect()->to('DS')->with('error', 'DS non trouvé');
+        }
+
+        $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
+        $keyword = $this->request->getGet('keyword') ?? '';
+
+        // Récupérer tous les étudiants du semestre avec leur statut d'absence pour ce DS
+        $data['students'] = $this->studentModel->getStudentsWithAbsenceForDs($id, $perPage, $keyword);
+        $data['pager'] = $this->studentModel->pager;
+        $data['keyword'] = $keyword;
+        $data['ds'] = $ds;
+        $data['types'] = ['MACHINE' => 'Machine', 'ORAL' => 'Oral', 'PAPIER' => 'Papier'];
+        $data['validation'] = \Config\Services::validation();
+
+        return view('DS/modifier', $data);
+    }
+
+    /**
+     * Mise à jour d'un DS
+     */
+    public function update($id)
+    {
+        $session = session();
+        if (!$session->get('connected')) {
+            return redirect()->to('/login');
+        }
+
+        // Vérifier si l'utilisateur est directeur des études
+        $role = $session->get('fonction');
+        if ($role !== 'DE') {
+            return redirect()->to('DS/detail/' . $id)->with('error', 'Accès non autorisé');
+        }
+
+        $ds = $this->dsModel->find($id);
+
+        if (!$ds) {
+            return redirect()->to('DS')->with('error', 'DS non trouvé');
+        }
+
+        $rules = [
+            'date' => 'required|valid_date',
+            'type' => 'required|in_list[MACHINE,PAPIER,ORAL]',
+            'duration' => 'required|regex_match[/^(?:[01]\d|2[0-3]):[0-5]\d$/]'
+        ];
+
+        if (!$this->validate($rules)) {
+            $dsDetails = $this->dsModel->getDsWithDetails($id);
+            $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
+            $keyword = $this->request->getGet('keyword') ?? '';
+
+            $data['students'] = $this->studentModel->getStudentsWithAbsenceForDs($id, $perPage, $keyword);
+            $data['pager'] = $this->studentModel->pager;
+            $data['keyword'] = $keyword;
+            $data['ds'] = $dsDetails;
+            $data['types'] = ['MACHINE' => 'Machine', 'ORAL' => 'Oral', 'PAPIER' => 'Papier'];
+            $data['validation'] = $this->validator;
+
+            return view('ds/modifier', $data);
+        }
+
+        $post = $this->request->getPost();
+
+        $duration = $post['duration'];
+        list($heures, $minutes) = explode(':', $duration);
+        $dureeMinutes = ($heures * 60) + $minutes;
+
+        $dsData = [
+            'date_ds' => $post['date'],
+            'duree_minutes' => $dureeMinutes,
+            'type_exam' => $post['type']
+        ];
+
+        $success = $this->dsModel->updateDs($id, $dsData);
+
+        if (!$success) {
+            return redirect()->back()->withInput()->with('error', 'Erreur lors de la modification du DS');
+        }
+
+        // Mettre à jour les absences
+        $absents = $this->request->getPost('absent') ?? [];
+        $justifies = $this->request->getPost('justifie') ?? [];
+
+        // Supprimer toutes les absences existantes pour ce DS
+        $this->absentModel->where('id_ds', $id)->delete();
+
+        // Réinsérer les nouvelles absences
+        foreach ($absents as $studentCode => $value) {
+            $isJustified = isset($justifies[$studentCode]) ? 1 : 0;
+            $this->absentModel->markAbsent($id, $studentCode, $isJustified);
+        }
+
+        // Mettre à jour l'état du DS
+        $etatInitial = (count($absents) === 0) ? 'REFUSE' : 'EN ATTENTE';
+        $this->dsModel->setEtat($id, $etatInitial);
+
+        return redirect()->to('DS/detail/' . $id)->with('success', 'DS modifié avec succès');
     }
 
     /**
