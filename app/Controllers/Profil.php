@@ -4,22 +4,25 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\TeachersModel;
-
+use App\Controllers\AuthController;
 class Profil extends BaseController
 {
+
+    protected $authController;
     public function __construct()
     {
         helper(['form']);
+
+        $this->authController = new Auth();
     }
 
     public function index()
     {
-        $session = session();
-
-        if (! $session->get('connected')) {
-            return redirect()->to(site_url('connecter'));
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
         }
 
+        $session = session();
         $code  = $session->get('code');
         $model = new TeachersModel();
 
@@ -39,8 +42,8 @@ class Profil extends BaseController
     {
         $session = session();
 
-        if (! $session->get('connected')) {
-            return redirect()->to(site_url('connecter'));
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
         }
 
         $code  = $session->get('code');
@@ -62,8 +65,8 @@ class Profil extends BaseController
     {
         $session = session();
 
-        if (! $session->get('connected')) {
-            return redirect()->to(site_url('connecter'));
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
         }
 
         $code  = $session->get('code');
@@ -131,8 +134,8 @@ class Profil extends BaseController
         $session = session();
 
         // Sécurité de base
-        if (! $session->get('connected')) {
-            return redirect()->to(site_url('connecter'));
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
         }
 
         return view('profil/modifier_mdp');
@@ -142,8 +145,8 @@ class Profil extends BaseController
     {
         $session = session();
 
-        if (! $session->get('connected')) {
-            return redirect()->to(site_url('connecter'));
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
         }
 
         $rules = [

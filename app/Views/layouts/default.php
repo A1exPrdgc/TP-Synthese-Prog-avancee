@@ -58,6 +58,15 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Gestion des messages flash en pop-up -->
+    <script>
+        // Messages d'erreur
+        <?php if (session()->getFlashdata('error')): ?>
+            alert('<?= addslashes(session()->getFlashdata('error')) ?>');
+        <?php endif; ?>
+    </script>
+    
     <?= $this->renderSection('scripts') ?>
 </body>
 </html>
