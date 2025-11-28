@@ -187,7 +187,19 @@ class Rattrapage extends BaseController
             $codeEtudiant = $student['id'];
             $justified = ($post['justify'][$codeEtudiant] === 'on') ? 1 : 0;
             $this->absenceModel->markForMakeup((int) $idDs, $codeEtudiant, $justified);
-            $this->emailControl->sendMail($student['email'], 'Nouveau Rattrapage le ' . $informations['date'], "Bonjour " . $student['nom'] . $student['prenom'] . ",\n\nUn rattrapage a été programmé pour le DS initialement prévu le " . $dsInformation['date_ds'] . ".\n\nDétails du rattrapage :\nDate : " . $informations['date'] . "\nHeure : " . $informations['hour'] . "\nDurée : " . $informations['duration'] . "\nSalle : " . $informations['room'] . "\nType : " . $informations['type'] . "\n\nVeuillez vous présenter à l'heure indiquée.\n\nCordialement,\nL'équipe MySGRDS");
+            if ($justified === 1){
+                 $message = "<p>Bonjour " . $student['prenom'] . " " . $student['nom'] . ",</p>"
+                        . "<p>Un rattrapage a été programmé pour le DS initialement prévu le " . $dsInformation['date_ds'] . ".</p>"
+                        . "<p><b>Détails du rattrapage :</b><br>"
+                        . "Date : " . $informations['date'] . "<br>"
+                        . "Heure : " . $informations['hour'] . "<br>"
+                        . "Durée : " . $informations['duration'] . "<br>"
+                        . "Salle : " . $informations['room'] . "<br>"
+                        . "Type : " . $informations['type'] . "</p>"
+                        . "<p>Veuillez vous présenter à l'heure indiquée.</p>"
+                        . "<p>Cordialement,<br>L'équipe MySGRDS</p>";
+                $this->emailControl->sendMail($student['email'], 'Nouveau Rattrapage le ' . $informations['date'], $message );
+            }
         }
 
         $rattrapageModel = new RattrapageModel();
