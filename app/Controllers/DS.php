@@ -236,7 +236,7 @@ class DS extends BaseController
         $data['types'] = ['MACHINE' => 'Machine', 'ORAL' => 'Oral', 'PAPIER' => 'Papier'];
         $data['validation'] = \Config\Services::validation();
 
-        return view('DS/modifier', $data);
+        return view('ds/modifier', $data);
     }
 
     /**
