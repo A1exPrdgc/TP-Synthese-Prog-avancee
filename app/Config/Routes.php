@@ -25,6 +25,9 @@ $routes->post('profil/mettre-a-jour', 'Profil::update');
 $routes->get('profil/modifier-mot-de-passe', 'Profil::change_password');
 $routes->post('profil/sauvegarder', 'Profil::save_password');
 
+$routes->get('profil/creer-enseignant', 'Profil::create_teacher');
+$routes->post('profil/sauvegarder-enseignant', 'Profil::store_teacher');
+
 // Mot de passe oublié
 $routes->get('mot-de-passe-oublie', 'Auth::forgotPassword');
 $routes->post('mot-de-passe-oublie', 'Auth::doForgotPassword');

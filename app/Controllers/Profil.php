@@ -184,4 +184,63 @@ class Profil extends BaseController
         return redirect()->to(site_url('profil'))
                          ->with('message', 'Votre mot de passe a été modifié avec succès.');
     }
+
+    /**
+     * Affiche le formulaire de création d'enseignant (Réservé DE)
+     */
+    public function create_teacher()
+    {
+        $session = session();
+        
+        // Vérification : Est connecté ET est Directeur d'Études (DE)
+        if (!$session->get('connected') || $session->get('fonction') !== 'DE') {
+            return redirect()->to(site_url('profil'));
+        }
+
+        helper(['form']);
+        return view('profil/creer_enseignant');
+    }
+
+    /**
+     * Traite la création de l'enseignant
+     */
+    public function store_teacher()
+    {
+        $session = session();
+
+        // Sécurité
+        if (!$session->get('connected') || $session->get('fonction') !== 'DE') {
+            return redirect()->to(site_url('profil'));
+        }
+
+        // Règles de validation (Similaire à l'inscription mais sans password)
+        $rules = [
+            'nom'      => 'required|min_length[2]|max_length[50]',
+            'prenom'   => 'required|min_length[2]|max_length[50]',
+            'email'    => 'required|valid_email|is_unique[enseignant.email]',
+            'username' => 'required|min_length[3]|is_unique[enseignant.code]',
+        ];
+
+        if (! $this->validate($rules)) {
+            return view('profil/creer_enseignant', [
+                'validation' => $this->validator
+            ]);
+        }
+
+        $model = new TeachersModel();
+
+        // Préparation des données
+        $data = [
+            'code'     => $this->request->getPost('username'),
+            'nom'      => $this->request->getPost('nom'),
+            'prenom'   => $this->request->getPost('prenom'),
+            'email'    => $this->request->getPost('email'),
+            'fonction' => 'ENS',
+            'password' => password_hash('changeme123', PASSWORD_DEFAULT),
+        ];
+
+        $model->insert($data);
+
+        return redirect()->to(site_url('profil'))->with('message', 'Enseignant créé avec succès (Mdp: changeme123).');
+    }
 }
