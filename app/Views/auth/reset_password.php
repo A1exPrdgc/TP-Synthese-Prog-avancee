@@ -16,7 +16,7 @@
     <?php endif; ?>
 
     <?php helper('form'); ?>
-    <?= form_open('reset-password/' . esc($token)); ?>
+    <?= form_open('reinitialiser/' . esc($token)); ?>
 
         <table>
             <tr>
@@ -47,7 +47,7 @@
     <?= form_close(); ?>
 
     <p>
-        <a href="<?= site_url('login'); ?>">Retour au login</a>
+        <a href="<?= site_url('connecter'); ?>">Retour au login</a>
     </p>
 </div>
 

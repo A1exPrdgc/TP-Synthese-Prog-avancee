@@ -40,6 +40,7 @@ class DS extends BaseController
      */
     public function index()
     {
+        $this->dsModel->updateEtatByAbsences();
         $this->dsModel->updateEtatByRattrapageDate();
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
         
@@ -69,7 +70,7 @@ class DS extends BaseController
     public function detail($id = null)
     {
         if (!$id) {
-            return redirect()->to('DS')->with('error', 'ID du DS non spécifié');
+            return redirect()->to('ds')->with('error', 'ID du DS non spécifié');
         }
 
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
@@ -78,7 +79,7 @@ class DS extends BaseController
         $ds = $this->dsModel->getDsWithDetails($id);
         
         if (!$ds) {
-            return redirect()->to('DS')->with('error', 'DS non trouvé');
+            return redirect()->to('ds')->with('error', 'DS non trouvé');
         }
 
         $data['students'] = $this->studentModel->getStudentsWithAbsenceForDs($id, $perPage, $keyword);
@@ -194,7 +195,11 @@ class DS extends BaseController
 
         $this->emailController->sendMail($this->teacherModel->getEmailByCode($teacherCode), 'Nouveau DS Ajouté', $message);
 
-        return redirect()->to('DS/detail/' . $dsId)->with('success', 'DS ajouté avec succès');
+        // Définir l'état selon le nombre d'absents
+        $etatInitial = (count($absents) === 0) ? 'REFUSE' : 'EN ATTENTE';
+        $this->dsModel->setEtat($dsId, $etatInitial);
+
+        return redirect()->to('ds/detail/' . $dsId)->with('success', 'DS ajouté avec succès');
     }
 
     /**
@@ -203,7 +208,7 @@ class DS extends BaseController
     public function validerRattrapage($id)
     {
         // TODO: Implémenter la validation de rattrapage
-        return redirect()->to('DS/detail/' . $id)->with('success', 'Rattrapage validé');
+        return redirect()->to('ds/detail/' . $id)->with('success', 'Rattrapage validé');
     }
 
     /**
@@ -212,22 +217,22 @@ class DS extends BaseController
     public function refuserRattrapage($id)
     {
         if (!$id) {
-            return redirect()->to('DS')->with('error', 'ID du DS non spécifié');
+            return redirect()->to('ds')->with('error', 'ID du DS non spécifié');
         }
     
         // Vérifier que le DS existe
         $ds = $this->dsModel->find($id);
         if (!$ds) {
-            return redirect()->to('DS')->with('error', 'DS non trouvé');
+            return redirect()->to('ds')->with('error', 'DS non trouvé');
         }
     
         // Mettre à jour l'état à REFUSE
         $result = $this->dsModel->setEtat($id, 'REFUSE');
     
         if ($result) {
-            return redirect()->to('DS')->with('success', 'Rattrapage refusé avec succès. État du DS mis à jour.');
+            return redirect()->to('ds')->with('success', 'Rattrapage refusé avec succès. État du DS mis à jour.');
         } else {
-            return redirect()->to('DS')->with('error', 'Erreur lors du refus du rattrapage.');
+            return redirect()->to('ds')->with('error', 'Erreur lors du refus du rattrapage.');
         }
     }
 

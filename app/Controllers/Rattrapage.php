@@ -75,13 +75,13 @@ class Rattrapage extends BaseController
     {
         $session = session();
         if (!$session->get('connected')) {
-            return redirect()->to('/login');
+            return redirect()->to('/connecter');
         }
 
         $dataArray = $this->dsModel->getDsWithDetails($idDs);
         
         if (!$dataArray) {
-            return redirect()->to('DS')->with('error', 'DS non trouvé');
+            return redirect()->to('ds')->with('error', 'DS non trouvé');
         }
 
         $data['DSInformation'] = [
@@ -213,7 +213,7 @@ class Rattrapage extends BaseController
             return redirect()->back()->withInput()->with('error', 'Erreur lors de la création du rattrapage');
         }
 
-        return redirect()->to('Rattrapage')->with('success', 'Rattrapage ajouté avec succès');
+        return redirect()->to('rattrapage')->with('success', 'Rattrapage ajouté avec succès');
     
     }
 
@@ -221,17 +221,17 @@ class Rattrapage extends BaseController
     public function refuser($id)
     {
         if (!$id) {
-            return redirect()->to('Rattrapage')->with('error', 'ID du rattrapage non spécifié');
+            return redirect()->to('rattrapage')->with('error', 'ID du rattrapage non spécifié');
         }
 
         $rattrapage = $this->rattrapageModel->find($id);
         if (!$rattrapage) {
-            return redirect()->to('Rattrapage')->with('error', 'Rattrapage non trouvé');
+            return redirect()->to('rattrapage')->with('error', 'Rattrapage non trouvé');
         }
 
         $this->rattrapageModel->updateEtat($id, 'REFUSE');
 
-        return redirect()->to('Rattrapage')->with('success', 'Rattrapage annulé avec succès.');
+        return redirect()->to('rattrapage')->with('success', 'Rattrapage annulé avec succès.');
     }
     /**
      * Détail d'un rattrapage
@@ -241,7 +241,7 @@ class Rattrapage extends BaseController
         $rattrapage = $this->rattrapageModel->getRattrapageWithDetails($id);
         
         if (!$rattrapage) {
-            return redirect()->to('Rattrapage')->with('error', 'Rattrapage non trouvé');
+            return redirect()->to('rattrapage')->with('error', 'Rattrapage non trouvé');
         }
 
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
@@ -263,13 +263,13 @@ class Rattrapage extends BaseController
     {
         $session = session();
         if (!$session->get('connected')) {
-            return redirect()->to('/login');
+            return redirect()->to('/connecter');
         }
 
         $rattrapage = $this->rattrapageModel->getRattrapageWithDetails($id);
         
         if (!$rattrapage) {
-            return redirect()->to('Rattrapage')->with('error', 'Rattrapage non trouvé');
+            return redirect()->to('rattrapage')->with('error', 'Rattrapage non trouvé');
         }
 
         $data['rattrapage'] = $rattrapage;
@@ -287,13 +287,13 @@ class Rattrapage extends BaseController
     {
         $session = session();
         if (!$session->get('connected')) {
-            return redirect()->to('/login');
+            return redirect()->to('/connecter');
         }
 
         $rattrapage = $this->rattrapageModel->find($id);
         
         if (!$rattrapage) {
-            return redirect()->to('Rattrapage')->with('error', 'Rattrapage non trouvé');
+            return redirect()->to('rattrapage')->with('error', 'Rattrapage non trouvé');
         }
 
         $rules = [
@@ -337,6 +337,6 @@ class Rattrapage extends BaseController
             return redirect()->back()->withInput()->with('error', 'Erreur lors de la modification du rattrapage');
         }
 
-        return redirect()->to('Rattrapage/detail/' . $id)->with('success', 'Rattrapage modifié avec succès');
+        return redirect()->to('rattrapage/detail/' . $id)->with('success', 'Rattrapage modifié avec succès');
     }
 }

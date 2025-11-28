@@ -37,7 +37,7 @@ class Auth extends BaseController
 
         // Déjà connecté → accueil rattrapage
         if ($session->get('connected')) {
-            return redirect()->to(site_url('Rattrapage'));
+            return redirect()->to(site_url('rattrapage'));
         }
 
         // Auto-login via cookie "remember_code"
@@ -48,7 +48,7 @@ class Auth extends BaseController
 
             if ($user) {
                 $this->startSessionForUser($user);
-                return redirect()->to(site_url('Rattrapage'));
+                return redirect()->to(site_url('rattrapage'));
             }
         }
 
@@ -119,7 +119,7 @@ class Auth extends BaseController
             setcookie('remember_code', '', time() - 3600, '/');
         }
 
-        return redirect()->to(site_url('Rattrapage'));
+        return redirect()->to(site_url('rattrapage'));
     }
 
     /**
@@ -197,7 +197,7 @@ class Auth extends BaseController
         }
 
         session()->setFlashdata('message', 'Compte créé, vous pouvez vous connecter.');
-        return redirect()->to(site_url('login'));
+        return redirect()->to(site_url('connecter'));
     }
 
     // -------------------------------------------------------------------
@@ -253,7 +253,7 @@ class Auth extends BaseController
 
         $emailService = Services::email();
 
-        $resetLink = site_url('reset-password/' . $token);
+        $resetLink = site_url('reinitialiser/' . $token);
 
         $emailService->setTo($user['email']);
         $emailService->setSubject('Réinitialisation de votre mot de passe');
@@ -285,7 +285,7 @@ class Auth extends BaseController
         helper('form');
 
         if ($token === null) {
-            return redirect()->to(site_url('login'));
+            return redirect()->to(site_url('connecter'));
         }
 
         $model = new \App\Models\TeachersModel();
@@ -293,12 +293,12 @@ class Auth extends BaseController
 
         if (! $user) {
             session()->setFlashdata('error', 'Lien de réinitialisation invalide.');
-            return redirect()->to(site_url('login'));
+            return redirect()->to(site_url('connecter'));
         }
 
         if (! empty($user['reset_expires']) && Time::now()->isAfter($user['reset_expires'])) {
             session()->setFlashdata('error', 'Lien de réinitialisation expiré.');
-            return redirect()->to(site_url('login'));
+            return redirect()->to(site_url('connecter'));
         }
 
         return view('auth/reset_password', [
@@ -321,7 +321,7 @@ class Auth extends BaseController
 
         if (! $this->validate($rules)) {
             session()->setFlashdata('error', 'Mot de passe invalide ou non identique.');
-            return redirect()->to(site_url('reset-password/' . $token));
+            return redirect()->to(site_url('reinitialiser/' . $token));
         }
 
         $model = new \App\Models\TeachersModel();
@@ -329,13 +329,13 @@ class Auth extends BaseController
 
         if (! $user) {
             session()->setFlashdata('error', 'Lien de réinitialisation invalide.');
-            return redirect()->to(site_url('login'));
+            return redirect()->to(site_url('connecter'));
         }
 
         // Vérifier expiration
         if (! empty($user['reset_expires']) && Time::now()->isAfter($user['reset_expires'])) {
             session()->setFlashdata('error', 'Lien de réinitialisation expiré.');
-            return redirect()->to(site_url('login'));
+            return redirect()->to(site_url('connecter'));
         }
 
         $newPassword = $this->request->getPost('password');
@@ -347,7 +347,7 @@ class Auth extends BaseController
         ]);
 
         session()->setFlashdata('message', 'Mot de passe modifié, vous pouvez vous connecter.');
-        return redirect()->to(site_url('login'));
+        return redirect()->to(site_url('connecter'));
     }
 
     /**
@@ -358,7 +358,7 @@ class Auth extends BaseController
         setcookie('remember_code', '', time() - 3600, '/');
         session()->destroy();
 
-        return redirect()->to('/login');
+        return redirect()->to('/connecter');
     }
 
 }

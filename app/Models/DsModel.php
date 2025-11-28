@@ -170,7 +170,27 @@ class DsModel extends Model
             $this->setEtat($row['id_ds'], 'PREVU');
         }
     }
+
+
+    /**
+     * Vérifie et corrige les DS sans absences qui ne sont pas en état REFUSE
+     */
+    public function updateEtatByAbsences()
+    {
+        $sql = "SELECT ds.id_ds
+                FROM ds 
+                LEFT JOIN absence ON absence.id_ds = ds.id_ds
+                WHERE ds.etat != 'REFUSE' 
+                AND ds.etat IS NOT NULL
+                GROUP BY ds.id_ds 
+                HAVING COUNT(absence.id_ds) = 0";
     
-
-
+        $query = $this->db->query($sql);
+        $dsSansAbsences = $query->getResultArray();
+    
+        foreach ($dsSansAbsences as $row) {
+            $this->setEtat($row['id_ds'], 'REFUSE');
+        }
+    }
+    
 }

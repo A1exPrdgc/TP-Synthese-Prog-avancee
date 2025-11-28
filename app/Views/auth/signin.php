@@ -28,7 +28,7 @@
         <p class="alert-error"><?= esc($error) ?></p>
     <?php endif; ?>
 
-    <?= form_open('signin'); ?>
+    <?= form_open('inscription'); ?>
         <table>
             <!-- Nom / Prénom sur la même ligne -->
             <tr class="inline-fields-row">
@@ -118,7 +118,7 @@
 
     <div class="links">
         <p>Déjà un compte ?</p>
-        <a href="<?= site_url('login'); ?>">Connectez-vous</a>
+        <a href="<?= site_url('connecter'); ?>">Connectez-vous</a>
     </div>
 </div>
 

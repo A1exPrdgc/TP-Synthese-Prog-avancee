@@ -16,7 +16,7 @@ MySGRDS | Ajouter Rattrapage
 <?= $this->section('content') ?>
 
 <div class="ds-ajout-container">
-    <?php echo form_open('Rattrapage/save/' . $DSInformation['idDs']); ?>
+    <?php echo form_open('rattrapage/sauvegarder/' . $DSInformation['idDs']); ?>
     <?php echo form_hidden('codeEnseignant', $DSInformation['codeEnseignant']); ?>
     
     <div class="ds-ajout-layout">
@@ -154,20 +154,18 @@ MySGRDS | Ajouter Rattrapage
                             </td>
                         </tr>
                         <?php endforeach; ?>
-                        
-                        <?php for ($i = count($students); $i < 6; $i++): ?>
-                        <tr class="empty-row">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                            
+                        <?php for ($i = count($students ?? []); $i < 10; $i++): ?>
+                            <tr class="empty-row">
+                                <?php for ($j = 0; $j < count($students[0]); $j++): ?>
+                                    <td></td>
+                                <?php endfor; ?>
+                            </tr>
                         <?php endfor; ?>
+
+
                     </tbody>
                 </table>
-
                 <div class="pagination-container">
                     <?php if (isset($pager)): ?>
                         <?= $pager->links('default', 'default_full') ?>

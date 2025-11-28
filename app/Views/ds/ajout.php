@@ -16,7 +16,7 @@ MySGRDS | Ajout d'un DS
 <?= $this->section('content') ?>
 
 <div class="ds-ajout-container">
-    <?php echo form_open('DS/save'); ?>
+    <?php echo form_open('ds/sauvegarder'); ?>
     
     <div class="ds-ajout-layout">
         <!-- Colonne gauche: Évaluation -->
@@ -130,8 +130,6 @@ MySGRDS | Ajout d'un DS
                             </td>
                         </tr>
                         <?php endforeach; ?>
-
-                        <?php var_dump($students)?> 
 
                         <?php for ($i = count($students ?? []); $i < 10; $i++): ?>
                             <tr class="empty-row">

@@ -86,7 +86,7 @@ MySGRDS | Visionner Rattrapage
             <h2 class="section-title">Étudiants</h2>
             
             <div class="search-input-group">
-                <?php echo form_open('Rattrapage/detail/' . $rattrapage['id_rattrapage'], ['method' => 'get']); ?>
+                <?php echo form_open('rattrapage/detail/' . $rattrapage['id_rattrapage'], ['method' => 'get']); ?>
                 <input type="text" name="keyword" placeholder="Rechercher" value="<?= esc($keyword) ?>" onchange="this.form.submit()">
                 <?php echo form_close(); ?>
             </div>
@@ -119,17 +119,14 @@ MySGRDS | Visionner Rattrapage
                             <?php endforeach; ?>
                         <?php endif; ?>
                         
-                        <!-- Lignes vides pour maintenir la structure -->
-                        <?php for ($i = count($students ?? []); $i < 6; $i++): ?>
+                        <?php for ($i = count($students ?? []); $i < 10; $i++): ?>
                             <tr class="empty-row">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <?php for ($j = 0; $j < count($students[0]); $j++): ?>
+                                    <td></td>
+                                <?php endfor; ?>
                             </tr>
                         <?php endfor; ?>
+                                    
                     </tbody>
                 </table>
 
@@ -142,7 +139,7 @@ MySGRDS | Visionner Rattrapage
 
     <!-- Bouton d'action -->
     <div class="action-buttons">
-        <a href="<?= base_url('Rattrapage/modifier/' . $rattrapage['id_rattrapage']) ?>" class="btn-action btn-validate">
+        <a href="<?= base_url('rattrapage/modifier/' . $rattrapage['id_rattrapage']) ?>" class="btn-action btn-validate">
             <span class="btn-icon">✎</span> Modifier le rattrapage
         </a>
     </div>
