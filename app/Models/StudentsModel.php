@@ -25,7 +25,8 @@ class StudentsModel extends Model
             etudiant.prenom, 
             etudiant.classe,
             1 as absent,
-            COALESCE(a.absenceJustifie, 0) as justifie
+            COALESCE(a.absenceJustifie, 0) as justifie,
+            COALESCE(a.rattrape, 0) as rattrape
         ')
         ->join('absence a', 'etudiant.code = a.code')
         ->where('a.id_ds', $ds_id);
@@ -45,6 +46,7 @@ class StudentsModel extends Model
         foreach ($results as &$row) {
             $row['absent'] = (bool) $row['absent'];
             $row['justifie'] = (bool) $row['justifie'];
+            $row['rattrape'] = (bool) $row['rattrape'];
         }
 
         return $results;

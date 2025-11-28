@@ -328,6 +328,17 @@ class Rattrapage extends BaseController
             return redirect()->back()->withInput()->with('error', 'Erreur lors de la modification du rattrapage');
         }
 
+        $rattrapes = $this->request->getPost('rattrape') ?? [];
+        $rattrapage = $this->rattrapageModel->find($id);
+        
+        $students = $this->studentModel->getPaginatedStudentsByDSiD($rattrapage['id_ds'], 1000, null);
+        
+        foreach ($students as $student) {
+            $codeEtudiant = $student['id'];
+            $rattrape = isset($rattrapes[$codeEtudiant]) ? 1 : 0;
+            $this->absenceModel->markForMakeup($rattrapage['id_ds'], $codeEtudiant, $rattrape);
+        }
+
         return redirect()->to('rattrapage/detail/' . $id)->with('success', 'Rattrapage modifié avec succès');
     }
 }
