@@ -25,7 +25,8 @@ class StudentsModel extends Model
             etudiant.prenom, 
             etudiant.classe,
             1 as absent,
-            COALESCE(a.absenceJustifie, 0) as justifie
+            COALESCE(a.absenceJustifie, 0) as justifie,
+            COALESCE(a.rattrape, 0) as rattrape
         ')
         ->join('absence a', 'etudiant.code = a.code')
         ->where('a.id_ds', $ds_id);
@@ -45,6 +46,7 @@ class StudentsModel extends Model
         foreach ($results as &$row) {
             $row['absent'] = (bool) $row['absent'];
             $row['justifie'] = (bool) $row['justifie'];
+            $row['rattrape'] = (bool) $row['rattrape'];
         }
 
         return $results;
@@ -65,6 +67,43 @@ class StudentsModel extends Model
         ');
 
         $this->join('absence a', 'etudiant.code = a.code AND a.id_ds = ' . $idDs, 'left');
+
+        if ($keyword) {
+            $this->groupStart()
+                 ->like('etudiant.nom', $keyword)
+                 ->orLike('etudiant.prenom', $keyword)
+                 ->orLike('etudiant.classe', $keyword)
+                 ->groupEnd();
+        }
+
+        $this->orderBy('absent', 'DESC');
+        $this->orderBy('etudiant.nom', 'ASC');
+        $this->orderBy('etudiant.prenom', 'ASC');
+
+        $results = $this->paginate($perPage, 'default');
+
+        foreach ($results as &$row) {
+            $row['absent'] = (bool) $row['absent'];
+            $row['justifie'] = (bool) $row['justifie'];
+        }
+
+        return $results;
+    }
+
+    public function getStudentsWithAbsenceForDsBySemester(string $semester_code, int $idDs, int $perPage, ?string $keyword = null): array
+    {
+        $this->select('
+            etudiant.code as id, 
+            etudiant.nom, 
+            etudiant.prenom, 
+            etudiant.classe,
+            (CASE WHEN a.code IS NOT NULL THEN 1 ELSE 0 END) as absent,
+            COALESCE(a.absencejustifie, 0) as justifie
+        ');
+
+        $this->join('absence a', 'etudiant.code = a.code AND a.id_ds = ' . $idDs, 'left');
+        $this->join('semestre s', 's.id_semestre = etudiant.id_semestre')
+             ->where('s.code', $semester_code);
 
         if ($keyword) {
             $this->groupStart()

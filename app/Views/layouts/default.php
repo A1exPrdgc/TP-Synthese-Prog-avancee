@@ -29,9 +29,7 @@
                 $pageType = $this->renderSection('pageType');
             ?>
             <div class="d-flex align-items-center">
-                <?php if ($pageType === 'rattrapage' && $role === 'ENS'):   ?>
-                    <a class="btn btn-custom me-2" href="<?= base_url('rattrapage/ajouter') ?>">+ Ajouter</a>
-                <?php endif; ?>
+
                 <?php if ($pageType === 'ds' && $role == 'DE'): ?>
                     <a class="btn btn-custom me-2" href="<?= base_url('ds/ajouter') ?>">+ Ajouter</a>
                 <?php endif; ?>

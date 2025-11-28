@@ -80,7 +80,7 @@ class DS extends BaseController
             return redirect()->to('ds')->with('error', 'DS non trouvé');
         }
 
-        $data['students'] = $this->studentModel->getPaginatedStudentsBySemester($ds['semestre_code'], $perPage, $keyword);
+        $data['students'] = $this->studentModel->getAbsentStudentsForDs($id, $perPage, $keyword);
         $data['pager'] = $this->studentModel->pager;
         $data['keyword'] = $keyword;
         $data['ds'] = $ds;
@@ -217,14 +217,14 @@ class DS extends BaseController
         $keyword = $this->request->getGet('keyword') ?? '';
 
         // Récupérer tous les étudiants du semestre avec leur statut d'absence pour ce DS
-        $data['students'] = $this->studentModel->getStudentsWithAbsenceForDs($id, $perPage, $keyword);
+        $data['students'] = $this->studentModel->getStudentsWithAbsenceForDsBySemester($ds['semestre_code'],$id, $perPage, $keyword);
         $data['pager'] = $this->studentModel->pager;
         $data['keyword'] = $keyword;
         $data['ds'] = $ds;
         $data['types'] = ['MACHINE' => 'Machine', 'ORAL' => 'Oral', 'PAPIER' => 'Papier'];
         $data['validation'] = \Config\Services::validation();
 
-        return view('DS/modifier', $data);
+        return view('ds/modifier', $data);
     }
 
     /**

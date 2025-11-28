@@ -257,10 +257,16 @@ class Rattrapage extends BaseController
             return redirect()->to('rattrapage')->with('error', 'Rattrapage non trouvé');
         }
 
+        $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
+        $keyword = $this->request->getGet('keyword') ?? '';
+
+        // Récupérer les étudiants absents du DS associé
+        $data['students'] = $this->studentModel->getPaginatedStudentsByDSiD($rattrapage['id_ds'], $perPage, $keyword);
+        $data['pager'] = $this->studentModel->pager;
+        $data['keyword'] = $keyword;
         $data['rattrapage'] = $rattrapage;
         $data['types'] = ['MACHINE' => 'Machine', 'ORAL' => 'Oral', 'PAPIER' => 'Papier'];
         $data['validation'] = \Config\Services::validation();
-
 
         return view('rattrapage/modifier', $data);
     }
@@ -320,6 +326,17 @@ class Rattrapage extends BaseController
 
         if (!$success) {
             return redirect()->back()->withInput()->with('error', 'Erreur lors de la modification du rattrapage');
+        }
+
+        $rattrapes = $this->request->getPost('rattrape') ?? [];
+        $rattrapage = $this->rattrapageModel->find($id);
+        
+        $students = $this->studentModel->getPaginatedStudentsByDSiD($rattrapage['id_ds'], 1000, null);
+        
+        foreach ($students as $student) {
+            $codeEtudiant = $student['id'];
+            $rattrape = isset($rattrapes[$codeEtudiant]) ? 1 : 0;
+            $this->absenceModel->markForMakeup($rattrapage['id_ds'], $codeEtudiant, $rattrape);
         }
 
         return redirect()->to('rattrapage/detail/' . $id)->with('success', 'Rattrapage modifié avec succès');

@@ -153,11 +153,19 @@ MySGRDS | Modifier Rattrapage
                                 <td><?= esc(ucfirst($student['prenom'])) ?></td>
                                 <td><?= esc($student['classe']) ?></td>
                                 <td><?= $student['justifie'] ? 'Oui' : 'Non' ?></td>
+                                <td>
+                                    <?php echo form_checkbox(
+                                        'rattrape[' . esc($student['id']) . ']',
+                                        '1',
+                                        set_checkbox('rattrape[' . esc($student['id']) . ']', '1', $student['rattrape']),
+                                        'id="rattrape_' . esc($student['id']) . '"'
+                                    ); ?>
+                                </td>
                             </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr class="empty-row">
-                                <td colspan="5" style="text-align: center;">Aucun étudiant absent</td>
+                                <td colspan="6" style="text-align: center;">Aucun étudiant absent</td>
                             </tr>
                         <?php endif; ?>
                     </tbody>
