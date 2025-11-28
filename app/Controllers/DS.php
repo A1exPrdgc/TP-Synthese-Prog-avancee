@@ -184,7 +184,7 @@ class DS extends BaseController
         }
 
         // Définir l'état selon le nombre d'absents
-        $etatInitial = ($nbAbsents === 0) ? 'REFUSE' : 'EN ATTENTE';
+        $etatInitial = (count($absents) === 0) ? 'REFUSE' : 'EN ATTENTE';
         $this->dsModel->setEtat($dsId, $etatInitial);
 
         return redirect()->to('DS/detail/' . $dsId)->with('success', 'DS ajouté avec succès');
