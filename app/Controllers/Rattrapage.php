@@ -20,6 +20,7 @@ class Rattrapage extends BaseController
     protected $semesterModel;
     protected $resourceModel;
     protected $absenceModel;
+    protected $emailControl;
 
     public function __construct()
     {
@@ -32,6 +33,7 @@ class Rattrapage extends BaseController
         $this->semesterModel = new SemestersModel();
         $this->resourceModel = new RessourceModel();
         $this->absenceModel = new AbsentModel();
+        $this->emailControl = new MailController();
         
         session()->set('role', $this->teacherModel->getRole());
     }
@@ -185,6 +187,7 @@ class Rattrapage extends BaseController
             $codeEtudiant = $student['id'];
             $justified = ($post['justify'][$codeEtudiant] === 'on') ? 1 : 0;
             $this->absenceModel->markForMakeup((int) $idDs, $codeEtudiant, $justified);
+            $this->emailControl->sendMail($student['email'], 'Nouveau Rattrapage le ' . $informations['date'], "Bonjour " . $student['nom'] . $student['prenom'] . ",\n\nUn rattrapage a été programmé pour le DS initialement prévu le " . $dsInformation['date_ds'] . ".\n\nDétails du rattrapage :\nDate : " . $informations['date'] . "\nHeure : " . $informations['hour'] . "\nDurée : " . $informations['duration'] . "\nSalle : " . $informations['room'] . "\nType : " . $informations['type'] . "\n\nVeuillez vous présenter à l'heure indiquée.\n\nCordialement,\nL'équipe MySGRDS");
         }
 
         $rattrapageModel = new RattrapageModel();

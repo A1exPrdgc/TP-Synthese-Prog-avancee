@@ -24,6 +24,7 @@ class StudentsModel extends Model
             etudiant.nom, 
             etudiant.prenom, 
             etudiant.classe,
+            etudiant.email,
             1 as absent,
             COALESCE(a.absenceJustifie, 0) as justifie
         ')
@@ -60,6 +61,7 @@ class StudentsModel extends Model
             etudiant.nom, 
             etudiant.prenom, 
             etudiant.classe,
+            etudiant.email,
             (CASE WHEN a.code IS NOT NULL THEN 1 ELSE 0 END) as absent,
             COALESCE(a.absencejustifie, 0) as justifie
         ');
@@ -97,7 +99,8 @@ class StudentsModel extends Model
             etudiant.code as id, 
             etudiant.nom, 
             etudiant.prenom, 
-            etudiant.classe
+            etudiant.classe,
+            etudiant.email
         ')
         ->join('semestre s', 's.id_semestre = etudiant.id_semestre')
         ->where('s.code', $semester_code);
@@ -160,6 +163,7 @@ class StudentsModel extends Model
             etudiant.nom, 
             etudiant.prenom, 
             etudiant.classe,
+            etudiant.email,
             1 as absent,
             COALESCE(a.absenceJustifie, 0) as justifie
         ')
