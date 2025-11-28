@@ -39,11 +39,11 @@ $routes->post('ds/sauvegarder', 'DS::save');
 $routes->get('ds/detail/(:num)', 'DS::detail/$1');
 $routes->get('ds/valider/(:num)', 'DS::validerRattrapage/$1');
 $routes->get('ds/refuser/(:num)', 'DS::refuserRattrapage/$1');
-$routes->get('DS/modifier/(:num)', 'DS::modifier/$1');
-$routes->post('DS/update/(:num)', 'DS::update/$1');
-$routes->get('DS/getResourcesBySemester', 'DS::getResourcesBySemester');
-$routes->get('DS/getTeachersByResource', 'DS::getTeachersByResource');
-$routes->get('DS/getStudentsBySemester', 'DS::getStudentsBySemester');
+$routes->get('ds/modifier/(:num)', 'DS::modifier/$1');
+$routes->post('ds/modifier/(:num)', 'DS::update/$1');
+$routes->get('ds/getResourcesBySemester', 'DS::getResourcesBySemester');
+$routes->get('ds/getTeachersByResource', 'DS::getTeachersByResource');
+$routes->get('ds/getStudentsBySemester', 'DS::getStudentsBySemester');
 
 
 // Rattrapage
