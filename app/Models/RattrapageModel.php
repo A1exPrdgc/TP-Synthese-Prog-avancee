@@ -39,7 +39,7 @@ class RattrapageModel extends Model
             rattrapage.heure_debut,
             rattrapage.salle,
             rattrapage.etat,
-            ds.type_exam,
+            rattrapage.type_exam,
             ressource.coderessource,
             ressource.nomressource,
             enseignant.nom as enseignant_nom,
@@ -156,5 +156,21 @@ class RattrapageModel extends Model
         $heures = floor($minutes / 60);
         $mins = $minutes % 60;
         return $heures . 'h' . sprintf('%02d', $mins);
+    }
+
+    public function updateEtatByDate()
+    {
+        $now = date('Y-m-d');
+
+        $sql = "SELECT id_rattrapage 
+                FROM rattrapage 
+                WHERE date_rattrapage < ? AND etat != 'TERMINE'";
+
+        $query = $this->db->query($sql, [$now]);
+        $rattrapages = $query->getResultArray();
+
+        foreach ($rattrapages as $rattrapage) {
+            $this->updateEtat($rattrapage['id_rattrapage'], 'TERMINE');
+        }
     }
 }

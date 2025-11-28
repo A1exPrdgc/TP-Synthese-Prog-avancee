@@ -59,7 +59,7 @@ MySGRDS | Visionner Rattrapage
             <div class="info-group-row">
                 <div class="info-group half">
                     <label>Type</label>
-                    <div class="info-value"><?= esc(ucfirst(strtolower($rattrapage['ds_type_exam']))) ?></div>
+                    <div class="info-value"><?= esc(ucfirst(strtolower($rattrapage['type_exam']))) ?></div>
                 </div>
 
                 <div class="info-group half">
