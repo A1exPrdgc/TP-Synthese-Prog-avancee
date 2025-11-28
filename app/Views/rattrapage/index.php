@@ -102,19 +102,21 @@ MySGRDS | Rattrapage
                             </td>
                         </tr>
                     <?php endforeach; ?>
+
+                    <?php for ($i = count($rattrapagesList ?? []); $i < 10; $i++): ?>
+                        <tr class="empty-row">
+                            <?php for ($j = 0; $j < 8; $j++): ?>
+                                <td></td>
+                            <?php endfor; ?>
+                        </tr>
+                    <?php endfor; ?>
                 <?php else: ?>
                     <tr>
                         <td colspan="8" class="no-data">Aucun rattrapage trouvé</td>
                     </tr>
                 <?php endif; ?>
                 
-                <?php for ($i = count($rattrapagesList ?? []); $i < 10; $i++): ?>
-                    <tr class="empty-row">
-                        <?php for ($j = 0; $j < 8; $j++): ?>
-                            <td></td>
-                        <?php endfor; ?>
-                    </tr>
-                <?php endfor; ?>
+
             </tbody>
         </table>
     </div>
