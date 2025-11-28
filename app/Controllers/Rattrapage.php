@@ -25,6 +25,8 @@ class Rattrapage extends BaseController
     public function __construct()
     {
         helper(['form']);
+
+        
         
         $this->rattrapageModel = new RattrapageModel();
         $this->dsModel = new DsModel();

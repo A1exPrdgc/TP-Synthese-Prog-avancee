@@ -5,6 +5,8 @@
 Modifier Rattrapage
 <?= $this->endSection() ?>
 
+<?= $this->section('backUrl') ?><?= base_url('rattrapage/detail/' . $rattrapage['id_rattrapage']) ?><?= $this->endSection() ?>
+
 <?= $this->section('styles') ?>
 <link href="<?= base_url('assets/css/ds-ajout.css') ?>" rel="stylesheet" />
 <link href="<?= base_url('assets/css/ds-detail.css') ?>" rel="stylesheet" />
