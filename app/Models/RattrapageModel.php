@@ -44,7 +44,8 @@ class RattrapageModel extends Model
             ressource.nomressource,
             enseignant.nom as enseignant_nom,
             enseignant.prenom as enseignant_prenom,
-            semestre.code as semestre_code
+            semestre.code as semestre_code,
+            ds.date_ds
         ');
         
         $this->join('ds', 'ds.id_ds = rattrapage.id_ds');
