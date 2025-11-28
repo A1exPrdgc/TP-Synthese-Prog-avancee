@@ -39,7 +39,7 @@ class RattrapageModel extends Model
             rattrapage.heure_debut,
             rattrapage.salle,
             rattrapage.etat,
-            ds.type_exam,
+            rattrapage.type_exam,
             ressource.coderessource,
             ressource.nomressource,
             enseignant.nom as enseignant_nom,
