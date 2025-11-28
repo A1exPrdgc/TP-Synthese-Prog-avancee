@@ -36,8 +36,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end; 
+    justify-content: center;
     text-align: right; 
-    flex: 0 0 42%; /* Ajustement largeur */
+    flex: 0 0 42%;
 }
 
 /* --- Colonne DROITE (Nom + Valeurs) --- */
@@ -62,10 +63,12 @@
 
 /* --- Photo --- */
 .profile-photo-block {
-    width: 130px;
-    height: 130px;
-    margin-bottom: 25px;
+    width: 180px;
+    height: 180px;
+    margin-bottom: 30px;
     position: relative;
+    
+    margin-right: 10px; 
 }
 
 .profile-photo-round {
@@ -80,32 +83,42 @@
 
 /* --- Textes --- */
 .compte-name-block {
-    height: 130px; 
+    min-height: 130px; 
     margin-bottom: 25px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%; 
+    overflow: hidden; 
 }
 
 .compte-nom {
     font-family: 'Itim', cursive;
-    font-size: 2.6rem;
+    
+    /* Utilisation de clamp() : la police s'adapte entre 1.8rem et 2.6rem selon la taille de l'écran */
+    font-size: clamp(1.8rem, 4vw, 2.6rem); 
+    
     font-weight: 800;
     text-transform: uppercase;
     color: white; 
-    /* Légère ombre pour détacher du fond jaune */
     text-shadow: 1px 1px 0 rgba(0,0,0,0.1); 
     margin: 0;
-    line-height: 1;
+    line-height: 1.1;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 .compte-prenom {
     font-family: 'Itim', cursive;
-    font-size: 2.4rem;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
     font-weight: 500;
     color: white;
     margin: 0;
     line-height: 1.1;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 /* --- Labels et Infos --- */
@@ -136,11 +149,6 @@
     display: flex;
     align-items: center;
     white-space: nowrap; /* Empêche le texte de passer à la ligne */
-}
-
-.compte-info span {
-    /* Soulignement blanc ou coloré selon préférence */
-    /* border-bottom: 2px solid white; */
 }
 
 /* --- Les petits carrés d'édition (Crayon) --- */
@@ -193,6 +201,13 @@
     box-shadow: 0 4px 0 rgba(0,0,0,0.1);
 }
 
+.profil-btn svg {
+    margin-right: 8px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
 .profil-btn:hover {
     transform: translateY(-2px);
 }
@@ -215,3 +230,105 @@
 }
 
 .upload-photo-row { display: none; }
+
+/* --- GESTION DES INPUTS EDITABLES --- */
+
+/* Wrapper pour positionner l'icone crayon par dessus l'input */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Style de base des inputs (invisible par défaut) */
+.compte-input {
+    background: transparent;
+    border: 1px solid transparent; /* Bordure invisible */
+    border-radius: 5px;
+    width: 100%;
+    padding: 0 5px;
+    font-family: 'Itim', cursive;
+    outline: none;
+    transition: all 0.3s;
+    cursor: text;
+}
+
+/* Quand on clique dans l'input : on met un fond blanc semi-transparent */
+.compte-input:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Réutilisation des styles de police existants pour les inputs */
+input.compte-nom {
+    font-size: 2.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+    height: auto;
+}
+
+input.compte-prenom {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: white;
+    height: auto;
+}
+
+input.compte-info {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    height: 35px;
+}
+
+/* Positionnement de l'icône crayon à l'intérieur de l'input */
+.overlay-icon {
+    position: absolute;
+    right: -30px; /* On le décale un peu à droite */
+    pointer-events: none; /* Le clic passe à travers pour atteindre l'input */
+}
+
+/* Identifiant statique (non éditable) */
+.static-text {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    margin: 0;
+    color: white; /* Assure que l'ID est bien blanc */
+}
+
+/* Bouton pour upload photo */
+.edit-photo-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Nouveau bouton Enregistrer */
+.profil-btn-primary {
+    background-color: #4CAF50; /* Vert un peu différent pour distinguer */
+    color: white;
+    border: none;
+}
+.profil-btn-primary:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+.edit-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 8px;
+    display: inline-flex; /* Assure un bon alignement */
+    vertical-align: middle;
+}
+
+.edit-link:hover {
+    opacity: 0.7;
+}
