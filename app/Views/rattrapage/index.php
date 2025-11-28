@@ -76,7 +76,8 @@ MySGRDS | Rattrapage
                 <tr>
                     <th>Ressource</th>
                     <th>Enseignant</th>
-                    <th>Date</th>
+                    <th>Date DS</th>
+                    <th>Date rattrapage</th>
                     <th>Horaire</th>
                     <th>Durée</th>
                     <th>Salle</th>
@@ -90,6 +91,7 @@ MySGRDS | Rattrapage
                         <tr onclick="window.location='<?= base_url('rattrapage/detail/' . $rattrapage['id_rattrapage']) ?>'" style="cursor: pointer;">
                             <td><?= esc($rattrapage['coderessource']) ?></td>
                             <td><?= esc(strtoupper($rattrapage['enseignant_nom']) . ' ' . ucfirst($rattrapage['enseignant_prenom'])) ?></td>
+                            <td><?= esc(date('d/m/Y', strtotime($rattrapage['date_ds']))) ?></td>
                             <td><?= esc(date('d/m/Y', strtotime($rattrapage['date_rattrapage']))) ?></td>
                             <td><?= esc(substr($rattrapage['heure_debut'], 0, 5)) ?></td>
                             <td><?= esc($rattrapage['duree_formatee']) ?></td>

@@ -59,6 +59,32 @@ class Auth extends BaseController
         ]);
     }
 
+    public function isConnected() {
+        $session = session();
+        if (!$session->get('connected')) {
+            return true;
+        }
+        return false;
+    }
+
+    public function isDE() {
+        $session = session();
+        $role = $session->get('fonction');
+        if ($role !== 'DE') {
+            return true;
+        }
+        return false;
+    }
+
+    public function isENS() {
+        $session = session();
+        $role = $session->get('fonction');
+        if ($role !== 'ENS') {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Traitement du formulaire de login
      */

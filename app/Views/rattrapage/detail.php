@@ -46,6 +46,11 @@ MySGRDS | Visionner Rattrapage
                 <div class="info-value"><?= esc($rattrapage['enseignant_complet']) ?></div>
             </div>
 
+            <div class="info-group">
+                <label>Date du DS initial</label>
+                <div class="info-value"><?= esc(date('d/m/Y', strtotime($rattrapage['date_ds']))) ?></div>
+            </div>
+
             <div class="info-group-row">
                 <div class="info-group half">
                     <label>Date</label>

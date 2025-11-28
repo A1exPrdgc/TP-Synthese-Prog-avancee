@@ -10,6 +10,7 @@ use App\Models\StudentsModel;
 use App\Models\RattrapageModel;
 use App\Models\SemestersModel;
 use App\Models\RessourceModel;
+use App\Controllers\AuthController;
 
 class Rattrapage extends BaseController
 {
@@ -20,6 +21,7 @@ class Rattrapage extends BaseController
     protected $semesterModel;
     protected $resourceModel;
     protected $absenceModel;
+    protected $authController;
     protected $emailControl;
 
     public function __construct()
@@ -35,6 +37,7 @@ class Rattrapage extends BaseController
         $this->semesterModel = new SemestersModel();
         $this->resourceModel = new RessourceModel();
         $this->absenceModel = new AbsentModel();
+        $this->authController = new Auth();
         $this->emailControl = new MailController();
         
         session()->set('role', $this->teacherModel->getRole());
@@ -45,6 +48,10 @@ class Rattrapage extends BaseController
      */
     public function index()
     {
+
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
+        }
 
         $this->rattrapageModel->updateEtatByDate();
 
@@ -75,11 +82,14 @@ class Rattrapage extends BaseController
      */
     public function ajout($idDs)
     {
-        $session = session();
-        if (!$session->get('connected')) {
-            return redirect()->to('/connecter');
+
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
         }
 
+        if ($this->authController->isENS()) {
+            return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
+        }
         $dataArray = $this->dsModel->getDsWithDetails($idDs);
         
         if (!$dataArray) {
@@ -110,6 +120,14 @@ class Rattrapage extends BaseController
 
     public function save($idDs)
     {
+
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
+        }
+
+        if ($this->authController->isENS()) {
+            return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
+        }
         $request = \Config\Services::request();
         $post = $request->getPost();
 
@@ -222,6 +240,13 @@ class Rattrapage extends BaseController
     //A appler quand on annule un rattrapage
     public function refuser($id)
     {
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
+        }
+
+        if ($this->authController->isENS()) {
+            return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
+        }
         if (!$id) {
             return redirect()->to('rattrapage')->with('error', 'ID du rattrapage non spécifié');
         }
@@ -252,6 +277,10 @@ class Rattrapage extends BaseController
      */
     public function detail($id)
     {
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
+        }
+
         $rattrapage = $this->rattrapageModel->getRattrapageWithDetails($id);
         
         if (!$rattrapage) {
@@ -275,11 +304,14 @@ class Rattrapage extends BaseController
      */
     public function modifier($id)
     {
-        $session = session();
-        if (!$session->get('connected')) {
-            return redirect()->to('/connecter');
+
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
         }
 
+        if ($this->authController->isENS()) {
+            return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
+        }
         $rattrapage = $this->rattrapageModel->getRattrapageWithDetails($id);
         
         if (!$rattrapage) {
@@ -305,11 +337,13 @@ class Rattrapage extends BaseController
      */
     public function update($id)
     {
-        $session = session();
-        if (!$session->get('connected')) {
-            return redirect()->to('/connecter');
+        if ($this->authController->isConnected()) {
+            return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
         }
 
+        if ($this->authController->isENS()) {
+            return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
+        }
         $rattrapage = $this->rattrapageModel->find($id);
         
         if (!$rattrapage) {

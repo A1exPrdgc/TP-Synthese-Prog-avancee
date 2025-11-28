@@ -44,6 +44,11 @@ MySGRDS | Ajouter Rattrapage
                 <?php echo form_hidden('teacher', $DSInformation['teacher']); ?>
             </div>
 
+            <div class="form-group">
+                <label>Date du DS initial</label>
+                <div class="info-value"><?= esc(date('d/m/Y', strtotime($DSInformation['date']))) ?></div>
+            </div>
+
             <div class="form-group-row">
                 <div class="form-group half">
                     <label for="date">Date</label>
