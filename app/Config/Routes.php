@@ -10,9 +10,6 @@ $routes->get('/', 'Auth::login');
 $routes->get('connecter', 'Auth::login');
 $routes->post('connecter', 'Auth::doLogin');
 
-$routes->get('inscription', 'Auth::signin');
-$routes->post('inscription', 'Auth::doSignin');
-
 $routes->get('deconnecter', 'Auth::logout');
 
 // Profile
