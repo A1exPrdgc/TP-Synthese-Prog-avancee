@@ -141,11 +141,13 @@ MySGRDS | Visionner Rattrapage
     </div>
 
     <!-- Bouton d'action -->
+    <?php if (session()->get('fonction') === 'ENS'): ?>
     <div class="action-buttons">
         <a href="<?= base_url('rattrapage/modifier/' . $rattrapage['id_rattrapage']) ?>" class="btn-action btn-validate">
             <span class="btn-icon">✎</span> Modifier le rattrapage
         </a>
     </div>
+    <?php endif; ?>
 </div>
 
 <?= $this->endSection() ?>
