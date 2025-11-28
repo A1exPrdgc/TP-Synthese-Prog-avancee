@@ -78,7 +78,7 @@ helper(['html', 'url']);
         ?>
 
         <?= anchor('profil/edit', $iconUser . 'Modifier Profil', ['class' => 'profil-btn profil-btn-primary']) ?>
-        <?= anchor('forgot-password', $iconKey . 'Changer mot de passe', ['class' => 'profil-btn profil-btn-secondary']) ?>
+        <?= anchor('profil/change_password', $iconKey . 'Changer mot de passe', ['class' => 'profil-btn profil-btn-secondary']) ?>
         <?= anchor('logout', $iconLogout . ' Déconnexion', ['class' => 'profil-btn profil-btn-danger']) ?>
 
     </div>
