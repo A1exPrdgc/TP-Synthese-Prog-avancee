@@ -17,7 +17,7 @@ MySGRDS | Modifier DS
 <?= $this->section('content') ?>
 
 <div class="ds-ajout-container">
-    <?php echo form_open('DS/update/' . $ds['id_ds']); ?>
+    <?php echo form_open('ds/modifier/' . $ds['id_ds']); ?>
 
     <div class="ds-ajout-layout">
         <!-- Colonne gauche: Évaluation -->
@@ -145,7 +145,7 @@ MySGRDS | Modifier DS
 
     <!-- Boutons -->
     <div class="action-buttons" style="justify-content: space-between;">
-        <a href="<?= base_url('DS/detail/' . $ds['id_ds']) ?>" class="btn-action btn-refuse" style="background-color: #6c757d; box-shadow: -4px -4px 0 #495057;">
+        <a href="<?= base_url('ds/detail/' . $ds['id_ds']) ?>" class="btn-action btn-refuse" style="background-color: #6c757d; box-shadow: -4px -4px 0 #495057;">
             <span class="btn-icon">←</span> Annuler
         </a>
         <?php echo form_submit('submit', '✓ Enregistrer les modifications', 'class="btn-action btn-validate"'); ?>

@@ -204,7 +204,7 @@ class DS extends BaseController
         // Vérifier si l'utilisateur est directeur des études
         $role = $session->get('fonction');
         if ($role !== 'DE') {
-            return redirect()->to('DS/detail/' . $id)->with('error', 'Accès non autorisé');
+            return redirect()->to('ds/detail/' . $id)->with('error', 'Accès non autorisé');
         }
 
         $ds = $this->dsModel->getDsWithDetails($id);
@@ -240,7 +240,7 @@ class DS extends BaseController
         // Vérifier si l'utilisateur est directeur des études
         $role = $session->get('fonction');
         if ($role !== 'DE') {
-            return redirect()->to('DS/detail/' . $id)->with('error', 'Accès non autorisé');
+            return redirect()->to('ds/detail/' . $id)->with('error', 'Accès non autorisé');
         }
 
         $ds = $this->dsModel->find($id);
@@ -305,7 +305,7 @@ class DS extends BaseController
         $etatInitial = (count($absents) === 0) ? 'REFUSE' : 'EN ATTENTE';
         $this->dsModel->setEtat($id, $etatInitial);
 
-        return redirect()->to('DS/detail/' . $id)->with('success', 'DS modifié avec succès');
+        return redirect()->to('ds/detail/' . $id)->with('success', 'DS modifié avec succès');
     }
 
     /**
