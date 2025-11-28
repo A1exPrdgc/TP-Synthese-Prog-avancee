@@ -18,6 +18,7 @@ class DS extends BaseController
     protected $teacherModel;
     protected $studentModel;
     protected $absentModel;
+    protected $emailController;
 
     public function __construct()
     {
@@ -29,6 +30,7 @@ class DS extends BaseController
         $this->teacherModel = new TeachersModel();
         $this->studentModel = new StudentsModel();
         $this->absentModel = new AbsentModel();
+        $this->emailController = new MailController(); 
         
         session()->set('role', $this->teacherModel->getRole());
     }
@@ -181,6 +183,16 @@ class DS extends BaseController
             $isJustified = isset($justifies[$studentCode]) ? 1 : 0;
             $this->absentModel->markAbsent($dsId, $studentCode, $isJustified);
         }
+        $message = "<p>Bonjour " . $teacherName . ",</p>"
+         . "<p>Un nouveau DS a été ajouté avec succès.</p>"
+         . "<p><b>Détails de l'examen :</b><br>"
+         . "Date : " . $date . "<br>"
+         . "Ressource : " . $resourceCode . "<br>"
+         . "Type : " . $type . "<br>"
+         . "Durée : " . $dureeMinutes . " minutes</p>"
+         . "<p>Cordialement,<br>L'équipe MYSGRDS.</p>";
+
+        $this->emailController->sendMail($this->teacherModel->getEmailByCode($teacherCode), 'Nouveau DS Ajouté', $message);
 
         return redirect()->to('DS/detail/' . $dsId)->with('success', 'DS ajouté avec succès');
     }

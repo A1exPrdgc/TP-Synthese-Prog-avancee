@@ -103,4 +103,10 @@ class TeachersModel extends Model
         }
         return $result;
     }
+
+    public function getEmailByCode(string $code): ?string
+    {
+        $teacher = $this->where('code', $code)->first();
+        return $teacher ? $teacher['email'] : null;
+    }
 }
