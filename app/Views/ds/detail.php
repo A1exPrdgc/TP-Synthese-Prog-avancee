@@ -9,6 +9,8 @@ Visionner DS
 MySGRDS | Visionner DS
 <?= $this->endSection() ?>
 
+<?= $this->section('backUrl') ?><?= base_url('ds') ?><?= $this->endSection() ?>
+
 <?= $this->section('styles') ?>
 <link href="<?= base_url('assets/css/ds-detail.css') ?>" rel="stylesheet" />
 <?= $this->endSection() ?>

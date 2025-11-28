@@ -5,6 +5,8 @@
 Ajouter Rattrapage
 <?= $this->endSection() ?>
 
+<?= $this->section('backUrl') ?><?= base_url('ds/detail/' . $DSInformation['idDs']) ?><?= $this->endSection() ?>
+
 <?= $this->section('styles') ?>
 <link href="<?= base_url('assets/css/ds-ajout.css') ?>" rel="stylesheet" />
 <?= $this->endSection() ?>

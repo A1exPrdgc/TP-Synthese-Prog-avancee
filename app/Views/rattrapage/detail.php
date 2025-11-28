@@ -5,6 +5,8 @@
 Détail Rattrapage
 <?= $this->endSection() ?>
 
+<?= $this->section('backUrl') ?><?= base_url('rattrapage') ?><?= $this->endSection() ?>
+
 <?= $this->section('navbarTitle') ?>
 MySGRDS | Visionner Rattrapage
 <?= $this->endSection() ?>

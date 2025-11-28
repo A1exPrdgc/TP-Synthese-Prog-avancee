@@ -17,7 +17,10 @@
     <nav class="navbar navbar-expand-lg my-navbar">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-                <a class="btn btn-square me-2" href=""><span class="arrow-left">&#8592;</span></a>
+            <?php $backUrl = $this->renderSection('backUrl'); ?>
+            <?php if (!empty(trim($backUrl))): ?>
+                <a class="btn btn-square me-2" href="<?= esc($backUrl) ?>"><span class="arrow-left">←</span></a>
+            <?php endif; ?>
                 <a class="btn btn-custom me-2" href="<?= base_url('rattrapage') ?>">Rattrapage</a>
                 <a class="btn btn-custom me-2" href="<?= base_url('ds') ?>">DS</a>
             </div>

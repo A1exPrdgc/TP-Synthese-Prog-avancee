@@ -6,6 +6,8 @@ helper(['html', 'url']);
 
 <?= $this->section('pageType'); ?>profil<?= $this->endSection(); ?>
 
+<?= $this->section('backUrl') ?><?= base_url('rattrapage') ?><?= $this->endSection() ?>
+
 <?= $this->section('styles') ?>
     <link rel="stylesheet" href="<?= base_url('assets/css/profil.css') ?>">
 <?= $this->endSection() ?>
