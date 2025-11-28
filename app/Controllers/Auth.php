@@ -37,7 +37,7 @@ class Auth extends BaseController
 
         // Déjà connecté → accueil rattrapage
         if ($session->get('connected')) {
-            return redirect()->to(site_url('rattrapage'));
+            return redirect()->to(site_url('Rattrapage'));
         }
 
         // Auto-login via cookie "remember_code"
@@ -48,7 +48,7 @@ class Auth extends BaseController
 
             if ($user) {
                 $this->startSessionForUser($user);
-                return redirect()->to(site_url('rattrapage'));
+                return redirect()->to(site_url('Rattrapage'));
             }
         }
 
@@ -119,7 +119,7 @@ class Auth extends BaseController
             setcookie('remember_code', '', time() - 3600, '/');
         }
 
-        return redirect()->to(site_url('rattrapage'));
+        return redirect()->to(site_url('Rattrapage'));
     }
 
     /**

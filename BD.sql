@@ -30,9 +30,11 @@ DROP TYPE IF EXISTS fonction  CASCADE;
 DROP TYPE IF EXISTS type_exam CASCADE;
 DROP TYPE IF EXISTS etat      CASCADE;
 
+
 CREATE TYPE fonction  as ENUM ('ENS', 'DE');
 CREATE TYPE type_exam as ENUM ('MACHINE', 'ORAL', 'PAPIER');
 CREATE TYPE etat      as ENUM ('PREVU', 'REFUSE', 'TERMINE', 'EN ATTENTE');
+
 
 -- TABLE PERSONNE ET FILLES
 
@@ -40,8 +42,7 @@ CREATE TABLE personne (
     code   VARCHAR(10) PRIMARY KEY,
     nom    VARCHAR(50) NOT NULL,
     prenom VARCHAR(50) NOT NULL,
-    email  VARCHAR(100) UNIQUE,
-    photo  VARCHAR(100), 
+    email  VARCHAR(100) UNIQUE
 );
 
 CREATE TABLE enseignant (
@@ -54,12 +55,11 @@ CREATE TABLE enseignant (
 
 CREATE TABLE etudiant (
     classe VARCHAR(5),
-    PRIMARY KEY (code),
-    id_semestre INT,
+    id_semestre INT NOT NULL,
 
     FOREIGN KEY (id_semestre)
-        REFERENCES semestre(id_semestre)
-        ON DELETE CASCADE
+    REFERENCES semestre(id_semestre)
+    ON DELETE CASCADE,
 ) INHERITS (personne);
 
 -- Semestre
@@ -83,6 +83,7 @@ CREATE TABLE ds (
     type_exam     type_exam NOT NULL,
     codeRessource VARCHAR(10) NOT NULL,
     codeEnseignant VARCHAR(10) NOT NULL,
+    etat          etat NOT NULL DEFAULT 'PREVU',
 
     FOREIGN KEY (codeRessource)
         REFERENCES ressource(codeRessource)
@@ -103,6 +104,7 @@ CREATE TABLE absence (
     id_ds          INT,
     code           VARCHAR(10),
     absenceJustifie SMALLINT NOT NULL DEFAULT 0,
+    rattrape SMALLINT NOT NULL DEFAULT 0,
 
     FOREIGN KEY (id_ds)
         REFERENCES ds(id_ds)
@@ -127,6 +129,7 @@ CREATE TABLE rattrapage (
     mail_envoye     SMALLINT DEFAULT 0,
     date_creation   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     salle           VARCHAR(10),
+    type_exam      type_exam NOT NULL,
 
     FOREIGN KEY (id_ds) REFERENCES ds(id_ds) ON DELETE CASCADE,
     FOREIGN KEY (code)  REFERENCES enseignant(code) ON DELETE CASCADE

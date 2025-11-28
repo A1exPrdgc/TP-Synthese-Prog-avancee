@@ -40,10 +40,15 @@ $routes->get('DS/validerRattrapage/(:num)', 'DS::validerRattrapage/$1');
 $routes->get('DS/refuserRattrapage/(:num)', 'DS::refuserRattrapage/$1');
 $routes->get('DS/getResourcesBySemester', 'DS::getResourcesBySemester');
 $routes->get('DS/getTeachersByResource', 'DS::getTeachersByResource');
+$routes->get('DS/getStudentsBySemester', 'DS::getStudentsBySemester');
 
 // Test controller
 $routes->get('test', 'TestController::index');
 
-// Rattrapage Ajout
-$routes->get('Rattrapage/Ajout/(:num)', 'Rattrapage::ajout/$1');
-$routes->post('Rattrapage/Ajout/(:num)/save', 'Rattrapage::save/$1');
+// Rattrapage
+$routes->get('Rattrapage', 'Rattrapage::index');
+$routes->get('Rattrapage/ajout/(:num)', 'Rattrapage::ajout/$1');
+$routes->post('Rattrapage/save/(:num)', 'Rattrapage::save/$1');
+$routes->get('Rattrapage/detail/(:num)', 'Rattrapage::detail/$1');
+$routes->get('Rattrapage/modifier/(:num)', 'Rattrapage::modifier/$1');
+$routes->post('Rattrapage/update/(:num)', 'Rattrapage::update/$1');

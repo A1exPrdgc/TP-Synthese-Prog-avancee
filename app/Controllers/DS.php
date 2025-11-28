@@ -38,6 +38,7 @@ class DS extends BaseController
      */
     public function index()
     {
+        $this->dsModel->updateEtatByRattrapageDate();
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
         
         $filters = [
@@ -93,10 +94,11 @@ class DS extends BaseController
     {
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
         $keyword = $this->request->getGet('keyword') ?? '';
+        $semester = $this->request->getGet('semester') ?? 'S1';
 
         $data['keyword'] = $keyword;
 
-        $data['students'] = $this->studentModel->getPaginatedStudents($perPage, $keyword);
+        $data['students'] = $this->studentModel->getPaginatedStudentsBySemester($semester, $perPage, $keyword);
         $data['pager'] = $this->studentModel->pager;
 
         $data['semesters'] = $this->semesterModel->getAllSemestersForDropdown();
@@ -197,9 +199,26 @@ class DS extends BaseController
      */
     public function refuserRattrapage($id)
     {
-        // TODO: Implémenter le refus de rattrapage
-        return redirect()->to('DS/detail/' . $id)->with('error', 'Rattrapage refusé');
+        if (!$id) {
+            return redirect()->to('DS')->with('error', 'ID du DS non spécifié');
+        }
+    
+        // Vérifier que le DS existe
+        $ds = $this->dsModel->find($id);
+        if (!$ds) {
+            return redirect()->to('DS')->with('error', 'DS non trouvé');
+        }
+    
+        // Mettre à jour l'état à REFUSE
+        $result = $this->dsModel->setEtat($id, 'REFUSE');
+    
+        if ($result) {
+            return redirect()->to('DS')->with('success', 'Rattrapage refusé avec succès. État du DS mis à jour.');
+        } else {
+            return redirect()->to('DS')->with('error', 'Erreur lors du refus du rattrapage.');
+        }
     }
+
 
     /**
      * API: Récupérer les ressources par semestre
@@ -219,5 +238,16 @@ class DS extends BaseController
         $resource = $this->request->getGet('resource');
         $teachers = $this->teacherModel->getTeachersByResourceForAjax($resource);
         return $this->response->setJSON($teachers);
+    }
+
+    /**
+     * API: Récupérer les étudiants par semestre
+     */
+    public function getStudentsBySemester()
+    {
+        $semester = $this->request->getGet('semester');
+        $keyword = $this->request->getGet('keyword') ?? '';
+        $students = $this->studentModel->getStudentsBySemesterForAjax($semester, $keyword);
+        return $this->response->setJSON($students);
     }
 }

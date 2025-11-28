@@ -1,12 +1,12 @@
 <?= $this->extend('layouts/default') ?>
-<?= $this->section('pageType'); ?>ds<?= $this->endSection(); ?>
+<?= $this->section('pageType'); ?>rattrapage<?= $this->endSection(); ?>
 
 <?= $this->section('title') ?>
-Visionner DS
+Détail Rattrapage
 <?= $this->endSection() ?>
 
 <?= $this->section('navbarTitle') ?>
-MySGRDS | Visionner DS
+MySGRDS | Visionner Rattrapage
 <?= $this->endSection() ?>
 
 <?= $this->section('styles') ?>
@@ -31,41 +31,62 @@ MySGRDS | Visionner DS
             
             <div class="info-group">
                 <label>Semestre</label>
-                <div class="info-value"><?= esc($ds['semestre_code']) ?></div>
+                <div class="info-value"><?= esc($rattrapage['semestre_code']) ?></div>
             </div>
 
             <div class="info-group">
                 <label>Ressource</label>
-                <div class="info-value info-value-long"><?= esc($ds['coderessource']) ?> <?= esc($ds['nomressource']) ?></div>
+                <div class="info-value info-value-long"><?= esc($rattrapage['coderessource']) ?> <?= esc($rattrapage['nomressource']) ?></div>
             </div>
 
             <div class="info-group">
                 <label>Professeur</label>
-                <div class="info-value"><?= esc($ds['enseignant_complet']) ?></div>
+                <div class="info-value"><?= esc($rattrapage['enseignant_complet']) ?></div>
             </div>
 
-            <div class="info-group">
-                <label>Date</label>
-                <div class="info-value"><?= esc(date('d/m/y', strtotime($ds['date_ds']))) ?></div>
+            <div class="info-group-row">
+                <div class="info-group half">
+                    <label>Date</label>
+                    <div class="info-value"><?= esc(date('d/m/y', strtotime($rattrapage['date_rattrapage']))) ?></div>
+                </div>
+
+                <div class="info-group half">
+                    <label>Heure</label>
+                    <div class="info-value"><?= esc(substr($rattrapage['heure_debut'], 0, 5)) ?></div>
+                </div>
             </div>
 
-            <div class="info-group">
-                <label>Type</label>
-                <div class="info-value"><?= esc(ucfirst(strtolower($ds['type_exam']))) ?></div>
+            <div class="info-group-row">
+                <div class="info-group half">
+                    <label>Type</label>
+                    <div class="info-value"><?= esc(ucfirst(strtolower($rattrapage['ds_type_exam']))) ?></div>
+                </div>
+
+                <div class="info-group half">
+                    <label>Salle</label>
+                    <div class="info-value"><?= esc($rattrapage['salle']) ?></div>
+                </div>
             </div>
 
             <div class="info-group">
                 <label>Durée de l'évaluation</label>
-                <div class="info-value"><?= esc($ds['duree_formatee']) ?></div>
+                <div class="info-value"><?= esc($rattrapage['duree_formatee']) ?></div>
+            </div>
+
+            <div class="info-group">
+                <label>État</label>
+                <div class="info-value etat-badge <?= $rattrapage['etat'] === 'EN ATTENTE' ? 'etat-rattraper' : ($rattrapage['etat'] === 'REFUSE' ? 'etat-refuse' : 'etat-termine') ?>">
+                    <?= esc(strtolower($rattrapage['etat'])) ?>
+                </div>
             </div>
         </div>
 
         <!-- Colonne droite: Étudiants -->
         <div class="students-section">
-            <h2 class="section-title">Etudiants</h2>
+            <h2 class="section-title">Étudiants</h2>
             
             <div class="search-input-group">
-                <?php echo form_open('DS/detail/' . $ds['id_ds'], ['method' => 'get']); ?>
+                <?php echo form_open('Rattrapage/detail/' . $rattrapage['id_rattrapage'], ['method' => 'get']); ?>
                 <input type="text" name="keyword" placeholder="Rechercher" value="<?= esc($keyword) ?>" onchange="this.form.submit()">
                 <?php echo form_close(); ?>
             </div>
@@ -78,8 +99,8 @@ MySGRDS | Visionner DS
                             <th>Nom</th>
                             <th>Prénom</th>
                             <th>Classe</th>
-                            <th>Absent</th>
-                            <th>Justifié</th>
+                            <th>Absence</th>
+                            <th>Rattrapage</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -90,11 +111,9 @@ MySGRDS | Visionner DS
                                     <td><?= esc(strtoupper($student['nom'])) ?></td>
                                     <td><?= esc(ucfirst($student['prenom'])) ?></td>
                                     <td><?= esc($student['classe']) ?></td>
+                                    <td><?= $student['justifie'] ? 'Justifié' : 'Non justifié' ?></td>
                                     <td>
-                                        <input type="checkbox" <?= $student['absent'] ? 'checked' : '' ?> disabled>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" <?= $student['justifie'] ? 'checked' : '' ?> disabled>
+                                        <input type="checkbox" checked disabled>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -121,49 +140,16 @@ MySGRDS | Visionner DS
         </div>
     </div>
 
-    <?php $role = session()->get('fonction');?>
-    <!-- Boutons d'action -->
-    <?php if ($role === 'ENS'): ?>
-        <div class="action-buttons">
-            <a href="<?= base_url('DS/refuserRattrapage/' . $ds['id_ds']) ?>" class="btn-action btn-refuse">
-                <span class="btn-icon">✕</span> Refuser le rattrapage
-            </a>
-            <a href="<?= base_url('Rattrapage/Ajout/' . $ds['id_ds']) ?>" class="btn-action btn-validate">
-                <span class="btn-icon">✓</span> Valider le rattrapage
-            </a>
-        </div>
-    <?php endif; ?>
-
-    <?php if ($role === 'DE'): ?>
-        <div class="action-buttons">
-            <a href="<?= base_url('DS/Modifier/' . $ds['id_ds']) ?>" class="btn-action btn-validate">
-                <span class="btn-icon">✓</span> Modifier le DS
-            </a>
-        </div>
-    <?php endif; ?>
+    <!-- Bouton d'action -->
+    <div class="action-buttons">
+        <a href="<?= base_url('Rattrapage/modifier/' . $rattrapage['id_rattrapage']) ?>" class="btn-action btn-validate">
+            <span class="btn-icon">✎</span> Modifier le rattrapage
+        </a>
+    </div>
 </div>
 
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<script>
-function filterStudents() {
-    const searchInput = document.getElementById('student-search').value.toLowerCase();
-    const tbody = document.querySelector('.students-table tbody');
-    const rows = tbody.getElementsByTagName('tr');
-    
-    for (let i = 0; i < rows.length; i++) {
-        const row = rows[i];
-        if (row.classList.contains('empty-row')) continue;
-        
-        const text = row.textContent.toLowerCase();
-        
-        if (text.includes(searchInput)) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    }
-}
-</script>
 <?= $this->endSection() ?>
+
