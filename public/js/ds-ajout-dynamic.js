@@ -2,7 +2,7 @@ document.getElementById('semester').addEventListener('change', function () {
     const semester = this.value;
     const baseUrl = document.body.getAttribute('data-base-url') || '';
 
-    fetch(baseUrl + 'DS/getResourcesBySemester?semester=' + encodeURIComponent(semester))
+    fetch(baseUrl + 'ds/getResourcesBySemester?semester=' + encodeURIComponent(semester))
         .then(response => response.json())
         .then(data => {
             const resourceSelect = document.getElementById('resource');
@@ -32,7 +32,7 @@ document.getElementById('semester').addEventListener('change', function () {
         });
 
     const keyword = document.getElementById('student-search').value;
-    fetch(baseUrl + 'DS/getStudentsBySemester?semester=' + encodeURIComponent(semester) + '&keyword=' + encodeURIComponent(keyword))
+    fetch(baseUrl + 'ds/getStudentsBySemester?semester=' + encodeURIComponent(semester) + '&keyword=' + encodeURIComponent(keyword))
         .then(response => response.json())
         .then(data => {
             const tbody = document.getElementById('students-tbody');
@@ -84,7 +84,7 @@ document.getElementById('resource').addEventListener('change', function () {
         return;
     }
 
-    fetch(baseUrl + 'DS/getTeachersByResource?resource=' + encodeURIComponent(resource))
+    fetch(baseUrl + 'ds/getTeachersByResource?resource=' + encodeURIComponent(resource))
         .then(response => response.json())
         .then(data => {
             const teacherSelect = document.getElementById('teacher');

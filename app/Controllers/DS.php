@@ -190,8 +190,14 @@ class DS extends BaseController
          . "Date : " . $date . "<br>"
          . "Ressource : " . $resourceCode . "<br>"
          . "Type : " . $type . "<br>"
-         . "Durée : " . $dureeMinutes . " minutes</p>"
-         . "<p>Cordialement,<br>L'équipe MYSGRDS.</p>";
+         . "Durée : " . $dureeMinutes . " minutes<br><br>"
+         . "Lien vers le DS : <a href=\"" . base_url('ds/detail/' . $dsId) . "\">Cliquez ici</a></p><br>"
+         . "<p>Les participants aux rattrapages sont :</p><br>";
+            foreach ($absents as $studentCode => $value) {
+                $message .= "<p> - " . $this->studentModel->getNameByCode($studentCode) . "</p><br>";
+            }
+            $message .= "<p>Cordialement,<br>L'équipe MYSGRDS.</p>";
+         $message .= "<p>Cordialement,<br>L'équipe MYSGRDS.</p>";
 
         $this->emailController->sendMail($this->teacherModel->getEmailByCode($teacherCode), 'Nouveau DS Ajouté', $message);
 
@@ -322,7 +328,8 @@ class DS extends BaseController
             . "<p><b>Nouveaux détails de l'examen :</b><br>"
             . "Date : " . $post['date'] . "<br>"
             . "Type : " . $post['type'] . "<br>"
-            . "Durée : " . $dureeMinutes . " minutes</p>"
+            . "Durée : " . $dureeMinutes . " minutes<br><br>"
+            . "Lien vers le DS : <a href=\"" . base_url('ds/detail/' . $id) . "\">Cliquez ici</a></p><br>"
             . "<p>Les participants aux rattrapages sont :</p><br>";
         foreach ($absents as $studentCode => $value) {
             $message .= "<p> - " . $this->studentModel->getNameByCode($studentCode) . "</p><br>";
