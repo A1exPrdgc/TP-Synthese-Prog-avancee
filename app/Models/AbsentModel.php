@@ -25,7 +25,12 @@ class AbsentModel extends Model
             'absencejustifie' => $justified
         ];
 
-        return $this->insert($data) !== false;
+        try {
+            $this->db->table($this->table)->insert($data);
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 
     /**
