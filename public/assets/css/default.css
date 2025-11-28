@@ -220,12 +220,395 @@ main.container {
 }
 
 .navbar-profile-img {
-    width: 40px;       
-    height: 40px;      
-    border-radius: 50%; 
-    object-fit: cover;  
-    border: 2px solid white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.search-row {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.search-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.search-input-group {
+    position: relative;
+    width: 100%;
+}
+
+.search-input-group input {
+    width: 100%;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px 10px 40px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #aaa;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 1.2rem;
+}
+
+.date-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.date-input {
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    width: 100px;
+}
+
+.filter-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-select {
     background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    color: #aaa;
+    font-weight: 500;
+    min-width: 120px;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23AAAAAA%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right .7em top 50%;
+    background-size: .65em auto;
+    padding-right: 1.5em;
+}
+
+.btn-filter-action {
+    background-color: #5ABD89;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-weight: 600;
+    box-shadow: -2px -2px 0 #009371;
+    cursor: pointer;
+}
+
+.btn-filter-reset {
+    background-color: #5ABD89;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-weight: 600;
+    box-shadow: -2px -2px 0 #009371;
+    cursor: pointer;
+}
+
+.table-container {
+    background-color: #f0f0f0;
+    border: 4px solid #FF9800;
+    border-radius: 10px;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.table-underground {
+    padding: 20px;
+    background-color: #FFC227;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.custom-table thead {
+    background-color: #5ABD89;
+    color: white;
+}
+
+.custom-table th {
+    padding: 15px;
+    text-align: center;
+    font-weight: 600;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.custom-table th:last-child {
+    border-right: none;
+}
+
+.custom-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    font-weight: 500;
+}
+
+.custom-table td:last-child {
+    border-right: none;
+}
+
+.custom-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Pagination */
+.pagination-container {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination-btn {
+    background-color: #5ABD89;
+    box-shadow: -2px -2px 0 #009371;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    width: 50px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.pagination-btn.active {
+    color: #5ABD89;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+
+.pagination-btn:hover:not(.active) {
+    background-color: #009371;
+}
+
+.navbar-profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.search-row {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.search-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.search-input-group {
+    position: relative;
+    width: 100%;
+}
+
+.search-input-group input {
+    width: 100%;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px 10px 40px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #aaa;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 1.2rem;
+}
+
+.date-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.date-input {
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    width: 100px;
+}
+
+.filter-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-select {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    color: #aaa;
+    font-weight: 500;
+    min-width: 120px;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23AAAAAA%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right .7em top 50%;
+    background-size: .65em auto;
+    padding-right: 1.5em;
+}
+
+.btn-filter-action {
+    background-color: #5ABD89;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-weight: 600;
+    box-shadow: -2px -2px 0 #009371;
+    cursor: pointer;
+}
+
+.btn-filter-reset {
+    background-color: #5ABD89;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-weight: 600;
+    box-shadow: -2px -2px 0 #009371;
+    cursor: pointer;
+}
+
+.table-container {
+    background-color: #f0f0f0;
+    border: 4px solid #FF9800;
+    border-radius: 10px;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.table-underground {
+    padding: 20px;
+    background-color: #FFC227;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.custom-table thead {
+    background-color: #5ABD89;
+    color: white;
+}
+
+.custom-table th {
+    padding: 15px;
+    text-align: center;
+    font-weight: 600;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.custom-table th:last-child {
+    border-right: none;
+}
+
+.custom-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    font-weight: 500;
+}
+
+.custom-table td:last-child {
+    border-right: none;
+}
+
+.custom-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Pagination */
+.pagination-container {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination-btn {
+    background-color: #5ABD89;
+    box-shadow: -2px -2px 0 #009371;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    width: 50px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.pagination-btn.active {
+    color: #5ABD89;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+
+.pagination-btn:hover:not(.active) {
+    background-color: #009371;
 }
 
 .btn-custom-profile {
@@ -235,4 +618,109 @@ main.container {
     background: none;
     display: flex;
     align-items: center;
+}
+
+/* Global Button Styles */
+
+.btn-action,
+.btn-filter,
+.btn-search,
+.btn-reset,
+.btn-filter-reset,
+.btn-filter-action,
+.profil-btn,
+.btn-create-teacher {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-action:hover,
+.btn-filter:hover,
+.btn-search:hover,
+.btn-reset:hover,
+.btn-filter-reset:hover,
+.btn-filter-action:hover,
+.profil-btn:hover,
+.btn-create-teacher:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-icon {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* Green Button (Validate/Save/Add) */
+.btn-validate,
+.btn-primary,
+.btn-submit,
+.btn-filter-action,
+.btn-search,
+.btn-creer,
+.profil-btn-primary,
+.btn-create-teacher,
+.btn-filter {
+    background-color: #5ABD89;
+    box-shadow: -4px -4px 0 #009371;
+    color: white;
+}
+
+.btn-validate:hover,
+.btn-primary:hover,
+.btn-submit:hover,
+.btn-filter-action:hover,
+.btn-search:hover,
+.btn-creer:hover,
+.profil-btn-primary:hover,
+.btn-create-teacher:hover,
+.btn-filter:hover {
+    background-color: #4aa878;
+    color: white;
+}
+
+/* Red Button (Refuse/Cancel/Delete) */
+.btn-refuse,
+.btn-danger,
+.btn-reset,
+.btn-annuler,
+.profil-btn-danger,
+.btn-filter-reset {
+    background-color: #dc3545;
+    box-shadow: -4px -4px 0 #c82333;
+    color: white;
+}
+
+.btn-refuse:hover,
+.btn-danger:hover,
+.btn-reset:hover,
+.btn-annuler:hover,
+.profil-btn-danger:hover,
+.btn-filter-reset:hover {
+    background-color: #c82333;
+    color: white;
+}
+
+/* Grey Button (Cancel/Back) */
+.btn-secondary,
+.profil-btn-secondary {
+    background-color: #6c757d;
+    box-shadow: -4px -4px 0 #495057;
+    color: white;
+}
+
+.btn-secondary:hover,
+.profil-btn-secondary:hover {
+    background-color: #5a6268;
+    color: white;
 }

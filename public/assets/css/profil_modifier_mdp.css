@@ -52,7 +52,7 @@
     font-size: 1rem;
     color: black;
     margin-bottom: 8px;
-    margin-left: 10px; 
+    margin-left: 10px;
     font-family: 'Itim', cursive;
 }
 
@@ -74,66 +74,14 @@
     transform: scale(1.01);
 }
 
-/* --- BOUTONS --- */
+/* Boutons - Styles déplacés dans default.css */
 .form-buttons {
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 20px; /* Espace entre les deux boutons */
+    gap: 20px;
+    /* Espace entre les deux boutons */
     margin-top: 20px;
-}
-
-.btn-creer {
-    background-color: #5ABD89;
-    color: white;
-    font-family: 'Itim', cursive;
-    font-size: 1.4rem;
-    padding: 10px 40px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    box-shadow: 0 4px 0 #3e8e63;
-    transition: transform 0.1s, box-shadow 0.1s;
-}
-
-.btn-creer:hover {
-    background-color: #4CAF50;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0 #3e8e63;
-}
-
-.btn-creer:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 0 #3e8e63;
-}
-
-.btn-annuler {
-    background-color: #F44336;
-    color: white !important; /* Force le blanc si conflit */
-    font-family: 'Itim', cursive;
-    font-size: 1.4rem;
-    padding: 10px 40px;
-    border-radius: 25px;
-    text-decoration: none !important; /* Pas de soulignement */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: none;
-    box-shadow: 0 4px 0 #d32f2f;
-    transition: transform 0.1s, box-shadow 0.1s;
-}
-
-.btn-annuler:hover {
-    background-color: #d32f2f;
-    color: white !important;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0 #b71c1c;
-}
-
-.btn-annuler:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 0 #b71c1c;
 }
 
 /* J'ai supprimé la règle .auth-container a qui posait problème */

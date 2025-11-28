@@ -196,58 +196,12 @@
     font-size: 1.1rem;
 }
 
-/* Boutons d'action */
+/* Boutons d'action - Styles déplacés dans default.css */
 .action-buttons {
     display: flex;
     justify-content: center;
     gap: 30px;
     margin-top: 20px;
-}
-
-.btn-action {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.btn-action:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.btn-icon {
-    font-size: 1.3rem;
-    font-weight: bold;
-}
-
-.btn-refuse {
-    background-color: #5ABD89;
-    box-shadow: -4px -4px 0 #009371;
-    color: white;
-}
-
-.btn-refuse:hover {
-    background-color: #4aa878;
-    color: white;
-}
-
-.btn-validate {
-    background-color: #5ABD89;
-    box-shadow: -4px -4px 0 #009371;
-    color: white;
-}
-
-.btn-validate:hover {
-    background-color: #4aa878;
-    color: white;
 }
 
 /* Alerts */
@@ -299,10 +253,9 @@
     .ds-detail-layout {
         grid-template-columns: 1fr;
     }
-    
+
     .action-buttons {
         flex-direction: column;
         align-items: center;
     }
 }
-

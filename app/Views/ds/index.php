@@ -130,12 +130,13 @@ MySGRDS | DS
 
             </tbody>
         </table>
+
+        <!-- Pagination -->
+        <div class="pagination-container">
+            <?= $pager->links('default', 'default_full') ?>
+        </div>
     </div>
 
-    <!-- Pagination -->
-    <div class="pagination-container">
-        <?= $pager->links('default', 'default_full') ?>
-    </div>
 </div>
 
 <?= $this->endSection() ?>

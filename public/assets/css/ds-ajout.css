@@ -168,29 +168,11 @@
     background-color: #FFC227;
 }
 
-/* Bouton Submit */
+/* Bouton Submit - Style déplacé dans default.css */
 .submit-container {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
-}
-
-.btn-submit {
-    background-color: #5ABD89;
-    box-shadow: -4px -4px 0 #009371;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 15px 40px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: 'Itim', sans-serif;
-    transition: background-color 0.2s;
-}
-
-.btn-submit:hover {
-    background-color: #009371;
 }
 
 /* Responsive */

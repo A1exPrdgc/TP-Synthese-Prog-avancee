@@ -83,40 +83,11 @@
     font-size: 0.9rem;
 }
 
+/* Boutons de filtre - Styles déplacés dans default.css */
 .filter-buttons {
     display: flex;
     gap: 10px;
     margin-left: auto;
-}
-
-.btn-filter {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn-reset {
-    background-color: white;
-    color: #333;
-    border: 2px solid #ddd;
-}
-
-.btn-reset:hover {
-    background-color: #f5f5f5;
-}
-
-.btn-search {
-    background-color: #5ABD89;
-    color: white;
-}
-
-.btn-search:hover {
-    background-color: #009371;
 }
 
 /* Section Tableau */
@@ -196,20 +167,25 @@
 
 /* Couleurs spécifiques par état */
 .etat-prevu {
-    background-color: #007bff; /* Bleu vif */
+    background-color: #007bff;
+    /* Bleu vif */
 }
 
 .etat-refuse {
-    background-color: #dc3545; /* Rouge vif */
+    background-color: #dc3545;
+    /* Rouge vif */
 }
 
 .etat-termine {
-    background-color: #28a745; /* Vert */
+    background-color: #28a745;
+    /* Vert */
 }
 
 .etat-en-attente {
-    background-color: #ffc107; /* Jaune / orange */
-    color: #333; /* texte plus sombre pour lisibilité */
+    background-color: #ffc107;
+    /* Jaune / orange */
+    color: #333;
+    /* texte plus sombre pour lisibilité */
 }
 
 /* Pagination */
@@ -265,19 +241,19 @@
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .search-box {
         max-width: 100%;
     }
-    
+
     .dropdown-filters {
         flex-wrap: wrap;
     }
-    
+
     .date-filters {
         margin-left: 0;
     }
-    
+
     .filter-buttons {
         margin-left: 0;
         justify-content: center;
@@ -288,7 +264,7 @@
     .ds-table {
         font-size: 0.85rem;
     }
-    
+
     .ds-table th,
     .ds-table td {
         padding: 8px 5px;
