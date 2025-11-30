@@ -37,6 +37,10 @@ class Auth extends BaseController
 
         // Déjà connecté → accueil rattrapage
         if ($session->get('connected')) {
+            $redirectUrl = session()->getTempdata('redirect_after_login');
+            if ($redirectUrl) {
+                return redirect()->to(site_url($redirectUrl));
+            }
             return redirect()->to(site_url('rattrapage'));
         }
 
@@ -48,6 +52,10 @@ class Auth extends BaseController
 
             if ($user) {
                 $this->startSessionForUser($user);
+                $redirectUrl = session()->getTempdata('redirect_after_login');
+                if ($redirectUrl) {
+                    return redirect()->to(site_url($redirectUrl));
+                }
                 return redirect()->to(site_url('rattrapage'));
             }
         }
@@ -143,6 +151,12 @@ class Auth extends BaseController
         } else {
             // Supprimer le cookie
             setcookie('remember_code', '', time() - 3600, '/');
+        }
+
+        // Redirection intelligente après login
+        $redirectUrl = session()->getTempdata('redirect_after_login');
+        if ($redirectUrl) {
+            return redirect()->to(site_url($redirectUrl))->with('success', 'Connexion réussie. Redirection vers le détail DS.');
         }
 
         return redirect()->to(site_url('rattrapage'));
