@@ -1,3 +1,18 @@
+<?php
+use App\Models\TeachersModel;
+$session = session();
+$userFirstName = '';
+$userName = '';
+if ($session->get('connected')) {
+    $model = new TeachersModel();
+    $user = $model->find($session->get('code'));
+    if ($user) {
+        $userFirstName = esc($user['prenom']);
+        $userName = esc($user['nom']);
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -37,10 +52,16 @@
             $role = session()->get('fonction');
             $pageType = $this->renderSection('pageType');
             ?>
-            <div class="d-flex align-items-center">
-
+            <div class="d-flex align-items-center" style="gap: 15px;">
                 <?php if ($pageType === 'ds' && $role == 'DE'): ?>
-                    <a class="btn btn-custom me-2" href="<?= base_url('ds/ajouter') ?>">+ Ajouter</a>
+                    <a class="btn btn-custom me-2" href="<?= base_url('ds/ajouter') ?>">+ Ajouter un DS</a>
+                <?php endif; ?>
+
+                <?php if ($userFirstName && $userName): ?>
+                    <div class="navbar-profile-name" style="font-weight:600; color:#222; font-family: 'Itim', cursive; line-height: 1.2; text-align: right;">
+                        <div><?= $userFirstName ?></div>
+                        <div><?= $userName ?></div>
+                    </div>
                 <?php endif; ?>
 
                 <a class="btn btn-custom-profile" href="<?= base_url('profil') ?>">
@@ -49,7 +70,6 @@
                     if (empty($photoUrl) && session()->get('connected')) {
                         $model = new \App\Models\TeachersModel();
                         $user = $model->find(session()->get('code'));
-
                         if (!empty($user['photo'])) {
                             $photoUrl = $user['photo'];
                             session()->set('photo', $photoUrl);
@@ -60,8 +80,6 @@
                     <img class="navbar-profile-img" src="<?= $finalUrl ?>" alt="Profil" />
                 </a>
             </div>
-
-
         </div>
     </nav>
     <!-- Contenu principal -->

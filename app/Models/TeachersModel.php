@@ -117,4 +117,52 @@ class TeachersModel extends Model
                     ->findAll();
     }
 
+    public function getResourcesByTeacher(string $teacherCode): array
+    {
+        $builder = $this->db->table('enseignant_ressource');
+        $builder->select('ressource.coderessource, ressource.nomressource');
+        $builder->join('ressource', 'ressource.coderessource = enseignant_ressource.coderessource');
+        $builder->where('enseignant_ressource.codeenseignant', $teacherCode);
+
+        return $builder->get()->getResultArray();
+    }
+
+    public function addResourceToTeacher(string $teacherCode, string $resourceCode): bool
+    {
+        return $this->db->table('enseignant_ressource')->insert([
+            'codeenseignant' => $teacherCode,
+            'coderessource' => $resourceCode,
+        ]);
+    }
+
+    public function removeResourceFromTeacher(string $teacherCode, string $resourceCode): bool
+    {
+        return $this->db->table('enseignant_ressource')
+            ->where('codeenseignant', $teacherCode)
+            ->where('coderessource', $resourceCode)
+            ->delete();
+    }
+
+    public function getResourcesByTeacherGroupedBySemester(string $teacherCode): array
+    {
+        $builder = $this->db->table('enseignant_ressource er');
+        $builder->select('semestre.code as semestre_code, ressource.coderessource, ressource.nomressource');
+        $builder->join('ressource', 'ressource.coderessource = er.coderessource');
+        $builder->join('ds', 'ds.coderessource = ressource.coderessource'); // pour lier ressource à semestre via DS
+        $builder->join('semestre', 'semestre.id_semestre = ds.id_semestre');
+        $builder->where('er.codeenseignant', $teacherCode);
+        $builder->orderBy('semestre.code', 'ASC');
+        $builder->orderBy('ressource.coderessource', 'ASC');
+
+        $resources = $builder->get()->getResultArray();
+
+        // Regrouper par semestre
+        $grouped = [];
+        foreach ($resources as $res) {
+            $grouped[$res['semestre_code']][] = $res;
+        }
+
+        return $grouped;
+    }
+
 }

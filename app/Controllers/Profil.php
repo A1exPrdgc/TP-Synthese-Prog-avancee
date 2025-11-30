@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\TeachersModel;
+use App\Models\RessourceModel;
 use App\Controllers\AuthController;
 class Profil extends BaseController
 {
@@ -246,4 +247,53 @@ class Profil extends BaseController
 
         return redirect()->to(site_url('profil'))->with('message', 'Enseignant créé avec succès (Mdp: changeme123).');
     }
+
+    public function gestionRessources()
+    {
+        $session = session();
+        $teacherCode = $session->get('code');
+
+        $teachersModel = new TeachersModel();
+        $ressourceModel = new RessourceModel();
+
+        // Récupérer les ressources associées à l'enseignant (toutes, pas seulement d'un semestre)
+        $teacherResourcesRaw = $teachersModel->getResourcesByTeacher($teacherCode);
+        $teacherResources = array_column($teacherResourcesRaw, 'coderessource');
+
+        // Envoi des ressources cochées au frontend pour gestion JS  
+        return view('profil/gestion_ressources', [
+            'teacherResources' => $teacherResources
+        ]);
+    }
+
+    public function updateRessources()
+    {
+        $session = session();
+        $teacherCode = $session->get('code');
+        $teachersModel = new TeachersModel();
+        $db = db_connect();
+        
+        $selectedResources = $this->request->getPost('resources') ?? [];
+        
+        // Supprimer anciennes associations
+        $db->table('enseignant_ressource')->where('codeenseignant', $teacherCode)->delete();
+        
+        // Ajouter nouvelles associations sélectionnées
+        foreach ($selectedResources as $resCode) {
+            $teachersModel->addResourceToTeacher($teacherCode, $resCode);
+        }
+        
+        return redirect()->to(site_url('profil/gestion-ressources'))->with('message', 'Ressources mises à jour avec succès.');
+    }
+
+
+    public function getResourcesBySemester()
+    {
+        $semester = $this->request->getGet('semester');
+        $ressourceModel = new RessourceModel();
+
+        $resources = $ressourceModel->getResourcesBySemesterForAjax($semester);
+        return $this->response->setJSON($resources);
+    }
+
 }

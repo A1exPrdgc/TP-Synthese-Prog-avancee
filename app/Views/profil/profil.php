@@ -79,6 +79,13 @@ MySGRDS | Page Compte
     </div>
 </div>
 
+<?php if (session()->get('fonction') === 'ENS'): ?>
+<div style="margin-top: 30px; text-align:center;">
+    <a href="<?= site_url('profil/gestion-ressources') ?>" class="btn btn-primary">Gérer mes ressources associées</a>
+</div>
+<?php endif; ?>
+
+
 <?php if ($user['fonction'] === 'DE'): ?>
     <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
         <a href="<?= site_url('profil/creer-enseignant') ?>" class="btn-create-teacher">

@@ -2,6 +2,7 @@
 
 use CodeIgniter\Router\RouteCollection;
 
+
 /**
  * @var RouteCollection $routes
  */
@@ -24,6 +25,11 @@ $routes->post('profil/sauvegarder', 'Profil::save_password');
 
 $routes->get('profil/creer-enseignant', 'Profil::create_teacher');
 $routes->post('profil/sauvegarder-enseignant', 'Profil::store_teacher');
+
+$routes->get('profil/gestion-ressources', 'Profil::gestionRessources');
+$routes->post('profil/update-ressources', 'Profil::updateRessources');
+$routes->get('profil/getResourcesBySemester', 'Profil::getResourcesBySemester');
+
 
 // Mot de passe oublié
 $routes->get('mot-de-passe-oublie', 'Auth::forgotPassword');

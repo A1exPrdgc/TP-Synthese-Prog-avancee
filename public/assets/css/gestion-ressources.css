@@ -1,0 +1,120 @@
+.form-group {
+    width: 300px;
+    margin-bottom: 25px;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+    font-family: 'Itim', cursive;
+    font-size: 1.1rem;
+}
+
+select.form-select {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: 'Itim', cursive;
+    font-size: 1rem;
+    background-color: var(--input-bg, #fff);
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+select.form-select:focus {
+    border-color: var(--secondary-color, #FF9800);
+    outline: none;
+}
+
+#resources-list {
+    list-style: none;
+    padding-left: 0;
+    max-width: 400px;
+    margin-bottom: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Itim', cursive;
+}
+
+#resources-list li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1rem;
+    color: var(--text-color, #000);
+    display: flex;
+    align-items: center;
+}
+
+#resources-list li:last-child {
+    border-bottom: none;
+}
+
+#resources-list li label {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+    accent-color: var(--button-color, #5ABD89);
+}
+
+.btn-primary {
+    background-color: var(--button-color, #5ABD89);
+    border: none;
+    color: white;
+    padding: 14px 32px;
+    font-family: 'Itim', cursive;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-radius: 28px;
+    cursor: pointer;
+    box-shadow: -6px -5px 0 0 var(--button-hover, #45a049);
+    transition: background-color 0.3s;
+    width: 320px;
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-primary:hover {
+    background-color: var(--button-hover, #45a049);
+}
+
+.alert-success {
+    max-width: 400px;
+    margin: 0 auto 25px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #388E3C;
+    font-weight: 700;
+    font-family: 'Itim', cursive;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .form-group,
+    #resources-list,
+    .btn-primary {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #resources-list li {
+        font-size: 1rem;
+    }
+
+    .btn-primary {
+        padding: 12px 20px;
+        font-size: 1.2rem;
+    }
+}
