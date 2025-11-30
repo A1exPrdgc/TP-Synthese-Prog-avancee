@@ -124,7 +124,7 @@ MySGRDS | Visionner Rattrapage
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
-                            <?php for ($i = count($students ?? []); $i < 10; $i++): ?>
+                            <?php for ($i = count($students); $i < 10; $i++): ?>
                                 <tr class="empty-row">
                                     <?php for ($j = 0; $j < 6; $j++): ?>
                                         <td></td>
@@ -136,13 +136,14 @@ MySGRDS | Visionner Rattrapage
                                 <td colspan="7" class="no-data">Aucun élève trouvé</td>
                             </tr>
                         <?php endif; ?>
-                            
                     </tbody>
                 </table>
 
-                <div class="pagination-container">
-                    <?= $pager->links('default', 'default_full') ?>
-                </div>
+                <?php if (!empty($pager)): ?>
+                    <div class="pagination-container">
+                        <?= $pager->links('default', 'default_full') ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -161,4 +162,3 @@ MySGRDS | Visionner Rattrapage
 
 <?= $this->section('scripts') ?>
 <?= $this->endSection() ?>
-

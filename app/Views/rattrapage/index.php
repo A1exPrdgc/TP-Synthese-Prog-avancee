@@ -135,24 +135,24 @@ MySGRDS | Rattrapage
                     <?php endfor; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="8" class="no-data">Aucun rattrapage trouvé</td>
+                        <td colspan="9" class="no-data">Aucun rattrapage trouvé</td>
                     </tr>
                 <?php endif; ?>
-                
-
             </tbody>
         </table>
     </div>
 
     <!-- Pagination -->
-    <div class="pagination-container">
-        <?= $pager->links('default', 'default_full') ?>
-    </div>
+    <?php if (!empty($pager)) : ?>
+        <div class="pagination-container">
+            <?= $pager->links('default', 'default_full') ?>
+        </div>
+    <?php endif; ?>
 </div>
 
 <?= $this->endSection() ?>
 
+
 <?= $this->section('scripts') ?>
 <script src="<?= base_url('assets/js/rattrapage-index.js') ?>"></script>
 <?= $this->endSection() ?>
-

@@ -130,8 +130,13 @@ class RattrapageModel extends Model
      */
     public function insertRattrapage(array $data)
     {
-        return $this->insert($data);
+        if ($this->insert($data) === false) {
+            return false; // Insert a échoué
+        }
+        return $this->getInsertID(); // Retourne l’ID auto-incrémenté généré
     }
+
+
 
     /**
      * Met à jour l'état d'un rattrapage

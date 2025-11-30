@@ -276,4 +276,22 @@ public function getAbsentStudentsForDs(int $idDs, int $perPage, ?string $keyword
         $student = $this->where('code', $code)->first();
         return $student ? $student['nom'] . ' ' . $student['prenom'] : null;
     }
+
+    public function getStudentsWithJustifieByCodesAndDs(array $studentCodes, int $idDs)
+    {
+        if (empty($studentCodes)) {
+            return [];
+        }
+
+        $builder = $this->builder();
+
+        $builder->select('etudiant.code as id, etudiant.nom, etudiant.prenom, etudiant.classe,
+                        COALESCE(absence.absenceJustifie, 0) as justifie, COALESCE(absence.rattrape, 0) as rattrape');
+        $builder->join('absence', "absence.code = etudiant.code AND absence.id_ds = {$idDs}", 'left');
+        $builder->whereIn('etudiant.code', $studentCodes);
+        $builder->orderBy('etudiant.nom', 'ASC')->orderBy('etudiant.prenom', 'ASC');
+
+        return $builder->get()->getResultArray();
+    }
+
 }

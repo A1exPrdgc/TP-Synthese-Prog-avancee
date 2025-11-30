@@ -48,7 +48,6 @@ class Rattrapage extends BaseController
      */
     public function index()
     {
-
         if ($this->authController->isConnected()) {
             return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
         }
@@ -56,7 +55,7 @@ class Rattrapage extends BaseController
         $this->rattrapageModel->updateEtatByDate();
 
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
-        
+
         $filters = [
             'keyword' => $this->request->getGet('keyword') ?? '',
             'resource' => $this->request->getGet('resource') ?? '',
@@ -66,16 +65,21 @@ class Rattrapage extends BaseController
             'date_fin' => $this->request->getGet('date_fin') ?? ''
         ];
 
-        $data['rattrapagesList'] = $this->rattrapageModel->getPaginatedRattrapages($perPage, $filters);
-        $data['pager'] = $this->rattrapageModel->pager;
-        $data['filters'] = $filters;
+        $rattrapagesList = $this->rattrapageModel->getPaginatedRattrapages($perPage, $filters);
+        $pager = $this->rattrapageModel->pager;
 
-        $data['semesters'] = $this->semesterModel->getAllSemestersForDropdown();
-        $data['resources'] = $this->resourceModel->getAllResourcesForDropdown();
-        $data['teachers'] = $this->teacherModel->getAllTeachersForDropdown();
+        $data = [
+            'rattrapagesList' => $rattrapagesList,
+            'pager' => $pager,
+            'filters' => $filters,
+            'semesters' => $this->semesterModel->getAllSemestersForDropdown(),
+            'resources' => $this->resourceModel->getAllResourcesForDropdown(),
+            'teachers' => $this->teacherModel->getAllTeachersForDropdown()
+        ];
 
         return view('rattrapage/index', $data);
     }
+
 
     /**
      * Formulaire d'ajout d'un rattrapage (depuis un DS)
@@ -120,7 +124,6 @@ class Rattrapage extends BaseController
 
     public function save($idDs)
     {
-
         if ($this->authController->isConnected()) {
             return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
         }
@@ -128,8 +131,8 @@ class Rattrapage extends BaseController
         if ($this->authController->isENS()) {
             return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
         }
-        $request = \Config\Services::request();
-        $post = $request->getPost();
+
+        $post = $this->request->getPost();
 
         $studentModel = new StudentsModel();
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
@@ -147,14 +150,10 @@ class Rattrapage extends BaseController
 
         $dsInformation = $this->dsModel->getDsWithDetails($idDs);
 
-        $semesterCode = $dsInformation['semestre_code'];
-        $resourceCode = $dsInformation['coderessource'] . ' ' . $dsInformation['nomressource'];
-        $teacherName = $dsInformation['enseignant_complet'];
-
         $rules = [
-            'semester' => 'required|in_list[' . $semesterCode . ']',
-            'resource' => 'required|in_list[' . $resourceCode . ']',
-            'teacher' => 'required|in_list[' . $teacherName . ']',
+            'semester' => 'required|in_list[' . $dsInformation['semestre_code'] . ']',
+            'resource' => 'required|in_list[' . $dsInformation['coderessource'] . ' ' . $dsInformation['nomressource'] . ']',
+            'teacher' => 'required|in_list[' . $dsInformation['enseignant_complet'] . ']',
             'date' => 'required|valid_date',
             'hour' => 'required|regex_match[/^(?:[01]\d|2[0-3]):[0-5]\d$/]',
             'type' => 'required|in_list[MACHINE,PAPIER,ORAL]',
@@ -187,55 +186,62 @@ class Rattrapage extends BaseController
             return view('rattrapage/ajout', $data);
         }
 
-        $informations = $post;
+        $duration = substr($post['duration'], 0, 2) * 60 + substr($post['duration'], 3, 2);
 
-        $duration = substr($informations['duration'], 0, 2) * 60 + substr($informations['duration'], 3, 2);
-
-        $data = [
+        $rattrapageData = [
             'id_ds' => (int) $idDs,
-            'code' => $informations['codeEnseignant'],
-            'date_rattrapage' => $informations['date'],
+            'code' => $post['codeEnseignant'],
+            'date_rattrapage' => $post['date'],
             'duree_minutes' => $duration,
-            'heure_debut' => $informations['hour'],
+            'heure_debut' => $post['hour'],
             'etat' => 'PREVU',
             'mail_envoye' => 0,
-            'type_exam' => $informations['type'],
-            'salle' => $informations['room']
+            'type_exam' => $post['type'],
+            'salle' => $post['room']
         ];
 
-        foreach ($students as $student) {
-            $codeEtudiant = $student['id'];
-            $justified = ($post['justify'][$codeEtudiant] === 'on') ? 1 : 0;
-            $this->absenceModel->markForMakeup((int) $idDs, $codeEtudiant, $justified);
-            if ($justified === 1){
-                 $message = "<p>Bonjour " . $student['prenom'] . " " . $student['nom'] . ",</p>"
-                        . "<p>Un rattrapage a été programmé pour le DS initialement prévu le " . $dsInformation['date_ds'] . ".</p>"
-                        . "<p><b>Détails du rattrapage :</b><br>"
-                        . "Date : " . $informations['date'] . "<br>"
-                        . "Heure : " . $informations['hour'] . "<br>"
-                        . "Durée : " . $informations['duration'] . "<br>"
-                        . "Salle : " . $informations['room'] . "<br>"
-                        . "Type : " . $informations['type'] . "</p>"
-                        . "<p>Veuillez vous présenter à l'heure indiquée.</p>"
-                        . "<p>Cordialement,<br>L'équipe MySGRDS</p>";
-                $this->emailControl->sendMail($student['email'], 'Nouveau Rattrapage le ' . $informations['date'], $message );
-            }
-        }
-
         $rattrapageModel = new RattrapageModel();
+        $rattrapantModel = new \App\Models\RattrapantModel();
 
-        $dsModel = new DsModel();
-        $dsModel->setEtat($idDs, 'PREVU');
-
-        $rattrapageId = $rattrapageModel->insertRattrapage($data);
+        $rattrapageId = $rattrapageModel->insertRattrapage($rattrapageData);
 
         if (!$rattrapageId) {
             return redirect()->back()->withInput()->with('error', 'Erreur lors de la création du rattrapage');
         }
 
+
+        foreach ($students as $student) {
+            $codeEtudiant = $student['id'];
+            $justified = ($post['justify'][$codeEtudiant] === 'on') ? 1 : 0;
+
+            if ($justified === 1 && !empty($codeEtudiant)) {
+                $rattrapantModel->addRattrapant($rattrapageId, $codeEtudiant);
+            }
+
+            $this->absenceModel->markForMakeup((int) $idDs, $codeEtudiant, $justified);
+
+            if ($justified === 1 && !empty($student['email'])) {
+                $message = "<p>Bonjour " . esc($student['prenom']) . " " . esc($student['nom']) . ",</p>"
+                    . "<p>Un rattrapage a été programmé pour le DS initialement prévu le " . esc($dsInformation['date_ds']) . ".</p>"
+                    . "<p><b>Détails du rattrapage :</b><br>"
+                    . "Date : " . esc($post['date']) . "<br>"
+                    . "Heure : " . esc($post['hour']) . "<br>"
+                    . "Durée : " . esc($post['duration']) . "<br>"
+                    . "Salle : " . esc($post['room']) . "<br>"
+                    . "Type : " . esc($post['type']) . "</p>"
+                    . "<p>Veuillez vous présenter à l'heure indiquée.</p>"
+                    . "<p>Cordialement,<br>L'équipe MySGRDS</p>";
+                $this->emailControl->sendMail($student['email'], 'Nouveau Rattrapage le ' . esc($post['date']), $message);
+            }
+        }
+
+        $dsModel = new DsModel();
+        $dsModel->setEtat($idDs, 'PREVU');
+
         return redirect()->to('rattrapage')->with('success', 'Rattrapage ajouté avec succès');
-    
     }
+
+
 
     //A appler quand on annule un rattrapage
     public function refuser($id)
@@ -251,7 +257,7 @@ class Rattrapage extends BaseController
             return redirect()->to('rattrapage')->with('error', 'ID du rattrapage non spécifié');
         }
 
-        $rattrapage = $this->rattrapageModel->find($id);
+        $rattrapage = $this->rattrapageModel->getRattrapageWithDetails($id);
         if (!$rattrapage) {
             return redirect()->to('rattrapage')->with('error', 'Rattrapage non trouvé');
         }
@@ -282,29 +288,37 @@ class Rattrapage extends BaseController
         }
 
         $rattrapage = $this->rattrapageModel->getRattrapageWithDetails($id);
-        
         if (!$rattrapage) {
             return redirect()->to('rattrapage')->with('error', 'Rattrapage non trouvé');
         }
 
-        $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
-        $keyword = $this->request->getGet('keyword') ?? '';
+        $rattrapantModel = new \App\Models\RattrapantModel();
+        $rattrapants = $rattrapantModel->getRattrapantsByRattrapage($id);
+        $studentIds = array_column($rattrapants, 'codeetudiant');
 
-        // Récupérer les étudiants absents du DS associé
-        $data['students'] = $this->studentModel->getPaginatedAbsentStudentsAndRattrapeByDSiD($rattrapage['id_ds'], $perPage, $keyword);
-        $data['pager'] = $this->studentModel->pager;
-        $data['keyword'] = $keyword;
-        $data['rattrapage'] = $rattrapage;
+        $students = [];
+        if (!empty($studentIds)) {
+            $students = $this->studentModel->getStudentsWithJustifieByCodesAndDs($studentIds, (int)$rattrapage['id_ds']);
+        }
+
+        $pager = null; // ou relier à une pagination si tu en as besoin
+
+        $data = [
+            'rattrapage' => $rattrapage,
+            'students' => $students,
+            'pager' => $pager,
+            'keyword' => $this->request->getGet('keyword') ?? ''
+        ];
 
         return view('rattrapage/detail', $data);
     }
+
 
     /**
      * Formulaire de modification d'un rattrapage
      */
     public function modifier($id)
     {
-
         if ($this->authController->isConnected()) {
             return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
         }
@@ -312,8 +326,8 @@ class Rattrapage extends BaseController
         if ($this->authController->isENS()) {
             return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
         }
+
         $rattrapage = $this->rattrapageModel->getRattrapageWithDetails($id);
-        
         if (!$rattrapage) {
             return redirect()->to('rattrapage')->with('error', 'Rattrapage non trouvé');
         }
@@ -321,16 +335,34 @@ class Rattrapage extends BaseController
         $perPage = max((int) ($this->request->getGet('perPage') ?? 10), 1);
         $keyword = $this->request->getGet('keyword') ?? '';
 
-        // Récupérer les étudiants absents du DS associé
-        $data['students'] = $this->studentModel->getPaginatedStudentsByDSiD($rattrapage['id_ds'], $perPage, $keyword);
-        $data['pager'] = $this->studentModel->pager;
-        $data['keyword'] = $keyword;
-        $data['rattrapage'] = $rattrapage;
-        $data['types'] = ['MACHINE' => 'Machine', 'ORAL' => 'Oral', 'PAPIER' => 'Papier'];
-        $data['validation'] = \Config\Services::validation();
+        // Tous les absents du DS
+        $students = $this->studentModel->getPaginatedStudentsByDSiD($rattrapage['id_ds'], $perPage, $keyword);
+
+        // Rattrapants déjà liés
+        $rattrapantModel = new \App\Models\RattrapantModel();
+        $rattrapants = $rattrapantModel->getRattrapantsByRattrapage($id);
+        $rattrapantCodes = array_column($rattrapants, 'codeetudiant');
+
+        // Mettre à jour la clé 'rattrape' pour cocher les rattrapants
+        foreach ($students as &$student) {
+            $student['rattrape'] = in_array($student['id'], $rattrapantCodes);
+        }
+
+        $pager = $this->studentModel->pager ?? null;
+
+        $data = [
+            'students' => $students,
+            'pager' => $pager,
+            'keyword' => $keyword,
+            'rattrapage' => $rattrapage,
+            'types' => ['MACHINE' => 'Machine', 'ORAL' => 'Oral', 'PAPIER' => 'Papier'],
+            'validation' => \Config\Services::validation()
+        ];
 
         return view('rattrapage/modifier', $data);
     }
+
+
 
     /**
      * Mise à jour d'un rattrapage
@@ -344,8 +376,8 @@ class Rattrapage extends BaseController
         if ($this->authController->isENS()) {
             return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
         }
-        $rattrapage = $this->rattrapageModel->find($id);
-        
+
+        $rattrapage = $this->rattrapageModel->getRattrapageWithDetails($id);
         if (!$rattrapage) {
             return redirect()->to('rattrapage')->with('error', 'Rattrapage non trouvé');
         }
@@ -369,54 +401,76 @@ class Rattrapage extends BaseController
             return view('rattrapage/modifier', $data);
         }
 
-        // Récupérer les données du formulaire
         $post = $this->request->getPost();
-        
-        // Convertir la durée en minutes
-        $duration = $post['duration'];
-        list($heures, $minutes) = explode(':', $duration);
-        $dureeMinutes = ($heures * 60) + $minutes;
+        list($hours, $minutes) = explode(':', $post['duration']);
+        $durationMinutes = ($hours * 60) + $minutes;
 
         $rattrapageData = [
             'date_rattrapage' => $post['date'],
-            'duree_minutes' => $dureeMinutes,
+            'duree_minutes' => $durationMinutes,
             'heure_debut' => $post['hour'],
             'salle' => $post['room'],
             'type_exam' => $post['type']
         ];
 
-        $success = $this->rattrapageModel->updateRattrapage($id, $rattrapageData);
+        $db = \Config\Database::connect();
+        $db->transStart();
 
+        $success = $this->rattrapageModel->updateRattrapage($id, $rattrapageData);
         if (!$success) {
+            $db->transRollback();
             return redirect()->back()->withInput()->with('error', 'Erreur lors de la modification du rattrapage');
         }
 
         $rattrapes = $this->request->getPost('rattrape') ?? [];
-        $rattrapage = $this->rattrapageModel->getRattrapageWithDetails($id);
-        
-        $students = $this->studentModel->getPaginatedStudentsByDSiD($rattrapage['id_ds'], 1000, null);
-        
-        foreach ($students as $student) {
-            $codeEtudiant = $student['id'];
-            $rattrape = isset($rattrapes[$codeEtudiant]) ? 1 : 0;
-            $this->absenceModel->markForMakeup($rattrapage['id_ds'], $codeEtudiant, $rattrape);
-            $this->emailControl->sendMail($student['email'], 'Modification Rattrapage le ' . $post['date'], 
-                "<p>Bonjour " . $student['prenom'] . " " . $student['nom'] . ",</p>"
-                . "<p>Le rattrapage initialement prévu a été modifié. Voici les nouveaux détails :</p>"
-                . "<p><b>Détails du rattrapage :</b><br>"
-                . "Ressource : " . $rattrapage['coderessource'] . ' ' . $rattrapage['nomressource'] . "<br>"
-                . "Date : " . $post['date'] . "<br>"
-                . "Heure : " . $post['hour'] . "<br>"
-                . "Durée : " . $post['duration'] . "<br>"
-                . "Salle : " . $post['room'] . "<br>"
-                . "Type : " . $post['type'] . "</p>"
-                . "<p>Veuillez vous présenter à l'heure indiquée.</p>"
-                . "<p>Cordialement,<br>L'équipe MySGRDS</p>"
-            );
+        $rattrapantModel = new \App\Models\RattrapantModel();
+
+        $oldRattrapants = $rattrapantModel->getRattrapantsByRattrapage($id);
+        $oldCodes = array_column($oldRattrapants, 'codeetudiant');
+
+        $toAdd = array_diff(array_keys($rattrapes), $oldCodes);
+        $toRemove = array_diff($oldCodes, array_keys($rattrapes));
+
+        foreach ($toRemove as $codeEtudiant) {
+            $rattrapantModel->removeRattrapant($id, $codeEtudiant);
         }
 
-        
+        foreach ($toAdd as $codeEtudiant) {
+            $rattrapantModel->addRattrapant($id, $codeEtudiant);
+        }
+
+        $students = $this->studentModel->getPaginatedStudentsByDSiD($rattrapage['id_ds'], 1000, null);
+        foreach ($students as $student) {
+            $codeEtudiant = $student['id'];
+            $isRattrape = isset($rattrapes[$codeEtudiant]) ? 1 : 0;
+            $this->absenceModel->markForMakeup($rattrapage['id_ds'], $codeEtudiant, $isRattrape);
+
+            if (!empty($student['email'])) {
+                $this->emailControl->sendMail(
+                    $student['email'],
+                    'Modification Rattrapage le ' . $post['date'],
+                    "<p>Bonjour " . esc($student['prenom']) . " " . esc($student['nom']) . ",</p>" .
+                    "<p>Le rattrapage initialement prévu a été modifié. Voici les nouveaux détails :</p>" .
+                    "<p><b>Détails du rattrapage :</b><br>" .
+                    "Ressource : " . $rattrapage['coderessource'] . ' ' . $rattrapage['nomressource'] . "<br>" .
+                    "Date : " . $post['date'] . "<br>" .
+                    "Heure : " . $post['hour'] . "<br>" .
+                    "Durée : " . $post['duration'] . "<br>" .
+                    "Salle : " . $post['room'] . "<br>" .
+                    "Type : " . $post['type'] . "</p>" .
+                    "<p>Veuillez vous présenter à l'heure indiquée.</p>" .
+                    "<p>Cordialement,<br>L'équipe MySGRDS</p>"
+                );
+            }
+        }
+
+        $db->transComplete();
+
+        if ($db->transStatus() === false) {
+            return redirect()->back()->withInput()->with('error', 'Erreur lors de la transaction');
+        }
 
         return redirect()->to('rattrapage/detail/' . $id)->with('success', 'Rattrapage modifié avec succès');
     }
+
 }

@@ -108,17 +108,16 @@ MySGRDS | Modifier Rattrapage
             <div class="form-group">
                 <label for="duration">Durée de l'évaluation</label>
                 <?php 
-                    // Convertir les minutes en format HH:MM
                     $heures = floor($rattrapage['duree_minutes'] / 60);
                     $mins = $rattrapage['duree_minutes'] % 60;
-                    $dureeFomatee = sprintf('%02d:%02d', $heures, $mins);
+                    $dureeFormatee = sprintf('%02d:%02d', $heures, $mins);
                 ?>
                 <?php echo form_input([
                     'name' => 'duration',
                     'id' => 'duration',
                     'type' => 'time',
                     'class' => 'form-input',
-                    'value' => set_value('duration', $dureeFomatee),
+                    'value' => set_value('duration', $dureeFormatee),
                     'required' => true
                 ]); ?>
                 <?= validation_show_error('duration') ?>
@@ -178,9 +177,11 @@ MySGRDS | Modifier Rattrapage
                     </tbody>
                 </table>
 
-                <div class="pagination-container">
-                    <?= $pager->links('default', 'default_full') ?>
-                </div>
+                <?php if (!empty($pager)): ?>
+                    <div class="pagination-container">
+                        <?= $pager->links('default', 'default_full') ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
