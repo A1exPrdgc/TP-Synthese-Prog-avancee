@@ -153,7 +153,7 @@ class DS extends BaseController
     /**
      * Sauvegarde d'un nouveau DS
      */
-    public function save()
+   public function save()
     {
         if ($this->authController->isConnected()) {
             return redirect()->to('connecter')->with('error', 'Vous n\'êtes pas connecté.');
@@ -162,17 +162,18 @@ class DS extends BaseController
         if ($this->authController->isDE()) {
             return redirect()->to('rattrapage')->with('error', 'Vous n\'avez pas la permission d\'accéder à cette page.');
         }
+
         $validSemesters = $this->semesterModel->getAllSemesterCodes();
         $validResources = $this->resourceModel->getAllResourceCodes();
-        $validTeachers = $this->teacherModel->getAllTeacherNames();
+        $validTeachers = $this->teacherModel->getAllTeacherCodes(); // récupère les codes, pas les noms
         $validTypes = ['MACHINE', 'PAPIER', 'ORAL'];
 
         $rules = [
             'semester' => 'required|in_list[' . implode(',', $validSemesters) . ']',
             'resource' => 'required|in_list[' . implode(',', $validResources) . ']',
-            'teacher' => 'required|in_list[' . implode(',', $validTeachers) . ']',
-            'date' => 'required|valid_date',
-            'type' => 'required|in_list[' . implode(',', $validTypes) . ']',
+            'teacher'  => 'required|in_list[' . implode(',', $validTeachers) . ']',
+            'date'     => 'required|valid_date',
+            'type'     => 'required|in_list[' . implode(',', $validTypes) . ']',
             'duration' => 'required|regex_match[/^(?:[01]\d|2[0-3]):[0-5]\d$/]'
         ];
 
@@ -182,7 +183,7 @@ class DS extends BaseController
 
         $semesterCode = $this->request->getPost('semester');
         $resourceCode = $this->request->getPost('resource');
-        $teacherName = $this->request->getPost('teacher');
+        $teacherCode = $this->request->getPost('teacher'); // on reçoit direct le code enseignant
         $date = $this->request->getPost('date');
         $type = $this->request->getPost('type');
         $duration = $this->request->getPost('duration');
@@ -191,10 +192,14 @@ class DS extends BaseController
         $dureeMinutes = ($heures * 60) + $minutes;
 
         $semesterId = $this->semesterModel->getIdByCode($semesterCode);
-        $teacherCode = $this->teacherModel->getCodeByName($teacherName);
 
-        if (!$semesterId || !$teacherCode) {
-            return redirect()->back()->withInput()->with('error', 'Données invalides');
+        if (!$semesterId) {
+            return redirect()->back()->withInput()->with('error', 'Semestre invalide');
+        }
+
+        // On vérifie aussi que le code enseignant existe bien en base, prudence
+        if (!$this->teacherModel->find($teacherCode)) {
+            return redirect()->back()->withInput()->with('error', 'Enseignant invalide');
         }
 
         $dsId = $this->dsModel->createDs([
@@ -217,29 +222,30 @@ class DS extends BaseController
             $isJustified = isset($justifies[$studentCode]) ? 1 : 0;
             $this->absentModel->markAbsent($dsId, $studentCode, $isJustified);
         }
-        $message = "<p>Bonjour " . $teacherName . ",</p>"
-         . "<p>Un nouveau DS a été ajouté avec succès.</p>"
-         . "<p><b>Détails de l'examen :</b><br>"
-         . "Date : " . $date . "<br>"
-         . "Ressource : " . $resourceCode . "<br>"
-         . "Type : " . $type . "<br>"
-         . "Durée : " . $dureeMinutes . " minutes<br><br>"
-         . "Lien vers le DS : <a href=\"" . base_url('ds/detail/' . $dsId) . "\">Cliquez ici</a></p><br>"
-         . "<p>Les participants aux rattrapages sont :</p><br>";
-            foreach ($absents as $studentCode => $value) {
-                $message .= "<p> - " . $this->studentModel->getNameByCode($studentCode) . "</p><br>";
-            }
-            $message .= "<p>Cordialement,<br>L'équipe MYSGRDS.</p>";
-         $message .= "<p>Cordialement,<br>L'équipe MYSGRDS.</p>";
+
+        $message = "<p>Bonjour " . $this->teacherModel->find($teacherCode)['prenom'] . ",</p>"
+            . "<p>Un nouveau DS a été ajouté avec succès.</p>"
+            . "<p><b>Détails de l'examen :</b><br>"
+            . "Date : " . $date . "<br>"
+            . "Ressource : " . $resourceCode . "<br>"
+            . "Type : " . $type . "<br>"
+            . "Durée : " . $dureeMinutes . " minutes<br><br>"
+            . "Lien vers le DS : <a href=\"" . base_url('ds/detail/' . $dsId) . "\">Cliquez ici</a></p><br>"
+            . "<p>Les participants aux rattrapages sont :</p><br>";
+
+        foreach ($absents as $studentCode => $value) {
+            $message .= "<p> - " . $this->studentModel->getNameByCode($studentCode) . "</p><br>";
+        }
+        $message .= "<p>Cordialement,<br>L'équipe MYSGRDS.</p>";
 
         $this->emailController->sendMail($this->teacherModel->getEmailByCode($teacherCode), 'Nouveau DS Ajouté', $message);
 
-        // Définir l'état selon le nombre d'absents
         $etatInitial = (count($absents) === 0) ? 'REFUSE' : 'EN ATTENTE';
         $this->dsModel->setEtat($dsId, $etatInitial);
 
         return redirect()->to('ds/detail/' . $dsId)->with('success', 'DS ajouté avec succès');
     }
+
 
 
     /**

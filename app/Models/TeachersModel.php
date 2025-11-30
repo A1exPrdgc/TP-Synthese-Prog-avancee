@@ -165,4 +165,9 @@ class TeachersModel extends Model
         return $grouped;
     }
 
+    public function getAllTeacherCodes(): array
+    {
+        $teachers = $this->select('code')->findAll();
+        return array_column($teachers, 'code');
+    }
 }
