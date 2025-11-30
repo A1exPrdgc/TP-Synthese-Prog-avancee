@@ -42,8 +42,7 @@ CREATE TABLE etudiant (
     code VARCHAR(10) PRIMARY KEY,
     classe VARCHAR(5),
     id_semestre INT NOT NULL,
-    FOREIGN KEY (id_semestre) REFERENCES semestre(id_semestre) ON DELETE CASCADE,
-    FOREIGN KEY (code) REFERENCES personne(code) ON DELETE CASCADE
+    FOREIGN KEY (id_semestre) REFERENCES semestre(id_semestre) ON DELETE CASCADE
 ) INHERITS (personne);
 
 CREATE TABLE ressource (

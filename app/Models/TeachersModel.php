@@ -68,7 +68,7 @@ class TeachersModel extends Model
      */
     public function getTeachersByResourceForDropdown(string $resourceCode): array
     {
-        $teachers = $this->getAllTeachersByResources($resourceCode);
+        $teachers = $this->getTeachersByResourceCode($resourceCode);
         
         if (empty($teachers)) {
             return $this->getAllTeachersForDropdown();
@@ -76,8 +76,7 @@ class TeachersModel extends Model
         
         $dropdown = [];
         foreach ($teachers as $teacher) {
-            $fullName = $this->where('code', $teacher['code'])->first();
-            $dropdown[$teacher['nom']] = ($fullName['prenom'] ?? '') . ' ' . $teacher['nom'];
+            $dropdown[$teacher['code']] = $teacher['prenom'] . ' ' . $teacher['nom'];
         }
         return $dropdown;
     }
@@ -109,4 +108,13 @@ class TeachersModel extends Model
         $teacher = $this->where('code', $code)->first();
         return $teacher ? $teacher['email'] : null;
     }
+    
+    public function getTeachersByResourceCode(string $resourceCode): array
+    {
+        return $this->select('enseignant.code, enseignant.nom, enseignant.prenom')
+                    ->join('enseignant_ressource er', 'er.codeenseignant = enseignant.code')
+                    ->where('er.coderessource', $resourceCode)
+                    ->findAll();
+    }
+
 }

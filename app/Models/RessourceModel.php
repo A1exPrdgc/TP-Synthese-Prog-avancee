@@ -14,14 +14,16 @@ class RessourceModel extends Model
     protected $useSoftDeletes = false;
     protected $useTimestamps = false;
 
-    public function getAllResourcesBySemesters($semesterCode)
+    public function getAllResourcesBySemesters(string $semesterCode)
     {
+        // Extraire numéro semestre S1 → 1, S2 → 2, etc
+        $numSemestre = substr($semesterCode, 1);
+
         return $this->select('ressource.coderessource, ressource.nomressource')
-                    ->join('ds d', 'd.coderessource = ressource.coderessource')
-                    ->join('semestre s', 's.id_semestre = d.id_semestre')
-                    ->where('s.code', $semesterCode)
+                    ->like('ressource.coderessource', 'R' . $numSemestre . '.', 'after') // filtre par préfixe R1., R2., etc
                     ->findAll();
     }
+
 
     /**
      * Récupère toutes les ressources pour un dropdown
@@ -58,10 +60,12 @@ class RessourceModel extends Model
         
         $dropdown = [];
         foreach ($resources as $resource) {
+            // NE PAS concaténer ici, juste nom de ressource brut
             $dropdown[$resource['coderessource']] = $resource['nomressource'];
         }
         return $dropdown;
     }
+
 
     /**
      * Récupère les ressources par semestre pour AJAX
@@ -78,12 +82,12 @@ class RessourceModel extends Model
         foreach ($resources as $resource) {
             $result[] = [
                 'code' => $resource['coderessource'],
-                'nom' => $resource['nomressource']
+                'nom' => $resource['nomressource'], // Pas de concaténation ici non plus
             ];
         }
         return $result;
+    
     }
-
     public function getNameByCode(string $code): ?string
     {
         $resource = $this->where('coderessource', $code)->first();

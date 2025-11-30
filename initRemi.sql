@@ -1,59 +1,181 @@
--- Insérer semestres
-INSERT INTO semestre (code, annee) VALUES
-    ('S1', '2025-2026'),
-    ('S2', '2025-2026'),
-    ('S3', '2025-2026'),
-    ('S4', '2025-2026'),
-    ('S5', '2025-2026'),
-    ('S6', '2025-2026');
+-- Insertion des semestres
+INSERT INTO semestre (id_semestre, code, annee) VALUES
+(1, 'S1', '2025-2026'),
+(2, 'S2', '2025-2026'),
+(3, 'S3', '2025-2026'),
+(4, 'S4', '2025-2026'),
+(5, 'S5', '2025-2026'),
+(6, 'S6', '2025-2026');
 
--- Insérer ressources
+-- Insertion des ressources
 INSERT INTO ressource (codeRessource, nomRessource) VALUES
-    ('R1.01', 'Initiation au développement'),
-    ('R1.02', 'Développement interfaces Web'),
-    ('R1.03', 'Introduction Architecture'),
-    ('R1.04', 'Introduction Système'),
-    ('R1.05', 'Introduction Base de données'),
-    ('R1.06', 'Mathématiques discrètes'),
-    ('R1.07', 'Outils mathématiques fondamentaux'),
-    ('R1.08', 'Gestion de projet et des organisations'),
-    ('R1.09', 'Économie durable et numérique'),
-    ('R1.10', 'Anglais Technique'),
-    ('R1.11', 'Bases de la communication'),
-    ('R1.12', 'Projet Professionnel et Personnel');
+('R1.01', 'Initiation au developpement'),
+('R1.02', 'Developpement interfaces Web'),
+('R1.03', 'Introduction Architecture'),
+('R1.04', 'Introduction Systeme'),
+('R1.05', 'Introduction Base de donnees'),
+('R1.06', 'Mathematiques discretes'),
+('R1.07', 'Outils mathematiques fondamentaux'),
+('R1.08', 'Gestion de projet et des organisations'),
+('R1.09', 'Economie durable et numerique'),
+('R1.10', 'Anglais Technique'),
+('R1.11', 'Bases de la communication'),
+('R1.12', 'Projet Professionnel et Personnel'),
+('R2.01', 'Developpement oriente objets'),
+('R2.02', 'Developpement d applications avec IHM'),
+('R2.03', 'Qualite de developpement'),
+('R2.04', 'Communication et fonctionnement bas niveau'),
+('R2.05', 'Introduction aux services reseaux'),
+('R2.06', 'Exploitation d une base de donnees'),
+('R2.07', 'Graphes'),
+('R2.08', 'Outils numeriques pour les statistiques'),
+('R2.09', 'Methodes Numeriques'),
+('R2.10', 'Gestion de projet et des organisations'),
+('R2.11', 'Droit'),
+('R2.12', 'Anglais dentreprise'),
+('R2.13', 'Communication Technique'),
+('R2.14', 'Projet Professionnel et Personnel'),
+('R3.01', 'Developpement WEB'),
+('R3.02', 'Developpement Efficace'),
+('R3.03', 'Analyse'),
+('R3.04', 'Qualite de developpement 3'),
+('R3.05', 'Programmation Systeme'),
+('R3.06', 'Architecture des reseaux'),
+('R3.07', 'SQL dans un langage de programmation'),
+('R3.08', 'Probabilites'),
+('R3.09', 'Cryptographie et securite'),
+('R3.10', 'Management des systemes dinformation'),
+('R3.11', 'Droits des contrats et du numerique'),
+('R3.12', 'Anglais 3'),
+('R3.13', 'Communication professionnelle'),
+('R3.14', 'PPP 3'),
+('R4.01', 'Architecture logicielle'),
+('R4.02', 'Qualite de developpement 4'),
+('R4.03', 'Qualite et au dela du relationnel'),
+('R4.04', 'Methodes d optimisation'),
+('R4.05', 'Anglais 4'),
+('R4.06', 'Communication interne'),
+('R4.07', 'PPP 4'),
+('R4.08', 'Virtualisation'),
+('R4.09', 'Management avance des Systemes dinformation'),
+('R4.10', 'Complement web'),
+('R4.11', 'Developpement mobile'),
+('R4.12', 'Automates'),
+('R5.01', 'Initiation au management dune equipe de projet informatique'),
+('R5.02', 'Projet Personnel et Professionnel'),
+('R5.03', 'Politique de communication'),
+('R5.04', 'Qualite algorithmique'),
+('R5.05', 'Programmation avancee'),
+('R5.06', 'Programmation multimedia'),
+('R5.07', 'Automatisation de la chaine de production'),
+('R5.08', 'Qualite de developpement'),
+('R5.09', 'Virtualisation avancee'),
+('R5.10', 'Nouveaux paradigmes de base de donnees'),
+('R5.11', 'Methodes d optimisation pour laide a la decision'),
+('R5.12', 'Modelisations mathematiques'),
+('R5.13', 'Economie durable et numerique'),
+('R5.14', 'Anglais'),
+('R6.01', 'Initiation a lentrepreneuriat'),
+('R6.02', 'Droit du numerique et de la propriete intellectuelle'),
+('R6.03', 'Communication organisation et diffusion de linformation'),
+('R6.04', 'Projet Personnel et Professionnel'),
+('R6.05', 'Developpement avance'),
+('R6.06', 'Maintenance applicative');
 
--- Insérer personnes (enseignants + étudiants)
-INSERT INTO personne (code, nom, prenom, email) VALUES
-    ('lp000001', 'Le Pivert', 'Phillipe', 'lp000001@etu.univ-lehavre.fr'),
-    ('bh000002', 'Boukachour', 'Hadhoum', 'bh000002@etu.univ-lehavre.fr'),
-    ('ma000001', 'Martin', 'Alice', 'ma000001@etu.univ-lehavre.fr'),
-    ('db000002', 'Dufour', 'Bob', 'db000002@etu.univ-lehavre.fr');
-
-
--- Insérer étudiants
-INSERT INTO etudiant (code, classe, id_semestre) VALUES
-    ('ma000001', 'A1', 1),
-    ('db000002', 'A1', 1);
-
--- Insérer_ds
+-- Insertion des enseignants avec tous les attributs, y compris les colonnes hÃ©ritÃ©es
+INSERT INTO enseignant (code, nom, prenom, email, fonction, password) VALUES
+('lp000001', 'Le Pivert', 'Phillipe', 'lp000001@etu.univ-lehavre.fr', 'DE', '$2y$12$1BXA5fAgqD.xeEc5jVJm4u.TzoSSCx8Iv7Aw08LnQRgAE0qNhBID.'),
+('bh000002', 'Boukachour', 'Hadhoum', 'bh000002@etu.univ-lehavre.fr', 'ENS', '$2y$12$1BXA5fAgqD.xeEc5jVJm4u.TzoSSCx8Iv7Aw08LnQRgAE0qNhBID.i'),
+('za000003', 'Zahour', 'Abderrazak', 'za000003@etu.univ-lehavre.fr', 'ENS', '$2y$12$1BXA5fAgqD.xeEc5jVJm4u.TzoSSCx8Iv7Aw08LnQRgAE0qNhBID.'),
+('bj000004', 'Boukachour', 'Jaouad', 'bj000004@etu.univ-lehavre.fr', 'ENS', '$2y$12$1BXA5fAgqD.xeEc5jVJm4u.TzoSSCx8Iv7Aw08LnQRgAE0qNhBID.'),
+('lb000005', 'Legrix', 'Bruno', 'lb000005@etu.univ-lehavre.fr', 'ENS', '$2y$12$1BXA5fAgqD.xeEc5jVJm4u.TzoSSCx8Iv7Aw08LnQRgAE0qNhBID.'),
+('gq000006', 'Griette', 'Quentin', 'gq000006@etu.univ-lehavre.fr', 'ENS', '$2y$12$1BXA5fAgqD.xeEc5jVJm4u.TzoSSCx8Iv7Aw08LnQRgAE0qNhBID.'),
+('lq000007', 'Laffeach', 'Quentin', 'lq000007@etu.univ-lehavre.fr', 'ENS', '$2y$12$1BXA5fAgqD.xeEc5jVJm4u.TzoSSCx8Iv7Aw08LnQRgAE0qNhBID.'),
+('nl000008', 'Nivet', 'Laurence', 'nl000008@etu.univ-lehavre.fr', 'ENS', '$2y$12$1BXA5fAgqD.xeEc5jVJm4u.TzoSSCx8Iv7Aw08LnQRgAE0qNhBID.');
+-- Insertion des DS
 INSERT INTO ds (id_semestre, date_ds, duree_minutes, type_exam, codeRessource, codeEnseignant, etat) VALUES
-    (1, '2025-10-15', 120, 'PAPIER', 'R1.01', 'lp000001', 'PREVU'),
-    (1, '2025-10-20', 90, 'ORAL', 'R1.02', 'bh000002', 'PREVU');
+(1, '2025-10-15 09:00:00', 120, 'PAPIER', 'R1.01', 'lp000001', 'EN ATTENTE'),
+(1, '2025-10-20 14:00:00', 90, 'ORAL', 'R1.02', 'bh000002', 'EN ATTENTE'),
+(1, '2026-01-10 10:00:00', 180, 'PAPIER', 'R1.03', 'za000003', 'EN ATTENTE'),
+(1, '2026-01-15 13:30:00', 60, 'ORAL', 'R1.04', 'bj000004', 'EN ATTENTE'),
+(1, '2026-05-05 09:00:00', 150, 'PAPIER', 'R1.05', 'lb000005', 'EN ATTENTE'),
+(1, '2026-05-10 11:00:00', 120, 'ORAL', 'R1.06', 'gq000006', 'EN ATTENTE');
+-- Insertion des Ã©tudiants avec tous les attributs, y compris les colonnes hÃ©ritÃ©es
+INSERT INTO etudiant (code, nom, prenom, email, classe, id_semestre) VALUES
+('ma000001', 'Martin', 'Alice', 'ma000001@etu.univ-lehavre.fr', 'A1', 1),
+('db000002', 'Dufour', 'Bob', 'db000002@etu.univ-lehavre.fr', 'A1', 1),
+('cc000003', 'Clement', 'Claire', 'cc000003@etu.univ-lehavre.fr', 'B1', 1),
+('rs000004', 'Rousseau', 'Samuel', 'rs000004@etu.univ-lehavre.fr', 'B1', 1),
+('ee000005', 'Evans', 'Eva', 'ee000005@etu.univ-lehavre.fr', 'C1', 1),
+('tg000006', 'Tanguy', 'Guillaume', 'tg000006@etu.univ-lehavre.fr', 'C2', 1),
+('ms000007', 'Moreau', 'Sophie', 'ms000007@etu.univ-lehavre.fr', 'B2', 1),
+('ph000008', 'Petit', 'Hugo', 'ph000008@etu.univ-lehavre.fr', 'A2', 1),
+('li000009', 'Leroy', 'Isabelle', 'li000009@etu.univ-lehavre.fr', 'B2', 1),
+('cj000010', 'Carpentier', 'Julien', 'cj000010@etu.univ-lehavre.fr', 'A2', 1);
 
--- Insérer absences
-INSERT INTO absence (id_ds, code, absenceJustifie, rattrape) VALUES
-    (1, 'ma000001', 0, 0),
-    (1, 'db000002', 1, 0);
+-- Insertion des absences
+INSERT INTO absence (code, id_ds, absenceJustifie) VALUES
+('ma000001', 1, 0),
+('db000002', 1, 1),
+('cc000003', 2, 0),
+('rs000004', 2, 0),
+('ee000005', 3, 1),
+('tg000006', 3, 0),
+('ms000007', 4, 0),
+('ph000008', 4, 1),
+('li000009', 5, 0),
+('cj000010',6, 0);
 
--- Insérer rattrapages
-INSERT INTO rattrapage (id_ds, codeEnseignant, date_rattrapage, duree_minutes, heure_debut, etat, mail_envoye, salle, type_exam) VALUES
-    (1, 'lp000001', '2025-11-15', 120, '09:00', 'EN ATTENTE', 0, 'S101', 'PAPIER');
+-- Insertion de rattapages avec tous les attributs
+INSERT INTO rattrapage (id_ds, code, date_rattrapage, duree_minutes, heure_debut, etat, mail_envoye, salle, type_exam) VALUES
+(1, 'lp000001', '2025-11-01', 120, '09:00:00', 'PREVU', 0, 'S101', 'PAPIER'),
+(2, 'bh000002', '2025-11-05', 90, '14:00:00', 'PREVU', 0, 'S102', 'ORAL'),
+(3, 'za000003', '2026-01-25', 180, '10:00:00', 'PREVU', 0, 'S103', 'PAPIER'),
+(4, 'bj000004', '2026-01-30', 60, '13:30:00', 'PREVU', 0, 'S104', 'ORAL'),
+(5, 'lb000005', '2026-05-20', 150, '09:00:00', 'PREVU', 0, 'S105', 'PAPIER'),
+(6, 'gq000006', '2026-05-25', 120, '11:00:00', 'PREVU', 0, 'S106', 'ORAL');
 
--- Insérer rattrapants
+-- Insertion des rattrapants
 INSERT INTO rattrapants (id_rattrapage, codeEtudiant) VALUES
-    (1, 'ma000001');
+(1, 'ma000001'),
+(2, 'db000002'),
+(3, 'cc000003'),
+(4, 'rs000004'),
+(5, 'ee000005'),
+(6, 'tg000006');
 
--- Associer enseignant et ressources
+--Insertion de laiison enseignant ressource
 INSERT INTO enseignant_ressource (codeEnseignant, codeRessource) VALUES
-    ('lp000001', 'R1.01'),
-    ('bh000002', 'R1.02');
+('lp000001', 'R1.01'),
+('bh000002', 'R1.02'),
+('za000003', 'R1.03'),
+('bj000004', 'R1.04'),
+('lb000005', 'R1.05'),
+('gq000006', 'R1.06'),
+('lq000007', 'R1.07'),
+('nl000008', 'R1.08'),
+('lp000001', 'R2.01'),
+('bh000002', 'R2.02'),
+('za000003', 'R2.03'),
+('bj000004', 'R2.04'),
+('lb000005', 'R2.05'),
+('gq000006', 'R2.06'),
+('lq000007', 'R2.07'),
+('nl000008', 'R2.08'),
+('lp000001', 'R3.01'),
+('bh000002', 'R3.02'),
+('za000003', 'R3.03'),
+('bj000004', 'R3.04'),
+('lb000005', 'R3.05'),
+('gq000006', 'R3.06'),
+('lq000007', 'R3.07'),
+('nl000008', 'R3.08'),
+('lp000001', 'R4.01'),
+('bh000002', 'R4.02'),
+('za000003', 'R4.03'),
+('bj000004', 'R4.04'),
+('lb000005', 'R4.05'),
+('gq000006', 'R4.06'),
+('lq000007', 'R4.07'),
+('nl000008', 'R4.08');
+

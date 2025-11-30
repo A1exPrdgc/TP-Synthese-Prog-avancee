@@ -126,7 +126,14 @@ class DS extends BaseController
         $data['semesters'] = $this->semesterModel->getAllSemestersForDropdown();
         $selectedSemester = array_key_first($data['semesters']) ?? '';
 
-        $data['resources'] = $this->resourceModel->getResourcesBySemesterForDropdown($selectedSemester);
+        $resourcesRaw = $this->resourceModel->getResourcesBySemesterForDropdown($selectedSemester);
+
+        $resources = [];
+        foreach ($resourcesRaw as $code => $nom) {
+            $resources[$code] = $code . ' - ' . $nom;
+        }
+
+        $data['resources'] = $resources;
         $selectedResource = array_key_first($data['resources']) ?? '';
 
         $data['teachers'] = $this->teacherModel->getTeachersByResourceForDropdown($selectedResource);
@@ -430,8 +437,16 @@ class DS extends BaseController
     public function getTeachersByResource()
     {
         $resource = $this->request->getGet('resource');
-        $teachers = $this->teacherModel->getTeachersByResourceForAjax($resource);
-        return $this->response->setJSON($teachers);
+        $teachers = $this->teacherModel->getTeachersByResourceCode($resource);
+
+        $result = [];
+        foreach ($teachers as $teacher) {
+            $result[] = [
+                'code' => $teacher['code'],
+                'fullname' => $teacher['prenom'] . ' ' . $teacher['nom']
+            ];
+        }
+        return $this->response->setJSON($result);
     }
 
     /**

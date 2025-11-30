@@ -12,7 +12,8 @@ document.getElementById('semester').addEventListener('change', function () {
                 data.forEach(resource => {
                     const option = document.createElement('option');
                     option.value = resource.code;
-                    option.textContent = resource.nom;
+                    // Afficher code + nom dans le texte de l'option
+                    option.textContent = `${resource.code} - ${resource.nom}`;
                     resourceSelect.appendChild(option);
                 });
 
@@ -93,8 +94,8 @@ document.getElementById('resource').addEventListener('change', function () {
             if (data.length > 0) {
                 data.forEach(teacher => {
                     const option = document.createElement('option');
-                    option.value = teacher.nom;
-                    option.textContent = teacher.nom;
+                    option.value = teacher.code;
+                    option.textContent = teacher.fullname;
                     teacherSelect.appendChild(option);
                 });
             } else {
@@ -108,3 +109,4 @@ document.getElementById('resource').addEventListener('change', function () {
             console.error('Erreur lors du chargement des professeurs:', error);
         });
 });
+
