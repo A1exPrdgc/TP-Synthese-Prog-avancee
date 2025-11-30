@@ -134,3 +134,11 @@ CREATE TABLE rattrapage (
     FOREIGN KEY (id_ds) REFERENCES ds(id_ds) ON DELETE CASCADE,
     FOREIGN KEY (code)  REFERENCES enseignant(code) ON DELETE CASCADE
 );
+
+CREATE TABLE enseignant_ressource (
+    codeEnseignant VARCHAR(10) NOT NULL,
+    codeRessource VARCHAR(10) NOT NULL,
+    PRIMARY KEY (codeEnseignant, codeRessource),
+    FOREIGN KEY (codeEnseignant) REFERENCES enseignant(code) ON DELETE CASCADE,
+    FOREIGN KEY (codeRessource) REFERENCES ressource(codeRessource) ON DELETE CASCADE
+);
