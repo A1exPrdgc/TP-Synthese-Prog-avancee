@@ -2,7 +2,7 @@
 FROM composer:2 AS composer-stage
 WORKDIR /app
 COPY composer.json composer.lock* ./
-RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
+RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction --ignore-platform-reqs
 
 # Stage 2: Production image
 FROM php:8.1-apache
