@@ -1,0 +1,22 @@
+# Ajouter au .dockerignore les fichiers inutiles pour le build
+.git
+.gitignore
+.github
+.env
+README.md
+LICENSE
+tests/
+phpunit.xml.dist
+docker-compose.yml
+.dockerignore
+writable/logs/*
+writable/cache/*
+writable/debugbar/*
+writable/session/*
+writable/uploads/*
+!writable/.htaccess
+*.md
+*.log
+.vscode
+.idea
+node_modules
